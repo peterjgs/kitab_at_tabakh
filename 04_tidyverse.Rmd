@@ -1,0 +1,62 @@
+# Tidyverse
+
+
+## Stacking and unstacking data
+
+Stack a two-column data frame with `pivot_longer` and then unstack it with `pivot_wider`.
+
+Firstly with `stack` and `unstack`
+
+```{r}
+
+dd1 <- as.data.frame(matrix(rpois(10, 5), nrow = 5))
+dd1
+
+```
+
+
+```{r}
+
+dd2s <- stack(dd1)
+dd2s
+
+```
+
+```{r}
+
+unstack(dd2s)
+
+```
+
+Now with `pivot_longer` and  `pivot_wider`.
+
+```{r}
+
+library(tidyverse)
+
+dd2pl <- dd1 %>%
+  pivot_longer(cols = c("V1", "V2"))
+dd2pl
+
+```
+
+
+
+```{r}
+
+dd3pl <- 
+  dd2pl %>% 
+  group_by(name) %>%
+  mutate(row = row_number() ) %>%
+  tidyr::pivot_wider(names_from = name, values_from = value) %>%
+  select(-row)
+
+dd3pl
+
+```
+
+
+
+
+
+

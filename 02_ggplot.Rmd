@@ -1,0 +1,339 @@
+# ggplot
+
+
+## Vignettes
+
+[Extending ggplot2](https://cran.r-project.org/web/packages/ggplot2/vignettes/extending-ggplot2.html)
+
+[Aesthetic specifications](https://cran.r-project.org/web/packages/ggplot2/vignettes/ggplot2-specs.html)
+
+[Cheat sheet](https://rstudio.com/resources/cheatsheets/)
+
+
+## Confidence bands
+
+https://janhove.github.io/reporting/2017/05/12/visualising-models-2
+
+
+
+##  Confidence bands: fitted models
+
+Part of this comes from Gordana's code for calculating sample size by simulation
+
+```{r}
+
+library(dplyr)
+library(emmeans)
+library(ggplot2)
+library(ggpubr)
+
+
+data(iris, package = "datasets")
+
+str(iris)
+
+```
+
+
+
+```{r}
+
+table(iris$Species)
+
+```
+
+
+
+```{r}
+
+iris_versi <- filter(iris, Species == "versicolor")
+
+summary(iris_versi)
+
+```
+
+
+
+```{r}
+
+iris_versi$Species <- factor(iris_versi$Species)
+
+nsamp <- 12
+
+iris_versi_samp <- sample(1:50, size = nsamp, replace = F)
+
+pilot <- iris_versi[iris_versi_samp, ]
+
+
+##  Gordana's simulation code
+
+pilot_mod <- lm(Sepal.Length ~ Petal.Length, data = pilot)
+
+summary(pilot_mod)
+
+```
+
+
+
+```{r}
+
+confint(pilot_mod)  
+
+```
+
+
+
+```{r}
+
+fit_gg <- ggplot(pilot, aes(x = Petal.Length, 
+                            y = Sepal.Length)) + 
+  geom_point() +
+  geom_smooth(method = "lm") +
+  ggtitle("Fitted value with 95 % confidence 
+          interval (conditional mean)") + 
+  theme(plot.title = element_text(size = 8, face = "bold"))
+
+print(fit_gg)
+
+```
+
+
+Check type of band (confidence or prediction) on above ggplot
+
+
+```{r}
+
+# range of petal length
+my_range <- range(pilot$Petal.Length) 
+
+X_pred <- seq(my_range[1], my_range[2], length = 12)
+
+yhat_conf <- data.frame(
+  predict(pilot_mod, interval = "confidence", 
+          newdata = data.frame(Petal.Length = X_pred)))
+
+names(yhat_conf) <- c("yhat_conf_fit", "yhat_conf_lwr", "yhat_conf_upr")
+
+
+yhat_pred <- data.frame(
+  predict(pilot_mod, interval = "prediction", 
+          newdata = data.frame(Petal.Length = X_pred)))
+
+names(yhat_pred) <- c("yhat_pred_fit", "yhat_pred_lwr", "yhat_pred_upr")
+
+
+yhat_all <- data.frame(Petal.Length = X_pred, yhat_conf, yhat_pred[ , -1])
+
+names(yhat_all)[names(yhat_all) %in% "yhat_conf_fit"] <- "Sepal.Length"
+
+##  Add to sample data
+
+pilot$X_pred <- X_pred
+
+pilot <- data.frame(pilot, yhat_conf)
+
+pilot <- data.frame(pilot, 
+                    yhat_pred_lwr = yhat_pred$yhat_pred_lwr,
+                    yhat_pred_upr = yhat_pred$yhat_pred_upr)
+
+##  Plot fitted values and intervals from "predict" function
+
+fit_conf <- ggplot(pilot, aes(x = Petal.Length, y = Sepal.Length)) + 
+  geom_point() +
+  geom_smooth(
+    data = yhat_all, aes(ymin = yhat_conf_lwr, 
+                         ymax = yhat_conf_upr), 
+    stat = "identity") +
+  ggtitle("Fitted value with 95 % confidence 
+          interval (from 'predict')")+ 
+  theme(plot.title = element_text(size = 8, face = "bold"))
+
+
+fit_pred <- ggplot(pilot, aes(x = Petal.Length, y = Sepal.Length)) + 
+  geom_point() +
+  geom_smooth(data = yhat_all, aes(ymin = yhat_pred_lwr, 
+                                   ymax = yhat_pred_upr), 
+              stat = "identity") +
+  ggtitle("Fitted value with 95 % prediction 
+          interval (from 'predict')")+ 
+  theme(plot.title = element_text(size = 8, face = "bold"))
+
+ggarrange(fit_gg, fit_conf, fit_pred, ncol = 3)
+
+```
+
+
+<br>
+
+
+##  Histogram
+
+###  Histogram: one vector of values
+
+```{r}
+
+##  Histogram of one vector of values in ggplot2
+
+##  Generate a vector of values
+
+s2 <- numeric(5000)
+for(i in 1:5000) {
+  dd <- rnorm(5, 10, 1)
+  s2[i] <- var(dd)
+  rm(dd)
+}
+
+summary(s2)
+
+```
+
+
+Data in numeric vector
+
+```{r}
+
+##  Data in numeric vector
+
+ggplot() + 
+  aes(s2) + 
+  geom_histogram(binwidth = 0.5)
+
+```
+
+
+Data in single-column data frame - Y axis is frequency
+
+```{r}
+
+##  Data in single-column data frame
+
+s2.df <- data.frame(var = s2)
+
+##  Y axis is frequency
+
+ggplot(s2.df, aes(x = var)) +
+  geom_histogram(breaks = 0:16*0.5, col = "black", 
+                 fill = "grey70")
+
+
+```
+
+
+Data in single-column data frame - Y axis is density
+
+
+```{r}
+
+##  Y axis is density
+
+ggplot(s2.df, aes(x = var, y = ..density..)) +
+  geom_histogram(breaks = 0:16*0.5, col = "black", 
+                 fill = "grey70")
+
+
+```
+
+For comparison, histogram in lattice
+
+```{r}
+
+##  Lattice
+
+histogram(s2, breaks = 0:16*0.5, right = F, main = "Lattice")
+
+range(s2)
+```
+
+
+##  Density plot
+
+```{r}
+
+##  Density plot
+
+ggplot(s2.df, aes(x = var)) +
+  geom_density()
+
+
+```
+
+For comparison, density plot in base graphics and in lattice
+
+
+```{r}
+
+##  Density plot - base graphics
+
+plot(density(s2), main = "Base graphics")
+
+
+```
+
+
+```{r}
+
+##  Density plot - lattice
+
+densityplot(s2, plot.points = F, main = "Lattice")
+
+
+```
+
+
+
+##  Plot structure
+
+```
+ggplot_build(p_obj)$data
+```
+
+
+## Label legend
+
+```
+guides(fill = guide_legend(title = "Gender"))
+```
+
+
+## Plot title 
+
+```
+theme(plot.title = element_text(size = 11))
+```
+
+
+## Three-category colours
+
+```
+scale_fill_manual(values =  c("#f8766d", "#00bfc4", "#b79f00")
+```
+
+
+## Set breaks for scale
+
+```
+scale_y_continuous(breaks = seq(0, 12, by = 2)) 
+```
+
+
+## Display table to 2 d.p.
+
+```
+mutate_if(is.numeric, ~ round(., 1)) %>%
+kable()
+```
+
+
+## Redefine factor levels for an individual plot
+
+```
+nt_youth_all_indiv %>%
+  mutate(Race.nat = factor(
+    Race.nat, 
+    levels = c("CALD", "Indigenous", "Caucasian", "Not recorded"))) %>%
+  group_by(Care_status, Race.nat) %>%
+  summarise(n_indiv = n_distinct(MP_id)) %>%
+  ggplot(  etc.  )
+```
+
+

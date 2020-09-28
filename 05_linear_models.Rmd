@@ -1,0 +1,947 @@
+#  Linear Models
+
+## ANOVA: Orthogonal factors
+
+
+*Example from Meier, ANOVA (web document)*
+
+```{r}
+
+## Create data (skip if not interested) ####
+acids <- c(1.697, 1.601, 1.830,
+           2.032, 2.017, 2.409,
+           2.211, 1.673, 1.973, 
+           2.091, 2.255, 2.987)
+R50 <- rep(c("no", "yes", "no", "yes"), each = 3)
+R21 <- rep(c("no", "no", "yes", "yes"), each = 3)
+cheddar <- data.frame(R50, R21, acids)
+
+```
+
+
+```{r}
+
+str(cheddar)
+
+```
+
+
+```{r}
+
+cheddar
+
+```
+
+```{r}
+
+table(cheddar$R21, cheddar$R50)
+
+```
+
+Get model matrix for two-factor model
+
+
+```{r}
+
+cheddar.lm1 <- lm(acids ~ R21 + R50)
+anova(cheddar.lm1)
+
+```
+
+
+```{r}
+
+cheddar.lm2 <- lm(acids ~ R50 + R21)
+anova(cheddar.lm2)
+
+```
+
+
+Sums of squares are the same regardless of the order of R21 and R50 in the model.
+
+Get model matrix.
+
+```{r}
+
+X <- model.matrix(cheddar.lm1)
+
+X
+
+```
+
+
+Calculate $\textbf{X}'\textbf{X}$
+
+
+```{r}
+
+t(X) %*% X
+
+```
+
+
+```{r}
+
+solve(t(X) %*% X)
+
+```
+
+<br>
+
+
+##  Multiple linear regression - conditional and marginal effects
+
+*Note:  See David's book, ch. 3.*
+
+```{r}
+
+library(tidyverse)
+
+data_height <- read_csv("data/plantHeightSingleSpp.csv")
+
+```
+
+
+
+```{r}
+
+mod_height1 <- lm(height ~ lat, data = data_height)
+
+summary(mod_height1)
+
+```
+
+
+
+```{r}
+
+mod_height2 <- lm(height ~ rain + lat, data = data_height)
+
+summary(mod_height2)
+
+```
+
+<br>
+
+Reverse order of model terms
+
+```{r}
+
+mod_height2a <- lm(height ~ lat + rain, data = data_height)
+
+summary(mod_height2a)
+
+```
+
+```{r}
+
+drop1(mod_height2, test = "F")
+
+```
+
+
+<br>
+
+
+###  Marginal and Conditional interpretations
+
+The **marginal effect** of a predictor variable in a regression model is the effect of that variable alone on the outcome, estimated without including any other predictor variable in the model.
+
+The model above with `lat` as the only predictor variable, mod_height1, gives the **marginal effect** of `lat` as -0.176.
+
+The **conditional effect** of a predictor variable in a regression model is the effect of that variable on the outcome when other predictors are included in the model and all those other predictors are held constant.
+
+The model above with both `lat` and `rain` as predictor variables, mod_height2, gives the **conditional effect** of `lat`, after controlling for the effect of `rain`, as -0.034.
+
+Note that in R, the "summary" output for "lm" gives the conditional effect of each predictor variable - i.e. the effect conditional on all the other predictor variables, or in other words, after adjusting for or controlling for, all the other predictor variables. This is shown by comparing the three blocks of output immediately above given by summary(mod_height2), summary(mod_height2a) and drop1(mod_height2).
+
+
+<br>
+
+## Linear model with subsampling
+
+###  Load necessary R packages
+
+```{r}
+
+library(gamair)  ##  Data
+library(ggplot2)
+library(nlme)
+library(emmeans)
+library(dplyr)
+
+```
+
+###  Example {-}
+
+*Note:* This example is from the book, Wood, S. 2017. *Generalized Additive Models: An Introduction with R.* CRC Press, 2nd ed., pp. 61-65. This book is available as an e-book in UNSW library. (The example is also in the 1st edition of this book on pp. 277-281. Another example of this idea with a different data set, but without the mixed model analysis, is in Steel, R., Torrie, J. and Dickey, D. 1997. *Principles and Procedures of Statistics: A Biometrical Approach.* McGraw Hill, 3rd ed., pp. 157-165.)
+
+Tree seedlings are grown under two levels of carbon dioxide concentration, with three trees assigned to each treatment. At six months of growth, stomatal area is measured at each of four random locations on each plant. 
+
+*Notes*
+
+-  "Stomates" are the tiny holes in plant leaves through which carbon dioxide and water vapour are exchanged with the atmosphere during photosynthesis and respiration.
+-  The sample sizes here are artificially small simply to illustrate the ideas. 
+
+
+###  Data
+
+The data, "stomata", is included in the R package, "gamair".
+
+```{r}
+
+data(stomata)
+
+```
+
+
+```{r}
+
+str(stomata)
+
+```
+
+
+```{r}
+
+head(stomata)
+
+```
+
+Convert CO2 and tree to factors.
+
+```{r}
+
+stomata$CO2 <- factor(stomata$CO2)
+
+##  For CO2, "1" is "low" and "2" is "high".
+##  Add these labels.
+
+stomata$CO2 <- factor(stomata$CO2, labels = c("low", "high"))
+
+stomata$tree <- factor(stomata$tree)
+
+```
+
+
+###  Summary statistics and plots
+
+```{r}
+
+summary(stomata)
+
+```
+
+
+```{r}
+
+boxplot(stomata$area ~ stomata$CO2)
+
+```
+
+Plot with a strip plot (strip chart) as sample sizes are small.
+
+```{r}
+
+stripchart(area ~ CO2, data = stomata, ylab = "CO2 conc.")
+
+```
+
+
+```{r}
+
+ggplot(stomata, aes(x = CO2, y = area, colour = tree)) +
+  geom_jitter(position = position_jitter(0.075))
+
+```
+
+The variance appears fairly constant and the distribution looks fairly symmetric. (This suggests the linear model assumptions will be met, but they'll be checked later. The purpose of this example is to illustrate the proper way to analyse data from this type of experimental design and not to worry about assumptions, though.)
+
+
+Note:  Where you've got data with a quantitative, continuous response variable, the usual function to use for a linear model is "lm". In the short course, *Introductory Statistics for Researchers*, we used a function, "aov", for the one-way ANOVA model we fitted. That function is fairly limited in when you can use it and so "lm" is the function most commonly used. However, there are situations where lm is not appropriate.
+
+<br>
+
+**The following analyses are taken from the book by Simon Wood cited above. Explanations of what's going on are more detailed in the book. It's useful to read the material in the book about this example but not to worry about the technical details there.**
+
+<br>
+
+###  Wrong analysis: fixed effects linear model
+
+To account for stomatal area here, we'd expect some contribution from CO2 concentration (there are two levels, low and high) and some contribution from individual trees. The following analysis looks reasonable at face value.
+
+
+```{r}
+
+m1 <- lm(area ~ CO2 + tree, data = stomata)
+
+summary(m1)
+
+```
+
+From above, $P < 0.0001$. The "NAs" in the output look odd.
+
+The above model is wrong, however, because CO2 and tree are confounded. Trees are nested in CO2 treatments - we cannot, for example, separate the effect of low CO2 from the effect of tree 1 on the predicted value of area for that tree.
+
+Compare the above model with a model including only CO2. The "anova" function below compares the two models - the $P$ value in the output is testing whether the two models are no better than each other. 
+
+```{r}
+
+m0 <- lm(area ~ CO2, data = stomata)
+
+anova(m0, m1)
+
+```
+
+The above output says that the models are not equally good ( $P = 0.002$, the $P$ value is very small); consequently, the larger model is better - with more explanatory variables, it has more explanatory value. As model m0 contains only CO2 and m1 contains both CO2 and tree, then tree differences are important. However, from those models, we have no way of testing whether CO2 differences are important (as the only difference between the models was whether they included tree or not).
+
+Test for CO2 effects by comparing models with tree but with and without CO2.
+
+```{r}
+
+m2 <- lm(area ~ tree, data = stomata)
+
+anova(m2, m1)
+
+```
+
+The above output shows the two models are the same (the RSS, residual sum of squares, for each is the same) and so we cannot use this analysis to test for CO2 effects. This is caused by the confounding problem.
+
+
+
+One way of getting around this problem is to average the response variable values for each tree and use the averaged values as our response variable.
+
+**Note you can only do this if there are the same number of data values in each group you average and there are no missing values!**
+
+
+```{r}
+
+stomata.avg <- stomata %>% group_by(tree) %>% 
+  summarise(area = mean(area)) 
+
+CO2_by_tree <- stomata %>% distinct(tree, CO2)
+
+stomata.avg <- data.frame(stomata.avg, CO2 = CO2_by_tree$CO2)
+  
+str(stomata.avg)
+
+```
+
+
+
+```{r}
+
+m3 <- lm(area ~ CO2, data = stomata.avg)
+
+summary(m3)
+
+```
+
+
+```{r}
+
+anova(m3)
+
+```
+
+The above analysis is valid, although it does involve a two-step process where you average the data for each tree first.
+
+Another way of getting around this problem is to use the "aov" function here. *Note the same conditions in bold above apply to using the aov function.* We use the original, non-averaged data with aov.
+
+
+```{r}
+
+m4 <- aov(area ~ CO2 + Error(tree), data = stomata)
+
+summary(m4)
+
+```
+
+
+From the above two analyses, the correct $P$ value for the effect of CO2 is 0.00625.
+
+
+<br>
+
+###  Right analysis: mixed effects linear model
+
+A better (and correct) approach is to use a mixed effects model. *This works even if treatment groups do not have the same number of replicates (or if there are missing values).*
+
+In this approach, tree is included as a grouping variable to identify clusters of data values (i.e. to identify which observed values come from which tree). Observations from the same tree will be correlated to some extent and this needs to be incorporated in the model via a grouping variable. If these groups were not specified in the model, it would appear as if all observations were independent and this would lead to smaller uncertainty in the estimates of treatment effects (because you'd be overstaing the number of independent observations, and hence, the amount of information you really had, or "information value" of your data). The trees in the study are considered as being randomly sampled from the (large) population of trees we are studying. The effects of individual trees are not considered important but they need to be included in the model to identify groups of data values.
+
+
+So, let's fit a mixed model. You can use the "nlme" package or the "lme4" package. The nlme package is used here because it gives $P$ values, while the lme4 package does not (another story!).
+
+```{r}
+
+m5 <- lme(area ~ CO2, random = ~ 1 | tree, data = stomata)
+
+#summary(m5)
+
+summary(m5)$tTable
+
+```
+
+From the above output, the $P$ value for the effect of CO2 concentration is  0.00625. This is the same as the $P$ values above using the averaged data and using the aov function.
+
+<br>
+
+###  An aside - checking model assumptions
+
+Let's check the assumptions for the mixed model because we can. This shows how to check the two assumptions of constant variance and Normal distribution for a linear mixed model. We won't worry here about whether the assumptions are satisfied, as the emphasis is on appropriate methods to use.
+
+
+###  Equal variance assumption {-}
+
+Use the plot function with the model name. This produces a residuals vs fitted values plot, which is the standard plot for checking the constant variance assumption.
+
+```{r}
+
+plot(m5)
+
+```
+
+The variances appear to be somewhat unequal.
+
+###  Normal distribution assumption {-}
+
+Use a Normal quantile-quantile (Q-Q) plot.
+
+```{r}
+
+qqnorm(residuals(m5))
+qqline(residuals(m5))
+
+```
+
+The Normal distribution assumption does not appear to be particularly well met.
+
+<br>
+
+**Back to the main story ...**
+
+With balanced data, you'll get the same results from an analysis using aov or lme. However, it's  preferable to use a mixed effects model, as recommended by Simon Wood and described here.
+
+<br>
+
+###  Fitted values and confidence intervals
+
+The R package, "emmeans", is very useful for getting means and their confidence intervals and plots of these. This package will work with models from lm, aov , lme, ....
+
+Estimates and plots from the fixed effects model using averaged data and the mixed model are below.
+
+
+```{r}
+
+m3.emm <- emmeans(m3, ~ CO2)
+
+summary(m3.emm)
+
+```
+
+
+```{r}
+
+plot(m3.emm)
+
+```
+
+
+```{r}
+
+m5.emm <- emmeans(m5, ~CO2, mode = "satterthwaite")
+
+summary(m5.emm)
+
+```
+
+
+```{r}
+
+plot(m5.emm)
+
+```
+
+
+<br>
+
+
+###  Another aside - code the nested structure - not recommended
+
+The analysis can be done with lm if the model is coded so that the nesting of trees within CO2 treatments is incorporated. It can only be done this way because, again, the data is balanced and there are no missing values. The full data set is used.
+
+
+```{r}
+
+m6 <- lm(area ~ CO2 / tree, data = stomata)
+
+anova(m6)
+
+```
+
+In the output above, the effect of CO2 needs to be compared against the correct residual term. The $P$ value against CO2 shown in the output is obtained by comparing the variation of CO2 treatments against the variation *among observations within trees*. This is not the correct comparison. As tree is the experimental unit (leaf is the observational unit), the correct term for the comparison is the term corresponding to the variation *between trees within CO2 treatments*. In the output, that term is CO2:tree. Consequently, the correct $P$ value for the effect of CO2 is obtained from the $F$ statistic calculated as 8.8213 / 0.3186 (i.e. (Mean Sq for CO2) / (Mean Sq for appropriate residual term)). The calculation for obtaining the $P$ value is below.
+
+```{r}
+
+f_obs <- 8.8213 / 0.3186
+
+f_obs
+
+```
+
+This is the correct $F$ value, as seen previously.
+
+```{r}
+
+p_val <- 1 - pf(f_obs, 1, 4)
+
+p_val
+
+```
+
+The $P$ value is also clearly the same as seen previously.
+
+It could be awkward to get correct confidence intervals from this model.
+
+
+<br>
+
+###  Summary
+
+When you have subsampling (i.e. multiple measurements made on individual experimental units), use a mixed effects model.
+
+If you have unequal replication across treatments or missing values, definitely use a mixed effects model.
+
+<br>
+
+## Marginal means - emmeans example
+
+
+```{r}
+
+library(emmeans)
+library(tidyr)
+library(dplyr)
+library(RcmdrMisc)
+
+```
+
+From the document, *Basics of estimated marginal means*.
+
+https://cran.r-project.org/web/packages/emmeans/vignettes/basics.html
+
+
+pigs {emmeans}	R Documentation
+
+Effects of dietary protein on free plasma leucine concentration in pigs
+
+Description
+
+A two-factor experiment with some observations lost
+
+A data frame with 29 observations and 3 variables:
+
+  -  source: Source of protein in the diet (factor with 3 levels: fish meal, soybean meal, dried skim milk)
+  -  percent: Protein percentage in the diet (numeric with 4 values: 9, 12, 15, and 18)
+  -  conc: Concentration of free plasma leucine, in mcg/ml
+
+Source:
+Windels HF (1964) PhD thesis, Univ. of Minnesota. (Reported as Problem 10.8 in Oehlert G (2000) A First Course in Design and Analysis of Experiments, licensed under Creative Commons, http://users.stat.umn.edu/~gary/Book.html.) Observations 7, 22, 23, 31, 33, and 35 have been omitted, creating a more notable imbalance.
+
+[Package emmeans version 1.4.6]
+
+
+
+```{r}
+
+data(pigs)
+
+pigs
+
+```
+
+
+```{r}
+
+pigs$percent <- factor(pigs$percent)
+
+```
+
+
+```{r}
+
+numSummary(pigs[ , 3], statistics = "mean", 
+           groups = interaction(pigs$source, pigs$percent))
+
+```
+
+<br>
+
+Cell means (see also below)
+
+These are arithmetic means of values in each two-way combination
+
+```{r}
+
+with(pigs, tapply(conc, INDEX = list(source, percent), mean))
+     
+```
+
+```{r}
+
+with(pigs, interaction.plot(percent, source, conc))
+
+```
+
+<br>
+
+Marginal means
+
+Arithmetic mean of values in each "percent" group
+
+```{r}
+
+with(pigs, tapply(conc, percent, mean))
+
+```
+
+Find average for percent = 15
+
+```{r}
+
+( (34.0 + 28.3) + (38.5 + 39.2 + 40.0) + (59.5 + 41.4) ) / 7
+
+```
+
+<br>
+
+Cell means
+
+Arithmetic means of values in each combination - same as above with two-way tapply call
+
+```{r}
+
+cell.means <- matrix(with(pigs, 
+    tapply(conc, interaction(source, percent), mean)), 
+    nrow = 3)
+cell.means
+
+```
+
+
+```{r}
+
+apply(cell.means, 2, mean)
+
+```
+
+Compare with arithmetic mean of values in each "percent" group
+
+```{r}
+
+with(pigs, tapply(conc, percent, mean))
+
+```
+
+
+The two sets are different because the different cells do not all have the same number of observations (some observations were lost).
+
+```{r}
+
+with(pigs, table(source, percent))
+
+```
+
+The marginal mean for percent = 12 is the same as the average of the cell means because no observations were lost - i.e. there are equal weights on all the cell means.
+
+<br>
+
+We can reproduce the *marginal means* by weighting the cell means with these frequencies. For example, in the last column:
+
+```{r}
+
+sum(c(3, 1, 1) * cell.means[ , 4]) / 5
+
+```
+
+
+<br>
+
+## Multiple regression example
+
+
+```{r}
+
+library(dplyr)
+library(ggplot2)
+library(GGally)
+library(sjPlot)
+library(ggpubr)
+library(emmeans)
+
+```
+
+
+Example from StatSci.org - OzDASL, Australian Institute of Sport
+
+http://www.statsci.org/data/oz/ais.html
+
+
+	
+Variable		Description
+
+Sport		Sport
+Sex		male or female
+Ht		Height in cm
+Wt		Weight in kg
+LBM		Lean body mass
+RCC		Red cell count
+WCC		White cell count
+Hc		Hematocrit
+Hg		Hemoglobin
+Ferr		Plasma ferritin concentration
+BMI		Body mass index = weight/height^2
+SSF		Sum of skin folds
+%Bfat		% body fat
+
+
+```{r eval = F}
+
+athletes <- read.table("http://www.statsci.org/data/oz/ais.txt", sep = "", header = T)
+
+str(athletes)
+
+save(athletes, file = "athletes_OzDASL.RData")
+
+```
+
+
+```{r}
+
+load("data/athletes_OzDASL.Rdata")
+
+str(athletes)
+
+```
+
+
+```{r}
+
+
+athletes$Sex <- factor(athletes$Sex)
+
+athletes$Sport <- factor(athletes$Sport)
+
+#names( athletes )[names(athletes) == "X.Bfat"] <- "Bfat_pc"
+
+##  or
+
+athletes <- athletes %>% rename( Bfat_pc = X.Bfat)
+
+```
+
+
+###  Regression model
+
+Response: LBM
+
+Predictors:  
+
+  -  height
+  -  weight
+  -  gender
+  -  Ferr
+  
+  
+Include log(Ferr) as suggested on OzDASL web page.
+
+```{r}
+
+athletes$log_Ferr <- log(athletes$Ferr)
+
+```
+
+
+```{r}
+
+ggpairs(athletes, columns = c(7, 14, 12, 13, 11))
+
+```
+
+
+
+```{r}
+
+ggplot(athletes, aes(x = Sex, y = LBM)) +
+  geom_boxplot()
+
+```
+
+
+```{r}
+
+ath.lm1 <- lm(LBM ~ Ht + Wt +log_Ferr + Sex, data = athletes)
+
+summary(ath.lm1)
+
+```
+
+
+```{r}
+
+ath.lm2 <- lm(LBM ~ Ht , data = athletes)
+
+summary(ath.lm2)
+
+```
+
+
+```{r}
+
+par(mfrow = c(2, 2))
+plot(ath.lm1)
+par(mfrow = c(1, 1))
+
+```
+
+<br>
+
+
+```{r fig.width = 5, fig.height = 5}
+
+plot1 <- plot_model(ath.lm1, type = "pred", terms = "Ht") +
+  ggtitle("Predicted values of mean LBM with 95 % confidence band") +
+  theme(plot.title = element_text(size = 8))
+
+print(plot1)
+
+```
+
+The plot above shows a confidence band for predicted mean LBM, as seen by comparing the intervals below with the output of the "predict" function further below.
+
+```{r}
+
+plot1$data
+
+```
+
+<br>
+
+Confidence band - band for fitted mean
+
+```{r}
+
+X_new <- expand.grid(Ht = 14:21*10, Wt = 75.01, log_Ferr = 4.16, 
+                     Sex = "female")
+
+
+ath.lm1.pred.CI <- predict(ath.lm1, newdata = X_new, se.fit = T, 
+                             type = "response",
+                             interval = "confidence")
+
+data.frame(Ht = 14:21*10, se = ath.lm1.pred.CI$se.fit, 
+           ath.lm1.pred.CI$fit)
+
+```
+
+Prediction band - band for single prediction
+
+```{r}
+
+ath.lm1.pred.PI <- predict(ath.lm1, newdata = X_new, se.fit = T, 
+                             type = "response",
+                             interval = "prediction")
+
+data.frame(Ht = 14:21*10, se = ath.lm1.pred.PI$se.fit, 
+           ath.lm1.pred.PI$fit)
+
+```
+
+```{r}
+
+ggplot(data = athletes, aes(x = Ht, y = LBM)) +
+  geom_point()
+
+```
+
+
+```{r fig.width = 5, fig.height = 5, warning = F}
+
+plot2 <- plot_model(ath.lm1, type = "pred", terms = "Wt") +
+  ggtitle("Predicted values of mean LBM with 95 % confidence band") +
+  theme(plot.title = element_text(size = 8))
+
+print(plot2)
+
+```
+
+
+
+
+
+```{r fig.width = 5, fig.height = 5}
+
+plot3 <- plot_model(ath.lm1, type = "pred", 
+                    terms = "log_Ferr") +
+  ggtitle("Predicted values of mean LBM with 95 % confidence band") +
+  theme(plot.title = element_text(size = 8))
+
+print(plot3)
+
+
+```
+
+
+
+
+
+```{r fig.width = 5, fig.height = 5}
+
+plot4 <- plot_model(ath.lm1, type = "pred", terms = "Sex") +
+  ggtitle("Predicted values of mean LBM with 95 % confidence band") +
+  theme(plot.title = element_text(size = 8))
+
+print(plot4)
+
+
+```
+
+
+```{r}
+
+plot4$data
+
+```
+
+
+
+```{r}
+
+plot_all <- ggarrange(plot1, plot2, plot3, plot4, nrow = 2, 
+                      ncol = 2)
+
+print(plot_all)
+
+pdf(file = "athletes_reg_plot_panel.pdf", width = 7, 
+    height = 5)
+
+plot_all
+
+dev.off()
+
+
+```
+
+
+
+<br>
+
+## Residual plots - redres
+
+`redres` package
+
+
+https://goodekat.github.io/redres/index.html
+
+
+

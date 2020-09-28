@@ -1,0 +1,31 @@
+# Linear mixed models
+
+##  Finding variance components from lme models
+
+
+```{r}
+
+estu <- read.csv("data/Estuaries.csv")
+
+str(estu)
+    
+```
+
+
+```{r}
+
+estu.lme1 <- lme(Total ~ Modification, random = ~ 1 | Estuary,
+                 data = estu,
+                 correlation = corCompSymm(form = ~ 1 | Estuary))
+
+summary(estu.lme1)
+
+```
+
+
+```{r}
+
+VarCorr(estu.lme1)
+
+```
+
