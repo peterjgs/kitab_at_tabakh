@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>6 Linear mixed models | Kitab at-Tabakh</title>
+  <title>4 Tidyverse | Kitab at-Tabakh</title>
   <meta name="description" content="This is a collection of miscellaneous statistics-related recipes and notes." />
   <meta name="generator" content="bookdown 0.20 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="6 Linear mixed models | Kitab at-Tabakh" />
+  <meta property="og:title" content="4 Tidyverse | Kitab at-Tabakh" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   <meta name="github-repo" content="rstudio/bookdown-demo" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="6 Linear mixed models | Kitab at-Tabakh" />
+  <meta name="twitter:title" content="4 Tidyverse | Kitab at-Tabakh" />
   
   <meta name="twitter:description" content="This is a collection of miscellaneous statistics-related recipes and notes." />
   
@@ -30,8 +30,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="linear-models.html"/>
-<link rel="next" href="experimental-design.html"/>
+<link rel="prev" href="r-markdown.html"/>
+<link rel="next" href="linear-models.html"/>
 <script src="libs/header-attrs-2.3/header-attrs.js"></script>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -227,60 +227,83 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="linear-mixed-models" class="section level1" number="6">
-<h1><span class="header-section-number">6</span> Linear mixed models</h1>
-<div id="finding-variance-components-from-lme-models" class="section level2" number="6.1">
-<h2><span class="header-section-number">6.1</span> Finding variance components from lme models</h2>
-<div class="sourceCode" id="cb243"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb243-1"><a href="linear-mixed-models.html#cb243-1" aria-hidden="true"></a>estu &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="st">&quot;data/Estuaries.csv&quot;</span>)</span>
-<span id="cb243-2"><a href="linear-mixed-models.html#cb243-2" aria-hidden="true"></a></span>
-<span id="cb243-3"><a href="linear-mixed-models.html#cb243-3" aria-hidden="true"></a><span class="kw">str</span>(estu)</span></code></pre></div>
-<pre><code>## &#39;data.frame&#39;:	54 obs. of  7 variables:
-##  $ X                   : int  1 2 3 4 5 6 7 8 9 10 ...
-##  $ Modification        : chr  &quot;Modified&quot; &quot;Modified&quot; &quot;Modified&quot; &quot;Modified&quot; ...
-##  $ Estuary             : chr  &quot;JAK&quot; &quot;JAK&quot; &quot;JAK&quot; &quot;JAK&quot; ...
-##  $ Site                : int  1 1 2 2 3 3 4 4 1 1 ...
-##  $ Hydroid             : int  0 0 0 0 1 1 0 0 7 5 ...
-##  $ Total               : int  44 42 32 44 42 48 45 34 29 51 ...
-##  $ Schizoporella.errata: int  15 8 9 14 6 12 28 1 0 0 ...</code></pre>
-<div class="sourceCode" id="cb245"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb245-1"><a href="linear-mixed-models.html#cb245-1" aria-hidden="true"></a>estu.lme1 &lt;-<span class="st"> </span><span class="kw">lme</span>(Total <span class="op">~</span><span class="st"> </span>Modification, <span class="dt">random =</span> <span class="op">~</span><span class="st"> </span><span class="dv">1</span> <span class="op">|</span><span class="st"> </span>Estuary,</span>
-<span id="cb245-2"><a href="linear-mixed-models.html#cb245-2" aria-hidden="true"></a>                 <span class="dt">data =</span> estu,</span>
-<span id="cb245-3"><a href="linear-mixed-models.html#cb245-3" aria-hidden="true"></a>                 <span class="dt">correlation =</span> <span class="kw">corCompSymm</span>(<span class="dt">form =</span> <span class="op">~</span><span class="st"> </span><span class="dv">1</span> <span class="op">|</span><span class="st"> </span>Estuary))</span>
-<span id="cb245-4"><a href="linear-mixed-models.html#cb245-4" aria-hidden="true"></a></span>
-<span id="cb245-5"><a href="linear-mixed-models.html#cb245-5" aria-hidden="true"></a><span class="kw">summary</span>(estu.lme1)</span></code></pre></div>
-<pre><code>## Linear mixed-effects model fit by REML
-##  Data: estu 
-##        AIC      BIC    logLik
-##   404.6881 414.4444 -197.3441
-## 
-## Random effects:
-##  Formula: ~1 | Estuary
-##         (Intercept) Residual
-## StdDev:    7.424348 9.277184
-## 
-## Correlation Structure: Compound symmetry
-##  Formula: ~1 | Estuary 
-##  Parameter estimate(s):
-## Rho 
-##   0 
-## Fixed effects: Total ~ Modification 
-##                          Value Std.Error DF   t-value p-value
-## (Intercept)           40.97295  4.726969 47  8.667912  0.0000
-## ModificationPristine -14.47295  6.230091  5 -2.323072  0.0678
-##  Correlation: 
-##                      (Intr)
-## ModificationPristine -0.759
-## 
-## Standardized Within-Group Residuals:
-##        Min         Q1        Med         Q3        Max 
-## -2.3859461 -0.7141963  0.2765803  0.5239747  2.0455630 
-## 
-## Number of Observations: 54
-## Number of Groups: 7</code></pre>
-<div class="sourceCode" id="cb247"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb247-1"><a href="linear-mixed-models.html#cb247-1" aria-hidden="true"></a><span class="kw">VarCorr</span>(estu.lme1)</span></code></pre></div>
-<pre><code>## Estuary = pdLogChol(1) 
-##             Variance StdDev  
-## (Intercept) 55.12094 7.424348
-## Residual    86.06614 9.277184</code></pre>
+<div id="tidyverse" class="section level1" number="4">
+<h1><span class="header-section-number">4</span> Tidyverse</h1>
+<div id="stacking-and-unstacking-data" class="section level2" number="4.1">
+<h2><span class="header-section-number">4.1</span> Stacking and unstacking data</h2>
+<p>Stack a two-column data frame with <code>pivot_longer</code> and then unstack it with <code>pivot_wider</code>.</p>
+<p>Firstly with <code>stack</code> and <code>unstack</code></p>
+<div class="sourceCode" id="cb88"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb88-1"><a href="tidyverse.html#cb88-1" aria-hidden="true"></a>dd1 &lt;-<span class="st"> </span><span class="kw">as.data.frame</span>(<span class="kw">matrix</span>(<span class="kw">rpois</span>(<span class="dv">10</span>, <span class="dv">5</span>), <span class="dt">nrow =</span> <span class="dv">5</span>))</span>
+<span id="cb88-2"><a href="tidyverse.html#cb88-2" aria-hidden="true"></a>dd1</span></code></pre></div>
+<pre><code>##   V1 V2
+## 1  3  9
+## 2  5  5
+## 3  7  5
+## 4  8  2
+## 5  4  5</code></pre>
+<div class="sourceCode" id="cb90"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb90-1"><a href="tidyverse.html#cb90-1" aria-hidden="true"></a>dd2s &lt;-<span class="st"> </span><span class="kw">stack</span>(dd1)</span>
+<span id="cb90-2"><a href="tidyverse.html#cb90-2" aria-hidden="true"></a>dd2s</span></code></pre></div>
+<pre><code>##    values ind
+## 1       3  V1
+## 2       5  V1
+## 3       7  V1
+## 4       8  V1
+## 5       4  V1
+## 6       9  V2
+## 7       5  V2
+## 8       5  V2
+## 9       2  V2
+## 10      5  V2</code></pre>
+<div class="sourceCode" id="cb92"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb92-1"><a href="tidyverse.html#cb92-1" aria-hidden="true"></a><span class="kw">unstack</span>(dd2s)</span></code></pre></div>
+<pre><code>##   V1 V2
+## 1  3  9
+## 2  5  5
+## 3  7  5
+## 4  8  2
+## 5  4  5</code></pre>
+<p>Now with <code>pivot_longer</code> and <code>pivot_wider</code>.</p>
+<div class="sourceCode" id="cb94"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb94-1"><a href="tidyverse.html#cb94-1" aria-hidden="true"></a><span class="kw">library</span>(tidyverse)</span></code></pre></div>
+<pre><code>## ── Attaching packages ───────────────────────────────────────────── tidyverse 1.3.0 ──</code></pre>
+<pre><code>## ✓ tibble  3.0.3     ✓ purrr   0.3.4
+## ✓ tidyr   1.1.2     ✓ stringr 1.4.0
+## ✓ readr   1.3.1     ✓ forcats 0.5.0</code></pre>
+<pre><code>## ── Conflicts ──────────────────────────────────────────────── tidyverse_conflicts() ──
+## x dplyr::collapse() masks nlme::collapse()
+## x dplyr::filter()   masks stats::filter()
+## x dplyr::lag()      masks stats::lag()
+## x dplyr::select()   masks MASS::select()</code></pre>
+<div class="sourceCode" id="cb98"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb98-1"><a href="tidyverse.html#cb98-1" aria-hidden="true"></a>dd2pl &lt;-<span class="st"> </span>dd1 <span class="op">%&gt;%</span></span>
+<span id="cb98-2"><a href="tidyverse.html#cb98-2" aria-hidden="true"></a><span class="st">  </span><span class="kw">pivot_longer</span>(<span class="dt">cols =</span> <span class="kw">c</span>(<span class="st">&quot;V1&quot;</span>, <span class="st">&quot;V2&quot;</span>))</span>
+<span id="cb98-3"><a href="tidyverse.html#cb98-3" aria-hidden="true"></a>dd2pl</span></code></pre></div>
+<pre><code>## # A tibble: 10 x 2
+##    name  value
+##    &lt;chr&gt; &lt;int&gt;
+##  1 V1        3
+##  2 V2        9
+##  3 V1        5
+##  4 V2        5
+##  5 V1        7
+##  6 V2        5
+##  7 V1        8
+##  8 V2        2
+##  9 V1        4
+## 10 V2        5</code></pre>
+<div class="sourceCode" id="cb100"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb100-1"><a href="tidyverse.html#cb100-1" aria-hidden="true"></a>dd3pl &lt;-<span class="st"> </span></span>
+<span id="cb100-2"><a href="tidyverse.html#cb100-2" aria-hidden="true"></a><span class="st">  </span>dd2pl <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb100-3"><a href="tidyverse.html#cb100-3" aria-hidden="true"></a><span class="st">  </span><span class="kw">group_by</span>(name) <span class="op">%&gt;%</span></span>
+<span id="cb100-4"><a href="tidyverse.html#cb100-4" aria-hidden="true"></a><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">row =</span> <span class="kw">row_number</span>() ) <span class="op">%&gt;%</span></span>
+<span id="cb100-5"><a href="tidyverse.html#cb100-5" aria-hidden="true"></a><span class="st">  </span>tidyr<span class="op">::</span><span class="kw">pivot_wider</span>(<span class="dt">names_from =</span> name, <span class="dt">values_from =</span> value) <span class="op">%&gt;%</span></span>
+<span id="cb100-6"><a href="tidyverse.html#cb100-6" aria-hidden="true"></a><span class="st">  </span><span class="kw">select</span>(<span class="op">-</span>row)</span>
+<span id="cb100-7"><a href="tidyverse.html#cb100-7" aria-hidden="true"></a></span>
+<span id="cb100-8"><a href="tidyverse.html#cb100-8" aria-hidden="true"></a>dd3pl</span></code></pre></div>
+<pre><code>## # A tibble: 5 x 2
+##      V1    V2
+##   &lt;int&gt; &lt;int&gt;
+## 1     3     9
+## 2     5     5
+## 3     7     5
+## 4     8     2
+## 5     4     5</code></pre>
 
 </div>
 </div>
@@ -289,8 +312,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           </div>
         </div>
       </div>
-<a href="linear-models.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="experimental-design.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="r-markdown.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="linear-models.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

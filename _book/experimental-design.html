@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>6 Linear mixed models | Kitab at-Tabakh</title>
+  <title>7 Experimental design | Kitab at-Tabakh</title>
   <meta name="description" content="This is a collection of miscellaneous statistics-related recipes and notes." />
   <meta name="generator" content="bookdown 0.20 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="6 Linear mixed models | Kitab at-Tabakh" />
+  <meta property="og:title" content="7 Experimental design | Kitab at-Tabakh" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   <meta name="github-repo" content="rstudio/bookdown-demo" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="6 Linear mixed models | Kitab at-Tabakh" />
+  <meta name="twitter:title" content="7 Experimental design | Kitab at-Tabakh" />
   
   <meta name="twitter:description" content="This is a collection of miscellaneous statistics-related recipes and notes." />
   
@@ -30,8 +30,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="linear-models.html"/>
-<link rel="next" href="experimental-design.html"/>
+<link rel="prev" href="linear-mixed-models.html"/>
+
 <script src="libs/header-attrs-2.3/header-attrs.js"></script>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -227,60 +227,84 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="linear-mixed-models" class="section level1" number="6">
-<h1><span class="header-section-number">6</span> Linear mixed models</h1>
-<div id="finding-variance-components-from-lme-models" class="section level2" number="6.1">
-<h2><span class="header-section-number">6.1</span> Finding variance components from lme models</h2>
-<div class="sourceCode" id="cb243"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb243-1"><a href="linear-mixed-models.html#cb243-1" aria-hidden="true"></a>estu &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="st">&quot;data/Estuaries.csv&quot;</span>)</span>
-<span id="cb243-2"><a href="linear-mixed-models.html#cb243-2" aria-hidden="true"></a></span>
-<span id="cb243-3"><a href="linear-mixed-models.html#cb243-3" aria-hidden="true"></a><span class="kw">str</span>(estu)</span></code></pre></div>
-<pre><code>## &#39;data.frame&#39;:	54 obs. of  7 variables:
-##  $ X                   : int  1 2 3 4 5 6 7 8 9 10 ...
-##  $ Modification        : chr  &quot;Modified&quot; &quot;Modified&quot; &quot;Modified&quot; &quot;Modified&quot; ...
-##  $ Estuary             : chr  &quot;JAK&quot; &quot;JAK&quot; &quot;JAK&quot; &quot;JAK&quot; ...
-##  $ Site                : int  1 1 2 2 3 3 4 4 1 1 ...
-##  $ Hydroid             : int  0 0 0 0 1 1 0 0 7 5 ...
-##  $ Total               : int  44 42 32 44 42 48 45 34 29 51 ...
-##  $ Schizoporella.errata: int  15 8 9 14 6 12 28 1 0 0 ...</code></pre>
-<div class="sourceCode" id="cb245"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb245-1"><a href="linear-mixed-models.html#cb245-1" aria-hidden="true"></a>estu.lme1 &lt;-<span class="st"> </span><span class="kw">lme</span>(Total <span class="op">~</span><span class="st"> </span>Modification, <span class="dt">random =</span> <span class="op">~</span><span class="st"> </span><span class="dv">1</span> <span class="op">|</span><span class="st"> </span>Estuary,</span>
-<span id="cb245-2"><a href="linear-mixed-models.html#cb245-2" aria-hidden="true"></a>                 <span class="dt">data =</span> estu,</span>
-<span id="cb245-3"><a href="linear-mixed-models.html#cb245-3" aria-hidden="true"></a>                 <span class="dt">correlation =</span> <span class="kw">corCompSymm</span>(<span class="dt">form =</span> <span class="op">~</span><span class="st"> </span><span class="dv">1</span> <span class="op">|</span><span class="st"> </span>Estuary))</span>
-<span id="cb245-4"><a href="linear-mixed-models.html#cb245-4" aria-hidden="true"></a></span>
-<span id="cb245-5"><a href="linear-mixed-models.html#cb245-5" aria-hidden="true"></a><span class="kw">summary</span>(estu.lme1)</span></code></pre></div>
-<pre><code>## Linear mixed-effects model fit by REML
-##  Data: estu 
-##        AIC      BIC    logLik
-##   404.6881 414.4444 -197.3441
+<div id="experimental-design" class="section level1" number="7">
+<h1><span class="header-section-number">7</span> Experimental design</h1>
+<div id="sample-size-by-simulation" class="section level2" number="7.1">
+<h2><span class="header-section-number">7.1</span> Sample size by simulation</h2>
+<p>From: Study Design, 2hr - Gordana</p>
+<p><br></p>
+<p>Using pilot data, find values of linear model parameters. In this experiment, I would like to see if there is an effect of Petal length on Sepal length. I have pilot data with 15 observations.</p>
+<div class="sourceCode" id="cb249"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb249-1"><a href="experimental-design.html#cb249-1" aria-hidden="true"></a><span class="kw">data</span>(iris)</span>
+<span id="cb249-2"><a href="experimental-design.html#cb249-2" aria-hidden="true"></a></span>
+<span id="cb249-3"><a href="experimental-design.html#cb249-3" aria-hidden="true"></a><span class="kw">str</span>(iris)</span></code></pre></div>
+<pre><code>## &#39;data.frame&#39;:	150 obs. of  5 variables:
+##  $ Sepal.Length: num  5.1 4.9 4.7 4.6 5 5.4 4.6 5 4.4 4.9 ...
+##  $ Sepal.Width : num  3.5 3 3.2 3.1 3.6 3.9 3.4 3.4 2.9 3.1 ...
+##  $ Petal.Length: num  1.4 1.4 1.3 1.5 1.4 1.7 1.4 1.5 1.4 1.5 ...
+##  $ Petal.Width : num  0.2 0.2 0.2 0.2 0.2 0.4 0.3 0.2 0.2 0.1 ...
+##  $ Species     : Factor w/ 3 levels &quot;setosa&quot;,&quot;versicolor&quot;,..: 1 1 1 1 1 1 1 1 1 1 ...</code></pre>
+<div class="sourceCode" id="cb251"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb251-1"><a href="experimental-design.html#cb251-1" aria-hidden="true"></a><span class="kw">table</span>(iris<span class="op">$</span>Species)</span></code></pre></div>
+<pre><code>## 
+##     setosa versicolor  virginica 
+##         50         50         50</code></pre>
+<p>Get some pilot data (or get different data from Gordana’s)</p>
+<div class="sourceCode" id="cb253"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb253-1"><a href="experimental-design.html#cb253-1" aria-hidden="true"></a><span class="co"># rand_setosa &lt;- sample(1:50, size = 15, replace = F)</span></span>
+<span id="cb253-2"><a href="experimental-design.html#cb253-2" aria-hidden="true"></a></span>
+<span id="cb253-3"><a href="experimental-design.html#cb253-3" aria-hidden="true"></a><span class="co"># pilot &lt;- iris[rand_setosa, ]</span></span>
+<span id="cb253-4"><a href="experimental-design.html#cb253-4" aria-hidden="true"></a></span>
+<span id="cb253-5"><a href="experimental-design.html#cb253-5" aria-hidden="true"></a><span class="co">##  Gordana&#39;s data</span></span>
+<span id="cb253-6"><a href="experimental-design.html#cb253-6" aria-hidden="true"></a></span>
+<span id="cb253-7"><a href="experimental-design.html#cb253-7" aria-hidden="true"></a>pilot &lt;-<span class="st"> </span>iris[<span class="dv">1</span><span class="op">:</span><span class="dv">15</span>, <span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">3</span>)]</span></code></pre></div>
+<div class="sourceCode" id="cb254"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb254-1"><a href="experimental-design.html#cb254-1" aria-hidden="true"></a>pilot_mod &lt;-<span class="st"> </span><span class="kw">lm</span>(Sepal.Length <span class="op">~</span><span class="st"> </span>Petal.Length, <span class="dt">data =</span> pilot)</span>
+<span id="cb254-2"><a href="experimental-design.html#cb254-2" aria-hidden="true"></a></span>
+<span id="cb254-3"><a href="experimental-design.html#cb254-3" aria-hidden="true"></a><span class="kw">summary</span>(pilot_mod)</span></code></pre></div>
+<pre><code>## 
+## Call:
+## lm(formula = Sepal.Length ~ Petal.Length, data = pilot)
 ## 
-## Random effects:
-##  Formula: ~1 | Estuary
-##         (Intercept) Residual
-## StdDev:    7.424348 9.277184
+## Residuals:
+##      Min       1Q   Median       3Q      Max 
+## -0.50175 -0.25965 -0.05965  0.14825  1.01404 
 ## 
-## Correlation Structure: Compound symmetry
-##  Formula: ~1 | Estuary 
-##  Parameter estimate(s):
-## Rho 
-##   0 
-## Fixed effects: Total ~ Modification 
-##                          Value Std.Error DF   t-value p-value
-## (Intercept)           40.97295  4.726969 47  8.667912  0.0000
-## ModificationPristine -14.47295  6.230091  5 -2.323072  0.0678
-##  Correlation: 
-##                      (Intr)
-## ModificationPristine -0.759
+## Coefficients:
+##              Estimate Std. Error t value Pr(&gt;|t|)   
+## (Intercept)    4.0912     1.0441   3.918  0.00176 **
+## Petal.Length   0.5789     0.7316   0.791  0.44296   
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
 ## 
-## Standardized Within-Group Residuals:
-##        Min         Q1        Med         Q3        Max 
-## -2.3859461 -0.7141963  0.2765803  0.5239747  2.0455630 
-## 
-## Number of Observations: 54
-## Number of Groups: 7</code></pre>
-<div class="sourceCode" id="cb247"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb247-1"><a href="linear-mixed-models.html#cb247-1" aria-hidden="true"></a><span class="kw">VarCorr</span>(estu.lme1)</span></code></pre></div>
-<pre><code>## Estuary = pdLogChol(1) 
-##             Variance StdDev  
-## (Intercept) 55.12094 7.424348
-## Residual    86.06614 9.277184</code></pre>
+## Residual standard error: 0.4034 on 13 degrees of freedom
+## Multiple R-squared:  0.04595,	Adjusted R-squared:  -0.02743 
+## F-statistic: 0.6262 on 1 and 13 DF,  p-value: 0.443</code></pre>
+<div class="sourceCode" id="cb256"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb256-1"><a href="experimental-design.html#cb256-1" aria-hidden="true"></a>beta_<span class="dv">0</span> &lt;-<span class="st"> </span><span class="kw">coef</span>(pilot_mod)[<span class="dv">1</span>] <span class="co"># estimated intercept (from pilot) </span></span>
+<span id="cb256-2"><a href="experimental-design.html#cb256-2" aria-hidden="true"></a></span>
+<span id="cb256-3"><a href="experimental-design.html#cb256-3" aria-hidden="true"></a>sd &lt;-<span class="st"> </span><span class="kw">summary</span>(pilot_mod)<span class="op">$</span>sigma <span class="co"># estimated variability</span></span>
+<span id="cb256-4"><a href="experimental-design.html#cb256-4" aria-hidden="true"></a></span>
+<span id="cb256-5"><a href="experimental-design.html#cb256-5" aria-hidden="true"></a>my_range &lt;-<span class="st"> </span><span class="kw">range</span>(pilot<span class="op">$</span>Petal.Length) <span class="co"># range of petal length</span></span>
+<span id="cb256-6"><a href="experimental-design.html#cb256-6" aria-hidden="true"></a></span>
+<span id="cb256-7"><a href="experimental-design.html#cb256-7" aria-hidden="true"></a>nsim &lt;-<span class="st"> </span><span class="dv">500</span> <span class="co"># number of simulated datasets</span></span></code></pre></div>
+<p>Then specify a meaningful effect size (here it’s the slope of Petal length)</p>
+<div class="sourceCode" id="cb257"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb257-1"><a href="experimental-design.html#cb257-1" aria-hidden="true"></a><span class="co"># ecologically meaningful slope (same scale as data)</span></span>
+<span id="cb257-2"><a href="experimental-design.html#cb257-2" aria-hidden="true"></a></span>
+<span id="cb257-3"><a href="experimental-design.html#cb257-3" aria-hidden="true"></a>beta_<span class="dv">1</span> &lt;-<span class="st"> </span><span class="dv">1</span></span></code></pre></div>
+<div class="sourceCode" id="cb258"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb258-1"><a href="experimental-design.html#cb258-1" aria-hidden="true"></a>N &lt;-<span class="st"> </span><span class="dv">20</span> <span class="co"># desired sample size</span></span>
+<span id="cb258-2"><a href="experimental-design.html#cb258-2" aria-hidden="true"></a></span>
+<span id="cb258-3"><a href="experimental-design.html#cb258-3" aria-hidden="true"></a>sim_dat =<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">Sepal.Length =</span> <span class="ot">NA</span>, </span>
+<span id="cb258-4"><a href="experimental-design.html#cb258-4" aria-hidden="true"></a>                     <span class="dt">Petal.Length =</span> <span class="kw">seq</span>(my_range[<span class="dv">1</span>], </span>
+<span id="cb258-5"><a href="experimental-design.html#cb258-5" aria-hidden="true"></a>                                        my_range[<span class="dv">2</span>], </span>
+<span id="cb258-6"><a href="experimental-design.html#cb258-6" aria-hidden="true"></a>                                        <span class="dt">length =</span> N) )</span>
+<span id="cb258-7"><a href="experimental-design.html#cb258-7" aria-hidden="true"></a></span>
+<span id="cb258-8"><a href="experimental-design.html#cb258-8" aria-hidden="true"></a>pval =<span class="st"> </span><span class="kw">rep</span>(<span class="ot">NA</span>, nsim)</span>
+<span id="cb258-9"><a href="experimental-design.html#cb258-9" aria-hidden="true"></a></span>
+<span id="cb258-10"><a href="experimental-design.html#cb258-10" aria-hidden="true"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span>nsim) {</span>
+<span id="cb258-11"><a href="experimental-design.html#cb258-11" aria-hidden="true"></a>  mean_y &lt;-<span class="st"> </span>beta_<span class="dv">0</span> <span class="op">+</span><span class="st"> </span>beta_<span class="dv">1</span> <span class="op">*</span><span class="st"> </span>sim_dat<span class="op">$</span>Petal.Length</span>
+<span id="cb258-12"><a href="experimental-design.html#cb258-12" aria-hidden="true"></a>  sim_dat<span class="op">$</span>Sepal.Length &lt;-<span class="st"> </span><span class="kw">rnorm</span>(N, <span class="dt">mean =</span> mean_y, <span class="dt">sd =</span> sd)</span>
+<span id="cb258-13"><a href="experimental-design.html#cb258-13" aria-hidden="true"></a>  m &lt;-<span class="st"> </span><span class="kw">lm</span>(Sepal.Length <span class="op">~</span><span class="st"> </span>Petal.Length, <span class="dt">data =</span> sim_dat)</span>
+<span id="cb258-14"><a href="experimental-design.html#cb258-14" aria-hidden="true"></a>  pval[i] &lt;-<span class="st"> </span><span class="kw">coef</span>(<span class="kw">summary</span>(m))[<span class="st">&quot;Petal.Length&quot;</span>, <span class="st">&quot;Pr(&gt;|t|)&quot;</span>]</span>
+<span id="cb258-15"><a href="experimental-design.html#cb258-15" aria-hidden="true"></a>  } <span class="co"># cycle through all N values</span></span>
+<span id="cb258-16"><a href="experimental-design.html#cb258-16" aria-hidden="true"></a></span>
+<span id="cb258-17"><a href="experimental-design.html#cb258-17" aria-hidden="true"></a><span class="kw">sum</span>(pval <span class="op">&lt;</span><span class="st"> </span><span class="fl">0.05</span>) <span class="op">/</span><span class="st"> </span>nsim</span></code></pre></div>
+<pre><code>## [1] 0.482</code></pre>
 
 </div>
 </div>
@@ -289,8 +313,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           </div>
         </div>
       </div>
-<a href="linear-models.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="experimental-design.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="linear-mixed-models.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

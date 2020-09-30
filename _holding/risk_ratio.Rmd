@@ -1,0 +1,134 @@
+---
+title: "Risk ratio"
+author: "Peter Geelan-Small"
+date: "30/09/2020"
+output: html_document
+---
+
+```{r setup, include = FALSE}
+
+knitr::opts_chunk$set(echo = T)
+
+```
+
+
+```{r}
+
+library(epitools)
+
+```
+
+
+# Zhixin - Meta-analysis
+
+## Summarising effects across studies
+
+```{r}
+
+## This example from Borenstein, chapter 20
+
+TB_pos <- c(4, 11)
+TB_neg <- c(119, 128)
+
+TB <- matrix(c(4, 11, 119, 128), ncol = 2)
+
+row.names(TB) <- c("Vaccine", "Control")
+
+colnames(TB) <- c("TB_pos", "TB_neg") 
+
+epitab(TB, method = "riskratio", rev = "both")
+          
+```
+
+```{r}
+
+## Preferred epitab format is below
+
+TB2 <- matrix(c(128, 119, 11, 4), ncol = 2)
+
+colnames(TB2) <- c("TB_neg", "TB_pos")
+
+row.names(TB2) <- c("Control", "Vaccine")
+
+epitab(TB2, method = "riskratio")
+
+```
+
+
+
+```{r}
+
+se_est <- (1.257398 - 0.1343016) / 4
+
+1 / se_est^2
+
+```
+
+
+```{r}
+
+x1 <- TB[1, 1]
+x2 <- TB[2, 1]
+n1 <- sum(TB[1, ])
+n2 <- sum(TB[2, ])
+
+
+## One version of SE of log(risk_ratio)
+
+## See https://www.ucl.ac.uk/child-health/short-courses-events/about-statistical-courses/research-methods-and-statistics/chapter-5-content
+
+se_log_rr1 <- sqrt(
+    (n1 - x1)/x1/n1 + (n2 - x2)/x2/n2
+    )
+
+
+print(paste("se_log_rr1 =", round(se_log_rr1, digits = 4)), quote = F)
+
+me <- 2 * se_log_rr1
+
+print(paste("me =", round(me, digits = 4)), quote = F)
+
+lb <- log(0.4109387) - me
+
+ub <- log(0.4109387) + me
+
+print(paste("lb =", round(lb, digits = 4)), quote = F)
+
+print(paste("ub =", round(ub, digits = 4)), quote = F)
+
+lb_bt <- exp(lb)
+
+ub_bt <- exp(ub)
+
+print(paste("lb_bt =", round(lb_bt, digits = 4)), quote = F)
+
+print(paste("ub_bt =", round(ub_bt, digits = 4)), quote = F)
+
+
+```
+
+
+```{r}
+
+## Another version of SE of log(risk_ratio) - from Borenstein 2009
+
+se_log_rr2 <- sqrt(1/x1 - 1/n1 + 1/x2 - 1/n2)
+
+print(paste("se_log_rr2 =", round(se_log_rr2, digits = 4)), quote = F)
+
+
+```
+
+```{r}
+
+N <- sum(c(
+  4, 119, 11, 128, 
+  6, 300, 29, 274,
+  3, 228, 11, 209,
+  62, 13536, 248, 12619,
+  33, 5036, 47, 5761))
+
+
+```
+
+

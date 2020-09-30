@@ -311,23 +311,23 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## lm(formula = Sepal.Length ~ Petal.Length, data = pilot)
 ## 
 ## Residuals:
-##      Min       1Q   Median       3Q      Max 
-## -0.59701 -0.19822 -0.04006  0.23922  0.63400 
+##     Min      1Q  Median      3Q     Max 
+## -0.6978 -0.2136 -0.1090  0.2790  0.6836 
 ## 
 ## Coefficients:
 ##              Estimate Std. Error t value Pr(&gt;|t|)   
-## (Intercept)    2.3949     1.0897   2.198  0.05265 . 
-## Petal.Length   0.8449     0.2606   3.242  0.00884 **
+## (Intercept)    2.4313     0.9740   2.496  0.03165 * 
+## Petal.Length   0.8148     0.2368   3.442  0.00632 **
 ## ---
 ## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
 ## 
-## Residual standard error: 0.3943 on 10 degrees of freedom
-## Multiple R-squared:  0.5124,	Adjusted R-squared:  0.4637 
-## F-statistic: 10.51 on 1 and 10 DF,  p-value: 0.008841</code></pre>
+## Residual standard error: 0.4098 on 10 degrees of freedom
+## Multiple R-squared:  0.5422,	Adjusted R-squared:  0.4964 
+## F-statistic: 11.84 on 1 and 10 DF,  p-value: 0.006315</code></pre>
 <div class="sourceCode" id="cb60"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb60-1"><a href="ggplot.html#cb60-1" aria-hidden="true"></a><span class="kw">confint</span>(pilot_mod)  </span></code></pre></div>
-<pre><code>##                    2.5 %   97.5 %
-## (Intercept)  -0.03321369 4.822948
-## Petal.Length  0.26420897 1.425634</code></pre>
+<pre><code>##                  2.5 %   97.5 %
+## (Intercept)  0.2611395 4.601374
+## Petal.Length 0.2872726 1.342316</code></pre>
 <div class="sourceCode" id="cb62"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb62-1"><a href="ggplot.html#cb62-1" aria-hidden="true"></a>fit_gg &lt;-<span class="st"> </span><span class="kw">ggplot</span>(pilot, <span class="kw">aes</span>(<span class="dt">x =</span> Petal.Length, </span>
 <span id="cb62-2"><a href="ggplot.html#cb62-2" aria-hidden="true"></a>                            <span class="dt">y =</span> Sepal.Length)) <span class="op">+</span><span class="st"> </span></span>
 <span id="cb62-3"><a href="ggplot.html#cb62-3" aria-hidden="true"></a><span class="st">  </span><span class="kw">geom_point</span>() <span class="op">+</span></span>
@@ -416,8 +416,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb66-10"><a href="ggplot.html#cb66-10" aria-hidden="true"></a>}</span>
 <span id="cb66-11"><a href="ggplot.html#cb66-11" aria-hidden="true"></a></span>
 <span id="cb66-12"><a href="ggplot.html#cb66-12" aria-hidden="true"></a><span class="kw">summary</span>(s2)</span></code></pre></div>
-<pre><code>##     Min.  1st Qu.   Median     Mean  3rd Qu.     Max. 
-## 0.005928 0.472706 0.823918 0.984250 1.330148 5.721926</code></pre>
+<pre><code>##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+## 0.01342 0.48115 0.83369 0.99908 1.35766 5.58900</code></pre>
 <p>Data in numeric vector</p>
 <div class="sourceCode" id="cb68"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb68-1"><a href="ggplot.html#cb68-1" aria-hidden="true"></a><span class="co">##  Data in numeric vector</span></span>
 <span id="cb68-2"><a href="ggplot.html#cb68-2" aria-hidden="true"></a></span>
@@ -449,7 +449,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb71-3"><a href="ggplot.html#cb71-3" aria-hidden="true"></a><span class="kw">histogram</span>(s2, <span class="dt">breaks =</span> <span class="dv">0</span><span class="op">:</span><span class="dv">16</span><span class="op">*</span><span class="fl">0.5</span>, <span class="dt">right =</span> F, <span class="dt">main =</span> <span class="st">&quot;Lattice&quot;</span>)</span></code></pre></div>
 <p><img src="_main_files/figure-html/unnamed-chunk-36-1.png" width="672" /></p>
 <div class="sourceCode" id="cb72"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb72-1"><a href="ggplot.html#cb72-1" aria-hidden="true"></a><span class="kw">range</span>(s2)</span></code></pre></div>
-<pre><code>## [1] 0.005927749 5.721926062</code></pre>
+<pre><code>## [1] 0.01342457 5.58899859</code></pre>
 </div>
 </div>
 <div id="density-plot" class="section level2" number="2.5">
