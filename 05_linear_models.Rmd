@@ -133,6 +133,8 @@ summary(mod_height2a)
 
 ```
 
+
+
 ```{r}
 
 drop1(mod_height2, test = "F")
@@ -554,7 +556,7 @@ Windels HF (1964) PhD thesis, Univ. of Minnesota. (Reported as Problem 10.8 in O
 
 ```{r}
 
-data(pigs)
+data(pigs, package = "emmeans")
 
 pigs
 
@@ -707,7 +709,8 @@ SSF		Sum of skin folds
 
 ```{r eval = F}
 
-athletes <- read.table("http://www.statsci.org/data/oz/ais.txt", sep = "", header = T)
+athletes <- read.table("http://www.statsci.org/data/oz/ais.txt", 
+                       sep = "", header = T)
 
 str(athletes)
 
@@ -716,7 +719,7 @@ save(athletes, file = "athletes_OzDASL.RData")
 ```
 
 
-```{r}
+```{r load-athletes-data}
 
 load("data/athletes_OzDASL.Rdata")
 
@@ -942,6 +945,426 @@ dev.off()
 
 
 https://goodekat.github.io/redres/index.html
+
+
+
+## Interactions - examples
+
+
+Example taken from UCLA IDRE Stata examples.
+
+
+https://stats.idre.ucla.edu/stata/webbooks/reg/chapter7/regressionwith-statachapter-7-more-on-interactions-of-categorical-and-continuous-variables/
+
+Data file is elemapi2.csv.
+
+_Description of some variables_
+
+Academic performance of the school (api00), the average class size in kindergarten through 3rd grade (acs_k3), the percentage of students receiving free meals (meals) – which is an indicator of poverty, and the percentage of teachers who have full teaching credentials (full).
+
+```{r}
+
+reg1 <- read.csv("data/elemapi2.csv")
+
+names(reg1)
+
+```
+
+
+```{r results = "hide", message = F}
+
+reg1$collcat <- factor(reg1$collcat)
+
+relevel(reg1$collcat, ref = "1")
+
+```
+
+
+```{r}
+
+boxplot(reg1$api00 ~ reg1$collcat, 
+        xlab = "collcat", ylab = "api00")
+
+```
+
+
+```{r}
+
+plot(reg1$api00 ~ reg1$meals, 
+     xlab = "meals", ylab = "api00")
+
+```
+
+**Model with equal slopes for the "collcat" level lines**
+
+```{r}
+
+api00.lm1 <- lm(api00 ~ collcat + meals, data = reg1)
+
+summary(api00.lm1)
+
+```
+
+
+```{r}
+
+par(mfrow = c(2, 2))
+plot(api00.lm1)
+par(mfrow = c(1, 1))
+
+##  Assumptions satisfied
+
+```
+
+
+```{r}
+
+summary(reg1$meals)
+newdd <- expand.grid(collcat = c(1:3), 
+                     meals = seq(from = 0, to = 100))
+str(newdd)
+
+newdd$collcat <- factor(newdd$collcat)
+
+yhat1.api00 <- predict(api00.lm1, newdata = newdd)
+
+pred1.plot <- data.frame(cbind(newdd, yhat1 = yhat1.api00))
+
+```
+
+
+```{r}
+
+##  Plot using "xyplot"
+
+xyplot(yhat1 ~ meals, groups = collcat, data = pred1.plot,
+       type = "l", lty = 1:3,
+       auto.key = list(lines = T, points = F, title = "collcat",
+                       space = "top", columns = 3, cex = 0.5))
+
+```
+
+
+```{r}
+
+##  Plot using base graphics - "plot"
+
+with(pred1.plot[pred1.plot$collcat == "1", ],
+     plot(meals, yhat1, type = "l", 
+          ylim = c(min(pred1.plot$yhat1), max(pred1.plot$yhat1))))
+
+with(pred1.plot[pred1.plot$collcat == "2", ],
+     lines(meals, yhat1, lty = 2))
+
+with(pred1.plot[pred1.plot$collcat == "3", ],
+     lines(meals, yhat1, lty = 3))
+
+legend(x = 90, y = 890, legend = c("1", "2", "3"),
+       title = "collcat", lty = 1:3, cex = 0.6)
+
+```
+
+
+```{r}
+
+library(ggplot2)
+
+ggplot(pred1.plot, aes(meals, yhat1, group = collcat)) + 
+  geom_line(aes(colour = collcat, linetype = collcat))
+
+```
+
+**Model with different slopes for the "collcat" level lines**
+
+```{r}
+
+api00.lm2 <- lm(api00 ~ collcat * meals, data = reg1)
+
+summary(api00.lm2)
+
+```
+
+Test significance of interaction
+
+```{r}
+
+anova(api00.lm1, api00.lm2)
+
+```
+
+
+```{r}
+
+
+yhat2.api00 <- predict(api00.lm2, newdata = newdd)
+
+pred2.plot <- data.frame(cbind(newdd, yhat2 = yhat2.api00))
+
+
+```
+
+
+```{r}
+
+ggplot(pred2.plot, aes(meals, yhat2, group = collcat)) + 
+  geom_line(aes(colour = collcat, linetype = collcat))
+
+```
+
+
+Compare slopes:
+
+  - 3 vs. 1 and 2
+  
+  - 2 vs 1
+
+Need to do this using contrast matrix.
+
+
+
+
+
+##  Interaction plot in ggplot2
+
+*Formatting is pretty heavy but was done this way for someone*
+
+
+```{r}
+
+totalC <- read.csv("data/total carbon.csv")
+
+str(totalC)
+
+```
+
+
+
+```{r}
+
+ixn.plot <- ggplot(data = totalC, 
+                   aes(x = Day, y = TC_mgl, group = Treatment, 
+                       col = Treatment)) +
+  stat_summary(fun.y = mean, geom = "point") +
+  stat_summary(fun.y = mean, geom = "line", lwd = 1) +
+  labs(y = "Total C Concentration (mg/L)")
+
+ixn.plot + theme(panel.background = element_rect(
+  fill = "white", colour = "black"), 
+  legend.text = element_text(size = 12),
+  legend.title = element_text(size = 14),
+  axis.text = element_text(size = 14, face = "bold", 
+                           colour = "black"),
+  axis.title = element_text(size = 14, face = "bold"))
+
+```
+
+
+
+
+##  Plot simple linear regression fitted line with 95 % confidence band
+
+Two examples: Jake's cycling data and David's water quality data
+
+
+```{r}
+
+##  Jake's cycling data
+
+cycle <- read.table("data/cycling.txt", header = T)
+
+summary(cycle)
+
+```
+
+
+
+```{r}
+
+with(cycle, plot(pass_distance ~ kerb, xlim = c(0, 1.5), ylim = c(0, 4)))
+
+```
+
+
+
+```{r}
+
+reg.kerb <- lm(pass_distance ~ kerb, data = cycle)
+
+summary(reg.kerb)
+
+```
+
+
+
+```{r}
+
+range(cycle$kerb)
+
+```
+
+
+
+```{r}
+
+kerbnew <- data.frame(kerb = seq(0.25, 1.25, by = 0.05))
+
+ypred <- predict(reg.kerb, newdata = kerbnew, interval = "confidence")
+
+str(ypred)
+
+```
+
+
+```{r}
+
+ypred[1:8, ]
+
+range(ypred[ , 1])
+
+```
+
+
+```{r}
+
+ci <- data.frame(lower = ypred[ , "lwr"], upper = ypred[ , "upr"])
+
+with(cycle, plot(pass_distance ~ kerb, xlim = c(0, 1.5), ylim = c(0, 4)))
+
+```
+
+
+
+```{r}
+
+plot(ypred[ , 1] ~ kerbnew$kerb, type = "l", xlim = c(0, 1.5), 
+     ylim = c(1.4, 1.7))
+lines(kerbnew$kerb, ci$lower, lty = 2, col = "blue")
+lines(kerbnew$kerb, ci$upper, lty = 2, col = "blue")
+
+```
+
+
+*David's water quality data*
+
+```{r}
+
+waterQual <- read.table("data/waterQual.txt", header = T)
+
+#save(cycle, waterQual, file = "lm pred confidence band.RData")
+
+```
+
+
+
+```{r}
+
+summary(waterQual)
+
+```
+
+
+```{r}
+
+str(waterQual)
+
+```
+
+
+```{r}
+
+par(cex.axis = 0.9)
+plot(waterQual$quality ~ waterQual$catchment, axes = FALSE, xlim = c(0, 60), 
+     ylim = c(20, 105), frame = T)
+axis(1, at = 0:6*10)
+axis(2, at = 2:10*10)
+
+```
+
+
+
+```{r}
+
+qual.lm1 <- lm(quality ~ catchment, data = waterQual)
+
+summary(qual.lm1)
+
+```
+
+
+
+```{r}
+
+plot(waterQual$quality ~ waterQual$catchment, axes = FALSE, xlim = c(0, 60), 
+     ylim = c(20, 105), frame = T)
+axis(1, at = 0:6*10)
+axis(2, at = 2:10*10)
+abline(qual.lm1)
+
+```
+
+
+
+```{r}
+
+#  Get values for plotting 95 % confidence band
+
+##  Make set of X values at which to predict response
+Xdata <- with(waterQual, seq(from = min(catchment), to = max(catchment), 
+                            length = 50))
+
+##  Put those new X values into a data frame with column name same as X 
+##    variable in fitted model
+
+Xnew <- data.frame(catchment = Xdata)
+
+
+##  Use these X values to get predictions for Y from model
+
+ypred <- predict(qual.lm1, newdata = Xnew, interval = "confidence", 
+                 type = "response")
+
+```
+
+
+
+```{r}
+
+str(ypred)
+
+```
+
+
+
+```{r}
+
+ypred[1:10, ]
+
+```
+
+
+
+```{r}
+
+##  For convenience, put Y alues for confidence band in a data frame
+
+ci <- data.frame(lower = ypred[ , "lwr"], upper = ypred[ , "upr"])
+
+##  Put the plot together
+
+par(cex.axis = 0.9)
+plot(waterQual$quality ~ waterQual$catchment, axes = FALSE, xlim = c(0, 60), 
+     ylim = c(20, 105), frame = T)
+axis(1, at = 0:6*10)
+axis(2, at = 2:10*10)
+lines(Xnew$catchment, ypred[ , "fit"])
+lines(Xnew$catchment, ci$lower, lty = 2, col = "purple")
+lines(Xnew$catchment, ci$upper, lty = 2, col = "purple")
+
+```
+
+
+
+
 
 
 

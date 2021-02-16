@@ -1,0 +1,262 @@
+# Count data
+
+
+## Count data: tests of independence and homogeneity
+
+We want to compare different groups of categorical data, where the values in each category are counts.
+
+### Independence
+
+Suppose we want to test the hypothesis that two particular variables are operating independently in some population. To do this, we can take a *single sample* from the population and classify the individuals in the sample according to the two categorical variables. For example, we have a single sample of 556 pea plants and classify them according to shape (round or wrinkled) and colour (green or yellow). (This example is from Ekstrom, CT \& Sorensen, H. 2015. 
+*Introduction to Statistical Data Analysis for the Life Sciences*. Boca Raton: Chapman \& Hall/CRC Press, 2nd ed., p. 339.)
+
+The specific hypothesis we're testing here is that pea colour and shape are independent (i.e. that is the null hypothesis).
+
+The data can be summarised by a 2 $\times$ 2 table (Round & Wrinkled $\times$ Green & Yellow):
+
+\vspace{0.5cm}
+
+
+<style type="text/css">
+.table {
+
+    width: 40%;
+
+}
+</style>
+
+Shape / Colour  | Green | Yellow | Total  
+  -- | --: | --: | --:  
+  Round    | 108 | 315 | 423  
+  Wrinkled | 32  | 101 | 133  
+  Total    | 140 | 416 | 556  
+
+
+```{r results = "hide"}
+
+peas <- matrix(c(315, 101, 108, 32), nrow = 2)
+rownames(peas) <- c("Round", "Wrinkled")
+colnames(peas) <- c("Yellow", "Green")
+peas
+
+peas.chisq <- chisq.test(peas, correct = F)
+peas.chisq
+chisqObsPeas <- peas.chisq$statistic
+pvalPeas <- peas.chisq$p.value
+
+```
+
+The test used is a $\chi^2$ squared test, with test statistic calculated by
+
+$$
+X^2 = \sum \frac{(\mathrm{Observed} - \mathrm{Expected})^2}{\mathrm{Expected}} \; ,
+$$
+where the test statistic is calculated over all four cells.
+
+Here, $X^2 =$ `r round(chisqObsPeas, 4)`, with 1 degree of freedom, giving 
+$P =$ `r round(pvalPeas, 3)`. With such a large $P$ value, we fail to reject the null hypothesis and conclude that pea colour and shape are independent.
+
+### Homogeneity
+
+In another context, suppose we want to test the hypothesis that the survival rates of mice treated with two different sources of *Staphylococcus aureus* are the same. To do this, we run an experiment where one group of mice is injected with a standard bacterial inoculum and the other is injected with a bacterial inoculum to which penicillin has been added. Each of our experimental animals is randomly allocated to one of the groups. (This example is from Steel, RG et al. 1997. *Principles and Procedures of Statistics: A Biometrical Approach*. Boston: McGraw Hill, 3rd ed., p. 511.)
+
+The specific (null) hypothesis to be tested is that the two treatments result in the same survival rate. This hypothesis is one of *homogeneity*, as we're comparing two sub-populations, one treated with a standard inoculum and another with a penicillin-enhanced inoculum.
+
+\vspace{0.5cm}
+
+Treatment / Status | Alive | Dead | Total  
+-- |  --:  |  --:  |  --:  
+Standard   | 8  | 12 | 20  
+Penicillin | 48 | 62 | 110  
+Total      | 56 | 74 | 130  
+
+```{r results = "hide"}
+
+mice <- matrix(c(8, 48, 12, 62), nrow = 2)
+rownames(mice) <- c("Standard", "Penicillin")
+colnames(mice) <- c("Alive", "Dead")
+
+##  Pearson's chi squared test
+
+mice.chisq <- chisq.test(mice, correct = F)
+chisqObsMice <- mice.chisq$statistic
+pvalMice <- mice.chisq$p.value
+
+```
+  
+
+Here, the test statistic is calculated in the same way as for the test of independence and gives $X^2$ = `r round(chisqObsMice, 4)`, with 1 degree of freedom, giving 
+$P =$ `r round(pvalMice, 3)`. With such a large $P$ value, we fail to reject the null hypothesis and conclude that there is no evidence to suggest a difference in the survival rates resulting from the two treatments.
+
+
+In the first example, one sample was taken from a population and classified according to two categorical variables to determine if the variables operated independently.
+
+In the second example, two random samples were used (i.e. two sub-populations) to determine whether the two sub-populations were homogeneous in relation to a particular characteristic (i.e. survival rate).
+
+In the examples above, assumptions need to be met to ensure the test results are valid. The assumptions are that no *expected* values are less than 1 and no more than 20 \% of expected values (i.e. here, none) are less than 5.
+
+
+### Comparing two proportions
+
+In the above example of survival rates from *S. aureus* infection, the hypothesis could have been tested by directly comparing the survival rates of the two sub-populations. If the survival rate of the standard treatment group is denoted by $p_1$ and that of the penicillin treatment group by $p_2$, the null hypothesis is 
+$H_0: p_1 = p_2$. If the two proportions are equal, then the samples can be considered as coming from a single population and so, under the null hypothesis, there is a single, common value of the true survival rate. The test statistic is expressed in terms of this common value of the true proportion. The test statistic is also based on a Normal approximation and is
+
+$$
+Z = \frac{ \hat{p_1} - \hat{p_2} }{ \sqrt{ \hat{p_{\mathrm{p}}} (1 - 
+\hat{p_{\mathrm{p}}}) (1 / n_{1\cdot} + 1 / n_{2\cdot})} } \; ,
+$$
+where $\hat{p}_i, \; i = 1, 2$ are the observed survival rates for each group, 
+$n_{i\cdot}, \; i = 1, 2$ are the total numbers of observations in each group and 
+$\hat{p_{\mathrm{p}}}$ is the pooled survival rate over both groups (as it takes account of the null hypothesis); if $n_{ij}, \; i, j = 1, 2$, are the observed values in each cell in the table and $N$ is the total number of all observations, the pooled survival rate 
+can be written $$\hat{p_{\mathrm{p}}} = (n_{11} + n_{21}) \; / \; N \, .$$
+
+```{r results = "hide"}
+
+##  Normal approximation
+##  This compares two population proportions; here, the 
+##    standard and penicillin proportions
+
+mice <- matrix(c(8, 48, 12, 62), nrow = 2)
+
+n11 <- mice[1, 1]
+n12 <- mice[1, 2]
+n21 <- mice[2, 1]
+n22 <- mice[2, 2]
+
+n1. <- n11 + n12
+n2. <- n21 + n22
+n.1 <- n11 + n21
+n.2 <- n12 + n22
+
+N <- sum(mice)
+
+p1.hat <- n11 / n1.
+p2.hat <- n21 / n2.
+
+pbar.hat <- (n11 + n21) / N
+
+z.obsMice <- (p1.hat - p2.hat) / sqrt( pbar.hat * (1 - pbar.hat) * 
+                                    (1 / n1. + 1 / n2.) )
+##  z.obsMice = -0.3021
+
+pvalMiceZ <- 2 * pnorm(z.obsMice)
+##  P = 0.7626
+
+#z.obsMice^2
+##  z.obs^2  = 0.09126
+
+```
+
+
+Observed values are $\hat{p_1} = 8 / 20, \hat{p_2} = 48 / 110,$
+$\hat{p_{\mathrm{p}}} = 56 / 130$, giving $z =$ `r round(z.obsMice, 4)` and, for a two-sided test, $P =$ `r round(pvalMiceZ, 3)`. This is the same result as obtained from the $\chi^2$ test above.
+
+Note that the denominator in the formula for the $Z$ statistic above is the standard error of the difference of the two proportions, based on the assumption that there is a common value of the true proportion. To obtain a *confidence interval* for the difference of the two proportions, we treat the two samples simply as independent and calculate the standard error of the difference of the two proportions as
+$\sqrt{ \hat{p_1} (1 - \hat{p_1}) / n_{1\cdot} + \hat{p_2} (1 - \hat{p_2}) / n_{2\cdot} }.$
+
+For a significance test, the Normal approximation can be considered valid when the numbers of successes and failures in each sample are all at least 5 and for a confidence interval when they are all at least 10. (See Moore, DS et al. 2014. *Introduction to the Practice of Statistics*. New York: Freeman and Company, 8th ed., pp. 508-522, for a discussion of comparing two proportions.)
+
+### Small Counts
+
+Small observed values may lead to the assumptions for the $\chi^2$ test not being met. In that case, an alternative analysis method may be used.
+
+As an example, consider an experiment investigating whether a particular fungicide is carcinogenic. Two groups of mice were used, with one group (treatment group) being fed small amounts of the fungicide via their food and the other (control group) receiving food with no additives. Mice were randomly allocated to one of the groups. After 85 weeks, all animals were sacrificed and examined for tumours. The data collected is shown below. (This example is from Ekstrom, CT \& Sorensen, H. 2015. 
+*Introduction to Statistical Data Analysis for the Life Sciences*. Boca Raton: Chapman \& Hall/CRC Press, 2nd ed., p. 335.)
+
+This is a test of homogeneity of the control and treatment sub-populations. The null hypothesis is that the mice from the two groups have the same probability of developing tumours.
+
+<style type="text/css">
+.table {
+
+    width: 50%;
+
+}
+</style>
+
+Treatment / Tumour | Tumour present | No tumour | Total  
+-- |  :--:  |  :--:  |  :--:  
+Control   | 5 | 74 | 79  
+Treatment | 4 | 12 | 16  
+Total     | 9 | 86 | 95  
+
+
+The first approach might be the $\chi^2$ test of homogeneity. 
+
+
+```{r results = "hide", warning = FALSE}
+
+tumours <- matrix(c(5, 4, 74, 12), nrow = 2)
+rownames(tumours) <- c("Control", "Treatment")
+colnames(tumours) <- c("Tumour present", "No tumour")
+tumours
+
+tumours.chisq <- chisq.test(tumours, correct = F)
+tumours.chisq
+
+chisqObsTumours <- tumours.chisq$statistic
+pvalTumours <- tumours.chisq$p.value
+
+tumours.exp <- tumours.chisq$expected
+
+```
+
+As some observed counts are small, it's good to check the expected values. These are shown below in parentheses next to the observed values.
+
+Treatment / Tumour | Tumour present | No tumour | Total  
+-- |  :--:  |  :--:  |  :--:  
+Control   | 5  (`r round(tumours.exp[1, 1], 3)`) | 74 (`r round(tumours.exp[1, 2], 3)`) | 79  
+Treatment | 4  (`r round(tumours.exp[2, 1], 3)`)| 12  (`r round(tumours.exp[2, 2], 3)`)| 16  
+Total     | 9 | 86 | 95  
+
+The $\chi^2$ test here gives a test statistic of $X^2 =$ `r round(chisqObsTumours, 4)` with $P =$ `r round(pvalTumours, 3)`. As there is one expected value less than 5, the assumptions for the test are not met and this result cannot be accepted as valid.
+
+```{r results = "hide"}
+
+tumours <- matrix(c(5, 4, 74, 12), nrow = 2)
+
+n11 <- tumours[1, 1]
+n12 <- tumours[1, 2]
+n21 <- tumours[2, 1]
+n22 <- tumours[2, 2]
+
+n1. <- n11 + n12
+n2. <- n21 + n22
+n.1 <- n11 + n21
+n.2 <- n12 + n22
+
+N <- sum(tumours)
+
+p1.hat <- n11 / n1.
+p2.hat <- n21 / n2.
+
+pbar.hat <- (n11 + n21) / N
+
+z.obsTumours <- (p1.hat - p2.hat) / sqrt( pbar.hat * (1 - pbar.hat) * 
+                                    (1 / n1. + 1 / n2.) )
+##  z.obsTumours = -2.3256
+
+pvalTumoursZ <- 2 * pnorm(z.obsTumours)
+##  P = 0.0200
+
+```
+
+Using a Normal approximation to compare the probabilities of tumours being present in the two groups, we find the observed test statistic is 
+$z =$ `r round(z.obsTumours, 4)` with $P =$ `r round(pvalTumoursZ, 3)`. This gives the same result as the $\chi^2$ test.
+
+A better approach, because of the small counts and the failure of the $X^2$ test assumptions (one expected value less than 5) and the Normal approximation assumptions (one count less than 5), is to use Fisher's Exact Test.
+
+```{r results = "hide"}
+
+##  Fisher's Exact Test
+
+tumours <- matrix(c(5, 4, 74, 12), nrow = 2)
+
+pvalTumoursFisher <- fisher.test(tumours)$p.value
+
+```
+
+There is no test statistic for this test and the $P$ value calculated is exact. This test gives $P =$ `r round(pvalTumoursFisher, 3)` for a two-sided test, indicating some evidence against the null hypothesis. Along with any $P$ value, it's very useful to give an effect size.
+
+All these tests can be used with tables larger than the $2 \times 2$ tables here; however, there are some practical limits to how large a table Fisher's Exact Test can be used for.
+
+

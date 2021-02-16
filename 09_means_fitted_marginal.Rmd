@@ -1,0 +1,620 @@
+# Means - fitted and marginal
+
+##  Load necessary packages
+
+```{r message = F}
+
+library(dplyr)
+library(ggplot2)
+library(ggpubr)
+library(cowplot)
+library(effects)
+library(emmeans)
+
+```
+
+<br>
+
+##  Data - "genotype" from MASS package
+
+Use "genotype" data from MASS package as an example (data obtained from Scheffé (1959)).
+
+Brief details about the data follow.
+
+Data from a foster feeding experiment with rat mothers and litters of four different genotypes: A, B, I and J. Rat litters were separated from their natural mothers at birth and given to foster mothers to rear.
+
+The data frame has the following components:
+
+*Litter*  genotype of the litter.
+
+*Mother*  genotype of the foster mother.
+
+*Wt*  litter average weight gain of the litter, in grams at age 28 days (the source states that the within-litter variability is negligible).
+
+<br>
+
+
+```{r}
+
+data(genotype, package = "MASS")
+
+gtype <- genotype
+
+freq.cell <- 
+  gtype %>% 
+  count(Mother, Litter)
+
+freq.cell
+
+```
+
+Table of cell frequencies
+
+```{r}
+
+freq.cell.mat <- matrix(freq.cell$n, nrow = 4)
+
+rownames(freq.cell.mat) <- c("Litter_A", "Litter_B", "Litter_I", "Litter_J")
+colnames(freq.cell.mat) <- c("Mother_A", "Mother_B", "Mother_I", "Mother_J")
+
+freq.cell <- freq.cell.mat
+rm(freq.cell.mat)
+freq.cell
+
+```
+
+
+```{r}
+
+gtype %>%
+  count(Litter)
+
+```
+
+
+```{r}
+
+gtype %>%
+  count(Mother)
+
+```
+
+```{r}
+
+ggplot(gtype, aes(x = Mother, y = Wt, colour = Litter)) +
+  geom_point()
+
+```
+
+
+```{r}
+
+ggplot(gtype, aes(x = Litter, y = Wt, colour = Mother)) +
+  geom_point()
+
+
+```
+
+```{r}
+
+ggplot(gtype, aes(x = Litter, y = Wt, 
+                     colour = Litter)) + 
+  geom_point() +
+  facet_wrap( ~ Mother, nrow = 2) +
+  theme(legend.position = "none") 
+
+```
+
+
+```{r}
+
+summary(gtype)
+
+```
+
+
+```{r}
+
+gtype %>%
+  group_by(Litter) %>%
+  summarise(mean_litter = mean(Wt), 
+            std.dev_litter = sd(Wt))
+          
+```
+
+```{r}
+
+gtype %>%
+  group_by(Mother) %>%
+  summarise(mean_mother = mean(Wt), 
+            std.dev_mother = sd(Wt))
+
+```
+
+
+<br>
+
+
+##  Model
+
+Explain animal weight by Litter and Mother.
+
+Order:  *Litter + Mother*
+
+```{r}
+
+gtype.lm1 <- lm(Wt ~ Litter + Mother, data = gtype)
+
+summary(gtype.lm1)
+
+```
+
+
+```{r}
+
+anova(gtype.lm1)
+
+```
+
+
+<br>
+
+Order:  *Mother + Litter*
+
+```{r}
+
+gtype.lm2 <- lm(Wt ~ Mother + Litter, data = gtype)
+
+summary(gtype.lm2)
+
+```
+
+
+Note model coefficients are the same regardless of order of explanatory terms.
+
+
+```{r}
+
+anova(gtype.lm2)
+
+```
+
+
+<br>
+
+##  Fitted values using "predict"
+
+
+Make a prediction grid.
+
+```{r}
+
+pred.comb <- expand.grid(Litter = levels(gtype$Litter), 
+                         Mother = levels(gtype$Mother))
+
+pred.comb
+
+```
+
+<br>
+
+###  Fitted values (with interval = "confidence")
+
+This gives a 95% confidence interval for predicted mean.
+
+For example, for Litter A with Mother A: 
+
+Note $t_{0.975, 54} = 2.004879$.
+
+$56.90907 \pm 2.004879 \times 2.478191 = (51.9406, 61.8775)$
+
+```{r}
+
+ypred.lm1 <- data.frame(pred.comb, predict(gtype.lm1, newdata = pred.comb, 
+                                           se.fit = T,
+                                           interval = "confidence"))
+
+names(ypred.lm1)[3:5] <- c("fit", "lwr", "upr")
+
+ypred.lm1
+
+```
+
+```{r}
+
+ypred.lm1.mat <- matrix(ypred.lm1$fit, nrow = 4)
+
+rownames(ypred.lm1.mat) <- c("Litter_A", "Litter_B", "Litter_I", "Litter_J")
+colnames(ypred.lm1.mat) <- c("Mother_A", "Mother_B", "Mother_I", "Mother_J")
+
+ypred.lm1.mat
+
+```
+
+<br>
+
+###  Fitted values (with interval = "prediction")
+
+This gives a 95% confidence interval for a single future observed value.
+
+The SE for a single future observation is (must be!) larger than that for the predicted mean. The SE for a given observed value is 
+$\sqrt{[\mathrm{var(predicted \; mean)} + \widehat{\sigma^2}]}$
+(see Searle, *Linear Models*, p. 91).
+
+
+For example, for Litter A with Mother A: 
+
+Note $t_{0.975, 54} = 2.004879$.
+
+$\mathrm{se} = \sqrt{2.478191^2 + 7.775661^2} = 8.161025$
+
+$56.90907 \pm 2.004879 \times 8.161025 = (40.5472, 73.2709)$
+
+```{r}
+
+predict(gtype.lm1, newdata = pred.comb, se.fit = T,
+                     interval = "prediction")
+
+```
+
+<br>
+
+##  Manually fitting model using matrix algebra
+
+Model coefficients are the same as above - as they should be!
+
+```{r}
+
+gtype.mat <- model.matrix(gtype.lm1)
+
+XtX.inv <- ginv( t(gtype.mat) %*% gtype.mat )
+
+bhat <- XtX.inv %*% t(gtype.mat) %*% gtype$Wt
+
+bhat
+
+```
+
+
+```{r}
+
+bhat.df <- data.frame(param = colnames(gtype.mat), est = bhat)
+
+bhat.df
+
+```
+
+<br>
+
+##  Estimated means using model coefficients and various weights
+
+
+First, get the two-way table of means.
+
+```{r}
+
+means.cell <- 
+  genotype %>%
+  group_by(Mother, Litter) %>%
+  summarise(wt_mean = mean(Wt))
+
+
+##  Form a 4 x 4 table
+
+means.cell <- matrix(means.cell$wt_mean, nrow = 4)
+
+rownames(means.cell) <- c("Litter_A", "Litter_B", "Litter_I", "Litter_J")
+colnames(means.cell) <- c("Mother_A", "Mother_B", "Mother_I", "Mother_J")
+
+means.cell
+
+```
+
+### Marginal means for Litter
+
+
+```{r}
+
+apply(means.cell, 1, mean)
+
+```
+
+These are based on the data and are *not* the estimates returned by *any* package here with *any* weighting. Weightings used to calculate marginal means are not the ones used in the above calculation. This is because estimated marginal means are not based directly on the data but rather are derived from a model.
+
+
+<br>
+
+
+####  Estimates using "emmeans" package
+
+<br>
+
+####  "Reference grid" for emmeans
+
+Estimated marginal means are based on a model, not directly on the raw data. They are calculated using a reference grid, which is a grid of all combinations of factors and covariates in the model.
+
+The reference grid for the genotype model is shown; the grid includes cell counts (viz. the .wgt. column).
+
+
+```{r}
+
+ref_grid(gtype.lm1) @ grid
+
+```
+
+
+
+The model can be used to estimate the mean at each point in the reference grid.
+
+
+```{r}
+
+ypred.ref.grid.mat <- matrix(predict(ref_grid(gtype.lm1)), nrow = 4)
+
+rownames(ypred.ref.grid.mat) <- c("Litter_A", "Litter_B", 
+                                  "Litter_I", "Litter_J")
+colnames(ypred.ref.grid.mat) <- c("Mother_A", "Mother_B", 
+                                  "Mother_I", "Mother_J")
+ypred.ref.grid.mat
+
+
+```
+
+<br>
+
+Manually calculate means in reference grid from model.
+
+Model equation is:
+
+$$
+\hat{y} = 
+56.909 - 2.025 L_B - 2.654 L_I - 2.021 L_J + 3.516 M_B - 1.832 M_I - 6.755 M_J
+$$
+
+Mean for Litter A with Mother A = 56.91
+
+Mean for Litter A with Mother I = 56.909 - 1.832 = 55.08
+
+Mean for Litter I with Mother J = 56.909 - 2.654 - 6.755 = 47.50
+
+This shows the means calculated from the reference grid are the model-based means.
+
+
+<br>
+
+Default weighting is "equal" (i.e. equally weighted average).
+
+```{r}
+
+gtype.emm.L <- emmeans(gtype.lm1, specs = "Litter")
+
+gtype.emm.L
+
+```
+
+```{r}
+
+gtype.emm.L.eq <- emmeans(gtype.lm1, specs = "Litter", weights = "equal")
+
+gtype.emm.L.eq
+
+```
+
+```{r}
+
+apply(ypred.ref.grid.mat, 1, mean)
+
+```
+
+<br>
+
+Using weights = "proportional"
+
+This option weights according to the number of observations in each level of the factor that's being averaged over. See below.
+
+
+```{r}
+
+gtype.emm.L.prop <- emmeans(gtype.lm1, specs = "Litter", 
+                            weights = "proportional")
+
+gtype.emm.L.prop
+
+```
+
+
+Get frequencies (number of observations) for each Mother. Using these gives the same result as weights = "proportional".
+
+```{r}
+
+num.moth <- apply(freq.cell, 2, sum)
+num.moth
+
+```
+
+
+```{r}
+
+gtype.emm.L.prop2 <- emmeans(gtype.lm1, specs = "Litter", 
+                          weights = num.moth)
+
+gtype.emm.L.prop2 
+
+```
+
+<br>
+
+Direct calculation behind weights = "proportional".
+
+Get the *reference grid* for the model. This is the 4 x 4 table of model-based means.
+
+For Litter A, multiply each cell mean by the corresponding *total* number of observations for each Mother (i.e. num.moth are the weights). Add the result and divide by the total number of observations.
+
+```{r}
+
+t( ypred.ref.grid.mat %*% num.moth / sum(num.moth) )
+
+```
+
+<br>
+
+
+####  Using "confint"
+
+This gives the same output as asking for the estimated marginal means from a given model for a given predictor (i.e. same output as "gtype.emm.L" itself).
+
+```{r}
+
+confint(gtype.emm.L, side = "two-sided", level = 0.95)
+
+```
+
+<br>
+
+###  Marginal means for Mother
+
+Default weighting is "equal" (i.e. equally weighted average).
+
+```{r}
+
+gtype.emm.M <- emmeans(gtype.lm1, specs = "Mother")
+
+gtype.emm.M 
+
+```
+
+
+```{r}
+
+gtype.emm.M.eq <- emmeans(gtype.lm1, specs = "Mother", weights = "equal")
+
+gtype.emm.M.eq 
+
+```
+
+```{r}
+
+apply(ypred.ref.grid.mat, 2, mean)
+
+```
+
+<br>
+
+Using weights =  "cells" 
+
+This uses cell frequencies and gives arithmetic means.
+
+
+```{r}
+
+gtype.emm.L.cells <- emmeans(gtype.lm1, specs = "Litter", weights = "cells")
+
+gtype.emm.L.cells 
+
+```
+
+<br>
+
+###  Using a matrix with equal weights
+
+Use weights for each Litter of $\frac{1}{4}$. See notes on calculating marginal means by Cornell Stats Consult Unit   
+(see file "marginal means calc CornellStatsConsult.pdf").
+
+This gives the same result as the default equal weighting based on the model reference grid (i.e. these are the same estimates as emmmeans gives using weights = "equal", the default weighting).
+
+
+
+```{r}
+
+##  Set up matrix with appropriate values for calculation
+
+mean.L.bal.wt <- matrix(
+  c(1, 0, 0, 0, 1/4, 1/4, 1/4,
+    1, 1, 0, 0, 1/4, 1/4, 1/4,
+    1, 0, 1, 0, 1/4, 1/4, 1/4,
+    1, 0, 0, 1, 1/4, 1/4, 1/4),
+  nrow = 4, byrow = T)
+
+mean.L.bal.wt
+
+```
+
+
+```{r}
+
+mean.L.bal.wt %*% bhat.df[ , 2]
+
+```
+
+<br>
+
+###  Using a matrix with proportional weights
+
+There are 61 data values in all. The number of observations for each mother are shown below.
+
+```{r}
+
+gtype %>%
+  count(Mother)
+
+```
+
+<br>
+
+Calculating marginal means for litters using "proportional" weighting across Mother.
+
+
+```{r}
+
+##  Set up matrix with appropriate values for calculation
+
+mean.L.prop.wt <- matrix(
+  c(1, 0, 0, 0, 14/61, 16/61, 15/61,
+    1, 1, 0, 0, 14/61, 16/61, 15/61,
+    1, 0, 1, 0, 14/61, 16/61, 15/61,
+    1, 0, 0, 1, 14/61, 16/61, 15/61),
+  nrow = 4, byrow = T)
+
+mean.L.prop.wt
+
+```
+
+
+```{r}
+
+mean.L.prop.wt %*% bhat.df[ , 2]
+
+```
+
+These are the same estimates as emmmeans gives using weights = "proportional".
+
+
+<br>
+
+
+##  Estimates using "effects" package
+
+The "effects" package, by default, uses what is "proportional" weighting in the emmeans package.
+
+
+```{r}
+
+gtype.eff.L <- effect("Litter", mod = gtype.lm1)
+
+gtype.eff.L.df <- as.data.frame(gtype.eff.L)
+
+gtype.eff.L.df
+
+```
+
+
+```{r}
+
+gtype.eff.all <- allEffects(gtype.lm1)
+
+gtype.eff.all
+
+```
+
+
+

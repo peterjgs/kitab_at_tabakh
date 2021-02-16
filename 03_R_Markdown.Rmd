@@ -70,3 +70,44 @@ Press "p" in the top window. Run the slides from the top window, with the other 
 
 
 
+## How to make multi-line tables
+
+
+
+*Some notes on smoothing functions*
+
+These notes come from Faraway, *Extending the Linear Model with R*, p. 302 and Wood, *GAMs*, 1st ed., pp. 124, 128, 148-149, 152-154. 
+
+Using smoothing functions involves a trade-off between model fit and smoothness. If the model is, $y_i = f(x_i) + \epsilon_i$, one simple criterion that could be used is:
+
+$$
+\frac{1}{n} \sum (Y_i - f(x_i))^2 + \lambda \int [f''(x)^2] dx \; ,
+$$
+
+where $\lambda > 0$ is the smoothing parameter and $\int [f''(x)^2] dx$ is a roughness penalty. This model joins the dots and will be too rough, though, but it illustrates the basic idea behind smoothing. It is the smoothing spline in the table below.
+
+--------------------------------------------------------------------------------------
+Type                      Knots                        Notes
+------------------------  ---------------------------  --------------------------------
+Natural cubic spline\     One knot at each data point  Smoothest possible interpolator;
+Smoothing spline                                       wasteful
+
+Cubic regression spline\  Choose where to put knots    Use a basis for smaller data
+Penalised regression                                   set than the one to be analysed  spline                                                 (i.e. number of knots much                                                              smaller than sample size);
+                                                       still must choose knot locations
+
+P-splines                 Usually evenly spaced        Use a B-spline basis; awkward if
+                                                       uneven knot spacing needed
+
+Thin plate splines        Positions determined from    An *ideal* smoother; 
+                          mathematical form of         construction of thin plate spline                           model                        determines balance between fit                                                          and smoothness and best                                                                 *function* to achieve                                                              required smoothing
+-----------------------------------
+
+Disadvantages of the above types of basis functions:
+
+  -  need to choose knot locations - this introduces extra subjectivity into modelling process
+  -  can only be used with one predictor variable
+  -  not clear which basis is better or worse than any other basis
+  
+  
+
