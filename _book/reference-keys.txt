@@ -79,3 +79,4 @@ marginal-means-for-mother
 using-a-matrix-with-equal-weights
 using-a-matrix-with-proportional-weights
 estimates-using-effects-package
+contingency-tables---fixed-row-and-columns-totals

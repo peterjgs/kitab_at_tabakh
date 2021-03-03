@@ -260,3 +260,29 @@ There is no test statistic for this test and the $P$ value calculated is exact. 
 All these tests can be used with tables larger than the $2 \times 2$ tables here; however, there are some practical limits to how large a table Fisher's Exact Test can be used for.
 
 
+## Contingency tables - fixed row and columns totals
+
+See notes in Bland, Intro. to Medical Statistics, p. 200.
+
+In brief ...
+
+In a retrospective study on bronchitis and respiratory problems, medical records were searched and the following data collected. *Neither* the row nor column total was set in advance. Neither is fixed, as each is the result of the incidence of bronchitis and the prevalence of chronic cough, as determined by the binomial distribution.
+
+|            |  Bronchitis  | No bronchitis  |  Total  |
+|:-----------|-----------:|-----------:|-----------:| 
+|  Cough     |   26  |    44  |    70  |
+|  No cough  |  247  |  1002  |  1249  |
+|  Total     |  273  |  1046  |  1319  |
+
+
+In contrast, in a designed experiment (randomised controlled trial) on the effect of streptomycin, patients were randomised to the streptomycin or control groups (for description, see Bland, p. 9). The column totals are fixed by the design of the experiment. The row total are not fixed but are determined by a random variable.
+
+| Radiological assessment |  Streptomycin  | Control  |  Total  |
+|:-----------|----------:|----------:|-----------:| 
+|  Improved              |   13  |    5  |    18  |
+|  Deteriorated or died  |    2  |   12  |    14  |
+|  Total                 |   15  |   17  |    32  |
+
+
+
+
