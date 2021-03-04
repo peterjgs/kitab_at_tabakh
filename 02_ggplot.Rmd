@@ -336,4 +336,40 @@ nt_youth_all_indiv %>%
   ggplot(  etc.  )
 ```
 
+## Plotting two data sets of different length on one plot
+
+https://gist.github.com/romunov/47f51ccdfe2362c66e60743849fde6b0
+
+```{r eval = F}
+
+xy1 <- data.frame(x = rnorm(10), y = rnorm(10))
+xy2 <- data.frame(x = rnorm(5), y = rnorm(5))
+
+library(ggplot2)
+
+ggplot() +
+  theme_bw() +
+  geom_point(data = xy1, aes(x = x, y = y)) +
+  geom_point(data = xy2, aes(x = x, y = y), color = "red")
+
+ggplot(xy1, aes(x = x, y = y)) +
+  theme_bw() +
+  geom_point() + # values mapped to aes() in ggplot() call
+  geom_point(data = xy2, color = "red") # values maped to the same aes() call as above
+
+ggplot(xy1, aes(x = x, y = y)) +
+  theme_bw() +
+  geom_point() + # values mapped to aes() in ggplot() call
+  geom_point(data = xy2, aes(x = x, y = y)) # explicit mapping, can be different for this geom
+
+
+##  PGS' extra
+
+ggplot(xy1, aes(x = x, y = y)) +
+  theme_bw() +
+  geom_point() + # values mapped to aes() in ggplot() call
+  geom_point(
+    data = xy2, aes(x = x, y = y), colour = "green") # explicit mapping, can be different for this geom
+
+```
 
