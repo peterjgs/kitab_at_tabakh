@@ -10,6 +10,8 @@ library(ggpubr)
 library(cowplot)
 library(effects)
 library(emmeans)
+library(DAAG)
+library(ggpubr)
 
 ```
 
@@ -617,4 +619,179 @@ gtype.eff.all
 ```
 
 
+
+<br>
+
+## Transformations and `emmeans`
+
+Data is "rice" from DAAG package.
+
+The rice data frame has 72 rows and 7 columns. The data are from an experiment that compared wild type (wt) and genetically modified rice plants (ANU843), each with three different chemical treatments (F10, NH4Cl, and NH4NO3).
+
+
+```{r}
+
+data(rice, package = "DAAG")
+
+str(rice)
+
+```
+
+```{r}
+
+rice$PlantNo <- factor(rice$PlantNo)
+rice$Block <- factor(rice$Block)
+
+```
+
+
+
+```{r rows.print = 20}
+
+rice %>%
+  group_by(Block, PlantNo) %>%
+  count()
+
+```
+
+```{r}
+
+rice %>%
+  group_by(fert, variety) %>%
+  count()
+
+```
+
+
+
+
+```{r}
+
+ggplot(rice, aes(x = Block, y = ShootDryMass)) +
+  geom_boxplot()
+
+```
+
+
+```{r}
+
+ggplot(rice, aes(x = PlantNo, y = ShootDryMass)) +
+  geom_jitter(width = 0.1)
+
+```
+
+
+```{r}
+
+bw1 <- ggplot(rice, aes(x = fert, y = ShootDryMass)) + 
+  geom_boxplot()
+
+
+bw2 <- ggplot(rice, aes(x = variety, y = ShootDryMass)) + 
+  geom_boxplot()
+
+ggarrange(bw1, bw2, nrow = 1)
+
+```
+
+
+```{r}
+
+
+ggplot(rice, aes(x = fert, y = ShootDryMass, fill = variety)) +
+  geom_boxplot()
+
+```
+
+
+```{r}
+
+rice.lm1 <- lm(ShootDryMass ~ Block + fert * variety, data = rice)
+
+summary(rice.lm1)
+
+```
+
+
+```{r}
+
+anova(rice.lm1)
+
+```
+
+
+```{r}
+
+par(mfrow = c(2, 2))
+plot(rice.lm1)
+par(mfrow = c(1, 1))
+
+```
+
+<br>
+
+Log-transform the response to illustrate the point of this exercise!
+
+**The analysis above clearly isn't satisfactory but the use of `emmeans` here is the point.**
+
+```{r}
+
+rice$logShootDM <- log(rice$ShootDryMass)
+
+bw3 <- ggplot(rice, aes(x = fert, y = logShootDM)) + 
+  geom_boxplot()
+
+
+bw4 <- ggplot(rice, aes(x = variety, y = logShootDM)) + 
+  geom_boxplot()
+
+ggarrange(bw3, bw4, nrow = 1)
+
+
+```
+
+```{r}
+
+rice.lm2 <- lm(logShootDM ~ Block + fert * variety, data = rice)
+
+summary(rice.lm2)
+
+```
+
+
+Get the estimated marginal means of fertiliser for each variety. 
+
+*Note these estimates are on the log scale.*
+
+
+```{r}
+
+rice_emm_f_v <- emmeans(rice.lm2, pairwise ~ fert | variety)
+
+summary(rice_emm_f_v)
+
+```
+
+
+Backtransform the estimates to the natural scale. Note this code comes from the built-in help for `emmeans`.
+
+
+```{r}
+
+rice_emm_f_v_bt <- emmeans(rice.lm2, pairwise ~ fert | variety,
+                           options = list(tran = "log"), 
+                           type = "response")
+
+summary(rice_emm_f_v_bt)
+
+```
+
+
+Further, to get confidence intervals for the contrasts, do the following. *Note that you use the `emmeans` object, not the summary of that object!*
+
+```{r}
+
+confint(rice_emm_f_v_bt$contrasts)
+
+```
 

@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Kitab at-Tabakh</title>
   <meta name="description" content="This is a collection of miscellaneous statistics-related recipes and notes." />
-  <meta name="generator" content="bookdown 0.20 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.22 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Kitab at-Tabakh" />
   <meta property="og:type" content="book" />
@@ -32,7 +32,7 @@
   
 
 <link rel="next" href="mawaqif.html"/>
-<script src="libs/header-attrs-2.3/header-attrs.js"></script>
+<script src="libs/header-attrs-2.7/header-attrs.js"></script>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -50,6 +50,8 @@
 
 
 
+<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
 
 
 <style type="text/css">
@@ -116,6 +118,7 @@ code span.vs { color: #4070a0; } /* VerbatimString */
 code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
+
 </head>
 
 <body>
@@ -163,11 +166,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="2.10" data-path="ggplot.html"><a href="ggplot.html#set-breaks-for-scale"><i class="fa fa-check"></i><b>2.10</b> Set breaks for scale</a></li>
 <li class="chapter" data-level="2.11" data-path="ggplot.html"><a href="ggplot.html#display-table-to-2-d.p."><i class="fa fa-check"></i><b>2.11</b> Display table to 2 d.p.</a></li>
 <li class="chapter" data-level="2.12" data-path="ggplot.html"><a href="ggplot.html#redefine-factor-levels-for-an-individual-plot"><i class="fa fa-check"></i><b>2.12</b> Redefine factor levels for an individual plot</a></li>
+<li class="chapter" data-level="2.13" data-path="ggplot.html"><a href="ggplot.html#plotting-two-data-sets-of-different-length-on-one-plot"><i class="fa fa-check"></i><b>2.13</b> Plotting two data sets of different length on one plot</a></li>
 </ul></li>
 <li class="chapter" data-level="3" data-path="r-markdown.html"><a href="r-markdown.html"><i class="fa fa-check"></i><b>3</b> R Markdown</a>
 <ul>
 <li class="chapter" data-level="3.1" data-path="r-markdown.html"><a href="r-markdown.html#ioslides-footnotes"><i class="fa fa-check"></i><b>3.1</b> ioslides: Footnotes</a></li>
 <li class="chapter" data-level="3.2" data-path="r-markdown.html"><a href="r-markdown.html#ioslides-speakers-notes"><i class="fa fa-check"></i><b>3.2</b> ioslides: Speaker’s notes</a></li>
+<li class="chapter" data-level="3.3" data-path="r-markdown.html"><a href="r-markdown.html#how-to-make-multi-line-tables"><i class="fa fa-check"></i><b>3.3</b> How to make multi-line tables</a></li>
 </ul></li>
 <li class="chapter" data-level="4" data-path="tidyverse.html"><a href="tidyverse.html"><i class="fa fa-check"></i><b>4</b> Tidyverse</a>
 <ul>
@@ -201,6 +206,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="5.5.1" data-path="linear-models.html"><a href="linear-models.html#regression-model"><i class="fa fa-check"></i><b>5.5.1</b> Regression model</a></li>
 </ul></li>
 <li class="chapter" data-level="5.6" data-path="linear-models.html"><a href="linear-models.html#residual-plots---redres"><i class="fa fa-check"></i><b>5.6</b> Residual plots - redres</a></li>
+<li class="chapter" data-level="5.7" data-path="linear-models.html"><a href="linear-models.html#interactions---examples"><i class="fa fa-check"></i><b>5.7</b> Interactions - examples</a></li>
+<li class="chapter" data-level="5.8" data-path="linear-models.html"><a href="linear-models.html#interaction-plot-in-ggplot2"><i class="fa fa-check"></i><b>5.8</b> Interaction plot in ggplot2</a></li>
+<li class="chapter" data-level="5.9" data-path="linear-models.html"><a href="linear-models.html#plot-simple-linear-regression-fitted-line-with-95-confidence-band"><i class="fa fa-check"></i><b>5.9</b> Plot simple linear regression fitted line with 95 % confidence band</a></li>
 </ul></li>
 <li class="chapter" data-level="6" data-path="linear-mixed-models.html"><a href="linear-mixed-models.html"><i class="fa fa-check"></i><b>6</b> Linear mixed models</a>
 <ul>
@@ -209,6 +217,38 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="7" data-path="experimental-design.html"><a href="experimental-design.html"><i class="fa fa-check"></i><b>7</b> Experimental design</a>
 <ul>
 <li class="chapter" data-level="7.1" data-path="experimental-design.html"><a href="experimental-design.html#sample-size-by-simulation"><i class="fa fa-check"></i><b>7.1</b> Sample size by simulation</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="count-data.html"><a href="count-data.html"><i class="fa fa-check"></i><b>8</b> Count data</a>
+<ul>
+<li class="chapter" data-level="8.1" data-path="count-data.html"><a href="count-data.html#count-data-tests-of-independence-and-homogeneity"><i class="fa fa-check"></i><b>8.1</b> Count data: tests of independence and homogeneity</a>
+<ul>
+<li class="chapter" data-level="8.1.1" data-path="count-data.html"><a href="count-data.html#independence"><i class="fa fa-check"></i><b>8.1.1</b> Independence</a></li>
+<li class="chapter" data-level="8.1.2" data-path="count-data.html"><a href="count-data.html#homogeneity"><i class="fa fa-check"></i><b>8.1.2</b> Homogeneity</a></li>
+<li class="chapter" data-level="8.1.3" data-path="count-data.html"><a href="count-data.html#comparing-two-proportions"><i class="fa fa-check"></i><b>8.1.3</b> Comparing two proportions</a></li>
+<li class="chapter" data-level="8.1.4" data-path="count-data.html"><a href="count-data.html#small-counts"><i class="fa fa-check"></i><b>8.1.4</b> Small Counts</a></li>
+</ul></li>
+<li class="chapter" data-level="8.2" data-path="count-data.html"><a href="count-data.html#contingency-tables---fixed-row-and-columns-totals"><i class="fa fa-check"></i><b>8.2</b> Contingency tables - fixed row and columns totals</a></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="means-fitted-and-marginal.html"><a href="means-fitted-and-marginal.html"><i class="fa fa-check"></i><b>9</b> Means - fitted and marginal</a>
+<ul>
+<li class="chapter" data-level="9.1" data-path="means-fitted-and-marginal.html"><a href="means-fitted-and-marginal.html#load-necessary-packages"><i class="fa fa-check"></i><b>9.1</b> Load necessary packages</a></li>
+<li class="chapter" data-level="9.2" data-path="means-fitted-and-marginal.html"><a href="means-fitted-and-marginal.html#data---genotype-from-mass-package"><i class="fa fa-check"></i><b>9.2</b> Data - “genotype” from MASS package</a></li>
+<li class="chapter" data-level="9.3" data-path="means-fitted-and-marginal.html"><a href="means-fitted-and-marginal.html#model"><i class="fa fa-check"></i><b>9.3</b> Model</a></li>
+<li class="chapter" data-level="9.4" data-path="means-fitted-and-marginal.html"><a href="means-fitted-and-marginal.html#fitted-values-using-predict"><i class="fa fa-check"></i><b>9.4</b> Fitted values using “predict”</a>
+<ul>
+<li class="chapter" data-level="9.4.1" data-path="means-fitted-and-marginal.html"><a href="means-fitted-and-marginal.html#fitted-values-with-interval-confidence"><i class="fa fa-check"></i><b>9.4.1</b> Fitted values (with interval = “confidence”)</a></li>
+<li class="chapter" data-level="9.4.2" data-path="means-fitted-and-marginal.html"><a href="means-fitted-and-marginal.html#fitted-values-with-interval-prediction"><i class="fa fa-check"></i><b>9.4.2</b> Fitted values (with interval = “prediction”)</a></li>
+</ul></li>
+<li class="chapter" data-level="9.5" data-path="means-fitted-and-marginal.html"><a href="means-fitted-and-marginal.html#manually-fitting-model-using-matrix-algebra"><i class="fa fa-check"></i><b>9.5</b> Manually fitting model using matrix algebra</a></li>
+<li class="chapter" data-level="9.6" data-path="means-fitted-and-marginal.html"><a href="means-fitted-and-marginal.html#estimated-means-using-model-coefficients-and-various-weights"><i class="fa fa-check"></i><b>9.6</b> Estimated means using model coefficients and various weights</a>
+<ul>
+<li class="chapter" data-level="9.6.1" data-path="means-fitted-and-marginal.html"><a href="means-fitted-and-marginal.html#marginal-means-for-litter"><i class="fa fa-check"></i><b>9.6.1</b> Marginal means for Litter</a></li>
+<li class="chapter" data-level="9.6.2" data-path="means-fitted-and-marginal.html"><a href="means-fitted-and-marginal.html#marginal-means-for-mother"><i class="fa fa-check"></i><b>9.6.2</b> Marginal means for Mother</a></li>
+<li class="chapter" data-level="9.6.3" data-path="means-fitted-and-marginal.html"><a href="means-fitted-and-marginal.html#using-a-matrix-with-equal-weights"><i class="fa fa-check"></i><b>9.6.3</b> Using a matrix with equal weights</a></li>
+<li class="chapter" data-level="9.6.4" data-path="means-fitted-and-marginal.html"><a href="means-fitted-and-marginal.html#using-a-matrix-with-proportional-weights"><i class="fa fa-check"></i><b>9.6.4</b> Using a matrix with proportional weights</a></li>
+</ul></li>
+<li class="chapter" data-level="9.7" data-path="means-fitted-and-marginal.html"><a href="means-fitted-and-marginal.html#estimates-using-effects-package"><i class="fa fa-check"></i><b>9.7</b> Estimates using “effects” package</a></li>
+<li class="chapter" data-level="9.8" data-path="means-fitted-and-marginal.html"><a href="means-fitted-and-marginal.html#transformations-and-emmeans"><i class="fa fa-check"></i><b>9.8</b> Transformations and <code>emmeans</code></a></li>
 </ul></li>
 </ul>
 
@@ -230,7 +270,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="header">
 <h1 class="title">Kitab at-Tabakh</h1>
 <p class="author"><em>Peter Geelan-Small</em></p>
-<p class="date"><em>28/09/2020</em></p>
+<p class="date" style="margin-top: 1.5em;"><em>28/09/2020</em></p>
 </div>
 <div id="intro" class="section level1 unnumbered">
 <h1>Intro</h1>
@@ -266,6 +306,7 @@ gitbook.start({
 "weibo": false,
 "instapaper": false,
 "vk": false,
+"whatsapp": false,
 "all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
 },
 "fontsettings": {

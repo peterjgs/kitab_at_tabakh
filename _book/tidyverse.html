@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>4 Tidyverse | Kitab at-Tabakh</title>
   <meta name="description" content="This is a collection of miscellaneous statistics-related recipes and notes." />
-  <meta name="generator" content="bookdown 0.20 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.22 and GitBook 2.6.7" />
 
   <meta property="og:title" content="4 Tidyverse | Kitab at-Tabakh" />
   <meta property="og:type" content="book" />
@@ -32,7 +32,7 @@
   
 <link rel="prev" href="r-markdown.html"/>
 <link rel="next" href="linear-models.html"/>
-<script src="libs/header-attrs-2.3/header-attrs.js"></script>
+<script src="libs/header-attrs-2.7/header-attrs.js"></script>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -50,6 +50,8 @@
 
 
 
+<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
 
 
 <style type="text/css">
@@ -116,6 +118,7 @@ code span.vs { color: #4070a0; } /* VerbatimString */
 code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
+
 </head>
 
 <body>
@@ -163,11 +166,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="2.10" data-path="ggplot.html"><a href="ggplot.html#set-breaks-for-scale"><i class="fa fa-check"></i><b>2.10</b> Set breaks for scale</a></li>
 <li class="chapter" data-level="2.11" data-path="ggplot.html"><a href="ggplot.html#display-table-to-2-d.p."><i class="fa fa-check"></i><b>2.11</b> Display table to 2 d.p.</a></li>
 <li class="chapter" data-level="2.12" data-path="ggplot.html"><a href="ggplot.html#redefine-factor-levels-for-an-individual-plot"><i class="fa fa-check"></i><b>2.12</b> Redefine factor levels for an individual plot</a></li>
+<li class="chapter" data-level="2.13" data-path="ggplot.html"><a href="ggplot.html#plotting-two-data-sets-of-different-length-on-one-plot"><i class="fa fa-check"></i><b>2.13</b> Plotting two data sets of different length on one plot</a></li>
 </ul></li>
 <li class="chapter" data-level="3" data-path="r-markdown.html"><a href="r-markdown.html"><i class="fa fa-check"></i><b>3</b> R Markdown</a>
 <ul>
 <li class="chapter" data-level="3.1" data-path="r-markdown.html"><a href="r-markdown.html#ioslides-footnotes"><i class="fa fa-check"></i><b>3.1</b> ioslides: Footnotes</a></li>
 <li class="chapter" data-level="3.2" data-path="r-markdown.html"><a href="r-markdown.html#ioslides-speakers-notes"><i class="fa fa-check"></i><b>3.2</b> ioslides: Speaker’s notes</a></li>
+<li class="chapter" data-level="3.3" data-path="r-markdown.html"><a href="r-markdown.html#how-to-make-multi-line-tables"><i class="fa fa-check"></i><b>3.3</b> How to make multi-line tables</a></li>
 </ul></li>
 <li class="chapter" data-level="4" data-path="tidyverse.html"><a href="tidyverse.html"><i class="fa fa-check"></i><b>4</b> Tidyverse</a>
 <ul>
@@ -201,6 +206,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="5.5.1" data-path="linear-models.html"><a href="linear-models.html#regression-model"><i class="fa fa-check"></i><b>5.5.1</b> Regression model</a></li>
 </ul></li>
 <li class="chapter" data-level="5.6" data-path="linear-models.html"><a href="linear-models.html#residual-plots---redres"><i class="fa fa-check"></i><b>5.6</b> Residual plots - redres</a></li>
+<li class="chapter" data-level="5.7" data-path="linear-models.html"><a href="linear-models.html#interactions---examples"><i class="fa fa-check"></i><b>5.7</b> Interactions - examples</a></li>
+<li class="chapter" data-level="5.8" data-path="linear-models.html"><a href="linear-models.html#interaction-plot-in-ggplot2"><i class="fa fa-check"></i><b>5.8</b> Interaction plot in ggplot2</a></li>
+<li class="chapter" data-level="5.9" data-path="linear-models.html"><a href="linear-models.html#plot-simple-linear-regression-fitted-line-with-95-confidence-band"><i class="fa fa-check"></i><b>5.9</b> Plot simple linear regression fitted line with 95 % confidence band</a></li>
 </ul></li>
 <li class="chapter" data-level="6" data-path="linear-mixed-models.html"><a href="linear-mixed-models.html"><i class="fa fa-check"></i><b>6</b> Linear mixed models</a>
 <ul>
@@ -209,6 +217,38 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="7" data-path="experimental-design.html"><a href="experimental-design.html"><i class="fa fa-check"></i><b>7</b> Experimental design</a>
 <ul>
 <li class="chapter" data-level="7.1" data-path="experimental-design.html"><a href="experimental-design.html#sample-size-by-simulation"><i class="fa fa-check"></i><b>7.1</b> Sample size by simulation</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="count-data.html"><a href="count-data.html"><i class="fa fa-check"></i><b>8</b> Count data</a>
+<ul>
+<li class="chapter" data-level="8.1" data-path="count-data.html"><a href="count-data.html#count-data-tests-of-independence-and-homogeneity"><i class="fa fa-check"></i><b>8.1</b> Count data: tests of independence and homogeneity</a>
+<ul>
+<li class="chapter" data-level="8.1.1" data-path="count-data.html"><a href="count-data.html#independence"><i class="fa fa-check"></i><b>8.1.1</b> Independence</a></li>
+<li class="chapter" data-level="8.1.2" data-path="count-data.html"><a href="count-data.html#homogeneity"><i class="fa fa-check"></i><b>8.1.2</b> Homogeneity</a></li>
+<li class="chapter" data-level="8.1.3" data-path="count-data.html"><a href="count-data.html#comparing-two-proportions"><i class="fa fa-check"></i><b>8.1.3</b> Comparing two proportions</a></li>
+<li class="chapter" data-level="8.1.4" data-path="count-data.html"><a href="count-data.html#small-counts"><i class="fa fa-check"></i><b>8.1.4</b> Small Counts</a></li>
+</ul></li>
+<li class="chapter" data-level="8.2" data-path="count-data.html"><a href="count-data.html#contingency-tables---fixed-row-and-columns-totals"><i class="fa fa-check"></i><b>8.2</b> Contingency tables - fixed row and columns totals</a></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="means-fitted-and-marginal.html"><a href="means-fitted-and-marginal.html"><i class="fa fa-check"></i><b>9</b> Means - fitted and marginal</a>
+<ul>
+<li class="chapter" data-level="9.1" data-path="means-fitted-and-marginal.html"><a href="means-fitted-and-marginal.html#load-necessary-packages"><i class="fa fa-check"></i><b>9.1</b> Load necessary packages</a></li>
+<li class="chapter" data-level="9.2" data-path="means-fitted-and-marginal.html"><a href="means-fitted-and-marginal.html#data---genotype-from-mass-package"><i class="fa fa-check"></i><b>9.2</b> Data - “genotype” from MASS package</a></li>
+<li class="chapter" data-level="9.3" data-path="means-fitted-and-marginal.html"><a href="means-fitted-and-marginal.html#model"><i class="fa fa-check"></i><b>9.3</b> Model</a></li>
+<li class="chapter" data-level="9.4" data-path="means-fitted-and-marginal.html"><a href="means-fitted-and-marginal.html#fitted-values-using-predict"><i class="fa fa-check"></i><b>9.4</b> Fitted values using “predict”</a>
+<ul>
+<li class="chapter" data-level="9.4.1" data-path="means-fitted-and-marginal.html"><a href="means-fitted-and-marginal.html#fitted-values-with-interval-confidence"><i class="fa fa-check"></i><b>9.4.1</b> Fitted values (with interval = “confidence”)</a></li>
+<li class="chapter" data-level="9.4.2" data-path="means-fitted-and-marginal.html"><a href="means-fitted-and-marginal.html#fitted-values-with-interval-prediction"><i class="fa fa-check"></i><b>9.4.2</b> Fitted values (with interval = “prediction”)</a></li>
+</ul></li>
+<li class="chapter" data-level="9.5" data-path="means-fitted-and-marginal.html"><a href="means-fitted-and-marginal.html#manually-fitting-model-using-matrix-algebra"><i class="fa fa-check"></i><b>9.5</b> Manually fitting model using matrix algebra</a></li>
+<li class="chapter" data-level="9.6" data-path="means-fitted-and-marginal.html"><a href="means-fitted-and-marginal.html#estimated-means-using-model-coefficients-and-various-weights"><i class="fa fa-check"></i><b>9.6</b> Estimated means using model coefficients and various weights</a>
+<ul>
+<li class="chapter" data-level="9.6.1" data-path="means-fitted-and-marginal.html"><a href="means-fitted-and-marginal.html#marginal-means-for-litter"><i class="fa fa-check"></i><b>9.6.1</b> Marginal means for Litter</a></li>
+<li class="chapter" data-level="9.6.2" data-path="means-fitted-and-marginal.html"><a href="means-fitted-and-marginal.html#marginal-means-for-mother"><i class="fa fa-check"></i><b>9.6.2</b> Marginal means for Mother</a></li>
+<li class="chapter" data-level="9.6.3" data-path="means-fitted-and-marginal.html"><a href="means-fitted-and-marginal.html#using-a-matrix-with-equal-weights"><i class="fa fa-check"></i><b>9.6.3</b> Using a matrix with equal weights</a></li>
+<li class="chapter" data-level="9.6.4" data-path="means-fitted-and-marginal.html"><a href="means-fitted-and-marginal.html#using-a-matrix-with-proportional-weights"><i class="fa fa-check"></i><b>9.6.4</b> Using a matrix with proportional weights</a></li>
+</ul></li>
+<li class="chapter" data-level="9.7" data-path="means-fitted-and-marginal.html"><a href="means-fitted-and-marginal.html#estimates-using-effects-package"><i class="fa fa-check"></i><b>9.7</b> Estimates using “effects” package</a></li>
+<li class="chapter" data-level="9.8" data-path="means-fitted-and-marginal.html"><a href="means-fitted-and-marginal.html#transformations-and-emmeans"><i class="fa fa-check"></i><b>9.8</b> Transformations and <code>emmeans</code></a></li>
 </ul></li>
 </ul>
 
@@ -233,77 +273,77 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h2><span class="header-section-number">4.1</span> Stacking and unstacking data</h2>
 <p>Stack a two-column data frame with <code>pivot_longer</code> and then unstack it with <code>pivot_wider</code>.</p>
 <p>Firstly with <code>stack</code> and <code>unstack</code></p>
-<div class="sourceCode" id="cb88"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb88-1"><a href="tidyverse.html#cb88-1" aria-hidden="true"></a>dd1 &lt;-<span class="st"> </span><span class="kw">as.data.frame</span>(<span class="kw">matrix</span>(<span class="kw">rpois</span>(<span class="dv">10</span>, <span class="dv">5</span>), <span class="dt">nrow =</span> <span class="dv">5</span>))</span>
-<span id="cb88-2"><a href="tidyverse.html#cb88-2" aria-hidden="true"></a>dd1</span></code></pre></div>
+<div class="sourceCode" id="cb88"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb88-1"><a href="tidyverse.html#cb88-1" aria-hidden="true" tabindex="-1"></a>dd1 <span class="ot">&lt;-</span> <span class="fu">as.data.frame</span>(<span class="fu">matrix</span>(<span class="fu">rpois</span>(<span class="dv">10</span>, <span class="dv">5</span>), <span class="at">nrow =</span> <span class="dv">5</span>))</span>
+<span id="cb88-2"><a href="tidyverse.html#cb88-2" aria-hidden="true" tabindex="-1"></a>dd1</span></code></pre></div>
 <pre><code>##   V1 V2
-## 1  6  4
-## 2  8  5
-## 3 13  2
-## 4  5  8
-## 5  4  4</code></pre>
-<div class="sourceCode" id="cb90"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb90-1"><a href="tidyverse.html#cb90-1" aria-hidden="true"></a>dd2s &lt;-<span class="st"> </span><span class="kw">stack</span>(dd1)</span>
-<span id="cb90-2"><a href="tidyverse.html#cb90-2" aria-hidden="true"></a>dd2s</span></code></pre></div>
+## 1  6  3
+## 2  1  5
+## 3  3  4
+## 4  6  5
+## 5  3  8</code></pre>
+<div class="sourceCode" id="cb90"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb90-1"><a href="tidyverse.html#cb90-1" aria-hidden="true" tabindex="-1"></a>dd2s <span class="ot">&lt;-</span> <span class="fu">stack</span>(dd1)</span>
+<span id="cb90-2"><a href="tidyverse.html#cb90-2" aria-hidden="true" tabindex="-1"></a>dd2s</span></code></pre></div>
 <pre><code>##    values ind
 ## 1       6  V1
-## 2       8  V1
-## 3      13  V1
-## 4       5  V1
-## 5       4  V1
-## 6       4  V2
+## 2       1  V1
+## 3       3  V1
+## 4       6  V1
+## 5       3  V1
+## 6       3  V2
 ## 7       5  V2
-## 8       2  V2
-## 9       8  V2
-## 10      4  V2</code></pre>
-<div class="sourceCode" id="cb92"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb92-1"><a href="tidyverse.html#cb92-1" aria-hidden="true"></a><span class="kw">unstack</span>(dd2s)</span></code></pre></div>
+## 8       4  V2
+## 9       5  V2
+## 10      8  V2</code></pre>
+<div class="sourceCode" id="cb92"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb92-1"><a href="tidyverse.html#cb92-1" aria-hidden="true" tabindex="-1"></a><span class="fu">unstack</span>(dd2s)</span></code></pre></div>
 <pre><code>##   V1 V2
-## 1  6  4
-## 2  8  5
-## 3 13  2
-## 4  5  8
-## 5  4  4</code></pre>
+## 1  6  3
+## 2  1  5
+## 3  3  4
+## 4  6  5
+## 5  3  8</code></pre>
 <p>Now with <code>pivot_longer</code> and <code>pivot_wider</code>.</p>
-<div class="sourceCode" id="cb94"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb94-1"><a href="tidyverse.html#cb94-1" aria-hidden="true"></a><span class="kw">library</span>(tidyverse)</span></code></pre></div>
-<pre><code>## ── Attaching packages ───────────────────────────────────────────── tidyverse 1.3.0 ──</code></pre>
-<pre><code>## ✓ tibble  3.0.3     ✓ purrr   0.3.4
-## ✓ tidyr   1.1.2     ✓ stringr 1.4.0
-## ✓ readr   1.3.1     ✓ forcats 0.5.0</code></pre>
-<pre><code>## ── Conflicts ──────────────────────────────────────────────── tidyverse_conflicts() ──
+<div class="sourceCode" id="cb94"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb94-1"><a href="tidyverse.html#cb94-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span></code></pre></div>
+<pre><code>## ── Attaching packages ───────────────────────────── tidyverse 1.3.1 ──</code></pre>
+<pre><code>## ✓ tibble  3.1.1     ✓ purrr   0.3.4
+## ✓ tidyr   1.1.3     ✓ stringr 1.4.0
+## ✓ readr   1.4.0     ✓ forcats 0.5.1</code></pre>
+<pre><code>## ── Conflicts ──────────────────────────────── tidyverse_conflicts() ──
 ## x dplyr::collapse() masks nlme::collapse()
 ## x dplyr::filter()   masks stats::filter()
 ## x dplyr::lag()      masks stats::lag()
 ## x dplyr::select()   masks MASS::select()</code></pre>
-<div class="sourceCode" id="cb98"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb98-1"><a href="tidyverse.html#cb98-1" aria-hidden="true"></a>dd2pl &lt;-<span class="st"> </span>dd1 <span class="op">%&gt;%</span></span>
-<span id="cb98-2"><a href="tidyverse.html#cb98-2" aria-hidden="true"></a><span class="st">  </span><span class="kw">pivot_longer</span>(<span class="dt">cols =</span> <span class="kw">c</span>(<span class="st">&quot;V1&quot;</span>, <span class="st">&quot;V2&quot;</span>))</span>
-<span id="cb98-3"><a href="tidyverse.html#cb98-3" aria-hidden="true"></a>dd2pl</span></code></pre></div>
+<div class="sourceCode" id="cb98"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb98-1"><a href="tidyverse.html#cb98-1" aria-hidden="true" tabindex="-1"></a>dd2pl <span class="ot">&lt;-</span> dd1 <span class="sc">%&gt;%</span></span>
+<span id="cb98-2"><a href="tidyverse.html#cb98-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(<span class="at">cols =</span> <span class="fu">c</span>(<span class="st">&quot;V1&quot;</span>, <span class="st">&quot;V2&quot;</span>))</span>
+<span id="cb98-3"><a href="tidyverse.html#cb98-3" aria-hidden="true" tabindex="-1"></a>dd2pl</span></code></pre></div>
 <pre><code>## # A tibble: 10 x 2
 ##    name  value
 ##    &lt;chr&gt; &lt;int&gt;
 ##  1 V1        6
-##  2 V2        4
-##  3 V1        8
+##  2 V2        3
+##  3 V1        1
 ##  4 V2        5
-##  5 V1       13
-##  6 V2        2
-##  7 V1        5
-##  8 V2        8
-##  9 V1        4
-## 10 V2        4</code></pre>
-<div class="sourceCode" id="cb100"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb100-1"><a href="tidyverse.html#cb100-1" aria-hidden="true"></a>dd3pl &lt;-<span class="st"> </span></span>
-<span id="cb100-2"><a href="tidyverse.html#cb100-2" aria-hidden="true"></a><span class="st">  </span>dd2pl <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb100-3"><a href="tidyverse.html#cb100-3" aria-hidden="true"></a><span class="st">  </span><span class="kw">group_by</span>(name) <span class="op">%&gt;%</span></span>
-<span id="cb100-4"><a href="tidyverse.html#cb100-4" aria-hidden="true"></a><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">row =</span> <span class="kw">row_number</span>() ) <span class="op">%&gt;%</span></span>
-<span id="cb100-5"><a href="tidyverse.html#cb100-5" aria-hidden="true"></a><span class="st">  </span>tidyr<span class="op">::</span><span class="kw">pivot_wider</span>(<span class="dt">names_from =</span> name, <span class="dt">values_from =</span> value) <span class="op">%&gt;%</span></span>
-<span id="cb100-6"><a href="tidyverse.html#cb100-6" aria-hidden="true"></a><span class="st">  </span><span class="kw">select</span>(<span class="op">-</span>row)</span>
-<span id="cb100-7"><a href="tidyverse.html#cb100-7" aria-hidden="true"></a></span>
-<span id="cb100-8"><a href="tidyverse.html#cb100-8" aria-hidden="true"></a>dd3pl</span></code></pre></div>
+##  5 V1        3
+##  6 V2        4
+##  7 V1        6
+##  8 V2        5
+##  9 V1        3
+## 10 V2        8</code></pre>
+<div class="sourceCode" id="cb100"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb100-1"><a href="tidyverse.html#cb100-1" aria-hidden="true" tabindex="-1"></a>dd3pl <span class="ot">&lt;-</span> </span>
+<span id="cb100-2"><a href="tidyverse.html#cb100-2" aria-hidden="true" tabindex="-1"></a>  dd2pl <span class="sc">%&gt;%</span> </span>
+<span id="cb100-3"><a href="tidyverse.html#cb100-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(name) <span class="sc">%&gt;%</span></span>
+<span id="cb100-4"><a href="tidyverse.html#cb100-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">row =</span> <span class="fu">row_number</span>() ) <span class="sc">%&gt;%</span></span>
+<span id="cb100-5"><a href="tidyverse.html#cb100-5" aria-hidden="true" tabindex="-1"></a>  tidyr<span class="sc">::</span><span class="fu">pivot_wider</span>(<span class="at">names_from =</span> name, <span class="at">values_from =</span> value) <span class="sc">%&gt;%</span></span>
+<span id="cb100-6"><a href="tidyverse.html#cb100-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">-</span>row)</span>
+<span id="cb100-7"><a href="tidyverse.html#cb100-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb100-8"><a href="tidyverse.html#cb100-8" aria-hidden="true" tabindex="-1"></a>dd3pl</span></code></pre></div>
 <pre><code>## # A tibble: 5 x 2
 ##      V1    V2
 ##   &lt;int&gt; &lt;int&gt;
-## 1     6     4
-## 2     8     5
-## 3    13     2
-## 4     5     8
-## 5     4     4</code></pre>
+## 1     6     3
+## 2     1     5
+## 3     3     4
+## 4     6     5
+## 5     3     8</code></pre>
 
 </div>
 </div>
@@ -336,6 +376,7 @@ gitbook.start({
 "weibo": false,
 "instapaper": false,
 "vk": false,
+"whatsapp": false,
 "all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
 },
 "fontsettings": {

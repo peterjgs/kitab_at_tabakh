@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>1 Mawaqif | Kitab at-Tabakh</title>
   <meta name="description" content="This is a collection of miscellaneous statistics-related recipes and notes." />
-  <meta name="generator" content="bookdown 0.20 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.22 and GitBook 2.6.7" />
 
   <meta property="og:title" content="1 Mawaqif | Kitab at-Tabakh" />
   <meta property="og:type" content="book" />
@@ -32,7 +32,7 @@
   
 <link rel="prev" href="index.html"/>
 <link rel="next" href="ggplot.html"/>
-<script src="libs/header-attrs-2.3/header-attrs.js"></script>
+<script src="libs/header-attrs-2.7/header-attrs.js"></script>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -50,6 +50,8 @@
 
 
 
+<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
 
 
 <style type="text/css">
@@ -116,6 +118,7 @@ code span.vs { color: #4070a0; } /* VerbatimString */
 code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
+
 </head>
 
 <body>
@@ -163,11 +166,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="2.10" data-path="ggplot.html"><a href="ggplot.html#set-breaks-for-scale"><i class="fa fa-check"></i><b>2.10</b> Set breaks for scale</a></li>
 <li class="chapter" data-level="2.11" data-path="ggplot.html"><a href="ggplot.html#display-table-to-2-d.p."><i class="fa fa-check"></i><b>2.11</b> Display table to 2 d.p.</a></li>
 <li class="chapter" data-level="2.12" data-path="ggplot.html"><a href="ggplot.html#redefine-factor-levels-for-an-individual-plot"><i class="fa fa-check"></i><b>2.12</b> Redefine factor levels for an individual plot</a></li>
+<li class="chapter" data-level="2.13" data-path="ggplot.html"><a href="ggplot.html#plotting-two-data-sets-of-different-length-on-one-plot"><i class="fa fa-check"></i><b>2.13</b> Plotting two data sets of different length on one plot</a></li>
 </ul></li>
 <li class="chapter" data-level="3" data-path="r-markdown.html"><a href="r-markdown.html"><i class="fa fa-check"></i><b>3</b> R Markdown</a>
 <ul>
 <li class="chapter" data-level="3.1" data-path="r-markdown.html"><a href="r-markdown.html#ioslides-footnotes"><i class="fa fa-check"></i><b>3.1</b> ioslides: Footnotes</a></li>
 <li class="chapter" data-level="3.2" data-path="r-markdown.html"><a href="r-markdown.html#ioslides-speakers-notes"><i class="fa fa-check"></i><b>3.2</b> ioslides: Speaker’s notes</a></li>
+<li class="chapter" data-level="3.3" data-path="r-markdown.html"><a href="r-markdown.html#how-to-make-multi-line-tables"><i class="fa fa-check"></i><b>3.3</b> How to make multi-line tables</a></li>
 </ul></li>
 <li class="chapter" data-level="4" data-path="tidyverse.html"><a href="tidyverse.html"><i class="fa fa-check"></i><b>4</b> Tidyverse</a>
 <ul>
@@ -201,6 +206,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="5.5.1" data-path="linear-models.html"><a href="linear-models.html#regression-model"><i class="fa fa-check"></i><b>5.5.1</b> Regression model</a></li>
 </ul></li>
 <li class="chapter" data-level="5.6" data-path="linear-models.html"><a href="linear-models.html#residual-plots---redres"><i class="fa fa-check"></i><b>5.6</b> Residual plots - redres</a></li>
+<li class="chapter" data-level="5.7" data-path="linear-models.html"><a href="linear-models.html#interactions---examples"><i class="fa fa-check"></i><b>5.7</b> Interactions - examples</a></li>
+<li class="chapter" data-level="5.8" data-path="linear-models.html"><a href="linear-models.html#interaction-plot-in-ggplot2"><i class="fa fa-check"></i><b>5.8</b> Interaction plot in ggplot2</a></li>
+<li class="chapter" data-level="5.9" data-path="linear-models.html"><a href="linear-models.html#plot-simple-linear-regression-fitted-line-with-95-confidence-band"><i class="fa fa-check"></i><b>5.9</b> Plot simple linear regression fitted line with 95 % confidence band</a></li>
 </ul></li>
 <li class="chapter" data-level="6" data-path="linear-mixed-models.html"><a href="linear-mixed-models.html"><i class="fa fa-check"></i><b>6</b> Linear mixed models</a>
 <ul>
@@ -209,6 +217,38 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="7" data-path="experimental-design.html"><a href="experimental-design.html"><i class="fa fa-check"></i><b>7</b> Experimental design</a>
 <ul>
 <li class="chapter" data-level="7.1" data-path="experimental-design.html"><a href="experimental-design.html#sample-size-by-simulation"><i class="fa fa-check"></i><b>7.1</b> Sample size by simulation</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="count-data.html"><a href="count-data.html"><i class="fa fa-check"></i><b>8</b> Count data</a>
+<ul>
+<li class="chapter" data-level="8.1" data-path="count-data.html"><a href="count-data.html#count-data-tests-of-independence-and-homogeneity"><i class="fa fa-check"></i><b>8.1</b> Count data: tests of independence and homogeneity</a>
+<ul>
+<li class="chapter" data-level="8.1.1" data-path="count-data.html"><a href="count-data.html#independence"><i class="fa fa-check"></i><b>8.1.1</b> Independence</a></li>
+<li class="chapter" data-level="8.1.2" data-path="count-data.html"><a href="count-data.html#homogeneity"><i class="fa fa-check"></i><b>8.1.2</b> Homogeneity</a></li>
+<li class="chapter" data-level="8.1.3" data-path="count-data.html"><a href="count-data.html#comparing-two-proportions"><i class="fa fa-check"></i><b>8.1.3</b> Comparing two proportions</a></li>
+<li class="chapter" data-level="8.1.4" data-path="count-data.html"><a href="count-data.html#small-counts"><i class="fa fa-check"></i><b>8.1.4</b> Small Counts</a></li>
+</ul></li>
+<li class="chapter" data-level="8.2" data-path="count-data.html"><a href="count-data.html#contingency-tables---fixed-row-and-columns-totals"><i class="fa fa-check"></i><b>8.2</b> Contingency tables - fixed row and columns totals</a></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="means-fitted-and-marginal.html"><a href="means-fitted-and-marginal.html"><i class="fa fa-check"></i><b>9</b> Means - fitted and marginal</a>
+<ul>
+<li class="chapter" data-level="9.1" data-path="means-fitted-and-marginal.html"><a href="means-fitted-and-marginal.html#load-necessary-packages"><i class="fa fa-check"></i><b>9.1</b> Load necessary packages</a></li>
+<li class="chapter" data-level="9.2" data-path="means-fitted-and-marginal.html"><a href="means-fitted-and-marginal.html#data---genotype-from-mass-package"><i class="fa fa-check"></i><b>9.2</b> Data - “genotype” from MASS package</a></li>
+<li class="chapter" data-level="9.3" data-path="means-fitted-and-marginal.html"><a href="means-fitted-and-marginal.html#model"><i class="fa fa-check"></i><b>9.3</b> Model</a></li>
+<li class="chapter" data-level="9.4" data-path="means-fitted-and-marginal.html"><a href="means-fitted-and-marginal.html#fitted-values-using-predict"><i class="fa fa-check"></i><b>9.4</b> Fitted values using “predict”</a>
+<ul>
+<li class="chapter" data-level="9.4.1" data-path="means-fitted-and-marginal.html"><a href="means-fitted-and-marginal.html#fitted-values-with-interval-confidence"><i class="fa fa-check"></i><b>9.4.1</b> Fitted values (with interval = “confidence”)</a></li>
+<li class="chapter" data-level="9.4.2" data-path="means-fitted-and-marginal.html"><a href="means-fitted-and-marginal.html#fitted-values-with-interval-prediction"><i class="fa fa-check"></i><b>9.4.2</b> Fitted values (with interval = “prediction”)</a></li>
+</ul></li>
+<li class="chapter" data-level="9.5" data-path="means-fitted-and-marginal.html"><a href="means-fitted-and-marginal.html#manually-fitting-model-using-matrix-algebra"><i class="fa fa-check"></i><b>9.5</b> Manually fitting model using matrix algebra</a></li>
+<li class="chapter" data-level="9.6" data-path="means-fitted-and-marginal.html"><a href="means-fitted-and-marginal.html#estimated-means-using-model-coefficients-and-various-weights"><i class="fa fa-check"></i><b>9.6</b> Estimated means using model coefficients and various weights</a>
+<ul>
+<li class="chapter" data-level="9.6.1" data-path="means-fitted-and-marginal.html"><a href="means-fitted-and-marginal.html#marginal-means-for-litter"><i class="fa fa-check"></i><b>9.6.1</b> Marginal means for Litter</a></li>
+<li class="chapter" data-level="9.6.2" data-path="means-fitted-and-marginal.html"><a href="means-fitted-and-marginal.html#marginal-means-for-mother"><i class="fa fa-check"></i><b>9.6.2</b> Marginal means for Mother</a></li>
+<li class="chapter" data-level="9.6.3" data-path="means-fitted-and-marginal.html"><a href="means-fitted-and-marginal.html#using-a-matrix-with-equal-weights"><i class="fa fa-check"></i><b>9.6.3</b> Using a matrix with equal weights</a></li>
+<li class="chapter" data-level="9.6.4" data-path="means-fitted-and-marginal.html"><a href="means-fitted-and-marginal.html#using-a-matrix-with-proportional-weights"><i class="fa fa-check"></i><b>9.6.4</b> Using a matrix with proportional weights</a></li>
+</ul></li>
+<li class="chapter" data-level="9.7" data-path="means-fitted-and-marginal.html"><a href="means-fitted-and-marginal.html#estimates-using-effects-package"><i class="fa fa-check"></i><b>9.7</b> Estimates using “effects” package</a></li>
+<li class="chapter" data-level="9.8" data-path="means-fitted-and-marginal.html"><a href="means-fitted-and-marginal.html#transformations-and-emmeans"><i class="fa fa-check"></i><b>9.8</b> Transformations and <code>emmeans</code></a></li>
 </ul></li>
 </ul>
 
@@ -255,38 +295,38 @@ blockquote {
 <p><span class="math inline">\(b_2 = (\log 100 - \log 5) / 10 = 0.300\)</span></p>
 <p><span class="math inline">\(b_3 = (\log 25 - \log 5) / 10 = 0.161\)</span></p>
 <p><br></p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="mawaqif.html#cb1-1" aria-hidden="true"></a>tt =<span class="st"> </span><span class="dv">0</span><span class="op">:</span><span class="dv">15</span></span>
-<span id="cb1-2"><a href="mawaqif.html#cb1-2" aria-hidden="true"></a></span>
-<span id="cb1-3"><a href="mawaqif.html#cb1-3" aria-hidden="true"></a>y1 &lt;-<span class="st"> </span>A <span class="op">*</span><span class="st"> </span><span class="kw">exp</span>(b_<span class="dv">1</span> <span class="op">*</span><span class="st"> </span>tt)</span>
-<span id="cb1-4"><a href="mawaqif.html#cb1-4" aria-hidden="true"></a></span>
-<span id="cb1-5"><a href="mawaqif.html#cb1-5" aria-hidden="true"></a>y2 &lt;-<span class="st"> </span>A <span class="op">*</span><span class="st"> </span><span class="kw">exp</span>(b_<span class="dv">2</span> <span class="op">*</span><span class="st"> </span>tt)</span>
-<span id="cb1-6"><a href="mawaqif.html#cb1-6" aria-hidden="true"></a></span>
-<span id="cb1-7"><a href="mawaqif.html#cb1-7" aria-hidden="true"></a>y3 &lt;-<span class="st"> </span>A <span class="op">*</span><span class="st"> </span><span class="kw">exp</span>(b_<span class="dv">3</span> <span class="op">*</span><span class="st"> </span>tt)</span>
-<span id="cb1-8"><a href="mawaqif.html#cb1-8" aria-hidden="true"></a></span>
-<span id="cb1-9"><a href="mawaqif.html#cb1-9" aria-hidden="true"></a>dd1 &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">time =</span> <span class="kw">rep</span>(tt, <span class="dv">3</span>), <span class="dt">y =</span> <span class="kw">c</span>(y1, y2, y3),</span>
-<span id="cb1-10"><a href="mawaqif.html#cb1-10" aria-hidden="true"></a>                  <span class="dt">batch =</span> <span class="kw">rep</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">3</span>, <span class="dt">each =</span> <span class="kw">length</span>(tt)))</span>
-<span id="cb1-11"><a href="mawaqif.html#cb1-11" aria-hidden="true"></a></span>
-<span id="cb1-12"><a href="mawaqif.html#cb1-12" aria-hidden="true"></a>dd1<span class="op">$</span>batch &lt;-<span class="st"> </span><span class="kw">factor</span>(dd1<span class="op">$</span>batch)</span>
-<span id="cb1-13"><a href="mawaqif.html#cb1-13" aria-hidden="true"></a></span>
-<span id="cb1-14"><a href="mawaqif.html#cb1-14" aria-hidden="true"></a><span class="kw">ggplot</span>(dd1, <span class="kw">aes</span>(<span class="dt">x =</span> time, <span class="dt">y =</span> y, <span class="dt">colour =</span> batch)) <span class="op">+</span></span>
-<span id="cb1-15"><a href="mawaqif.html#cb1-15" aria-hidden="true"></a><span class="st">    </span><span class="kw">geom_line</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="mawaqif.html#cb1-1" aria-hidden="true" tabindex="-1"></a>tt <span class="ot">=</span> <span class="dv">0</span><span class="sc">:</span><span class="dv">15</span></span>
+<span id="cb1-2"><a href="mawaqif.html#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-3"><a href="mawaqif.html#cb1-3" aria-hidden="true" tabindex="-1"></a>y1 <span class="ot">&lt;-</span> A <span class="sc">*</span> <span class="fu">exp</span>(b_1 <span class="sc">*</span> tt)</span>
+<span id="cb1-4"><a href="mawaqif.html#cb1-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-5"><a href="mawaqif.html#cb1-5" aria-hidden="true" tabindex="-1"></a>y2 <span class="ot">&lt;-</span> A <span class="sc">*</span> <span class="fu">exp</span>(b_2 <span class="sc">*</span> tt)</span>
+<span id="cb1-6"><a href="mawaqif.html#cb1-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-7"><a href="mawaqif.html#cb1-7" aria-hidden="true" tabindex="-1"></a>y3 <span class="ot">&lt;-</span> A <span class="sc">*</span> <span class="fu">exp</span>(b_3 <span class="sc">*</span> tt)</span>
+<span id="cb1-8"><a href="mawaqif.html#cb1-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-9"><a href="mawaqif.html#cb1-9" aria-hidden="true" tabindex="-1"></a>dd1 <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">time =</span> <span class="fu">rep</span>(tt, <span class="dv">3</span>), <span class="at">y =</span> <span class="fu">c</span>(y1, y2, y3),</span>
+<span id="cb1-10"><a href="mawaqif.html#cb1-10" aria-hidden="true" tabindex="-1"></a>                  <span class="at">batch =</span> <span class="fu">rep</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>, <span class="at">each =</span> <span class="fu">length</span>(tt)))</span>
+<span id="cb1-11"><a href="mawaqif.html#cb1-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-12"><a href="mawaqif.html#cb1-12" aria-hidden="true" tabindex="-1"></a>dd1<span class="sc">$</span>batch <span class="ot">&lt;-</span> <span class="fu">factor</span>(dd1<span class="sc">$</span>batch)</span>
+<span id="cb1-13"><a href="mawaqif.html#cb1-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-14"><a href="mawaqif.html#cb1-14" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(dd1, <span class="fu">aes</span>(<span class="at">x =</span> time, <span class="at">y =</span> y, <span class="at">colour =</span> batch)) <span class="sc">+</span></span>
+<span id="cb1-15"><a href="mawaqif.html#cb1-15" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_line</span>()</span></code></pre></div>
 <p><img src="_main_files/figure-html/unnamed-chunk-2-1.png" width="672" /></p>
 <p><br></p>
 <p><span class="math inline">\(y = A e^{bt}\)</span></p>
 <p>is the same as</p>
 <p><span class="math inline">\(\log y = \log A + bt\)</span></p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="mawaqif.html#cb2-1" aria-hidden="true"></a>dd1<span class="op">$</span>log_y &lt;-<span class="st"> </span><span class="kw">log</span>(dd1<span class="op">$</span>y)</span>
-<span id="cb2-2"><a href="mawaqif.html#cb2-2" aria-hidden="true"></a></span>
-<span id="cb2-3"><a href="mawaqif.html#cb2-3" aria-hidden="true"></a><span class="kw">ggplot</span>(dd1, <span class="kw">aes</span>(<span class="dt">x =</span> time, <span class="dt">y =</span> log_y, <span class="dt">colour =</span> batch)) <span class="op">+</span></span>
-<span id="cb2-4"><a href="mawaqif.html#cb2-4" aria-hidden="true"></a><span class="st">    </span><span class="kw">geom_line</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="mawaqif.html#cb2-1" aria-hidden="true" tabindex="-1"></a>dd1<span class="sc">$</span>log_y <span class="ot">&lt;-</span> <span class="fu">log</span>(dd1<span class="sc">$</span>y)</span>
+<span id="cb2-2"><a href="mawaqif.html#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-3"><a href="mawaqif.html#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(dd1, <span class="fu">aes</span>(<span class="at">x =</span> time, <span class="at">y =</span> log_y, <span class="at">colour =</span> batch)) <span class="sc">+</span></span>
+<span id="cb2-4"><a href="mawaqif.html#cb2-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_line</span>()</span></code></pre></div>
 <p><img src="_main_files/figure-html/unnamed-chunk-3-1.png" width="672" />
 <br></p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="mawaqif.html#cb3-1" aria-hidden="true"></a><span class="kw">ggplot</span>(dd1, <span class="kw">aes</span>(<span class="dt">x =</span> time, <span class="dt">y =</span> y, <span class="dt">colour =</span> batch)) <span class="op">+</span><span class="st"> </span></span>
-<span id="cb3-2"><a href="mawaqif.html#cb3-2" aria-hidden="true"></a><span class="st">    </span><span class="kw">geom_line</span>() <span class="op">+</span></span>
-<span id="cb3-3"><a href="mawaqif.html#cb3-3" aria-hidden="true"></a><span class="st">    </span><span class="kw">coord_trans</span>(<span class="dt">y =</span> <span class="st">&#39;log&#39;</span>) <span class="op">+</span></span>
-<span id="cb3-4"><a href="mawaqif.html#cb3-4" aria-hidden="true"></a><span class="st">    </span><span class="kw">scale_x_continuous</span>(<span class="dt">breaks =</span> <span class="kw">c</span>(<span class="dv">0</span><span class="op">:</span><span class="dv">8</span><span class="op">*</span><span class="dv">2</span>)) <span class="op">+</span></span>
-<span id="cb3-5"><a href="mawaqif.html#cb3-5" aria-hidden="true"></a><span class="st">    </span><span class="kw">scale_y_continuous</span>(<span class="dt">breaks =</span> <span class="kw">c</span>(<span class="dv">10</span>, <span class="dv">20</span>, <span class="dv">40</span>, <span class="dv">80</span>, <span class="dv">160</span>, <span class="dv">325</span>, </span>
-<span id="cb3-6"><a href="mawaqif.html#cb3-6" aria-hidden="true"></a>                                  <span class="dv">650</span>, <span class="dv">1300</span>, <span class="dv">2600</span>, <span class="dv">5200</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="mawaqif.html#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(dd1, <span class="fu">aes</span>(<span class="at">x =</span> time, <span class="at">y =</span> y, <span class="at">colour =</span> batch)) <span class="sc">+</span> </span>
+<span id="cb3-2"><a href="mawaqif.html#cb3-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_line</span>() <span class="sc">+</span></span>
+<span id="cb3-3"><a href="mawaqif.html#cb3-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">coord_trans</span>(<span class="at">y =</span> <span class="st">&#39;log&#39;</span>) <span class="sc">+</span></span>
+<span id="cb3-4"><a href="mawaqif.html#cb3-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_x_continuous</span>(<span class="at">breaks =</span> <span class="fu">c</span>(<span class="dv">0</span><span class="sc">:</span><span class="dv">8</span><span class="sc">*</span><span class="dv">2</span>)) <span class="sc">+</span></span>
+<span id="cb3-5"><a href="mawaqif.html#cb3-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_y_continuous</span>(<span class="at">breaks =</span> <span class="fu">c</span>(<span class="dv">10</span>, <span class="dv">20</span>, <span class="dv">40</span>, <span class="dv">80</span>, <span class="dv">160</span>, <span class="dv">325</span>, </span>
+<span id="cb3-6"><a href="mawaqif.html#cb3-6" aria-hidden="true" tabindex="-1"></a>                                  <span class="dv">650</span>, <span class="dv">1300</span>, <span class="dv">2600</span>, <span class="dv">5200</span>))</span></code></pre></div>
 <p><img src="_main_files/figure-html/unnamed-chunk-4-1.png" width="672" />
 <br></p>
 <p>For a one unit increase in time, the change in <span class="math inline">\(y\)</span> is:</p>
@@ -295,7 +335,7 @@ blockquote {
 <p>For batch 1, <span class="math inline">\(e^b = e^{0.461} = 1.59\)</span>, so for each one unit increase in time, <span class="math inline">\(y\)</span> increases by a factor of 1.59 or by 59%.</p>
 <p><br></p>
 <p>Values of batch 1 at times from 0 to 15:</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="mawaqif.html#cb4-1" aria-hidden="true"></a><span class="kw">round</span>(y1, <span class="dt">digits =</span> <span class="dv">3</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="mawaqif.html#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">round</span>(y1, <span class="at">digits =</span> <span class="dv">3</span>)</span></code></pre></div>
 <pre><code>##  [1]    5.000    7.924   12.559   19.905   31.548   50.000   79.245
 ##  [8]  125.594  199.054  315.479  500.000  792.447 1255.943 1990.536
 ## [15] 3154.787 5000.000</code></pre>
@@ -304,13 +344,13 @@ blockquote {
 <p>For an increase of two units in time,
 <span class="math inline">\(\log y_j - \log y_i = 2b\)</span>, so <span class="math inline">\(y_j = e^{2b} y_i\)</span>.</p>
 <p><span class="math inline">\(\;\;e^{2b_1} =\)</span> 2.512</p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="mawaqif.html#cb6-1" aria-hidden="true"></a>rat_<span class="dv">21</span> &lt;-<span class="st"> </span><span class="kw">round</span>(y1[<span class="dv">2</span>] <span class="op">/</span><span class="st"> </span>y1[<span class="dv">1</span>], <span class="dt">digits =</span> <span class="dv">3</span>)</span>
-<span id="cb6-2"><a href="mawaqif.html#cb6-2" aria-hidden="true"></a></span>
-<span id="cb6-3"><a href="mawaqif.html#cb6-3" aria-hidden="true"></a>rat_<span class="dv">32</span> &lt;-<span class="st"> </span><span class="kw">round</span>(y1[<span class="dv">3</span>] <span class="op">/</span><span class="st"> </span>y1[<span class="dv">2</span>], <span class="dt">digits =</span> <span class="dv">3</span>)</span>
-<span id="cb6-4"><a href="mawaqif.html#cb6-4" aria-hidden="true"></a></span>
-<span id="cb6-5"><a href="mawaqif.html#cb6-5" aria-hidden="true"></a>rat_<span class="dv">10</span>_<span class="dv">9</span> &lt;-<span class="st"> </span><span class="kw">round</span>(y1[<span class="dv">10</span>] <span class="op">/</span><span class="st"> </span>y1[<span class="dv">9</span>], <span class="dt">digits =</span> <span class="dv">3</span>)</span>
-<span id="cb6-6"><a href="mawaqif.html#cb6-6" aria-hidden="true"></a></span>
-<span id="cb6-7"><a href="mawaqif.html#cb6-7" aria-hidden="true"></a>rat_<span class="dv">15</span>_<span class="dv">13</span> &lt;-<span class="st"> </span><span class="kw">round</span>(y1[<span class="dv">15</span>] <span class="op">/</span><span class="st"> </span>y1[<span class="dv">13</span>], <span class="dt">digits =</span> <span class="dv">3</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="mawaqif.html#cb6-1" aria-hidden="true" tabindex="-1"></a>rat_21 <span class="ot">&lt;-</span> <span class="fu">round</span>(y1[<span class="dv">2</span>] <span class="sc">/</span> y1[<span class="dv">1</span>], <span class="at">digits =</span> <span class="dv">3</span>)</span>
+<span id="cb6-2"><a href="mawaqif.html#cb6-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-3"><a href="mawaqif.html#cb6-3" aria-hidden="true" tabindex="-1"></a>rat_32 <span class="ot">&lt;-</span> <span class="fu">round</span>(y1[<span class="dv">3</span>] <span class="sc">/</span> y1[<span class="dv">2</span>], <span class="at">digits =</span> <span class="dv">3</span>)</span>
+<span id="cb6-4"><a href="mawaqif.html#cb6-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-5"><a href="mawaqif.html#cb6-5" aria-hidden="true" tabindex="-1"></a>rat_10_9 <span class="ot">&lt;-</span> <span class="fu">round</span>(y1[<span class="dv">10</span>] <span class="sc">/</span> y1[<span class="dv">9</span>], <span class="at">digits =</span> <span class="dv">3</span>)</span>
+<span id="cb6-6"><a href="mawaqif.html#cb6-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-7"><a href="mawaqif.html#cb6-7" aria-hidden="true" tabindex="-1"></a>rat_15_13 <span class="ot">&lt;-</span> <span class="fu">round</span>(y1[<span class="dv">15</span>] <span class="sc">/</span> y1[<span class="dv">13</span>], <span class="at">digits =</span> <span class="dv">3</span>)</span></code></pre></div>
 <table>
 <thead>
 <tr class="header">
@@ -346,25 +386,25 @@ blockquote {
 <p>For batch 1: <span class="math inline">\(t_{\mathrm{dbl}} = \log 2 / 0.461 = 1.51\)</span></p>
 <p>For batch 2: <span class="math inline">\(t_{\mathrm{dbl}} = \log 2 / 0.300 = 2.31\)</span></p>
 <p>For batch 1: <span class="math inline">\(t_{\mathrm{dbl}} = \log 2 / 0.161 = 4.31\)</span></p>
-<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="mawaqif.html#cb7-1" aria-hidden="true"></a>t10 &lt;-<span class="st"> </span><span class="dv">5</span></span>
-<span id="cb7-2"><a href="mawaqif.html#cb7-2" aria-hidden="true"></a></span>
-<span id="cb7-3"><a href="mawaqif.html#cb7-3" aria-hidden="true"></a>t12 &lt;-<span class="st"> </span>t10 <span class="op">+</span><span class="st"> </span>t_dbl_<span class="dv">1</span></span>
-<span id="cb7-4"><a href="mawaqif.html#cb7-4" aria-hidden="true"></a></span>
-<span id="cb7-5"><a href="mawaqif.html#cb7-5" aria-hidden="true"></a>t22 &lt;-<span class="st"> </span>t10 <span class="op">+</span><span class="st"> </span>t_dbl_<span class="dv">2</span></span>
-<span id="cb7-6"><a href="mawaqif.html#cb7-6" aria-hidden="true"></a></span>
-<span id="cb7-7"><a href="mawaqif.html#cb7-7" aria-hidden="true"></a>t32 &lt;-<span class="st"> </span>t10 <span class="op">+</span><span class="st"> </span>t_dbl_<span class="dv">3</span></span>
-<span id="cb7-8"><a href="mawaqif.html#cb7-8" aria-hidden="true"></a></span>
-<span id="cb7-9"><a href="mawaqif.html#cb7-9" aria-hidden="true"></a>y11 &lt;-<span class="st"> </span><span class="kw">round</span>(A <span class="op">*</span><span class="st"> </span><span class="kw">exp</span>(b_<span class="dv">1</span> <span class="op">*</span><span class="st"> </span>t10), <span class="dt">digits =</span> <span class="dv">2</span>)</span>
-<span id="cb7-10"><a href="mawaqif.html#cb7-10" aria-hidden="true"></a></span>
-<span id="cb7-11"><a href="mawaqif.html#cb7-11" aria-hidden="true"></a>y21 &lt;-<span class="st"> </span><span class="kw">round</span>(A <span class="op">*</span><span class="st"> </span><span class="kw">exp</span>(b_<span class="dv">2</span> <span class="op">*</span><span class="st"> </span>t10), <span class="dt">digits =</span> <span class="dv">2</span>)</span>
-<span id="cb7-12"><a href="mawaqif.html#cb7-12" aria-hidden="true"></a></span>
-<span id="cb7-13"><a href="mawaqif.html#cb7-13" aria-hidden="true"></a>y31 &lt;-<span class="st"> </span><span class="kw">round</span>(A <span class="op">*</span><span class="st"> </span><span class="kw">exp</span>(b_<span class="dv">3</span> <span class="op">*</span><span class="st"> </span>t10), <span class="dt">digits =</span> <span class="dv">2</span>)</span>
-<span id="cb7-14"><a href="mawaqif.html#cb7-14" aria-hidden="true"></a></span>
-<span id="cb7-15"><a href="mawaqif.html#cb7-15" aria-hidden="true"></a>y12 &lt;-<span class="st"> </span><span class="kw">round</span>(A <span class="op">*</span><span class="st"> </span><span class="kw">exp</span>(b_<span class="dv">1</span> <span class="op">*</span><span class="st"> </span>t12), <span class="dt">digits =</span> <span class="dv">2</span>)</span>
-<span id="cb7-16"><a href="mawaqif.html#cb7-16" aria-hidden="true"></a></span>
-<span id="cb7-17"><a href="mawaqif.html#cb7-17" aria-hidden="true"></a>y22 &lt;-<span class="st"> </span><span class="kw">round</span>(A <span class="op">*</span><span class="st"> </span><span class="kw">exp</span>(b_<span class="dv">2</span> <span class="op">*</span><span class="st"> </span>t22), <span class="dt">digits =</span> <span class="dv">2</span>)</span>
-<span id="cb7-18"><a href="mawaqif.html#cb7-18" aria-hidden="true"></a></span>
-<span id="cb7-19"><a href="mawaqif.html#cb7-19" aria-hidden="true"></a>y32 &lt;-<span class="st"> </span><span class="kw">round</span>(A <span class="op">*</span><span class="st"> </span><span class="kw">exp</span>(b_<span class="dv">3</span> <span class="op">*</span><span class="st"> </span>t32), <span class="dt">digits =</span> <span class="dv">2</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="mawaqif.html#cb7-1" aria-hidden="true" tabindex="-1"></a>t10 <span class="ot">&lt;-</span> <span class="dv">5</span></span>
+<span id="cb7-2"><a href="mawaqif.html#cb7-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-3"><a href="mawaqif.html#cb7-3" aria-hidden="true" tabindex="-1"></a>t12 <span class="ot">&lt;-</span> t10 <span class="sc">+</span> t_dbl_1</span>
+<span id="cb7-4"><a href="mawaqif.html#cb7-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-5"><a href="mawaqif.html#cb7-5" aria-hidden="true" tabindex="-1"></a>t22 <span class="ot">&lt;-</span> t10 <span class="sc">+</span> t_dbl_2</span>
+<span id="cb7-6"><a href="mawaqif.html#cb7-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-7"><a href="mawaqif.html#cb7-7" aria-hidden="true" tabindex="-1"></a>t32 <span class="ot">&lt;-</span> t10 <span class="sc">+</span> t_dbl_3</span>
+<span id="cb7-8"><a href="mawaqif.html#cb7-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-9"><a href="mawaqif.html#cb7-9" aria-hidden="true" tabindex="-1"></a>y11 <span class="ot">&lt;-</span> <span class="fu">round</span>(A <span class="sc">*</span> <span class="fu">exp</span>(b_1 <span class="sc">*</span> t10), <span class="at">digits =</span> <span class="dv">2</span>)</span>
+<span id="cb7-10"><a href="mawaqif.html#cb7-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-11"><a href="mawaqif.html#cb7-11" aria-hidden="true" tabindex="-1"></a>y21 <span class="ot">&lt;-</span> <span class="fu">round</span>(A <span class="sc">*</span> <span class="fu">exp</span>(b_2 <span class="sc">*</span> t10), <span class="at">digits =</span> <span class="dv">2</span>)</span>
+<span id="cb7-12"><a href="mawaqif.html#cb7-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-13"><a href="mawaqif.html#cb7-13" aria-hidden="true" tabindex="-1"></a>y31 <span class="ot">&lt;-</span> <span class="fu">round</span>(A <span class="sc">*</span> <span class="fu">exp</span>(b_3 <span class="sc">*</span> t10), <span class="at">digits =</span> <span class="dv">2</span>)</span>
+<span id="cb7-14"><a href="mawaqif.html#cb7-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-15"><a href="mawaqif.html#cb7-15" aria-hidden="true" tabindex="-1"></a>y12 <span class="ot">&lt;-</span> <span class="fu">round</span>(A <span class="sc">*</span> <span class="fu">exp</span>(b_1 <span class="sc">*</span> t12), <span class="at">digits =</span> <span class="dv">2</span>)</span>
+<span id="cb7-16"><a href="mawaqif.html#cb7-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-17"><a href="mawaqif.html#cb7-17" aria-hidden="true" tabindex="-1"></a>y22 <span class="ot">&lt;-</span> <span class="fu">round</span>(A <span class="sc">*</span> <span class="fu">exp</span>(b_2 <span class="sc">*</span> t22), <span class="at">digits =</span> <span class="dv">2</span>)</span>
+<span id="cb7-18"><a href="mawaqif.html#cb7-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-19"><a href="mawaqif.html#cb7-19" aria-hidden="true" tabindex="-1"></a>y32 <span class="ot">&lt;-</span> <span class="fu">round</span>(A <span class="sc">*</span> <span class="fu">exp</span>(b_3 <span class="sc">*</span> t32), <span class="at">digits =</span> <span class="dv">2</span>)</span></code></pre></div>
 <p>Table below shows value of <span class="math inline">\(y\)</span> at time = 5 and then at time = (5 + doubling time).</p>
 <table>
 <thead>
@@ -400,65 +440,65 @@ blockquote {
 <p>This becomes <span class="math inline">\(\log y = \log C + \log(x^b)\)</span> or
 <span class="math inline">\(\log y = c + b \log x\)</span>.</p>
 <p>Take <span class="math inline">\(C = 2\)</span> and <span class="math inline">\(b_4 = 0.8, b_5 = 0.4, b_6 = 0.2\)</span></p>
-<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="mawaqif.html#cb8-1" aria-hidden="true"></a>C &lt;-<span class="st"> </span><span class="dv">2</span></span>
-<span id="cb8-2"><a href="mawaqif.html#cb8-2" aria-hidden="true"></a></span>
-<span id="cb8-3"><a href="mawaqif.html#cb8-3" aria-hidden="true"></a>b_<span class="dv">4</span> &lt;-<span class="st"> </span><span class="fl">0.8</span></span>
-<span id="cb8-4"><a href="mawaqif.html#cb8-4" aria-hidden="true"></a></span>
-<span id="cb8-5"><a href="mawaqif.html#cb8-5" aria-hidden="true"></a>b_<span class="dv">5</span> &lt;-<span class="st"> </span><span class="fl">0.4</span></span>
-<span id="cb8-6"><a href="mawaqif.html#cb8-6" aria-hidden="true"></a></span>
-<span id="cb8-7"><a href="mawaqif.html#cb8-7" aria-hidden="true"></a>b_<span class="dv">6</span> &lt;-<span class="st"> </span><span class="fl">0.2</span></span>
-<span id="cb8-8"><a href="mawaqif.html#cb8-8" aria-hidden="true"></a></span>
-<span id="cb8-9"><a href="mawaqif.html#cb8-9" aria-hidden="true"></a>tt =<span class="st"> </span><span class="kw">seq</span>(<span class="fl">0.0001</span>, <span class="dv">15</span>, <span class="dt">by =</span> <span class="fl">0.2</span>)</span>
-<span id="cb8-10"><a href="mawaqif.html#cb8-10" aria-hidden="true"></a></span>
-<span id="cb8-11"><a href="mawaqif.html#cb8-11" aria-hidden="true"></a>y4 &lt;-<span class="st"> </span>C <span class="op">*</span><span class="st"> </span>tt<span class="op">^</span>b_<span class="dv">4</span></span>
-<span id="cb8-12"><a href="mawaqif.html#cb8-12" aria-hidden="true"></a></span>
-<span id="cb8-13"><a href="mawaqif.html#cb8-13" aria-hidden="true"></a>y5 &lt;-<span class="st"> </span>C <span class="op">*</span><span class="st"> </span>tt<span class="op">^</span>b_<span class="dv">5</span></span>
-<span id="cb8-14"><a href="mawaqif.html#cb8-14" aria-hidden="true"></a></span>
-<span id="cb8-15"><a href="mawaqif.html#cb8-15" aria-hidden="true"></a>y6 &lt;-<span class="st"> </span>C <span class="op">*</span><span class="st"> </span>tt<span class="op">^</span>b_<span class="dv">6</span></span>
-<span id="cb8-16"><a href="mawaqif.html#cb8-16" aria-hidden="true"></a></span>
-<span id="cb8-17"><a href="mawaqif.html#cb8-17" aria-hidden="true"></a>dd2 &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">time =</span> <span class="kw">rep</span>(tt, <span class="dv">3</span>), <span class="dt">y =</span> <span class="kw">c</span>(y4, y5, y6),</span>
-<span id="cb8-18"><a href="mawaqif.html#cb8-18" aria-hidden="true"></a>                  <span class="dt">batch =</span> <span class="kw">rep</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">3</span>, <span class="dt">each =</span> <span class="kw">length</span>(tt)))</span>
-<span id="cb8-19"><a href="mawaqif.html#cb8-19" aria-hidden="true"></a></span>
-<span id="cb8-20"><a href="mawaqif.html#cb8-20" aria-hidden="true"></a>dd2<span class="op">$</span>batch &lt;-<span class="st"> </span><span class="kw">factor</span>(dd2<span class="op">$</span>batch)</span>
-<span id="cb8-21"><a href="mawaqif.html#cb8-21" aria-hidden="true"></a></span>
-<span id="cb8-22"><a href="mawaqif.html#cb8-22" aria-hidden="true"></a><span class="kw">ggplot</span>(dd2, <span class="kw">aes</span>(<span class="dt">x =</span> time, <span class="dt">y =</span> y, <span class="dt">colour =</span> batch)) <span class="op">+</span></span>
-<span id="cb8-23"><a href="mawaqif.html#cb8-23" aria-hidden="true"></a><span class="st">    </span><span class="kw">geom_line</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="mawaqif.html#cb8-1" aria-hidden="true" tabindex="-1"></a>C <span class="ot">&lt;-</span> <span class="dv">2</span></span>
+<span id="cb8-2"><a href="mawaqif.html#cb8-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-3"><a href="mawaqif.html#cb8-3" aria-hidden="true" tabindex="-1"></a>b_4 <span class="ot">&lt;-</span> <span class="fl">0.8</span></span>
+<span id="cb8-4"><a href="mawaqif.html#cb8-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-5"><a href="mawaqif.html#cb8-5" aria-hidden="true" tabindex="-1"></a>b_5 <span class="ot">&lt;-</span> <span class="fl">0.4</span></span>
+<span id="cb8-6"><a href="mawaqif.html#cb8-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-7"><a href="mawaqif.html#cb8-7" aria-hidden="true" tabindex="-1"></a>b_6 <span class="ot">&lt;-</span> <span class="fl">0.2</span></span>
+<span id="cb8-8"><a href="mawaqif.html#cb8-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-9"><a href="mawaqif.html#cb8-9" aria-hidden="true" tabindex="-1"></a>tt <span class="ot">=</span> <span class="fu">seq</span>(<span class="fl">0.0001</span>, <span class="dv">15</span>, <span class="at">by =</span> <span class="fl">0.2</span>)</span>
+<span id="cb8-10"><a href="mawaqif.html#cb8-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-11"><a href="mawaqif.html#cb8-11" aria-hidden="true" tabindex="-1"></a>y4 <span class="ot">&lt;-</span> C <span class="sc">*</span> tt<span class="sc">^</span>b_4</span>
+<span id="cb8-12"><a href="mawaqif.html#cb8-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-13"><a href="mawaqif.html#cb8-13" aria-hidden="true" tabindex="-1"></a>y5 <span class="ot">&lt;-</span> C <span class="sc">*</span> tt<span class="sc">^</span>b_5</span>
+<span id="cb8-14"><a href="mawaqif.html#cb8-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-15"><a href="mawaqif.html#cb8-15" aria-hidden="true" tabindex="-1"></a>y6 <span class="ot">&lt;-</span> C <span class="sc">*</span> tt<span class="sc">^</span>b_6</span>
+<span id="cb8-16"><a href="mawaqif.html#cb8-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-17"><a href="mawaqif.html#cb8-17" aria-hidden="true" tabindex="-1"></a>dd2 <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">time =</span> <span class="fu">rep</span>(tt, <span class="dv">3</span>), <span class="at">y =</span> <span class="fu">c</span>(y4, y5, y6),</span>
+<span id="cb8-18"><a href="mawaqif.html#cb8-18" aria-hidden="true" tabindex="-1"></a>                  <span class="at">batch =</span> <span class="fu">rep</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>, <span class="at">each =</span> <span class="fu">length</span>(tt)))</span>
+<span id="cb8-19"><a href="mawaqif.html#cb8-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-20"><a href="mawaqif.html#cb8-20" aria-hidden="true" tabindex="-1"></a>dd2<span class="sc">$</span>batch <span class="ot">&lt;-</span> <span class="fu">factor</span>(dd2<span class="sc">$</span>batch)</span>
+<span id="cb8-21"><a href="mawaqif.html#cb8-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-22"><a href="mawaqif.html#cb8-22" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(dd2, <span class="fu">aes</span>(<span class="at">x =</span> time, <span class="at">y =</span> y, <span class="at">colour =</span> batch)) <span class="sc">+</span></span>
+<span id="cb8-23"><a href="mawaqif.html#cb8-23" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_line</span>()</span></code></pre></div>
 <p><img src="_main_files/figure-html/unnamed-chunk-9-1.png" width="672" /></p>
 <p><br></p>
-<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="mawaqif.html#cb9-1" aria-hidden="true"></a>dd2<span class="op">$</span>log_y &lt;-<span class="st"> </span><span class="kw">log</span>(dd2<span class="op">$</span>y)</span>
-<span id="cb9-2"><a href="mawaqif.html#cb9-2" aria-hidden="true"></a></span>
-<span id="cb9-3"><a href="mawaqif.html#cb9-3" aria-hidden="true"></a>dd2<span class="op">$</span>log_time &lt;-<span class="st"> </span><span class="kw">log</span>(dd2<span class="op">$</span>time)</span>
-<span id="cb9-4"><a href="mawaqif.html#cb9-4" aria-hidden="true"></a></span>
-<span id="cb9-5"><a href="mawaqif.html#cb9-5" aria-hidden="true"></a><span class="kw">ggplot</span>(dd2, <span class="kw">aes</span>(<span class="dt">x =</span> log_time, <span class="dt">y =</span> log_y, <span class="dt">colour =</span> batch)) <span class="op">+</span></span>
-<span id="cb9-6"><a href="mawaqif.html#cb9-6" aria-hidden="true"></a><span class="st">    </span><span class="kw">geom_line</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="mawaqif.html#cb9-1" aria-hidden="true" tabindex="-1"></a>dd2<span class="sc">$</span>log_y <span class="ot">&lt;-</span> <span class="fu">log</span>(dd2<span class="sc">$</span>y)</span>
+<span id="cb9-2"><a href="mawaqif.html#cb9-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-3"><a href="mawaqif.html#cb9-3" aria-hidden="true" tabindex="-1"></a>dd2<span class="sc">$</span>log_time <span class="ot">&lt;-</span> <span class="fu">log</span>(dd2<span class="sc">$</span>time)</span>
+<span id="cb9-4"><a href="mawaqif.html#cb9-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-5"><a href="mawaqif.html#cb9-5" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(dd2, <span class="fu">aes</span>(<span class="at">x =</span> log_time, <span class="at">y =</span> log_y, <span class="at">colour =</span> batch)) <span class="sc">+</span></span>
+<span id="cb9-6"><a href="mawaqif.html#cb9-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_line</span>()</span></code></pre></div>
 <p><img src="_main_files/figure-html/unnamed-chunk-10-1.png" width="672" /></p>
-<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="mawaqif.html#cb10-1" aria-hidden="true"></a><span class="kw">ggplot</span>(dd2, <span class="kw">aes</span>(<span class="dt">x =</span> time, <span class="dt">y =</span> y, <span class="dt">colour =</span> batch)) <span class="op">+</span></span>
-<span id="cb10-2"><a href="mawaqif.html#cb10-2" aria-hidden="true"></a><span class="st">    </span><span class="kw">geom_line</span>() <span class="op">+</span></span>
-<span id="cb10-3"><a href="mawaqif.html#cb10-3" aria-hidden="true"></a><span class="st">    </span><span class="kw">coord_trans</span>(<span class="dt">x =</span> <span class="st">&#39;log&#39;</span>) <span class="op">+</span></span>
-<span id="cb10-4"><a href="mawaqif.html#cb10-4" aria-hidden="true"></a><span class="st">    </span><span class="kw">coord_trans</span>(<span class="dt">y =</span> <span class="st">&#39;log&#39;</span>) <span class="op">+</span></span>
-<span id="cb10-5"><a href="mawaqif.html#cb10-5" aria-hidden="true"></a><span class="st">    </span><span class="kw">scale_x_continuous</span>(<span class="dt">breaks =</span> <span class="kw">c</span>(<span class="dv">0</span><span class="op">:</span><span class="dv">8</span><span class="op">*</span><span class="dv">2</span>)) <span class="op">+</span></span>
-<span id="cb10-6"><a href="mawaqif.html#cb10-6" aria-hidden="true"></a><span class="st">    </span><span class="kw">scale_y_continuous</span>(<span class="dt">breaks =</span> <span class="kw">c</span>(<span class="dv">0</span><span class="op">:</span><span class="dv">6</span><span class="op">*</span><span class="dv">3</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="mawaqif.html#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(dd2, <span class="fu">aes</span>(<span class="at">x =</span> time, <span class="at">y =</span> y, <span class="at">colour =</span> batch)) <span class="sc">+</span></span>
+<span id="cb10-2"><a href="mawaqif.html#cb10-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_line</span>() <span class="sc">+</span></span>
+<span id="cb10-3"><a href="mawaqif.html#cb10-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">coord_trans</span>(<span class="at">x =</span> <span class="st">&#39;log&#39;</span>) <span class="sc">+</span></span>
+<span id="cb10-4"><a href="mawaqif.html#cb10-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">coord_trans</span>(<span class="at">y =</span> <span class="st">&#39;log&#39;</span>) <span class="sc">+</span></span>
+<span id="cb10-5"><a href="mawaqif.html#cb10-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_x_continuous</span>(<span class="at">breaks =</span> <span class="fu">c</span>(<span class="dv">0</span><span class="sc">:</span><span class="dv">8</span><span class="sc">*</span><span class="dv">2</span>)) <span class="sc">+</span></span>
+<span id="cb10-6"><a href="mawaqif.html#cb10-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_y_continuous</span>(<span class="at">breaks =</span> <span class="fu">c</span>(<span class="dv">0</span><span class="sc">:</span><span class="dv">6</span><span class="sc">*</span><span class="dv">3</span>))</span></code></pre></div>
 <p><img src="_main_files/figure-html/unnamed-chunk-11-1.png" width="672" /></p>
 <p><br></p>
 </div>
 <div id="roc-curves" class="section level2" number="1.4">
 <h2><span class="header-section-number">1.4</span> ROC curves</h2>
 <p>Example from Bland.</p>
-<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="mawaqif.html#cb11-1" aria-hidden="true"></a><span class="kw">library</span>(ggplot2)</span>
-<span id="cb11-2"><a href="mawaqif.html#cb11-2" aria-hidden="true"></a><span class="kw">library</span>(pROC)</span></code></pre></div>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="mawaqif.html#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb11-2"><a href="mawaqif.html#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(pROC)</span></code></pre></div>
 <pre><code>## Type &#39;citation(&quot;pROC&quot;)&#39; for a citation.</code></pre>
 <pre><code>## 
 ## Attaching package: &#39;pROC&#39;</code></pre>
 <pre><code>## The following objects are masked from &#39;package:stats&#39;:
 ## 
 ##     cov, smooth, var</code></pre>
-<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="mawaqif.html#cb15-1" aria-hidden="true"></a>roc_ami &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="st">&quot;data/roc bland.csv&quot;</span>, <span class="dt">header =</span> T)</span>
-<span id="cb15-2"><a href="mawaqif.html#cb15-2" aria-hidden="true"></a></span>
-<span id="cb15-3"><a href="mawaqif.html#cb15-3" aria-hidden="true"></a><span class="kw">str</span>(roc_ami)</span></code></pre></div>
-<pre><code>## &#39;data.frame&#39;:	120 obs. of  2 variables:
+<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="mawaqif.html#cb15-1" aria-hidden="true" tabindex="-1"></a>roc_ami <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;data/roc bland.csv&quot;</span>, <span class="at">header =</span> T)</span>
+<span id="cb15-2"><a href="mawaqif.html#cb15-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-3"><a href="mawaqif.html#cb15-3" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(roc_ami)</span></code></pre></div>
+<pre><code>## &#39;data.frame&#39;:    120 obs. of  2 variables:
 ##  $ CK     : int  23 33 36 37 37 41 41 41 42 42 ...
 ##  $ Disease: int  0 0 0 0 0 0 0 0 0 0 ...</code></pre>
-<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="mawaqif.html#cb17-1" aria-hidden="true"></a><span class="kw">summary</span>(roc_ami)</span></code></pre></div>
+<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="mawaqif.html#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(roc_ami)</span></code></pre></div>
 <pre><code>##        CK             Disease     
 ##  Min.   :   23.0   Min.   :0.000  
 ##  1st Qu.:   61.5   1st Qu.:0.000  
@@ -466,12 +506,12 @@ blockquote {
 ##  Mean   :  410.0   Mean   :0.225  
 ##  3rd Qu.:  257.0   3rd Qu.:0.000  
 ##  Max.   :11138.0   Max.   :1.000</code></pre>
-<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb19-1"><a href="mawaqif.html#cb19-1" aria-hidden="true"></a><span class="co">##  Labels: Angina is &quot;unstable angina&quot;; </span></span>
-<span id="cb19-2"><a href="mawaqif.html#cb19-2" aria-hidden="true"></a><span class="co">##    AMI is &quot;acute myocardial infarction&quot;</span></span>
-<span id="cb19-3"><a href="mawaqif.html#cb19-3" aria-hidden="true"></a></span>
-<span id="cb19-4"><a href="mawaqif.html#cb19-4" aria-hidden="true"></a>roc_ami<span class="op">$</span>DiseaseF &lt;-<span class="st"> </span><span class="kw">factor</span>(roc_ami<span class="op">$</span>Disease, <span class="dt">labels =</span> <span class="kw">c</span>(<span class="st">&quot;Angina&quot;</span>, <span class="st">&quot;AMI&quot;</span>))</span>
-<span id="cb19-5"><a href="mawaqif.html#cb19-5" aria-hidden="true"></a></span>
-<span id="cb19-6"><a href="mawaqif.html#cb19-6" aria-hidden="true"></a><span class="kw">head</span>(roc_ami)</span></code></pre></div>
+<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb19-1"><a href="mawaqif.html#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="do">##  Labels: Angina is &quot;unstable angina&quot;; </span></span>
+<span id="cb19-2"><a href="mawaqif.html#cb19-2" aria-hidden="true" tabindex="-1"></a><span class="do">##    AMI is &quot;acute myocardial infarction&quot;</span></span>
+<span id="cb19-3"><a href="mawaqif.html#cb19-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-4"><a href="mawaqif.html#cb19-4" aria-hidden="true" tabindex="-1"></a>roc_ami<span class="sc">$</span>DiseaseF <span class="ot">&lt;-</span> <span class="fu">factor</span>(roc_ami<span class="sc">$</span>Disease, <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">&quot;Angina&quot;</span>, <span class="st">&quot;AMI&quot;</span>))</span>
+<span id="cb19-5"><a href="mawaqif.html#cb19-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-6"><a href="mawaqif.html#cb19-6" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(roc_ami)</span></code></pre></div>
 <pre><code>##   CK Disease DiseaseF
 ## 1 23       0   Angina
 ## 2 33       0   Angina
@@ -479,56 +519,51 @@ blockquote {
 ## 4 37       0   Angina
 ## 5 37       0   Angina
 ## 6 41       0   Angina</code></pre>
-<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb21-1"><a href="mawaqif.html#cb21-1" aria-hidden="true"></a><span class="kw">boxplot</span>(<span class="kw">log10</span>(roc_ami<span class="op">$</span>CK) <span class="op">~</span><span class="st"> </span>roc_ami<span class="op">$</span>DiseaseF)</span></code></pre></div>
+<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb21-1"><a href="mawaqif.html#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="fu">boxplot</span>(<span class="fu">log10</span>(roc_ami<span class="sc">$</span>CK) <span class="sc">~</span> roc_ami<span class="sc">$</span>DiseaseF)</span></code></pre></div>
 <p><img src="_main_files/figure-html/unnamed-chunk-16-1.png" width="672" /></p>
-<div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb22-1"><a href="mawaqif.html#cb22-1" aria-hidden="true"></a><span class="kw">ggplot</span>(roc_ami, <span class="kw">aes</span>(<span class="dt">x =</span> DiseaseF, <span class="dt">y =</span> <span class="kw">log10</span>(CK))) <span class="op">+</span></span>
-<span id="cb22-2"><a href="mawaqif.html#cb22-2" aria-hidden="true"></a><span class="st">  </span><span class="kw">ylim</span>(<span class="dv">1</span>, <span class="fl">4.2</span>) <span class="op">+</span></span>
-<span id="cb22-3"><a href="mawaqif.html#cb22-3" aria-hidden="true"></a><span class="st">  </span><span class="kw">geom_jitter</span>(<span class="dt">width =</span> <span class="fl">0.1</span>, <span class="dt">height =</span> <span class="fl">0.1</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb22-1"><a href="mawaqif.html#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(roc_ami, <span class="fu">aes</span>(<span class="at">x =</span> DiseaseF, <span class="at">y =</span> <span class="fu">log10</span>(CK))) <span class="sc">+</span></span>
+<span id="cb22-2"><a href="mawaqif.html#cb22-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ylim</span>(<span class="dv">1</span>, <span class="fl">4.2</span>) <span class="sc">+</span></span>
+<span id="cb22-3"><a href="mawaqif.html#cb22-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_jitter</span>(<span class="at">width =</span> <span class="fl">0.1</span>, <span class="at">height =</span> <span class="fl">0.1</span>)</span></code></pre></div>
 <p><img src="_main_files/figure-html/unnamed-chunk-17-1.png" width="672" /></p>
-<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb23-1"><a href="mawaqif.html#cb23-1" aria-hidden="true"></a>ami_roc_curve &lt;-<span class="st"> </span><span class="kw">roc</span>(Disease <span class="op">~</span><span class="st"> </span>CK, <span class="dt">data =</span> roc_ami)</span></code></pre></div>
+<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb23-1"><a href="mawaqif.html#cb23-1" aria-hidden="true" tabindex="-1"></a>ami_roc_curve <span class="ot">&lt;-</span> <span class="fu">roc</span>(Disease <span class="sc">~</span> CK, <span class="at">data =</span> roc_ami)</span></code></pre></div>
 <pre><code>## Setting levels: control = 0, case = 1</code></pre>
 <pre><code>## Setting direction: controls &lt; cases</code></pre>
-<div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb26-1"><a href="mawaqif.html#cb26-1" aria-hidden="true"></a>ami_roc_curve</span></code></pre></div>
+<div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb26-1"><a href="mawaqif.html#cb26-1" aria-hidden="true" tabindex="-1"></a>ami_roc_curve</span></code></pre></div>
 <pre><code>## 
 ## Call:
 ## roc.formula(formula = Disease ~ CK, data = roc_ami)
 ## 
 ## Data: CK in 93 controls (Disease 0) &lt; 27 cases (Disease 1).
 ## Area under the curve: 0.9753</code></pre>
-<div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb28-1"><a href="mawaqif.html#cb28-1" aria-hidden="true"></a><span class="kw">auc</span>(Disease <span class="op">~</span><span class="st"> </span>CK, <span class="dt">data =</span> roc_ami)</span></code></pre></div>
+<div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb28-1"><a href="mawaqif.html#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="fu">auc</span>(Disease <span class="sc">~</span> CK, <span class="at">data =</span> roc_ami)</span></code></pre></div>
 <pre><code>## Setting levels: control = 0, case = 1</code></pre>
 <pre><code>## Setting direction: controls &lt; cases</code></pre>
 <pre><code>## Area under the curve: 0.9753</code></pre>
-<div class="sourceCode" id="cb32"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb32-1"><a href="mawaqif.html#cb32-1" aria-hidden="true"></a><span class="kw">ci</span>(ami_roc_curve)</span></code></pre></div>
+<div class="sourceCode" id="cb32"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb32-1"><a href="mawaqif.html#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ci</span>(ami_roc_curve)</span></code></pre></div>
 <pre><code>## 95% CI: 0.9424-1 (DeLong)</code></pre>
-<div class="sourceCode" id="cb34"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb34-1"><a href="mawaqif.html#cb34-1" aria-hidden="true"></a>ami_roc_plot &lt;-<span class="st"> </span><span class="kw">roc</span>(Disease <span class="op">~</span><span class="st"> </span>CK, <span class="dt">data =</span> roc_ami, <span class="dt">plot =</span> T)</span></code></pre></div>
+<div class="sourceCode" id="cb34"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb34-1"><a href="mawaqif.html#cb34-1" aria-hidden="true" tabindex="-1"></a>ami_roc_plot <span class="ot">&lt;-</span> <span class="fu">roc</span>(Disease <span class="sc">~</span> CK, <span class="at">data =</span> roc_ami, <span class="at">plot =</span> T)</span></code></pre></div>
 <pre><code>## Setting levels: control = 0, case = 1</code></pre>
 <pre><code>## Setting direction: controls &lt; cases</code></pre>
 <p><img src="_main_files/figure-html/unnamed-chunk-21-1.png" width="672" /></p>
-<div class="sourceCode" id="cb37"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb37-1"><a href="mawaqif.html#cb37-1" aria-hidden="true"></a>ami_roc_plot</span></code></pre></div>
+<div class="sourceCode" id="cb37"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb37-1"><a href="mawaqif.html#cb37-1" aria-hidden="true" tabindex="-1"></a>ami_roc_plot</span></code></pre></div>
 <pre><code>## 
 ## Call:
 ## roc.formula(formula = Disease ~ CK, data = roc_ami, plot = T)
 ## 
 ## Data: CK in 93 controls (Disease 0) &lt; 27 cases (Disease 1).
 ## Area under the curve: 0.9753</code></pre>
-<div class="sourceCode" id="cb39"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb39-1"><a href="mawaqif.html#cb39-1" aria-hidden="true"></a><span class="kw">plot.roc</span>(Disease <span class="op">~</span><span class="st"> </span>CK, <span class="dt">data =</span> roc_ami, <span class="dt">ci =</span> T, <span class="dt">of =</span> <span class="st">&quot;thresholds&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb39"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb39-1"><a href="mawaqif.html#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot.roc</span>(Disease <span class="sc">~</span> CK, <span class="at">data =</span> roc_ami, <span class="at">ci =</span> T, <span class="at">of =</span> <span class="st">&quot;thresholds&quot;</span>)</span></code></pre></div>
 <pre><code>## Setting levels: control = 0, case = 1</code></pre>
 <pre><code>## Setting direction: controls &lt; cases</code></pre>
 <p><img src="_main_files/figure-html/unnamed-chunk-22-1.png" width="672" /></p>
 <p>Compute the confidence interval (CI) of the sensitivity at the given specificity points</p>
-<div class="sourceCode" id="cb42"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb42-1"><a href="mawaqif.html#cb42-1" aria-hidden="true"></a>ci1 &lt;-<span class="st"> </span><span class="kw">ci.se</span>(ami_roc_curve, <span class="dt">boot.n =</span> <span class="dv">10</span>)</span>
-<span id="cb42-2"><a href="mawaqif.html#cb42-2" aria-hidden="true"></a></span>
-<span id="cb42-3"><a href="mawaqif.html#cb42-3" aria-hidden="true"></a><span class="kw">plot</span>(ami_roc_curve)</span>
-<span id="cb42-4"><a href="mawaqif.html#cb42-4" aria-hidden="true"></a></span>
-<span id="cb42-5"><a href="mawaqif.html#cb42-5" aria-hidden="true"></a><span class="kw">plot</span>(ci1, <span class="dt">col =</span> <span class="st">&quot;blue&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb42"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb42-1"><a href="mawaqif.html#cb42-1" aria-hidden="true" tabindex="-1"></a>ci1 <span class="ot">&lt;-</span> <span class="fu">ci.se</span>(ami_roc_curve, <span class="at">boot.n =</span> <span class="dv">10</span>)</span>
+<span id="cb42-2"><a href="mawaqif.html#cb42-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb42-3"><a href="mawaqif.html#cb42-3" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(ami_roc_curve)</span>
+<span id="cb42-4"><a href="mawaqif.html#cb42-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb42-5"><a href="mawaqif.html#cb42-5" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(ci1, <span class="at">col =</span> <span class="st">&quot;blue&quot;</span>)</span></code></pre></div>
 <p><img src="_main_files/figure-html/unnamed-chunk-23-1.png" width="672" /></p>
-<div class="sourceCode" id="cb43"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb43-1"><a href="mawaqif.html#cb43-1" aria-hidden="true"></a><span class="kw">coords</span>(ami_roc_plot, <span class="dt">x =</span> <span class="st">&quot;all&quot;</span>)</span></code></pre></div>
-<pre><code>## Warning in coords.roc(ami_roc_plot, x = &quot;all&quot;): The &#39;transpose&#39;
-## argument to FALSE by default since pROC 1.16. Set transpose = TRUE
-## explicitly to revert to the previous behavior, or transpose = TRUE
-## to silence this warning. Type help(coords_transpose) for additional
-## information.</code></pre>
+<div class="sourceCode" id="cb43"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb43-1"><a href="mawaqif.html#cb43-1" aria-hidden="true" tabindex="-1"></a><span class="fu">coords</span>(ami_roc_plot, <span class="at">x =</span> <span class="st">&quot;all&quot;</span>)</span></code></pre></div>
 <pre><code>##    threshold specificity sensitivity
 ## 1       -Inf  0.00000000  1.00000000
 ## 2       28.0  0.01075269  1.00000000
@@ -1008,6 +1043,7 @@ gitbook.start({
 "weibo": false,
 "instapaper": false,
 "vk": false,
+"whatsapp": false,
 "all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
 },
 "fontsettings": {

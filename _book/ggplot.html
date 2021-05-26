@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>2 ggplot | Kitab at-Tabakh</title>
   <meta name="description" content="This is a collection of miscellaneous statistics-related recipes and notes." />
-  <meta name="generator" content="bookdown 0.20 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.22 and GitBook 2.6.7" />
 
   <meta property="og:title" content="2 ggplot | Kitab at-Tabakh" />
   <meta property="og:type" content="book" />
@@ -32,7 +32,7 @@
   
 <link rel="prev" href="mawaqif.html"/>
 <link rel="next" href="r-markdown.html"/>
-<script src="libs/header-attrs-2.3/header-attrs.js"></script>
+<script src="libs/header-attrs-2.7/header-attrs.js"></script>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -50,6 +50,8 @@
 
 
 
+<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
 
 
 <style type="text/css">
@@ -116,6 +118,7 @@ code span.vs { color: #4070a0; } /* VerbatimString */
 code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
+
 </head>
 
 <body>
@@ -163,11 +166,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="2.10" data-path="ggplot.html"><a href="ggplot.html#set-breaks-for-scale"><i class="fa fa-check"></i><b>2.10</b> Set breaks for scale</a></li>
 <li class="chapter" data-level="2.11" data-path="ggplot.html"><a href="ggplot.html#display-table-to-2-d.p."><i class="fa fa-check"></i><b>2.11</b> Display table to 2 d.p.</a></li>
 <li class="chapter" data-level="2.12" data-path="ggplot.html"><a href="ggplot.html#redefine-factor-levels-for-an-individual-plot"><i class="fa fa-check"></i><b>2.12</b> Redefine factor levels for an individual plot</a></li>
+<li class="chapter" data-level="2.13" data-path="ggplot.html"><a href="ggplot.html#plotting-two-data-sets-of-different-length-on-one-plot"><i class="fa fa-check"></i><b>2.13</b> Plotting two data sets of different length on one plot</a></li>
 </ul></li>
 <li class="chapter" data-level="3" data-path="r-markdown.html"><a href="r-markdown.html"><i class="fa fa-check"></i><b>3</b> R Markdown</a>
 <ul>
 <li class="chapter" data-level="3.1" data-path="r-markdown.html"><a href="r-markdown.html#ioslides-footnotes"><i class="fa fa-check"></i><b>3.1</b> ioslides: Footnotes</a></li>
 <li class="chapter" data-level="3.2" data-path="r-markdown.html"><a href="r-markdown.html#ioslides-speakers-notes"><i class="fa fa-check"></i><b>3.2</b> ioslides: Speaker’s notes</a></li>
+<li class="chapter" data-level="3.3" data-path="r-markdown.html"><a href="r-markdown.html#how-to-make-multi-line-tables"><i class="fa fa-check"></i><b>3.3</b> How to make multi-line tables</a></li>
 </ul></li>
 <li class="chapter" data-level="4" data-path="tidyverse.html"><a href="tidyverse.html"><i class="fa fa-check"></i><b>4</b> Tidyverse</a>
 <ul>
@@ -201,6 +206,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="5.5.1" data-path="linear-models.html"><a href="linear-models.html#regression-model"><i class="fa fa-check"></i><b>5.5.1</b> Regression model</a></li>
 </ul></li>
 <li class="chapter" data-level="5.6" data-path="linear-models.html"><a href="linear-models.html#residual-plots---redres"><i class="fa fa-check"></i><b>5.6</b> Residual plots - redres</a></li>
+<li class="chapter" data-level="5.7" data-path="linear-models.html"><a href="linear-models.html#interactions---examples"><i class="fa fa-check"></i><b>5.7</b> Interactions - examples</a></li>
+<li class="chapter" data-level="5.8" data-path="linear-models.html"><a href="linear-models.html#interaction-plot-in-ggplot2"><i class="fa fa-check"></i><b>5.8</b> Interaction plot in ggplot2</a></li>
+<li class="chapter" data-level="5.9" data-path="linear-models.html"><a href="linear-models.html#plot-simple-linear-regression-fitted-line-with-95-confidence-band"><i class="fa fa-check"></i><b>5.9</b> Plot simple linear regression fitted line with 95 % confidence band</a></li>
 </ul></li>
 <li class="chapter" data-level="6" data-path="linear-mixed-models.html"><a href="linear-mixed-models.html"><i class="fa fa-check"></i><b>6</b> Linear mixed models</a>
 <ul>
@@ -209,6 +217,38 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="7" data-path="experimental-design.html"><a href="experimental-design.html"><i class="fa fa-check"></i><b>7</b> Experimental design</a>
 <ul>
 <li class="chapter" data-level="7.1" data-path="experimental-design.html"><a href="experimental-design.html#sample-size-by-simulation"><i class="fa fa-check"></i><b>7.1</b> Sample size by simulation</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="count-data.html"><a href="count-data.html"><i class="fa fa-check"></i><b>8</b> Count data</a>
+<ul>
+<li class="chapter" data-level="8.1" data-path="count-data.html"><a href="count-data.html#count-data-tests-of-independence-and-homogeneity"><i class="fa fa-check"></i><b>8.1</b> Count data: tests of independence and homogeneity</a>
+<ul>
+<li class="chapter" data-level="8.1.1" data-path="count-data.html"><a href="count-data.html#independence"><i class="fa fa-check"></i><b>8.1.1</b> Independence</a></li>
+<li class="chapter" data-level="8.1.2" data-path="count-data.html"><a href="count-data.html#homogeneity"><i class="fa fa-check"></i><b>8.1.2</b> Homogeneity</a></li>
+<li class="chapter" data-level="8.1.3" data-path="count-data.html"><a href="count-data.html#comparing-two-proportions"><i class="fa fa-check"></i><b>8.1.3</b> Comparing two proportions</a></li>
+<li class="chapter" data-level="8.1.4" data-path="count-data.html"><a href="count-data.html#small-counts"><i class="fa fa-check"></i><b>8.1.4</b> Small Counts</a></li>
+</ul></li>
+<li class="chapter" data-level="8.2" data-path="count-data.html"><a href="count-data.html#contingency-tables---fixed-row-and-columns-totals"><i class="fa fa-check"></i><b>8.2</b> Contingency tables - fixed row and columns totals</a></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="means-fitted-and-marginal.html"><a href="means-fitted-and-marginal.html"><i class="fa fa-check"></i><b>9</b> Means - fitted and marginal</a>
+<ul>
+<li class="chapter" data-level="9.1" data-path="means-fitted-and-marginal.html"><a href="means-fitted-and-marginal.html#load-necessary-packages"><i class="fa fa-check"></i><b>9.1</b> Load necessary packages</a></li>
+<li class="chapter" data-level="9.2" data-path="means-fitted-and-marginal.html"><a href="means-fitted-and-marginal.html#data---genotype-from-mass-package"><i class="fa fa-check"></i><b>9.2</b> Data - “genotype” from MASS package</a></li>
+<li class="chapter" data-level="9.3" data-path="means-fitted-and-marginal.html"><a href="means-fitted-and-marginal.html#model"><i class="fa fa-check"></i><b>9.3</b> Model</a></li>
+<li class="chapter" data-level="9.4" data-path="means-fitted-and-marginal.html"><a href="means-fitted-and-marginal.html#fitted-values-using-predict"><i class="fa fa-check"></i><b>9.4</b> Fitted values using “predict”</a>
+<ul>
+<li class="chapter" data-level="9.4.1" data-path="means-fitted-and-marginal.html"><a href="means-fitted-and-marginal.html#fitted-values-with-interval-confidence"><i class="fa fa-check"></i><b>9.4.1</b> Fitted values (with interval = “confidence”)</a></li>
+<li class="chapter" data-level="9.4.2" data-path="means-fitted-and-marginal.html"><a href="means-fitted-and-marginal.html#fitted-values-with-interval-prediction"><i class="fa fa-check"></i><b>9.4.2</b> Fitted values (with interval = “prediction”)</a></li>
+</ul></li>
+<li class="chapter" data-level="9.5" data-path="means-fitted-and-marginal.html"><a href="means-fitted-and-marginal.html#manually-fitting-model-using-matrix-algebra"><i class="fa fa-check"></i><b>9.5</b> Manually fitting model using matrix algebra</a></li>
+<li class="chapter" data-level="9.6" data-path="means-fitted-and-marginal.html"><a href="means-fitted-and-marginal.html#estimated-means-using-model-coefficients-and-various-weights"><i class="fa fa-check"></i><b>9.6</b> Estimated means using model coefficients and various weights</a>
+<ul>
+<li class="chapter" data-level="9.6.1" data-path="means-fitted-and-marginal.html"><a href="means-fitted-and-marginal.html#marginal-means-for-litter"><i class="fa fa-check"></i><b>9.6.1</b> Marginal means for Litter</a></li>
+<li class="chapter" data-level="9.6.2" data-path="means-fitted-and-marginal.html"><a href="means-fitted-and-marginal.html#marginal-means-for-mother"><i class="fa fa-check"></i><b>9.6.2</b> Marginal means for Mother</a></li>
+<li class="chapter" data-level="9.6.3" data-path="means-fitted-and-marginal.html"><a href="means-fitted-and-marginal.html#using-a-matrix-with-equal-weights"><i class="fa fa-check"></i><b>9.6.3</b> Using a matrix with equal weights</a></li>
+<li class="chapter" data-level="9.6.4" data-path="means-fitted-and-marginal.html"><a href="means-fitted-and-marginal.html#using-a-matrix-with-proportional-weights"><i class="fa fa-check"></i><b>9.6.4</b> Using a matrix with proportional weights</a></li>
+</ul></li>
+<li class="chapter" data-level="9.7" data-path="means-fitted-and-marginal.html"><a href="means-fitted-and-marginal.html#estimates-using-effects-package"><i class="fa fa-check"></i><b>9.7</b> Estimates using “effects” package</a></li>
+<li class="chapter" data-level="9.8" data-path="means-fitted-and-marginal.html"><a href="means-fitted-and-marginal.html#transformations-and-emmeans"><i class="fa fa-check"></i><b>9.8</b> Transformations and <code>emmeans</code></a></li>
 </ul></li>
 </ul>
 
@@ -242,7 +282,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="confidence-bands-fitted-models" class="section level2" number="2.3">
 <h2><span class="header-section-number">2.3</span> Confidence bands: fitted models</h2>
 <p>Part of this comes from Gordana’s code for calculating sample size by simulation</p>
-<div class="sourceCode" id="cb46"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb46-1"><a href="ggplot.html#cb46-1" aria-hidden="true"></a><span class="kw">library</span>(dplyr)</span></code></pre></div>
+<div class="sourceCode" id="cb45"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb45-1"><a href="ggplot.html#cb45-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span></code></pre></div>
 <pre><code>## 
 ## Attaching package: &#39;dplyr&#39;</code></pre>
 <pre><code>## The following object is masked from &#39;package:nlme&#39;:
@@ -257,27 +297,27 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <pre><code>## The following objects are masked from &#39;package:base&#39;:
 ## 
 ##     intersect, setdiff, setequal, union</code></pre>
-<div class="sourceCode" id="cb52"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb52-1"><a href="ggplot.html#cb52-1" aria-hidden="true"></a><span class="kw">library</span>(emmeans)</span>
-<span id="cb52-2"><a href="ggplot.html#cb52-2" aria-hidden="true"></a><span class="kw">library</span>(ggplot2)</span>
-<span id="cb52-3"><a href="ggplot.html#cb52-3" aria-hidden="true"></a><span class="kw">library</span>(ggpubr)</span>
-<span id="cb52-4"><a href="ggplot.html#cb52-4" aria-hidden="true"></a></span>
-<span id="cb52-5"><a href="ggplot.html#cb52-5" aria-hidden="true"></a></span>
-<span id="cb52-6"><a href="ggplot.html#cb52-6" aria-hidden="true"></a><span class="kw">data</span>(iris, <span class="dt">package =</span> <span class="st">&quot;datasets&quot;</span>)</span>
-<span id="cb52-7"><a href="ggplot.html#cb52-7" aria-hidden="true"></a></span>
-<span id="cb52-8"><a href="ggplot.html#cb52-8" aria-hidden="true"></a><span class="kw">str</span>(iris)</span></code></pre></div>
-<pre><code>## &#39;data.frame&#39;:	150 obs. of  5 variables:
+<div class="sourceCode" id="cb51"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb51-1"><a href="ggplot.html#cb51-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(emmeans)</span>
+<span id="cb51-2"><a href="ggplot.html#cb51-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb51-3"><a href="ggplot.html#cb51-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggpubr)</span>
+<span id="cb51-4"><a href="ggplot.html#cb51-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-5"><a href="ggplot.html#cb51-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-6"><a href="ggplot.html#cb51-6" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(iris, <span class="at">package =</span> <span class="st">&quot;datasets&quot;</span>)</span>
+<span id="cb51-7"><a href="ggplot.html#cb51-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-8"><a href="ggplot.html#cb51-8" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(iris)</span></code></pre></div>
+<pre><code>## &#39;data.frame&#39;:    150 obs. of  5 variables:
 ##  $ Sepal.Length: num  5.1 4.9 4.7 4.6 5 5.4 4.6 5 4.4 4.9 ...
 ##  $ Sepal.Width : num  3.5 3 3.2 3.1 3.6 3.9 3.4 3.4 2.9 3.1 ...
 ##  $ Petal.Length: num  1.4 1.4 1.3 1.5 1.4 1.7 1.4 1.5 1.4 1.5 ...
 ##  $ Petal.Width : num  0.2 0.2 0.2 0.2 0.2 0.4 0.3 0.2 0.2 0.1 ...
 ##  $ Species     : Factor w/ 3 levels &quot;setosa&quot;,&quot;versicolor&quot;,..: 1 1 1 1 1 1 1 1 1 1 ...</code></pre>
-<div class="sourceCode" id="cb54"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb54-1"><a href="ggplot.html#cb54-1" aria-hidden="true"></a><span class="kw">table</span>(iris<span class="op">$</span>Species)</span></code></pre></div>
+<div class="sourceCode" id="cb53"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb53-1"><a href="ggplot.html#cb53-1" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(iris<span class="sc">$</span>Species)</span></code></pre></div>
 <pre><code>## 
 ##     setosa versicolor  virginica 
 ##         50         50         50</code></pre>
-<div class="sourceCode" id="cb56"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb56-1"><a href="ggplot.html#cb56-1" aria-hidden="true"></a>iris_versi &lt;-<span class="st"> </span><span class="kw">filter</span>(iris, Species <span class="op">==</span><span class="st"> &quot;versicolor&quot;</span>)</span>
-<span id="cb56-2"><a href="ggplot.html#cb56-2" aria-hidden="true"></a></span>
-<span id="cb56-3"><a href="ggplot.html#cb56-3" aria-hidden="true"></a><span class="kw">summary</span>(iris_versi)</span></code></pre></div>
+<div class="sourceCode" id="cb55"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb55-1"><a href="ggplot.html#cb55-1" aria-hidden="true" tabindex="-1"></a>iris_versi <span class="ot">&lt;-</span> <span class="fu">filter</span>(iris, Species <span class="sc">==</span> <span class="st">&quot;versicolor&quot;</span>)</span>
+<span id="cb55-2"><a href="ggplot.html#cb55-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb55-3"><a href="ggplot.html#cb55-3" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(iris_versi)</span></code></pre></div>
 <pre><code>##   Sepal.Length    Sepal.Width     Petal.Length   Petal.Width   
 ##  Min.   :4.900   Min.   :2.000   Min.   :3.00   Min.   :1.000  
 ##  1st Qu.:5.600   1st Qu.:2.525   1st Qu.:4.00   1st Qu.:1.200  
@@ -292,110 +332,110 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ##                 
 ##                 
 ## </code></pre>
-<div class="sourceCode" id="cb58"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb58-1"><a href="ggplot.html#cb58-1" aria-hidden="true"></a>iris_versi<span class="op">$</span>Species &lt;-<span class="st"> </span><span class="kw">factor</span>(iris_versi<span class="op">$</span>Species)</span>
-<span id="cb58-2"><a href="ggplot.html#cb58-2" aria-hidden="true"></a></span>
-<span id="cb58-3"><a href="ggplot.html#cb58-3" aria-hidden="true"></a>nsamp &lt;-<span class="st"> </span><span class="dv">12</span></span>
-<span id="cb58-4"><a href="ggplot.html#cb58-4" aria-hidden="true"></a></span>
-<span id="cb58-5"><a href="ggplot.html#cb58-5" aria-hidden="true"></a>iris_versi_samp &lt;-<span class="st"> </span><span class="kw">sample</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">50</span>, <span class="dt">size =</span> nsamp, <span class="dt">replace =</span> F)</span>
-<span id="cb58-6"><a href="ggplot.html#cb58-6" aria-hidden="true"></a></span>
-<span id="cb58-7"><a href="ggplot.html#cb58-7" aria-hidden="true"></a>pilot &lt;-<span class="st"> </span>iris_versi[iris_versi_samp, ]</span>
-<span id="cb58-8"><a href="ggplot.html#cb58-8" aria-hidden="true"></a></span>
-<span id="cb58-9"><a href="ggplot.html#cb58-9" aria-hidden="true"></a></span>
-<span id="cb58-10"><a href="ggplot.html#cb58-10" aria-hidden="true"></a><span class="co">##  Gordana&#39;s simulation code</span></span>
-<span id="cb58-11"><a href="ggplot.html#cb58-11" aria-hidden="true"></a></span>
-<span id="cb58-12"><a href="ggplot.html#cb58-12" aria-hidden="true"></a>pilot_mod &lt;-<span class="st"> </span><span class="kw">lm</span>(Sepal.Length <span class="op">~</span><span class="st"> </span>Petal.Length, <span class="dt">data =</span> pilot)</span>
-<span id="cb58-13"><a href="ggplot.html#cb58-13" aria-hidden="true"></a></span>
-<span id="cb58-14"><a href="ggplot.html#cb58-14" aria-hidden="true"></a><span class="kw">summary</span>(pilot_mod)</span></code></pre></div>
+<div class="sourceCode" id="cb57"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb57-1"><a href="ggplot.html#cb57-1" aria-hidden="true" tabindex="-1"></a>iris_versi<span class="sc">$</span>Species <span class="ot">&lt;-</span> <span class="fu">factor</span>(iris_versi<span class="sc">$</span>Species)</span>
+<span id="cb57-2"><a href="ggplot.html#cb57-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb57-3"><a href="ggplot.html#cb57-3" aria-hidden="true" tabindex="-1"></a>nsamp <span class="ot">&lt;-</span> <span class="dv">12</span></span>
+<span id="cb57-4"><a href="ggplot.html#cb57-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb57-5"><a href="ggplot.html#cb57-5" aria-hidden="true" tabindex="-1"></a>iris_versi_samp <span class="ot">&lt;-</span> <span class="fu">sample</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">50</span>, <span class="at">size =</span> nsamp, <span class="at">replace =</span> F)</span>
+<span id="cb57-6"><a href="ggplot.html#cb57-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb57-7"><a href="ggplot.html#cb57-7" aria-hidden="true" tabindex="-1"></a>pilot <span class="ot">&lt;-</span> iris_versi[iris_versi_samp, ]</span>
+<span id="cb57-8"><a href="ggplot.html#cb57-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb57-9"><a href="ggplot.html#cb57-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb57-10"><a href="ggplot.html#cb57-10" aria-hidden="true" tabindex="-1"></a><span class="do">##  Gordana&#39;s simulation code</span></span>
+<span id="cb57-11"><a href="ggplot.html#cb57-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb57-12"><a href="ggplot.html#cb57-12" aria-hidden="true" tabindex="-1"></a>pilot_mod <span class="ot">&lt;-</span> <span class="fu">lm</span>(Sepal.Length <span class="sc">~</span> Petal.Length, <span class="at">data =</span> pilot)</span>
+<span id="cb57-13"><a href="ggplot.html#cb57-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb57-14"><a href="ggplot.html#cb57-14" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(pilot_mod)</span></code></pre></div>
 <pre><code>## 
 ## Call:
 ## lm(formula = Sepal.Length ~ Petal.Length, data = pilot)
 ## 
 ## Residuals:
-##      Min       1Q   Median       3Q      Max 
-## -0.59701 -0.19822 -0.04006  0.23922  0.63400 
+##     Min      1Q  Median      3Q     Max 
+## -0.5260 -0.2242 -0.0626  0.2531  0.5496 
 ## 
 ## Coefficients:
-##              Estimate Std. Error t value Pr(&gt;|t|)   
-## (Intercept)    2.3949     1.0897   2.198  0.05265 . 
-## Petal.Length   0.8449     0.2606   3.242  0.00884 **
+##              Estimate Std. Error t value Pr(&gt;|t|)  
+## (Intercept)    2.8246     1.0865   2.600   0.0265 *
+## Petal.Length   0.7559     0.2498   3.026   0.0128 *
 ## ---
 ## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
 ## 
-## Residual standard error: 0.3943 on 10 degrees of freedom
-## Multiple R-squared:  0.5124,	Adjusted R-squared:  0.4637 
-## F-statistic: 10.51 on 1 and 10 DF,  p-value: 0.008841</code></pre>
-<div class="sourceCode" id="cb60"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb60-1"><a href="ggplot.html#cb60-1" aria-hidden="true"></a><span class="kw">confint</span>(pilot_mod)  </span></code></pre></div>
-<pre><code>##                    2.5 %   97.5 %
-## (Intercept)  -0.03321369 4.822948
-## Petal.Length  0.26420897 1.425634</code></pre>
-<div class="sourceCode" id="cb62"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb62-1"><a href="ggplot.html#cb62-1" aria-hidden="true"></a>fit_gg &lt;-<span class="st"> </span><span class="kw">ggplot</span>(pilot, <span class="kw">aes</span>(<span class="dt">x =</span> Petal.Length, </span>
-<span id="cb62-2"><a href="ggplot.html#cb62-2" aria-hidden="true"></a>                            <span class="dt">y =</span> Sepal.Length)) <span class="op">+</span><span class="st"> </span></span>
-<span id="cb62-3"><a href="ggplot.html#cb62-3" aria-hidden="true"></a><span class="st">  </span><span class="kw">geom_point</span>() <span class="op">+</span></span>
-<span id="cb62-4"><a href="ggplot.html#cb62-4" aria-hidden="true"></a><span class="st">  </span><span class="kw">geom_smooth</span>(<span class="dt">method =</span> <span class="st">&quot;lm&quot;</span>) <span class="op">+</span></span>
-<span id="cb62-5"><a href="ggplot.html#cb62-5" aria-hidden="true"></a><span class="st">  </span><span class="kw">ggtitle</span>(<span class="st">&quot;Fitted value with 95 % confidence </span></span>
-<span id="cb62-6"><a href="ggplot.html#cb62-6" aria-hidden="true"></a><span class="st">          interval (conditional mean)&quot;</span>) <span class="op">+</span><span class="st"> </span></span>
-<span id="cb62-7"><a href="ggplot.html#cb62-7" aria-hidden="true"></a><span class="st">  </span><span class="kw">theme</span>(<span class="dt">plot.title =</span> <span class="kw">element_text</span>(<span class="dt">size =</span> <span class="dv">8</span>, <span class="dt">face =</span> <span class="st">&quot;bold&quot;</span>))</span>
-<span id="cb62-8"><a href="ggplot.html#cb62-8" aria-hidden="true"></a></span>
-<span id="cb62-9"><a href="ggplot.html#cb62-9" aria-hidden="true"></a><span class="kw">print</span>(fit_gg)</span></code></pre></div>
+## Residual standard error: 0.3263 on 10 degrees of freedom
+## Multiple R-squared:  0.478,  Adjusted R-squared:  0.4258 
+## F-statistic: 9.156 on 1 and 10 DF,  p-value: 0.01277</code></pre>
+<div class="sourceCode" id="cb59"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb59-1"><a href="ggplot.html#cb59-1" aria-hidden="true" tabindex="-1"></a><span class="fu">confint</span>(pilot_mod)  </span></code></pre></div>
+<pre><code>##                  2.5 %   97.5 %
+## (Intercept)  0.4036287 5.245590
+## Petal.Length 0.1992753 1.312443</code></pre>
+<div class="sourceCode" id="cb61"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb61-1"><a href="ggplot.html#cb61-1" aria-hidden="true" tabindex="-1"></a>fit_gg <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(pilot, <span class="fu">aes</span>(<span class="at">x =</span> Petal.Length, </span>
+<span id="cb61-2"><a href="ggplot.html#cb61-2" aria-hidden="true" tabindex="-1"></a>                            <span class="at">y =</span> Sepal.Length)) <span class="sc">+</span> </span>
+<span id="cb61-3"><a href="ggplot.html#cb61-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb61-4"><a href="ggplot.html#cb61-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">&quot;lm&quot;</span>) <span class="sc">+</span></span>
+<span id="cb61-5"><a href="ggplot.html#cb61-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">&quot;Fitted value with 95 % confidence </span></span>
+<span id="cb61-6"><a href="ggplot.html#cb61-6" aria-hidden="true" tabindex="-1"></a><span class="st">          interval (conditional mean)&quot;</span>) <span class="sc">+</span> </span>
+<span id="cb61-7"><a href="ggplot.html#cb61-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">plot.title =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">8</span>, <span class="at">face =</span> <span class="st">&quot;bold&quot;</span>))</span>
+<span id="cb61-8"><a href="ggplot.html#cb61-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb61-9"><a href="ggplot.html#cb61-9" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(fit_gg)</span></code></pre></div>
 <pre><code>## `geom_smooth()` using formula &#39;y ~ x&#39;</code></pre>
 <p><img src="_main_files/figure-html/unnamed-chunk-30-1.png" width="672" /></p>
 <p>Check type of band (confidence or prediction) on above ggplot</p>
-<div class="sourceCode" id="cb64"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb64-1"><a href="ggplot.html#cb64-1" aria-hidden="true"></a><span class="co"># range of petal length</span></span>
-<span id="cb64-2"><a href="ggplot.html#cb64-2" aria-hidden="true"></a>my_range &lt;-<span class="st"> </span><span class="kw">range</span>(pilot<span class="op">$</span>Petal.Length) </span>
-<span id="cb64-3"><a href="ggplot.html#cb64-3" aria-hidden="true"></a></span>
-<span id="cb64-4"><a href="ggplot.html#cb64-4" aria-hidden="true"></a>X_pred &lt;-<span class="st"> </span><span class="kw">seq</span>(my_range[<span class="dv">1</span>], my_range[<span class="dv">2</span>], <span class="dt">length =</span> <span class="dv">12</span>)</span>
-<span id="cb64-5"><a href="ggplot.html#cb64-5" aria-hidden="true"></a></span>
-<span id="cb64-6"><a href="ggplot.html#cb64-6" aria-hidden="true"></a>yhat_conf &lt;-<span class="st"> </span><span class="kw">data.frame</span>(</span>
-<span id="cb64-7"><a href="ggplot.html#cb64-7" aria-hidden="true"></a>  <span class="kw">predict</span>(pilot_mod, <span class="dt">interval =</span> <span class="st">&quot;confidence&quot;</span>, </span>
-<span id="cb64-8"><a href="ggplot.html#cb64-8" aria-hidden="true"></a>          <span class="dt">newdata =</span> <span class="kw">data.frame</span>(<span class="dt">Petal.Length =</span> X_pred)))</span>
-<span id="cb64-9"><a href="ggplot.html#cb64-9" aria-hidden="true"></a></span>
-<span id="cb64-10"><a href="ggplot.html#cb64-10" aria-hidden="true"></a><span class="kw">names</span>(yhat_conf) &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;yhat_conf_fit&quot;</span>, <span class="st">&quot;yhat_conf_lwr&quot;</span>, <span class="st">&quot;yhat_conf_upr&quot;</span>)</span>
-<span id="cb64-11"><a href="ggplot.html#cb64-11" aria-hidden="true"></a></span>
-<span id="cb64-12"><a href="ggplot.html#cb64-12" aria-hidden="true"></a></span>
-<span id="cb64-13"><a href="ggplot.html#cb64-13" aria-hidden="true"></a>yhat_pred &lt;-<span class="st"> </span><span class="kw">data.frame</span>(</span>
-<span id="cb64-14"><a href="ggplot.html#cb64-14" aria-hidden="true"></a>  <span class="kw">predict</span>(pilot_mod, <span class="dt">interval =</span> <span class="st">&quot;prediction&quot;</span>, </span>
-<span id="cb64-15"><a href="ggplot.html#cb64-15" aria-hidden="true"></a>          <span class="dt">newdata =</span> <span class="kw">data.frame</span>(<span class="dt">Petal.Length =</span> X_pred)))</span>
-<span id="cb64-16"><a href="ggplot.html#cb64-16" aria-hidden="true"></a></span>
-<span id="cb64-17"><a href="ggplot.html#cb64-17" aria-hidden="true"></a><span class="kw">names</span>(yhat_pred) &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;yhat_pred_fit&quot;</span>, <span class="st">&quot;yhat_pred_lwr&quot;</span>, <span class="st">&quot;yhat_pred_upr&quot;</span>)</span>
-<span id="cb64-18"><a href="ggplot.html#cb64-18" aria-hidden="true"></a></span>
-<span id="cb64-19"><a href="ggplot.html#cb64-19" aria-hidden="true"></a></span>
-<span id="cb64-20"><a href="ggplot.html#cb64-20" aria-hidden="true"></a>yhat_all &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">Petal.Length =</span> X_pred, yhat_conf, yhat_pred[ , <span class="dv">-1</span>])</span>
-<span id="cb64-21"><a href="ggplot.html#cb64-21" aria-hidden="true"></a></span>
-<span id="cb64-22"><a href="ggplot.html#cb64-22" aria-hidden="true"></a><span class="kw">names</span>(yhat_all)[<span class="kw">names</span>(yhat_all) <span class="op">%in%</span><span class="st"> &quot;yhat_conf_fit&quot;</span>] &lt;-<span class="st"> &quot;Sepal.Length&quot;</span></span>
-<span id="cb64-23"><a href="ggplot.html#cb64-23" aria-hidden="true"></a></span>
-<span id="cb64-24"><a href="ggplot.html#cb64-24" aria-hidden="true"></a><span class="co">##  Add to sample data</span></span>
-<span id="cb64-25"><a href="ggplot.html#cb64-25" aria-hidden="true"></a></span>
-<span id="cb64-26"><a href="ggplot.html#cb64-26" aria-hidden="true"></a>pilot<span class="op">$</span>X_pred &lt;-<span class="st"> </span>X_pred</span>
-<span id="cb64-27"><a href="ggplot.html#cb64-27" aria-hidden="true"></a></span>
-<span id="cb64-28"><a href="ggplot.html#cb64-28" aria-hidden="true"></a>pilot &lt;-<span class="st"> </span><span class="kw">data.frame</span>(pilot, yhat_conf)</span>
-<span id="cb64-29"><a href="ggplot.html#cb64-29" aria-hidden="true"></a></span>
-<span id="cb64-30"><a href="ggplot.html#cb64-30" aria-hidden="true"></a>pilot &lt;-<span class="st"> </span><span class="kw">data.frame</span>(pilot, </span>
-<span id="cb64-31"><a href="ggplot.html#cb64-31" aria-hidden="true"></a>                    <span class="dt">yhat_pred_lwr =</span> yhat_pred<span class="op">$</span>yhat_pred_lwr,</span>
-<span id="cb64-32"><a href="ggplot.html#cb64-32" aria-hidden="true"></a>                    <span class="dt">yhat_pred_upr =</span> yhat_pred<span class="op">$</span>yhat_pred_upr)</span>
-<span id="cb64-33"><a href="ggplot.html#cb64-33" aria-hidden="true"></a></span>
-<span id="cb64-34"><a href="ggplot.html#cb64-34" aria-hidden="true"></a><span class="co">##  Plot fitted values and intervals from &quot;predict&quot; function</span></span>
-<span id="cb64-35"><a href="ggplot.html#cb64-35" aria-hidden="true"></a></span>
-<span id="cb64-36"><a href="ggplot.html#cb64-36" aria-hidden="true"></a>fit_conf &lt;-<span class="st"> </span><span class="kw">ggplot</span>(pilot, <span class="kw">aes</span>(<span class="dt">x =</span> Petal.Length, <span class="dt">y =</span> Sepal.Length)) <span class="op">+</span><span class="st"> </span></span>
-<span id="cb64-37"><a href="ggplot.html#cb64-37" aria-hidden="true"></a><span class="st">  </span><span class="kw">geom_point</span>() <span class="op">+</span></span>
-<span id="cb64-38"><a href="ggplot.html#cb64-38" aria-hidden="true"></a><span class="st">  </span><span class="kw">geom_smooth</span>(</span>
-<span id="cb64-39"><a href="ggplot.html#cb64-39" aria-hidden="true"></a>    <span class="dt">data =</span> yhat_all, <span class="kw">aes</span>(<span class="dt">ymin =</span> yhat_conf_lwr, </span>
-<span id="cb64-40"><a href="ggplot.html#cb64-40" aria-hidden="true"></a>                         <span class="dt">ymax =</span> yhat_conf_upr), </span>
-<span id="cb64-41"><a href="ggplot.html#cb64-41" aria-hidden="true"></a>    <span class="dt">stat =</span> <span class="st">&quot;identity&quot;</span>) <span class="op">+</span></span>
-<span id="cb64-42"><a href="ggplot.html#cb64-42" aria-hidden="true"></a><span class="st">  </span><span class="kw">ggtitle</span>(<span class="st">&quot;Fitted value with 95 % confidence </span></span>
-<span id="cb64-43"><a href="ggplot.html#cb64-43" aria-hidden="true"></a><span class="st">          interval (from &#39;predict&#39;)&quot;</span>)<span class="op">+</span><span class="st"> </span></span>
-<span id="cb64-44"><a href="ggplot.html#cb64-44" aria-hidden="true"></a><span class="st">  </span><span class="kw">theme</span>(<span class="dt">plot.title =</span> <span class="kw">element_text</span>(<span class="dt">size =</span> <span class="dv">8</span>, <span class="dt">face =</span> <span class="st">&quot;bold&quot;</span>))</span>
-<span id="cb64-45"><a href="ggplot.html#cb64-45" aria-hidden="true"></a></span>
-<span id="cb64-46"><a href="ggplot.html#cb64-46" aria-hidden="true"></a></span>
-<span id="cb64-47"><a href="ggplot.html#cb64-47" aria-hidden="true"></a>fit_pred &lt;-<span class="st"> </span><span class="kw">ggplot</span>(pilot, <span class="kw">aes</span>(<span class="dt">x =</span> Petal.Length, <span class="dt">y =</span> Sepal.Length)) <span class="op">+</span><span class="st"> </span></span>
-<span id="cb64-48"><a href="ggplot.html#cb64-48" aria-hidden="true"></a><span class="st">  </span><span class="kw">geom_point</span>() <span class="op">+</span></span>
-<span id="cb64-49"><a href="ggplot.html#cb64-49" aria-hidden="true"></a><span class="st">  </span><span class="kw">geom_smooth</span>(<span class="dt">data =</span> yhat_all, <span class="kw">aes</span>(<span class="dt">ymin =</span> yhat_pred_lwr, </span>
-<span id="cb64-50"><a href="ggplot.html#cb64-50" aria-hidden="true"></a>                                   <span class="dt">ymax =</span> yhat_pred_upr), </span>
-<span id="cb64-51"><a href="ggplot.html#cb64-51" aria-hidden="true"></a>              <span class="dt">stat =</span> <span class="st">&quot;identity&quot;</span>) <span class="op">+</span></span>
-<span id="cb64-52"><a href="ggplot.html#cb64-52" aria-hidden="true"></a><span class="st">  </span><span class="kw">ggtitle</span>(<span class="st">&quot;Fitted value with 95 % prediction </span></span>
-<span id="cb64-53"><a href="ggplot.html#cb64-53" aria-hidden="true"></a><span class="st">          interval (from &#39;predict&#39;)&quot;</span>)<span class="op">+</span><span class="st"> </span></span>
-<span id="cb64-54"><a href="ggplot.html#cb64-54" aria-hidden="true"></a><span class="st">  </span><span class="kw">theme</span>(<span class="dt">plot.title =</span> <span class="kw">element_text</span>(<span class="dt">size =</span> <span class="dv">8</span>, <span class="dt">face =</span> <span class="st">&quot;bold&quot;</span>))</span>
-<span id="cb64-55"><a href="ggplot.html#cb64-55" aria-hidden="true"></a></span>
-<span id="cb64-56"><a href="ggplot.html#cb64-56" aria-hidden="true"></a><span class="kw">ggarrange</span>(fit_gg, fit_conf, fit_pred, <span class="dt">ncol =</span> <span class="dv">3</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb63"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb63-1"><a href="ggplot.html#cb63-1" aria-hidden="true" tabindex="-1"></a><span class="co"># range of petal length</span></span>
+<span id="cb63-2"><a href="ggplot.html#cb63-2" aria-hidden="true" tabindex="-1"></a>my_range <span class="ot">&lt;-</span> <span class="fu">range</span>(pilot<span class="sc">$</span>Petal.Length) </span>
+<span id="cb63-3"><a href="ggplot.html#cb63-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb63-4"><a href="ggplot.html#cb63-4" aria-hidden="true" tabindex="-1"></a>X_pred <span class="ot">&lt;-</span> <span class="fu">seq</span>(my_range[<span class="dv">1</span>], my_range[<span class="dv">2</span>], <span class="at">length =</span> <span class="dv">12</span>)</span>
+<span id="cb63-5"><a href="ggplot.html#cb63-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb63-6"><a href="ggplot.html#cb63-6" aria-hidden="true" tabindex="-1"></a>yhat_conf <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
+<span id="cb63-7"><a href="ggplot.html#cb63-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">predict</span>(pilot_mod, <span class="at">interval =</span> <span class="st">&quot;confidence&quot;</span>, </span>
+<span id="cb63-8"><a href="ggplot.html#cb63-8" aria-hidden="true" tabindex="-1"></a>          <span class="at">newdata =</span> <span class="fu">data.frame</span>(<span class="at">Petal.Length =</span> X_pred)))</span>
+<span id="cb63-9"><a href="ggplot.html#cb63-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb63-10"><a href="ggplot.html#cb63-10" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(yhat_conf) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;yhat_conf_fit&quot;</span>, <span class="st">&quot;yhat_conf_lwr&quot;</span>, <span class="st">&quot;yhat_conf_upr&quot;</span>)</span>
+<span id="cb63-11"><a href="ggplot.html#cb63-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb63-12"><a href="ggplot.html#cb63-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb63-13"><a href="ggplot.html#cb63-13" aria-hidden="true" tabindex="-1"></a>yhat_pred <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
+<span id="cb63-14"><a href="ggplot.html#cb63-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">predict</span>(pilot_mod, <span class="at">interval =</span> <span class="st">&quot;prediction&quot;</span>, </span>
+<span id="cb63-15"><a href="ggplot.html#cb63-15" aria-hidden="true" tabindex="-1"></a>          <span class="at">newdata =</span> <span class="fu">data.frame</span>(<span class="at">Petal.Length =</span> X_pred)))</span>
+<span id="cb63-16"><a href="ggplot.html#cb63-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb63-17"><a href="ggplot.html#cb63-17" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(yhat_pred) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;yhat_pred_fit&quot;</span>, <span class="st">&quot;yhat_pred_lwr&quot;</span>, <span class="st">&quot;yhat_pred_upr&quot;</span>)</span>
+<span id="cb63-18"><a href="ggplot.html#cb63-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb63-19"><a href="ggplot.html#cb63-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb63-20"><a href="ggplot.html#cb63-20" aria-hidden="true" tabindex="-1"></a>yhat_all <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">Petal.Length =</span> X_pred, yhat_conf, yhat_pred[ , <span class="sc">-</span><span class="dv">1</span>])</span>
+<span id="cb63-21"><a href="ggplot.html#cb63-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb63-22"><a href="ggplot.html#cb63-22" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(yhat_all)[<span class="fu">names</span>(yhat_all) <span class="sc">%in%</span> <span class="st">&quot;yhat_conf_fit&quot;</span>] <span class="ot">&lt;-</span> <span class="st">&quot;Sepal.Length&quot;</span></span>
+<span id="cb63-23"><a href="ggplot.html#cb63-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb63-24"><a href="ggplot.html#cb63-24" aria-hidden="true" tabindex="-1"></a><span class="do">##  Add to sample data</span></span>
+<span id="cb63-25"><a href="ggplot.html#cb63-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb63-26"><a href="ggplot.html#cb63-26" aria-hidden="true" tabindex="-1"></a>pilot<span class="sc">$</span>X_pred <span class="ot">&lt;-</span> X_pred</span>
+<span id="cb63-27"><a href="ggplot.html#cb63-27" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb63-28"><a href="ggplot.html#cb63-28" aria-hidden="true" tabindex="-1"></a>pilot <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(pilot, yhat_conf)</span>
+<span id="cb63-29"><a href="ggplot.html#cb63-29" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb63-30"><a href="ggplot.html#cb63-30" aria-hidden="true" tabindex="-1"></a>pilot <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(pilot, </span>
+<span id="cb63-31"><a href="ggplot.html#cb63-31" aria-hidden="true" tabindex="-1"></a>                    <span class="at">yhat_pred_lwr =</span> yhat_pred<span class="sc">$</span>yhat_pred_lwr,</span>
+<span id="cb63-32"><a href="ggplot.html#cb63-32" aria-hidden="true" tabindex="-1"></a>                    <span class="at">yhat_pred_upr =</span> yhat_pred<span class="sc">$</span>yhat_pred_upr)</span>
+<span id="cb63-33"><a href="ggplot.html#cb63-33" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb63-34"><a href="ggplot.html#cb63-34" aria-hidden="true" tabindex="-1"></a><span class="do">##  Plot fitted values and intervals from &quot;predict&quot; function</span></span>
+<span id="cb63-35"><a href="ggplot.html#cb63-35" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb63-36"><a href="ggplot.html#cb63-36" aria-hidden="true" tabindex="-1"></a>fit_conf <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(pilot, <span class="fu">aes</span>(<span class="at">x =</span> Petal.Length, <span class="at">y =</span> Sepal.Length)) <span class="sc">+</span> </span>
+<span id="cb63-37"><a href="ggplot.html#cb63-37" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb63-38"><a href="ggplot.html#cb63-38" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(</span>
+<span id="cb63-39"><a href="ggplot.html#cb63-39" aria-hidden="true" tabindex="-1"></a>    <span class="at">data =</span> yhat_all, <span class="fu">aes</span>(<span class="at">ymin =</span> yhat_conf_lwr, </span>
+<span id="cb63-40"><a href="ggplot.html#cb63-40" aria-hidden="true" tabindex="-1"></a>                         <span class="at">ymax =</span> yhat_conf_upr), </span>
+<span id="cb63-41"><a href="ggplot.html#cb63-41" aria-hidden="true" tabindex="-1"></a>    <span class="at">stat =</span> <span class="st">&quot;identity&quot;</span>) <span class="sc">+</span></span>
+<span id="cb63-42"><a href="ggplot.html#cb63-42" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">&quot;Fitted value with 95 % confidence </span></span>
+<span id="cb63-43"><a href="ggplot.html#cb63-43" aria-hidden="true" tabindex="-1"></a><span class="st">          interval (from &#39;predict&#39;)&quot;</span>)<span class="sc">+</span> </span>
+<span id="cb63-44"><a href="ggplot.html#cb63-44" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">plot.title =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">8</span>, <span class="at">face =</span> <span class="st">&quot;bold&quot;</span>))</span>
+<span id="cb63-45"><a href="ggplot.html#cb63-45" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb63-46"><a href="ggplot.html#cb63-46" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb63-47"><a href="ggplot.html#cb63-47" aria-hidden="true" tabindex="-1"></a>fit_pred <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(pilot, <span class="fu">aes</span>(<span class="at">x =</span> Petal.Length, <span class="at">y =</span> Sepal.Length)) <span class="sc">+</span> </span>
+<span id="cb63-48"><a href="ggplot.html#cb63-48" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb63-49"><a href="ggplot.html#cb63-49" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">data =</span> yhat_all, <span class="fu">aes</span>(<span class="at">ymin =</span> yhat_pred_lwr, </span>
+<span id="cb63-50"><a href="ggplot.html#cb63-50" aria-hidden="true" tabindex="-1"></a>                                   <span class="at">ymax =</span> yhat_pred_upr), </span>
+<span id="cb63-51"><a href="ggplot.html#cb63-51" aria-hidden="true" tabindex="-1"></a>              <span class="at">stat =</span> <span class="st">&quot;identity&quot;</span>) <span class="sc">+</span></span>
+<span id="cb63-52"><a href="ggplot.html#cb63-52" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">&quot;Fitted value with 95 % prediction </span></span>
+<span id="cb63-53"><a href="ggplot.html#cb63-53" aria-hidden="true" tabindex="-1"></a><span class="st">          interval (from &#39;predict&#39;)&quot;</span>)<span class="sc">+</span> </span>
+<span id="cb63-54"><a href="ggplot.html#cb63-54" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">plot.title =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">8</span>, <span class="at">face =</span> <span class="st">&quot;bold&quot;</span>))</span>
+<span id="cb63-55"><a href="ggplot.html#cb63-55" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb63-56"><a href="ggplot.html#cb63-56" aria-hidden="true" tabindex="-1"></a><span class="fu">ggarrange</span>(fit_gg, fit_conf, fit_pred, <span class="at">ncol =</span> <span class="dv">3</span>)</span></code></pre></div>
 <pre><code>## `geom_smooth()` using formula &#39;y ~ x&#39;</code></pre>
 <p><img src="_main_files/figure-html/unnamed-chunk-31-1.png" width="672" /></p>
 <p><br></p>
@@ -404,69 +444,69 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h2><span class="header-section-number">2.4</span> Histogram</h2>
 <div id="histogram-one-vector-of-values" class="section level3" number="2.4.1">
 <h3><span class="header-section-number">2.4.1</span> Histogram: one vector of values</h3>
-<div class="sourceCode" id="cb66"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb66-1"><a href="ggplot.html#cb66-1" aria-hidden="true"></a><span class="co">##  Histogram of one vector of values in ggplot2</span></span>
-<span id="cb66-2"><a href="ggplot.html#cb66-2" aria-hidden="true"></a></span>
-<span id="cb66-3"><a href="ggplot.html#cb66-3" aria-hidden="true"></a><span class="co">##  Generate a vector of values</span></span>
-<span id="cb66-4"><a href="ggplot.html#cb66-4" aria-hidden="true"></a></span>
-<span id="cb66-5"><a href="ggplot.html#cb66-5" aria-hidden="true"></a>s2 &lt;-<span class="st"> </span><span class="kw">numeric</span>(<span class="dv">5000</span>)</span>
-<span id="cb66-6"><a href="ggplot.html#cb66-6" aria-hidden="true"></a><span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span><span class="dv">5000</span>) {</span>
-<span id="cb66-7"><a href="ggplot.html#cb66-7" aria-hidden="true"></a>  dd &lt;-<span class="st"> </span><span class="kw">rnorm</span>(<span class="dv">5</span>, <span class="dv">10</span>, <span class="dv">1</span>)</span>
-<span id="cb66-8"><a href="ggplot.html#cb66-8" aria-hidden="true"></a>  s2[i] &lt;-<span class="st"> </span><span class="kw">var</span>(dd)</span>
-<span id="cb66-9"><a href="ggplot.html#cb66-9" aria-hidden="true"></a>  <span class="kw">rm</span>(dd)</span>
-<span id="cb66-10"><a href="ggplot.html#cb66-10" aria-hidden="true"></a>}</span>
-<span id="cb66-11"><a href="ggplot.html#cb66-11" aria-hidden="true"></a></span>
-<span id="cb66-12"><a href="ggplot.html#cb66-12" aria-hidden="true"></a><span class="kw">summary</span>(s2)</span></code></pre></div>
-<pre><code>##     Min.  1st Qu.   Median     Mean  3rd Qu.     Max. 
-## 0.005928 0.472706 0.823918 0.984250 1.330148 5.721926</code></pre>
+<div class="sourceCode" id="cb65"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb65-1"><a href="ggplot.html#cb65-1" aria-hidden="true" tabindex="-1"></a><span class="do">##  Histogram of one vector of values in ggplot2</span></span>
+<span id="cb65-2"><a href="ggplot.html#cb65-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb65-3"><a href="ggplot.html#cb65-3" aria-hidden="true" tabindex="-1"></a><span class="do">##  Generate a vector of values</span></span>
+<span id="cb65-4"><a href="ggplot.html#cb65-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb65-5"><a href="ggplot.html#cb65-5" aria-hidden="true" tabindex="-1"></a>s2 <span class="ot">&lt;-</span> <span class="fu">numeric</span>(<span class="dv">5000</span>)</span>
+<span id="cb65-6"><a href="ggplot.html#cb65-6" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">5000</span>) {</span>
+<span id="cb65-7"><a href="ggplot.html#cb65-7" aria-hidden="true" tabindex="-1"></a>  dd <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="dv">5</span>, <span class="dv">10</span>, <span class="dv">1</span>)</span>
+<span id="cb65-8"><a href="ggplot.html#cb65-8" aria-hidden="true" tabindex="-1"></a>  s2[i] <span class="ot">&lt;-</span> <span class="fu">var</span>(dd)</span>
+<span id="cb65-9"><a href="ggplot.html#cb65-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rm</span>(dd)</span>
+<span id="cb65-10"><a href="ggplot.html#cb65-10" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb65-11"><a href="ggplot.html#cb65-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb65-12"><a href="ggplot.html#cb65-12" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(s2)</span></code></pre></div>
+<pre><code>##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+## 0.00265 0.46264 0.80556 0.97457 1.33040 5.08288</code></pre>
 <p>Data in numeric vector</p>
-<div class="sourceCode" id="cb68"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb68-1"><a href="ggplot.html#cb68-1" aria-hidden="true"></a><span class="co">##  Data in numeric vector</span></span>
-<span id="cb68-2"><a href="ggplot.html#cb68-2" aria-hidden="true"></a></span>
-<span id="cb68-3"><a href="ggplot.html#cb68-3" aria-hidden="true"></a><span class="kw">ggplot</span>() <span class="op">+</span><span class="st"> </span></span>
-<span id="cb68-4"><a href="ggplot.html#cb68-4" aria-hidden="true"></a><span class="st">  </span><span class="kw">aes</span>(s2) <span class="op">+</span><span class="st"> </span></span>
-<span id="cb68-5"><a href="ggplot.html#cb68-5" aria-hidden="true"></a><span class="st">  </span><span class="kw">geom_histogram</span>(<span class="dt">binwidth =</span> <span class="fl">0.5</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb67"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb67-1"><a href="ggplot.html#cb67-1" aria-hidden="true" tabindex="-1"></a><span class="do">##  Data in numeric vector</span></span>
+<span id="cb67-2"><a href="ggplot.html#cb67-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb67-3"><a href="ggplot.html#cb67-3" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>() <span class="sc">+</span> </span>
+<span id="cb67-4"><a href="ggplot.html#cb67-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">aes</span>(s2) <span class="sc">+</span> </span>
+<span id="cb67-5"><a href="ggplot.html#cb67-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="at">binwidth =</span> <span class="fl">0.5</span>)</span></code></pre></div>
 <p><img src="_main_files/figure-html/unnamed-chunk-33-1.png" width="672" /></p>
 <p>Data in single-column data frame - Y axis is frequency</p>
-<div class="sourceCode" id="cb69"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb69-1"><a href="ggplot.html#cb69-1" aria-hidden="true"></a><span class="co">##  Data in single-column data frame</span></span>
-<span id="cb69-2"><a href="ggplot.html#cb69-2" aria-hidden="true"></a></span>
-<span id="cb69-3"><a href="ggplot.html#cb69-3" aria-hidden="true"></a>s2.df &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">var =</span> s2)</span>
-<span id="cb69-4"><a href="ggplot.html#cb69-4" aria-hidden="true"></a></span>
-<span id="cb69-5"><a href="ggplot.html#cb69-5" aria-hidden="true"></a><span class="co">##  Y axis is frequency</span></span>
-<span id="cb69-6"><a href="ggplot.html#cb69-6" aria-hidden="true"></a></span>
-<span id="cb69-7"><a href="ggplot.html#cb69-7" aria-hidden="true"></a><span class="kw">ggplot</span>(s2.df, <span class="kw">aes</span>(<span class="dt">x =</span> var)) <span class="op">+</span></span>
-<span id="cb69-8"><a href="ggplot.html#cb69-8" aria-hidden="true"></a><span class="st">  </span><span class="kw">geom_histogram</span>(<span class="dt">breaks =</span> <span class="dv">0</span><span class="op">:</span><span class="dv">16</span><span class="op">*</span><span class="fl">0.5</span>, <span class="dt">col =</span> <span class="st">&quot;black&quot;</span>, </span>
-<span id="cb69-9"><a href="ggplot.html#cb69-9" aria-hidden="true"></a>                 <span class="dt">fill =</span> <span class="st">&quot;grey70&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb68"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb68-1"><a href="ggplot.html#cb68-1" aria-hidden="true" tabindex="-1"></a><span class="do">##  Data in single-column data frame</span></span>
+<span id="cb68-2"><a href="ggplot.html#cb68-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb68-3"><a href="ggplot.html#cb68-3" aria-hidden="true" tabindex="-1"></a>s2.df <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">var =</span> s2)</span>
+<span id="cb68-4"><a href="ggplot.html#cb68-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb68-5"><a href="ggplot.html#cb68-5" aria-hidden="true" tabindex="-1"></a><span class="do">##  Y axis is frequency</span></span>
+<span id="cb68-6"><a href="ggplot.html#cb68-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb68-7"><a href="ggplot.html#cb68-7" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(s2.df, <span class="fu">aes</span>(<span class="at">x =</span> var)) <span class="sc">+</span></span>
+<span id="cb68-8"><a href="ggplot.html#cb68-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="at">breaks =</span> <span class="dv">0</span><span class="sc">:</span><span class="dv">16</span><span class="sc">*</span><span class="fl">0.5</span>, <span class="at">col =</span> <span class="st">&quot;black&quot;</span>, </span>
+<span id="cb68-9"><a href="ggplot.html#cb68-9" aria-hidden="true" tabindex="-1"></a>                 <span class="at">fill =</span> <span class="st">&quot;grey70&quot;</span>)</span></code></pre></div>
 <p><img src="_main_files/figure-html/unnamed-chunk-34-1.png" width="672" /></p>
 <p>Data in single-column data frame - Y axis is density</p>
-<div class="sourceCode" id="cb70"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb70-1"><a href="ggplot.html#cb70-1" aria-hidden="true"></a><span class="co">##  Y axis is density</span></span>
-<span id="cb70-2"><a href="ggplot.html#cb70-2" aria-hidden="true"></a></span>
-<span id="cb70-3"><a href="ggplot.html#cb70-3" aria-hidden="true"></a><span class="kw">ggplot</span>(s2.df, <span class="kw">aes</span>(<span class="dt">x =</span> var, <span class="dt">y =</span> ..density..)) <span class="op">+</span></span>
-<span id="cb70-4"><a href="ggplot.html#cb70-4" aria-hidden="true"></a><span class="st">  </span><span class="kw">geom_histogram</span>(<span class="dt">breaks =</span> <span class="dv">0</span><span class="op">:</span><span class="dv">16</span><span class="op">*</span><span class="fl">0.5</span>, <span class="dt">col =</span> <span class="st">&quot;black&quot;</span>, </span>
-<span id="cb70-5"><a href="ggplot.html#cb70-5" aria-hidden="true"></a>                 <span class="dt">fill =</span> <span class="st">&quot;grey70&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb69"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb69-1"><a href="ggplot.html#cb69-1" aria-hidden="true" tabindex="-1"></a><span class="do">##  Y axis is density</span></span>
+<span id="cb69-2"><a href="ggplot.html#cb69-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb69-3"><a href="ggplot.html#cb69-3" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(s2.df, <span class="fu">aes</span>(<span class="at">x =</span> var, <span class="at">y =</span> ..density..)) <span class="sc">+</span></span>
+<span id="cb69-4"><a href="ggplot.html#cb69-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="at">breaks =</span> <span class="dv">0</span><span class="sc">:</span><span class="dv">16</span><span class="sc">*</span><span class="fl">0.5</span>, <span class="at">col =</span> <span class="st">&quot;black&quot;</span>, </span>
+<span id="cb69-5"><a href="ggplot.html#cb69-5" aria-hidden="true" tabindex="-1"></a>                 <span class="at">fill =</span> <span class="st">&quot;grey70&quot;</span>)</span></code></pre></div>
 <p><img src="_main_files/figure-html/unnamed-chunk-35-1.png" width="672" /></p>
 <p>For comparison, histogram in lattice</p>
-<div class="sourceCode" id="cb71"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb71-1"><a href="ggplot.html#cb71-1" aria-hidden="true"></a><span class="co">##  Lattice</span></span>
-<span id="cb71-2"><a href="ggplot.html#cb71-2" aria-hidden="true"></a></span>
-<span id="cb71-3"><a href="ggplot.html#cb71-3" aria-hidden="true"></a><span class="kw">histogram</span>(s2, <span class="dt">breaks =</span> <span class="dv">0</span><span class="op">:</span><span class="dv">16</span><span class="op">*</span><span class="fl">0.5</span>, <span class="dt">right =</span> F, <span class="dt">main =</span> <span class="st">&quot;Lattice&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb70"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb70-1"><a href="ggplot.html#cb70-1" aria-hidden="true" tabindex="-1"></a><span class="do">##  Lattice</span></span>
+<span id="cb70-2"><a href="ggplot.html#cb70-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb70-3"><a href="ggplot.html#cb70-3" aria-hidden="true" tabindex="-1"></a><span class="fu">histogram</span>(s2, <span class="at">breaks =</span> <span class="dv">0</span><span class="sc">:</span><span class="dv">16</span><span class="sc">*</span><span class="fl">0.5</span>, <span class="at">right =</span> F, <span class="at">main =</span> <span class="st">&quot;Lattice&quot;</span>)</span></code></pre></div>
 <p><img src="_main_files/figure-html/unnamed-chunk-36-1.png" width="672" /></p>
-<div class="sourceCode" id="cb72"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb72-1"><a href="ggplot.html#cb72-1" aria-hidden="true"></a><span class="kw">range</span>(s2)</span></code></pre></div>
-<pre><code>## [1] 0.005927749 5.721926062</code></pre>
+<div class="sourceCode" id="cb71"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb71-1"><a href="ggplot.html#cb71-1" aria-hidden="true" tabindex="-1"></a><span class="fu">range</span>(s2)</span></code></pre></div>
+<pre><code>## [1] 0.002649815 5.082878060</code></pre>
 </div>
 </div>
 <div id="density-plot" class="section level2" number="2.5">
 <h2><span class="header-section-number">2.5</span> Density plot</h2>
-<div class="sourceCode" id="cb74"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb74-1"><a href="ggplot.html#cb74-1" aria-hidden="true"></a><span class="co">##  Density plot</span></span>
-<span id="cb74-2"><a href="ggplot.html#cb74-2" aria-hidden="true"></a></span>
-<span id="cb74-3"><a href="ggplot.html#cb74-3" aria-hidden="true"></a><span class="kw">ggplot</span>(s2.df, <span class="kw">aes</span>(<span class="dt">x =</span> var)) <span class="op">+</span></span>
-<span id="cb74-4"><a href="ggplot.html#cb74-4" aria-hidden="true"></a><span class="st">  </span><span class="kw">geom_density</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb73"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb73-1"><a href="ggplot.html#cb73-1" aria-hidden="true" tabindex="-1"></a><span class="do">##  Density plot</span></span>
+<span id="cb73-2"><a href="ggplot.html#cb73-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb73-3"><a href="ggplot.html#cb73-3" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(s2.df, <span class="fu">aes</span>(<span class="at">x =</span> var)) <span class="sc">+</span></span>
+<span id="cb73-4"><a href="ggplot.html#cb73-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_density</span>()</span></code></pre></div>
 <p><img src="_main_files/figure-html/unnamed-chunk-37-1.png" width="672" /></p>
 <p>For comparison, density plot in base graphics and in lattice</p>
-<div class="sourceCode" id="cb75"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb75-1"><a href="ggplot.html#cb75-1" aria-hidden="true"></a><span class="co">##  Density plot - base graphics</span></span>
-<span id="cb75-2"><a href="ggplot.html#cb75-2" aria-hidden="true"></a></span>
-<span id="cb75-3"><a href="ggplot.html#cb75-3" aria-hidden="true"></a><span class="kw">plot</span>(<span class="kw">density</span>(s2), <span class="dt">main =</span> <span class="st">&quot;Base graphics&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb74"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb74-1"><a href="ggplot.html#cb74-1" aria-hidden="true" tabindex="-1"></a><span class="do">##  Density plot - base graphics</span></span>
+<span id="cb74-2"><a href="ggplot.html#cb74-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb74-3"><a href="ggplot.html#cb74-3" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="fu">density</span>(s2), <span class="at">main =</span> <span class="st">&quot;Base graphics&quot;</span>)</span></code></pre></div>
 <p><img src="_main_files/figure-html/unnamed-chunk-38-1.png" width="672" /></p>
-<div class="sourceCode" id="cb76"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb76-1"><a href="ggplot.html#cb76-1" aria-hidden="true"></a><span class="co">##  Density plot - lattice</span></span>
-<span id="cb76-2"><a href="ggplot.html#cb76-2" aria-hidden="true"></a></span>
-<span id="cb76-3"><a href="ggplot.html#cb76-3" aria-hidden="true"></a><span class="kw">densityplot</span>(s2, <span class="dt">plot.points =</span> F, <span class="dt">main =</span> <span class="st">&quot;Lattice&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb75"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb75-1"><a href="ggplot.html#cb75-1" aria-hidden="true" tabindex="-1"></a><span class="do">##  Density plot - lattice</span></span>
+<span id="cb75-2"><a href="ggplot.html#cb75-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb75-3"><a href="ggplot.html#cb75-3" aria-hidden="true" tabindex="-1"></a><span class="fu">densityplot</span>(s2, <span class="at">plot.points =</span> F, <span class="at">main =</span> <span class="st">&quot;Lattice&quot;</span>)</span></code></pre></div>
 <p><img src="_main_files/figure-html/unnamed-chunk-39-1.png" width="672" /></p>
 </div>
 <div id="plot-structure" class="section level2" number="2.6">
@@ -503,6 +543,38 @@ kable()</code></pre>
   group_by(Care_status, Race.nat) %&gt;%
   summarise(n_indiv = n_distinct(MP_id)) %&gt;%
   ggplot(  etc.  )</code></pre>
+</div>
+<div id="plotting-two-data-sets-of-different-length-on-one-plot" class="section level2" number="2.13">
+<h2><span class="header-section-number">2.13</span> Plotting two data sets of different length on one plot</h2>
+<p><a href="https://gist.github.com/romunov/47f51ccdfe2362c66e60743849fde6b0" class="uri">https://gist.github.com/romunov/47f51ccdfe2362c66e60743849fde6b0</a></p>
+<div class="sourceCode" id="cb83"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb83-1"><a href="ggplot.html#cb83-1" aria-hidden="true" tabindex="-1"></a>xy1 <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">x =</span> <span class="fu">rnorm</span>(<span class="dv">10</span>), <span class="at">y =</span> <span class="fu">rnorm</span>(<span class="dv">10</span>))</span>
+<span id="cb83-2"><a href="ggplot.html#cb83-2" aria-hidden="true" tabindex="-1"></a>xy2 <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">x =</span> <span class="fu">rnorm</span>(<span class="dv">5</span>), <span class="at">y =</span> <span class="fu">rnorm</span>(<span class="dv">5</span>))</span>
+<span id="cb83-3"><a href="ggplot.html#cb83-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb83-4"><a href="ggplot.html#cb83-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb83-5"><a href="ggplot.html#cb83-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb83-6"><a href="ggplot.html#cb83-6" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>() <span class="sc">+</span></span>
+<span id="cb83-7"><a href="ggplot.html#cb83-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>() <span class="sc">+</span></span>
+<span id="cb83-8"><a href="ggplot.html#cb83-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">data =</span> xy1, <span class="fu">aes</span>(<span class="at">x =</span> x, <span class="at">y =</span> y)) <span class="sc">+</span></span>
+<span id="cb83-9"><a href="ggplot.html#cb83-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">data =</span> xy2, <span class="fu">aes</span>(<span class="at">x =</span> x, <span class="at">y =</span> y), <span class="at">color =</span> <span class="st">&quot;red&quot;</span>)</span>
+<span id="cb83-10"><a href="ggplot.html#cb83-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb83-11"><a href="ggplot.html#cb83-11" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(xy1, <span class="fu">aes</span>(<span class="at">x =</span> x, <span class="at">y =</span> y)) <span class="sc">+</span></span>
+<span id="cb83-12"><a href="ggplot.html#cb83-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>() <span class="sc">+</span></span>
+<span id="cb83-13"><a href="ggplot.html#cb83-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span> <span class="co"># values mapped to aes() in ggplot() call</span></span>
+<span id="cb83-14"><a href="ggplot.html#cb83-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">data =</span> xy2, <span class="at">color =</span> <span class="st">&quot;red&quot;</span>) <span class="co"># values maped to the same aes() call as above</span></span>
+<span id="cb83-15"><a href="ggplot.html#cb83-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb83-16"><a href="ggplot.html#cb83-16" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(xy1, <span class="fu">aes</span>(<span class="at">x =</span> x, <span class="at">y =</span> y)) <span class="sc">+</span></span>
+<span id="cb83-17"><a href="ggplot.html#cb83-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>() <span class="sc">+</span></span>
+<span id="cb83-18"><a href="ggplot.html#cb83-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span> <span class="co"># values mapped to aes() in ggplot() call</span></span>
+<span id="cb83-19"><a href="ggplot.html#cb83-19" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">data =</span> xy2, <span class="fu">aes</span>(<span class="at">x =</span> x, <span class="at">y =</span> y)) <span class="co"># explicit mapping, can be different for this geom</span></span>
+<span id="cb83-20"><a href="ggplot.html#cb83-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb83-21"><a href="ggplot.html#cb83-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb83-22"><a href="ggplot.html#cb83-22" aria-hidden="true" tabindex="-1"></a><span class="do">##  PGS&#39; extra</span></span>
+<span id="cb83-23"><a href="ggplot.html#cb83-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb83-24"><a href="ggplot.html#cb83-24" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(xy1, <span class="fu">aes</span>(<span class="at">x =</span> x, <span class="at">y =</span> y)) <span class="sc">+</span></span>
+<span id="cb83-25"><a href="ggplot.html#cb83-25" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>() <span class="sc">+</span></span>
+<span id="cb83-26"><a href="ggplot.html#cb83-26" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span> <span class="co"># values mapped to aes() in ggplot() call</span></span>
+<span id="cb83-27"><a href="ggplot.html#cb83-27" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(</span>
+<span id="cb83-28"><a href="ggplot.html#cb83-28" aria-hidden="true" tabindex="-1"></a>    <span class="at">data =</span> xy2, <span class="fu">aes</span>(<span class="at">x =</span> x, <span class="at">y =</span> y), <span class="at">colour =</span> <span class="st">&quot;green&quot;</span>) <span class="co"># explicit mapping, can be different for this geom</span></span></code></pre></div>
 
 </div>
 </div>
@@ -535,6 +607,7 @@ gitbook.start({
 "weibo": false,
 "instapaper": false,
 "vk": false,
+"whatsapp": false,
 "all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
 },
 "fontsettings": {

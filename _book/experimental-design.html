@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>7 Experimental design | Kitab at-Tabakh</title>
   <meta name="description" content="This is a collection of miscellaneous statistics-related recipes and notes." />
-  <meta name="generator" content="bookdown 0.20 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.22 and GitBook 2.6.7" />
 
   <meta property="og:title" content="7 Experimental design | Kitab at-Tabakh" />
   <meta property="og:type" content="book" />
@@ -31,8 +31,8 @@
   
   
 <link rel="prev" href="linear-mixed-models.html"/>
-
-<script src="libs/header-attrs-2.3/header-attrs.js"></script>
+<link rel="next" href="count-data.html"/>
+<script src="libs/header-attrs-2.7/header-attrs.js"></script>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -50,6 +50,8 @@
 
 
 
+<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
 
 
 <style type="text/css">
@@ -116,6 +118,7 @@ code span.vs { color: #4070a0; } /* VerbatimString */
 code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
+
 </head>
 
 <body>
@@ -163,11 +166,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="2.10" data-path="ggplot.html"><a href="ggplot.html#set-breaks-for-scale"><i class="fa fa-check"></i><b>2.10</b> Set breaks for scale</a></li>
 <li class="chapter" data-level="2.11" data-path="ggplot.html"><a href="ggplot.html#display-table-to-2-d.p."><i class="fa fa-check"></i><b>2.11</b> Display table to 2 d.p.</a></li>
 <li class="chapter" data-level="2.12" data-path="ggplot.html"><a href="ggplot.html#redefine-factor-levels-for-an-individual-plot"><i class="fa fa-check"></i><b>2.12</b> Redefine factor levels for an individual plot</a></li>
+<li class="chapter" data-level="2.13" data-path="ggplot.html"><a href="ggplot.html#plotting-two-data-sets-of-different-length-on-one-plot"><i class="fa fa-check"></i><b>2.13</b> Plotting two data sets of different length on one plot</a></li>
 </ul></li>
 <li class="chapter" data-level="3" data-path="r-markdown.html"><a href="r-markdown.html"><i class="fa fa-check"></i><b>3</b> R Markdown</a>
 <ul>
 <li class="chapter" data-level="3.1" data-path="r-markdown.html"><a href="r-markdown.html#ioslides-footnotes"><i class="fa fa-check"></i><b>3.1</b> ioslides: Footnotes</a></li>
 <li class="chapter" data-level="3.2" data-path="r-markdown.html"><a href="r-markdown.html#ioslides-speakers-notes"><i class="fa fa-check"></i><b>3.2</b> ioslides: Speaker’s notes</a></li>
+<li class="chapter" data-level="3.3" data-path="r-markdown.html"><a href="r-markdown.html#how-to-make-multi-line-tables"><i class="fa fa-check"></i><b>3.3</b> How to make multi-line tables</a></li>
 </ul></li>
 <li class="chapter" data-level="4" data-path="tidyverse.html"><a href="tidyverse.html"><i class="fa fa-check"></i><b>4</b> Tidyverse</a>
 <ul>
@@ -201,6 +206,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="5.5.1" data-path="linear-models.html"><a href="linear-models.html#regression-model"><i class="fa fa-check"></i><b>5.5.1</b> Regression model</a></li>
 </ul></li>
 <li class="chapter" data-level="5.6" data-path="linear-models.html"><a href="linear-models.html#residual-plots---redres"><i class="fa fa-check"></i><b>5.6</b> Residual plots - redres</a></li>
+<li class="chapter" data-level="5.7" data-path="linear-models.html"><a href="linear-models.html#interactions---examples"><i class="fa fa-check"></i><b>5.7</b> Interactions - examples</a></li>
+<li class="chapter" data-level="5.8" data-path="linear-models.html"><a href="linear-models.html#interaction-plot-in-ggplot2"><i class="fa fa-check"></i><b>5.8</b> Interaction plot in ggplot2</a></li>
+<li class="chapter" data-level="5.9" data-path="linear-models.html"><a href="linear-models.html#plot-simple-linear-regression-fitted-line-with-95-confidence-band"><i class="fa fa-check"></i><b>5.9</b> Plot simple linear regression fitted line with 95 % confidence band</a></li>
 </ul></li>
 <li class="chapter" data-level="6" data-path="linear-mixed-models.html"><a href="linear-mixed-models.html"><i class="fa fa-check"></i><b>6</b> Linear mixed models</a>
 <ul>
@@ -209,6 +217,38 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="7" data-path="experimental-design.html"><a href="experimental-design.html"><i class="fa fa-check"></i><b>7</b> Experimental design</a>
 <ul>
 <li class="chapter" data-level="7.1" data-path="experimental-design.html"><a href="experimental-design.html#sample-size-by-simulation"><i class="fa fa-check"></i><b>7.1</b> Sample size by simulation</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="count-data.html"><a href="count-data.html"><i class="fa fa-check"></i><b>8</b> Count data</a>
+<ul>
+<li class="chapter" data-level="8.1" data-path="count-data.html"><a href="count-data.html#count-data-tests-of-independence-and-homogeneity"><i class="fa fa-check"></i><b>8.1</b> Count data: tests of independence and homogeneity</a>
+<ul>
+<li class="chapter" data-level="8.1.1" data-path="count-data.html"><a href="count-data.html#independence"><i class="fa fa-check"></i><b>8.1.1</b> Independence</a></li>
+<li class="chapter" data-level="8.1.2" data-path="count-data.html"><a href="count-data.html#homogeneity"><i class="fa fa-check"></i><b>8.1.2</b> Homogeneity</a></li>
+<li class="chapter" data-level="8.1.3" data-path="count-data.html"><a href="count-data.html#comparing-two-proportions"><i class="fa fa-check"></i><b>8.1.3</b> Comparing two proportions</a></li>
+<li class="chapter" data-level="8.1.4" data-path="count-data.html"><a href="count-data.html#small-counts"><i class="fa fa-check"></i><b>8.1.4</b> Small Counts</a></li>
+</ul></li>
+<li class="chapter" data-level="8.2" data-path="count-data.html"><a href="count-data.html#contingency-tables---fixed-row-and-columns-totals"><i class="fa fa-check"></i><b>8.2</b> Contingency tables - fixed row and columns totals</a></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="means-fitted-and-marginal.html"><a href="means-fitted-and-marginal.html"><i class="fa fa-check"></i><b>9</b> Means - fitted and marginal</a>
+<ul>
+<li class="chapter" data-level="9.1" data-path="means-fitted-and-marginal.html"><a href="means-fitted-and-marginal.html#load-necessary-packages"><i class="fa fa-check"></i><b>9.1</b> Load necessary packages</a></li>
+<li class="chapter" data-level="9.2" data-path="means-fitted-and-marginal.html"><a href="means-fitted-and-marginal.html#data---genotype-from-mass-package"><i class="fa fa-check"></i><b>9.2</b> Data - “genotype” from MASS package</a></li>
+<li class="chapter" data-level="9.3" data-path="means-fitted-and-marginal.html"><a href="means-fitted-and-marginal.html#model"><i class="fa fa-check"></i><b>9.3</b> Model</a></li>
+<li class="chapter" data-level="9.4" data-path="means-fitted-and-marginal.html"><a href="means-fitted-and-marginal.html#fitted-values-using-predict"><i class="fa fa-check"></i><b>9.4</b> Fitted values using “predict”</a>
+<ul>
+<li class="chapter" data-level="9.4.1" data-path="means-fitted-and-marginal.html"><a href="means-fitted-and-marginal.html#fitted-values-with-interval-confidence"><i class="fa fa-check"></i><b>9.4.1</b> Fitted values (with interval = “confidence”)</a></li>
+<li class="chapter" data-level="9.4.2" data-path="means-fitted-and-marginal.html"><a href="means-fitted-and-marginal.html#fitted-values-with-interval-prediction"><i class="fa fa-check"></i><b>9.4.2</b> Fitted values (with interval = “prediction”)</a></li>
+</ul></li>
+<li class="chapter" data-level="9.5" data-path="means-fitted-and-marginal.html"><a href="means-fitted-and-marginal.html#manually-fitting-model-using-matrix-algebra"><i class="fa fa-check"></i><b>9.5</b> Manually fitting model using matrix algebra</a></li>
+<li class="chapter" data-level="9.6" data-path="means-fitted-and-marginal.html"><a href="means-fitted-and-marginal.html#estimated-means-using-model-coefficients-and-various-weights"><i class="fa fa-check"></i><b>9.6</b> Estimated means using model coefficients and various weights</a>
+<ul>
+<li class="chapter" data-level="9.6.1" data-path="means-fitted-and-marginal.html"><a href="means-fitted-and-marginal.html#marginal-means-for-litter"><i class="fa fa-check"></i><b>9.6.1</b> Marginal means for Litter</a></li>
+<li class="chapter" data-level="9.6.2" data-path="means-fitted-and-marginal.html"><a href="means-fitted-and-marginal.html#marginal-means-for-mother"><i class="fa fa-check"></i><b>9.6.2</b> Marginal means for Mother</a></li>
+<li class="chapter" data-level="9.6.3" data-path="means-fitted-and-marginal.html"><a href="means-fitted-and-marginal.html#using-a-matrix-with-equal-weights"><i class="fa fa-check"></i><b>9.6.3</b> Using a matrix with equal weights</a></li>
+<li class="chapter" data-level="9.6.4" data-path="means-fitted-and-marginal.html"><a href="means-fitted-and-marginal.html#using-a-matrix-with-proportional-weights"><i class="fa fa-check"></i><b>9.6.4</b> Using a matrix with proportional weights</a></li>
+</ul></li>
+<li class="chapter" data-level="9.7" data-path="means-fitted-and-marginal.html"><a href="means-fitted-and-marginal.html#estimates-using-effects-package"><i class="fa fa-check"></i><b>9.7</b> Estimates using “effects” package</a></li>
+<li class="chapter" data-level="9.8" data-path="means-fitted-and-marginal.html"><a href="means-fitted-and-marginal.html#transformations-and-emmeans"><i class="fa fa-check"></i><b>9.8</b> Transformations and <code>emmeans</code></a></li>
 </ul></li>
 </ul>
 
@@ -234,30 +274,30 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>From: Study Design, 2hr - Gordana</p>
 <p><br></p>
 <p>Using pilot data, find values of linear model parameters. In this experiment, I would like to see if there is an effect of Petal length on Sepal length. I have pilot data with 15 observations.</p>
-<div class="sourceCode" id="cb249"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb249-1"><a href="experimental-design.html#cb249-1" aria-hidden="true"></a><span class="kw">data</span>(iris)</span>
-<span id="cb249-2"><a href="experimental-design.html#cb249-2" aria-hidden="true"></a></span>
-<span id="cb249-3"><a href="experimental-design.html#cb249-3" aria-hidden="true"></a><span class="kw">str</span>(iris)</span></code></pre></div>
-<pre><code>## &#39;data.frame&#39;:	150 obs. of  5 variables:
+<div class="sourceCode" id="cb302"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb302-1"><a href="experimental-design.html#cb302-1" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(iris)</span>
+<span id="cb302-2"><a href="experimental-design.html#cb302-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb302-3"><a href="experimental-design.html#cb302-3" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(iris)</span></code></pre></div>
+<pre><code>## &#39;data.frame&#39;:    150 obs. of  5 variables:
 ##  $ Sepal.Length: num  5.1 4.9 4.7 4.6 5 5.4 4.6 5 4.4 4.9 ...
 ##  $ Sepal.Width : num  3.5 3 3.2 3.1 3.6 3.9 3.4 3.4 2.9 3.1 ...
 ##  $ Petal.Length: num  1.4 1.4 1.3 1.5 1.4 1.7 1.4 1.5 1.4 1.5 ...
 ##  $ Petal.Width : num  0.2 0.2 0.2 0.2 0.2 0.4 0.3 0.2 0.2 0.1 ...
 ##  $ Species     : Factor w/ 3 levels &quot;setosa&quot;,&quot;versicolor&quot;,..: 1 1 1 1 1 1 1 1 1 1 ...</code></pre>
-<div class="sourceCode" id="cb251"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb251-1"><a href="experimental-design.html#cb251-1" aria-hidden="true"></a><span class="kw">table</span>(iris<span class="op">$</span>Species)</span></code></pre></div>
+<div class="sourceCode" id="cb304"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb304-1"><a href="experimental-design.html#cb304-1" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(iris<span class="sc">$</span>Species)</span></code></pre></div>
 <pre><code>## 
 ##     setosa versicolor  virginica 
 ##         50         50         50</code></pre>
 <p>Get some pilot data (or get different data from Gordana’s)</p>
-<div class="sourceCode" id="cb253"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb253-1"><a href="experimental-design.html#cb253-1" aria-hidden="true"></a><span class="co"># rand_setosa &lt;- sample(1:50, size = 15, replace = F)</span></span>
-<span id="cb253-2"><a href="experimental-design.html#cb253-2" aria-hidden="true"></a></span>
-<span id="cb253-3"><a href="experimental-design.html#cb253-3" aria-hidden="true"></a><span class="co"># pilot &lt;- iris[rand_setosa, ]</span></span>
-<span id="cb253-4"><a href="experimental-design.html#cb253-4" aria-hidden="true"></a></span>
-<span id="cb253-5"><a href="experimental-design.html#cb253-5" aria-hidden="true"></a><span class="co">##  Gordana&#39;s data</span></span>
-<span id="cb253-6"><a href="experimental-design.html#cb253-6" aria-hidden="true"></a></span>
-<span id="cb253-7"><a href="experimental-design.html#cb253-7" aria-hidden="true"></a>pilot &lt;-<span class="st"> </span>iris[<span class="dv">1</span><span class="op">:</span><span class="dv">15</span>, <span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">3</span>)]</span></code></pre></div>
-<div class="sourceCode" id="cb254"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb254-1"><a href="experimental-design.html#cb254-1" aria-hidden="true"></a>pilot_mod &lt;-<span class="st"> </span><span class="kw">lm</span>(Sepal.Length <span class="op">~</span><span class="st"> </span>Petal.Length, <span class="dt">data =</span> pilot)</span>
-<span id="cb254-2"><a href="experimental-design.html#cb254-2" aria-hidden="true"></a></span>
-<span id="cb254-3"><a href="experimental-design.html#cb254-3" aria-hidden="true"></a><span class="kw">summary</span>(pilot_mod)</span></code></pre></div>
+<div class="sourceCode" id="cb306"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb306-1"><a href="experimental-design.html#cb306-1" aria-hidden="true" tabindex="-1"></a><span class="co"># rand_setosa &lt;- sample(1:50, size = 15, replace = F)</span></span>
+<span id="cb306-2"><a href="experimental-design.html#cb306-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb306-3"><a href="experimental-design.html#cb306-3" aria-hidden="true" tabindex="-1"></a><span class="co"># pilot &lt;- iris[rand_setosa, ]</span></span>
+<span id="cb306-4"><a href="experimental-design.html#cb306-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb306-5"><a href="experimental-design.html#cb306-5" aria-hidden="true" tabindex="-1"></a><span class="do">##  Gordana&#39;s data</span></span>
+<span id="cb306-6"><a href="experimental-design.html#cb306-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb306-7"><a href="experimental-design.html#cb306-7" aria-hidden="true" tabindex="-1"></a>pilot <span class="ot">&lt;-</span> iris[<span class="dv">1</span><span class="sc">:</span><span class="dv">15</span>, <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">3</span>)]</span></code></pre></div>
+<div class="sourceCode" id="cb307"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb307-1"><a href="experimental-design.html#cb307-1" aria-hidden="true" tabindex="-1"></a>pilot_mod <span class="ot">&lt;-</span> <span class="fu">lm</span>(Sepal.Length <span class="sc">~</span> Petal.Length, <span class="at">data =</span> pilot)</span>
+<span id="cb307-2"><a href="experimental-design.html#cb307-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb307-3"><a href="experimental-design.html#cb307-3" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(pilot_mod)</span></code></pre></div>
 <pre><code>## 
 ## Call:
 ## lm(formula = Sepal.Length ~ Petal.Length, data = pilot)
@@ -274,37 +314,37 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
 ## 
 ## Residual standard error: 0.4034 on 13 degrees of freedom
-## Multiple R-squared:  0.04595,	Adjusted R-squared:  -0.02743 
+## Multiple R-squared:  0.04595,    Adjusted R-squared:  -0.02743 
 ## F-statistic: 0.6262 on 1 and 13 DF,  p-value: 0.443</code></pre>
-<div class="sourceCode" id="cb256"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb256-1"><a href="experimental-design.html#cb256-1" aria-hidden="true"></a>beta_<span class="dv">0</span> &lt;-<span class="st"> </span><span class="kw">coef</span>(pilot_mod)[<span class="dv">1</span>] <span class="co"># estimated intercept (from pilot) </span></span>
-<span id="cb256-2"><a href="experimental-design.html#cb256-2" aria-hidden="true"></a></span>
-<span id="cb256-3"><a href="experimental-design.html#cb256-3" aria-hidden="true"></a>sd &lt;-<span class="st"> </span><span class="kw">summary</span>(pilot_mod)<span class="op">$</span>sigma <span class="co"># estimated variability</span></span>
-<span id="cb256-4"><a href="experimental-design.html#cb256-4" aria-hidden="true"></a></span>
-<span id="cb256-5"><a href="experimental-design.html#cb256-5" aria-hidden="true"></a>my_range &lt;-<span class="st"> </span><span class="kw">range</span>(pilot<span class="op">$</span>Petal.Length) <span class="co"># range of petal length</span></span>
-<span id="cb256-6"><a href="experimental-design.html#cb256-6" aria-hidden="true"></a></span>
-<span id="cb256-7"><a href="experimental-design.html#cb256-7" aria-hidden="true"></a>nsim &lt;-<span class="st"> </span><span class="dv">500</span> <span class="co"># number of simulated datasets</span></span></code></pre></div>
+<div class="sourceCode" id="cb309"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb309-1"><a href="experimental-design.html#cb309-1" aria-hidden="true" tabindex="-1"></a>beta_0 <span class="ot">&lt;-</span> <span class="fu">coef</span>(pilot_mod)[<span class="dv">1</span>] <span class="co"># estimated intercept (from pilot) </span></span>
+<span id="cb309-2"><a href="experimental-design.html#cb309-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb309-3"><a href="experimental-design.html#cb309-3" aria-hidden="true" tabindex="-1"></a>sd <span class="ot">&lt;-</span> <span class="fu">summary</span>(pilot_mod)<span class="sc">$</span>sigma <span class="co"># estimated variability</span></span>
+<span id="cb309-4"><a href="experimental-design.html#cb309-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb309-5"><a href="experimental-design.html#cb309-5" aria-hidden="true" tabindex="-1"></a>my_range <span class="ot">&lt;-</span> <span class="fu">range</span>(pilot<span class="sc">$</span>Petal.Length) <span class="co"># range of petal length</span></span>
+<span id="cb309-6"><a href="experimental-design.html#cb309-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb309-7"><a href="experimental-design.html#cb309-7" aria-hidden="true" tabindex="-1"></a>nsim <span class="ot">&lt;-</span> <span class="dv">500</span> <span class="co"># number of simulated datasets</span></span></code></pre></div>
 <p>Then specify a meaningful effect size (here it’s the slope of Petal length)</p>
-<div class="sourceCode" id="cb257"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb257-1"><a href="experimental-design.html#cb257-1" aria-hidden="true"></a><span class="co"># ecologically meaningful slope (same scale as data)</span></span>
-<span id="cb257-2"><a href="experimental-design.html#cb257-2" aria-hidden="true"></a></span>
-<span id="cb257-3"><a href="experimental-design.html#cb257-3" aria-hidden="true"></a>beta_<span class="dv">1</span> &lt;-<span class="st"> </span><span class="dv">1</span></span></code></pre></div>
-<div class="sourceCode" id="cb258"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb258-1"><a href="experimental-design.html#cb258-1" aria-hidden="true"></a>N &lt;-<span class="st"> </span><span class="dv">20</span> <span class="co"># desired sample size</span></span>
-<span id="cb258-2"><a href="experimental-design.html#cb258-2" aria-hidden="true"></a></span>
-<span id="cb258-3"><a href="experimental-design.html#cb258-3" aria-hidden="true"></a>sim_dat =<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">Sepal.Length =</span> <span class="ot">NA</span>, </span>
-<span id="cb258-4"><a href="experimental-design.html#cb258-4" aria-hidden="true"></a>                     <span class="dt">Petal.Length =</span> <span class="kw">seq</span>(my_range[<span class="dv">1</span>], </span>
-<span id="cb258-5"><a href="experimental-design.html#cb258-5" aria-hidden="true"></a>                                        my_range[<span class="dv">2</span>], </span>
-<span id="cb258-6"><a href="experimental-design.html#cb258-6" aria-hidden="true"></a>                                        <span class="dt">length =</span> N) )</span>
-<span id="cb258-7"><a href="experimental-design.html#cb258-7" aria-hidden="true"></a></span>
-<span id="cb258-8"><a href="experimental-design.html#cb258-8" aria-hidden="true"></a>pval =<span class="st"> </span><span class="kw">rep</span>(<span class="ot">NA</span>, nsim)</span>
-<span id="cb258-9"><a href="experimental-design.html#cb258-9" aria-hidden="true"></a></span>
-<span id="cb258-10"><a href="experimental-design.html#cb258-10" aria-hidden="true"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span>nsim) {</span>
-<span id="cb258-11"><a href="experimental-design.html#cb258-11" aria-hidden="true"></a>  mean_y &lt;-<span class="st"> </span>beta_<span class="dv">0</span> <span class="op">+</span><span class="st"> </span>beta_<span class="dv">1</span> <span class="op">*</span><span class="st"> </span>sim_dat<span class="op">$</span>Petal.Length</span>
-<span id="cb258-12"><a href="experimental-design.html#cb258-12" aria-hidden="true"></a>  sim_dat<span class="op">$</span>Sepal.Length &lt;-<span class="st"> </span><span class="kw">rnorm</span>(N, <span class="dt">mean =</span> mean_y, <span class="dt">sd =</span> sd)</span>
-<span id="cb258-13"><a href="experimental-design.html#cb258-13" aria-hidden="true"></a>  m &lt;-<span class="st"> </span><span class="kw">lm</span>(Sepal.Length <span class="op">~</span><span class="st"> </span>Petal.Length, <span class="dt">data =</span> sim_dat)</span>
-<span id="cb258-14"><a href="experimental-design.html#cb258-14" aria-hidden="true"></a>  pval[i] &lt;-<span class="st"> </span><span class="kw">coef</span>(<span class="kw">summary</span>(m))[<span class="st">&quot;Petal.Length&quot;</span>, <span class="st">&quot;Pr(&gt;|t|)&quot;</span>]</span>
-<span id="cb258-15"><a href="experimental-design.html#cb258-15" aria-hidden="true"></a>  } <span class="co"># cycle through all N values</span></span>
-<span id="cb258-16"><a href="experimental-design.html#cb258-16" aria-hidden="true"></a></span>
-<span id="cb258-17"><a href="experimental-design.html#cb258-17" aria-hidden="true"></a><span class="kw">sum</span>(pval <span class="op">&lt;</span><span class="st"> </span><span class="fl">0.05</span>) <span class="op">/</span><span class="st"> </span>nsim</span></code></pre></div>
-<pre><code>## [1] 0.482</code></pre>
+<div class="sourceCode" id="cb310"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb310-1"><a href="experimental-design.html#cb310-1" aria-hidden="true" tabindex="-1"></a><span class="co"># ecologically meaningful slope (same scale as data)</span></span>
+<span id="cb310-2"><a href="experimental-design.html#cb310-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb310-3"><a href="experimental-design.html#cb310-3" aria-hidden="true" tabindex="-1"></a>beta_1 <span class="ot">&lt;-</span> <span class="dv">1</span></span></code></pre></div>
+<div class="sourceCode" id="cb311"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb311-1"><a href="experimental-design.html#cb311-1" aria-hidden="true" tabindex="-1"></a>N <span class="ot">&lt;-</span> <span class="dv">20</span> <span class="co"># desired sample size</span></span>
+<span id="cb311-2"><a href="experimental-design.html#cb311-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb311-3"><a href="experimental-design.html#cb311-3" aria-hidden="true" tabindex="-1"></a>sim_dat <span class="ot">=</span> <span class="fu">data.frame</span>(<span class="at">Sepal.Length =</span> <span class="cn">NA</span>, </span>
+<span id="cb311-4"><a href="experimental-design.html#cb311-4" aria-hidden="true" tabindex="-1"></a>                     <span class="at">Petal.Length =</span> <span class="fu">seq</span>(my_range[<span class="dv">1</span>], </span>
+<span id="cb311-5"><a href="experimental-design.html#cb311-5" aria-hidden="true" tabindex="-1"></a>                                        my_range[<span class="dv">2</span>], </span>
+<span id="cb311-6"><a href="experimental-design.html#cb311-6" aria-hidden="true" tabindex="-1"></a>                                        <span class="at">length =</span> N) )</span>
+<span id="cb311-7"><a href="experimental-design.html#cb311-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb311-8"><a href="experimental-design.html#cb311-8" aria-hidden="true" tabindex="-1"></a>pval <span class="ot">=</span> <span class="fu">rep</span>(<span class="cn">NA</span>, nsim)</span>
+<span id="cb311-9"><a href="experimental-design.html#cb311-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb311-10"><a href="experimental-design.html#cb311-10" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span>nsim) {</span>
+<span id="cb311-11"><a href="experimental-design.html#cb311-11" aria-hidden="true" tabindex="-1"></a>  mean_y <span class="ot">&lt;-</span> beta_0 <span class="sc">+</span> beta_1 <span class="sc">*</span> sim_dat<span class="sc">$</span>Petal.Length</span>
+<span id="cb311-12"><a href="experimental-design.html#cb311-12" aria-hidden="true" tabindex="-1"></a>  sim_dat<span class="sc">$</span>Sepal.Length <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(N, <span class="at">mean =</span> mean_y, <span class="at">sd =</span> sd)</span>
+<span id="cb311-13"><a href="experimental-design.html#cb311-13" aria-hidden="true" tabindex="-1"></a>  m <span class="ot">&lt;-</span> <span class="fu">lm</span>(Sepal.Length <span class="sc">~</span> Petal.Length, <span class="at">data =</span> sim_dat)</span>
+<span id="cb311-14"><a href="experimental-design.html#cb311-14" aria-hidden="true" tabindex="-1"></a>  pval[i] <span class="ot">&lt;-</span> <span class="fu">coef</span>(<span class="fu">summary</span>(m))[<span class="st">&quot;Petal.Length&quot;</span>, <span class="st">&quot;Pr(&gt;|t|)&quot;</span>]</span>
+<span id="cb311-15"><a href="experimental-design.html#cb311-15" aria-hidden="true" tabindex="-1"></a>  } <span class="co"># cycle through all N values</span></span>
+<span id="cb311-16"><a href="experimental-design.html#cb311-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb311-17"><a href="experimental-design.html#cb311-17" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(pval <span class="sc">&lt;</span> <span class="fl">0.05</span>) <span class="sc">/</span> nsim</span></code></pre></div>
+<pre><code>## [1] 0.478</code></pre>
 
 </div>
 </div>
@@ -313,8 +353,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           </div>
         </div>
       </div>
-<a href="linear-mixed-models.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-
+<a href="linear-mixed-models.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="count-data.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -337,6 +377,7 @@ gitbook.start({
 "weibo": false,
 "instapaper": false,
 "vk": false,
+"whatsapp": false,
 "all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
 },
 "fontsettings": {

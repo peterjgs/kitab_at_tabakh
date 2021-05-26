@@ -25,6 +25,7 @@ three-category-colours
 set-breaks-for-scale
 display-table-to-2-d.p.
 redefine-factor-levels-for-an-individual-plot
+plotting-two-data-sets-of-different-length-on-one-plot
 r-markdown
 ioslides-footnotes
 ioslides-speakers-notes
@@ -51,6 +52,7 @@ regression-model
 residual-plots---redres
 interactions---examples
 interaction-plot-in-ggplot2
+plot-simple-linear-regression-fitted-line-with-95-confidence-band
 linear-mixed-models
 finding-variance-components-from-lme-models
 experimental-design
@@ -61,7 +63,7 @@ independence
 homogeneity
 comparing-two-proportions
 small-counts
-plot-simple-linear-regression-fitted-line-with-95-confidence-band
+contingency-tables---fixed-row-and-columns-totals
 means---fitted-and-marginal
 load-necessary-packages
 data---genotype-from-mass-package
@@ -79,4 +81,4 @@ marginal-means-for-mother
 using-a-matrix-with-equal-weights
 using-a-matrix-with-proportional-weights
 estimates-using-effects-package
-contingency-tables---fixed-row-and-columns-totals
+transformations-and-emmeans
