@@ -860,6 +860,8 @@ data.frame(Ht = 14:21*10, se = ath.lm1.pred.PI$se.fit,
 
 ```
 
+
+
 ```{r}
 
 ggplot(data = athletes, aes(x = Ht, y = LBM)) +
@@ -925,16 +927,23 @@ plot_all <- ggarrange(plot1, plot2, plot3, plot4, nrow = 2,
 
 print(plot_all)
 
-pdf(file = "athletes_reg_plot_panel.pdf", width = 7, 
+
+
+```
+
+To export the plot as a pdf (not run):
+
+
+```{r eval = F}
+
+pdf(file = "_plots exported/athletes_reg_plot_panel.pdf", width = 7, 
     height = 5)
 
 plot_all
 
 dev.off()
 
-
 ```
-
 
 
 <br>

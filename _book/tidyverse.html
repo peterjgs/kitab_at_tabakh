@@ -32,7 +32,7 @@
   
 <link rel="prev" href="r-markdown.html"/>
 <link rel="next" href="linear-models.html"/>
-<script src="libs/header-attrs-2.9/header-attrs.js"></script>
+<script src="libs/header-attrs-2.10/header-attrs.js"></script>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -225,7 +225,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li class="chapter" data-level="8.1.1" data-path="count-data.html"><a href="count-data.html#independence"><i class="fa fa-check"></i><b>8.1.1</b> Independence</a></li>
 <li class="chapter" data-level="8.1.2" data-path="count-data.html"><a href="count-data.html#homogeneity"><i class="fa fa-check"></i><b>8.1.2</b> Homogeneity</a></li>
-<li class="chapter" data-level="8.1.3" data-path="count-data.html"><a href="count-data.html#comparing-two-proportions"><i class="fa fa-check"></i><b>8.1.3</b> Comparing two proportions</a></li>
+<li class="chapter" data-level="8.1.3" data-path="count-data.html"><a href="count-data.html#comparing-two-proportions---equivalence-of-z-and-chi2-tests"><i class="fa fa-check"></i><b>8.1.3</b> Comparing two proportions - equivalence of <span class="math inline">\(z\)</span> and <span class="math inline">\(\chi^2\)</span> tests</a></li>
 <li class="chapter" data-level="8.1.4" data-path="count-data.html"><a href="count-data.html#small-counts"><i class="fa fa-check"></i><b>8.1.4</b> Small Counts</a></li>
 </ul></li>
 <li class="chapter" data-level="8.2" data-path="count-data.html"><a href="count-data.html#contingency-tables---fixed-row-and-columns-totals"><i class="fa fa-check"></i><b>8.2</b> Contingency tables - fixed row and columns totals</a></li>
@@ -277,37 +277,37 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div class="sourceCode" id="cb88"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb88-1"><a href="tidyverse.html#cb88-1" aria-hidden="true" tabindex="-1"></a>dd1 <span class="ot">&lt;-</span> <span class="fu">as.data.frame</span>(<span class="fu">matrix</span>(<span class="fu">rpois</span>(<span class="dv">10</span>, <span class="dv">5</span>), <span class="at">nrow =</span> <span class="dv">5</span>))</span>
 <span id="cb88-2"><a href="tidyverse.html#cb88-2" aria-hidden="true" tabindex="-1"></a>dd1</span></code></pre></div>
 <pre><code>##   V1 V2
-## 1  8  5
-## 2  5  3
-## 3  4  3
-## 4  3  2
-## 5  6  8</code></pre>
+## 1  5  6
+## 2  8  3
+## 3  6  5
+## 4  7  7
+## 5  1  6</code></pre>
 <div class="sourceCode" id="cb90"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb90-1"><a href="tidyverse.html#cb90-1" aria-hidden="true" tabindex="-1"></a>dd2s <span class="ot">&lt;-</span> <span class="fu">stack</span>(dd1)</span>
 <span id="cb90-2"><a href="tidyverse.html#cb90-2" aria-hidden="true" tabindex="-1"></a>dd2s</span></code></pre></div>
 <pre><code>##    values ind
-## 1       8  V1
-## 2       5  V1
-## 3       4  V1
-## 4       3  V1
-## 5       6  V1
-## 6       5  V2
+## 1       5  V1
+## 2       8  V1
+## 3       6  V1
+## 4       7  V1
+## 5       1  V1
+## 6       6  V2
 ## 7       3  V2
-## 8       3  V2
-## 9       2  V2
-## 10      8  V2</code></pre>
+## 8       5  V2
+## 9       7  V2
+## 10      6  V2</code></pre>
 <div class="sourceCode" id="cb92"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb92-1"><a href="tidyverse.html#cb92-1" aria-hidden="true" tabindex="-1"></a><span class="fu">unstack</span>(dd2s)</span></code></pre></div>
 <pre><code>##   V1 V2
-## 1  8  5
-## 2  5  3
-## 3  4  3
-## 4  3  2
-## 5  6  8</code></pre>
+## 1  5  6
+## 2  8  3
+## 3  6  5
+## 4  7  7
+## 5  1  6</code></pre>
 <p>Now with <code>pivot_longer</code> and <code>pivot_wider</code>.</p>
 <div class="sourceCode" id="cb94"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb94-1"><a href="tidyverse.html#cb94-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span></code></pre></div>
 <pre><code>## ── Attaching packages ───────────────────────────── tidyverse 1.3.1 ──</code></pre>
-<pre><code>## ✓ tibble  3.1.2     ✓ purrr   0.3.4
+<pre><code>## ✓ tibble  3.1.3     ✓ purrr   0.3.4
 ## ✓ tidyr   1.1.3     ✓ stringr 1.4.0
-## ✓ readr   2.0.0     ✓ forcats 0.5.1</code></pre>
+## ✓ readr   2.0.1     ✓ forcats 0.5.1</code></pre>
 <pre><code>## ── Conflicts ──────────────────────────────── tidyverse_conflicts() ──
 ## x dplyr::collapse() masks nlme::collapse()
 ## x dplyr::filter()   masks stats::filter()
@@ -316,19 +316,19 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div class="sourceCode" id="cb98"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb98-1"><a href="tidyverse.html#cb98-1" aria-hidden="true" tabindex="-1"></a>dd2pl <span class="ot">&lt;-</span> dd1 <span class="sc">%&gt;%</span></span>
 <span id="cb98-2"><a href="tidyverse.html#cb98-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(<span class="at">cols =</span> <span class="fu">c</span>(<span class="st">&quot;V1&quot;</span>, <span class="st">&quot;V2&quot;</span>))</span>
 <span id="cb98-3"><a href="tidyverse.html#cb98-3" aria-hidden="true" tabindex="-1"></a>dd2pl</span></code></pre></div>
-<pre><code>## # A tibble: 10 x 2
+<pre><code>## # A tibble: 10 × 2
 ##    name  value
 ##    &lt;chr&gt; &lt;int&gt;
-##  1 V1        8
-##  2 V2        5
-##  3 V1        5
+##  1 V1        5
+##  2 V2        6
+##  3 V1        8
 ##  4 V2        3
-##  5 V1        4
-##  6 V2        3
-##  7 V1        3
-##  8 V2        2
-##  9 V1        6
-## 10 V2        8</code></pre>
+##  5 V1        6
+##  6 V2        5
+##  7 V1        7
+##  8 V2        7
+##  9 V1        1
+## 10 V2        6</code></pre>
 <div class="sourceCode" id="cb100"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb100-1"><a href="tidyverse.html#cb100-1" aria-hidden="true" tabindex="-1"></a>dd3pl <span class="ot">&lt;-</span> </span>
 <span id="cb100-2"><a href="tidyverse.html#cb100-2" aria-hidden="true" tabindex="-1"></a>  dd2pl <span class="sc">%&gt;%</span> </span>
 <span id="cb100-3"><a href="tidyverse.html#cb100-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(name) <span class="sc">%&gt;%</span></span>
@@ -337,14 +337,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb100-6"><a href="tidyverse.html#cb100-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">-</span>row)</span>
 <span id="cb100-7"><a href="tidyverse.html#cb100-7" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb100-8"><a href="tidyverse.html#cb100-8" aria-hidden="true" tabindex="-1"></a>dd3pl</span></code></pre></div>
-<pre><code>## # A tibble: 5 x 2
+<pre><code>## # A tibble: 5 × 2
 ##      V1    V2
 ##   &lt;int&gt; &lt;int&gt;
-## 1     8     5
-## 2     5     3
-## 3     4     3
-## 4     3     2
-## 5     6     8</code></pre>
+## 1     5     6
+## 2     8     3
+## 3     6     5
+## 4     7     7
+## 5     1     6</code></pre>
 
 </div>
 </div>

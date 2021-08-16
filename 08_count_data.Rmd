@@ -82,6 +82,8 @@ mice.chisq <- chisq.test(mice, correct = F)
 chisqObsMice <- mice.chisq$statistic
 pvalMice <- mice.chisq$p.value
 
+mice.chisq
+
 ```
   
 
@@ -96,7 +98,7 @@ In the second example, two random samples were used (i.e. two sub-populations) t
 In the examples above, assumptions need to be met to ensure the test results are valid. The assumptions are that no *expected* values are less than 1 and no more than 20 \% of expected values (i.e. here, none) are less than 5.
 
 
-### Comparing two proportions
+### Comparing two proportions - equivalence of $z$ and $\chi^2$ tests
 
 In the above example of survival rates from *S. aureus* infection, the hypothesis could have been tested by directly comparing the survival rates of the two sub-populations. If the survival rate of the standard treatment group is denoted by $p_1$ and that of the penicillin treatment group by $p_2$, the null hypothesis is 
 $H_0: p_1 = p_2$. If the two proportions are equal, then the samples can be considered as coming from a single population and so, under the null hypothesis, there is a single, common value of the true survival rate. The test statistic is expressed in terms of this common value of the true proportion. The test statistic is also based on a Normal approximation and is
@@ -151,10 +153,19 @@ pvalMiceZ <- 2 * pnorm(z.obsMice)
 Observed values are $\hat{p_1} = 8 / 20, \hat{p_2} = 48 / 110,$
 $\hat{p_{\mathrm{p}}} = 56 / 130$, giving $z =$ `r round(z.obsMice, 4)` and, for a two-sided test, $P =$ `r round(pvalMiceZ, 3)`. This is the same result as obtained from the $\chi^2$ test above.
 
+
+For a significance test, the Normal approximation can be considered valid when the numbers of successes and failures in each sample are all at least 5 and for a confidence interval when they are all at least 10. (See Moore, DS et al. 2014. *Introduction to the Practice of Statistics*. New York: Freeman and Company, 8th ed., pp. 508-522, for a discussion of comparing two proportions.)
+
+The $z$ and $\chi^2$ tests for equality of two proportions are equivalent because $Z = \sqrt{\chi^2_1}$. From the $\chi^2$ test above, where the $\chi^2$ statistic has one degree of freedom, $\sqrt{\chi^2_{\mathrm{obs}}} = \sqrt{0.09126} = 0.3021$, which is the same value as the observed $Z$ statistic, apart from the sign. Obviously, the two-tailed P values from the two tests will be the same ($P = 0.763$).
+
+
+*Note on confidence interval for difference of two proportions*
+
 Note that the denominator in the formula for the $Z$ statistic above is the standard error of the difference of the two proportions, based on the assumption that there is a common value of the true proportion. To obtain a *confidence interval* for the difference of the two proportions, we treat the two samples simply as independent and calculate the standard error of the difference of the two proportions as
 $\sqrt{ \hat{p_1} (1 - \hat{p_1}) / n_{1\cdot} + \hat{p_2} (1 - \hat{p_2}) / n_{2\cdot} }.$
 
-For a significance test, the Normal approximation can be considered valid when the numbers of successes and failures in each sample are all at least 5 and for a confidence interval when they are all at least 10. (See Moore, DS et al. 2014. *Introduction to the Practice of Statistics*. New York: Freeman and Company, 8th ed., pp. 508-522, for a discussion of comparing two proportions.)
+
+
 
 ### Small Counts
 

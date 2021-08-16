@@ -61,7 +61,7 @@ count-data
 count-data-tests-of-independence-and-homogeneity
 independence
 homogeneity
-comparing-two-proportions
+comparing-two-proportions---equivalence-of-z-and-chi2-tests
 small-counts
 contingency-tables---fixed-row-and-columns-totals
 means---fitted-and-marginal

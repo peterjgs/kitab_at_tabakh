@@ -1,7 +1,7 @@
 ---
 title: "Kitab at-Tabakh"
 author: "Peter Geelan-Small"
-date: "28/09/2020"
+date: "16/08/2021"
 site: bookdown::bookdown_site
 output:
   bookdown::gitbook:
