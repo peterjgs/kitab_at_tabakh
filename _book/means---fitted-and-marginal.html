@@ -272,14 +272,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h1><span class="header-section-number">9</span> Means - fitted and marginal</h1>
 <div id="load-necessary-packages" class="section level2" number="9.1">
 <h2><span class="header-section-number">9.1</span> Load necessary packages</h2>
-<div class="sourceCode" id="cb321"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb321-1"><a href="means---fitted-and-marginal.html#cb321-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
-<span id="cb321-2"><a href="means---fitted-and-marginal.html#cb321-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
-<span id="cb321-3"><a href="means---fitted-and-marginal.html#cb321-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggpubr)</span>
-<span id="cb321-4"><a href="means---fitted-and-marginal.html#cb321-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(cowplot)</span>
-<span id="cb321-5"><a href="means---fitted-and-marginal.html#cb321-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(effects)</span>
-<span id="cb321-6"><a href="means---fitted-and-marginal.html#cb321-6" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(emmeans)</span>
-<span id="cb321-7"><a href="means---fitted-and-marginal.html#cb321-7" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(DAAG)</span>
-<span id="cb321-8"><a href="means---fitted-and-marginal.html#cb321-8" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggpubr)</span></code></pre></div>
+<div class="sourceCode" id="cb320"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb320-1"><a href="means---fitted-and-marginal.html#cb320-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb320-2"><a href="means---fitted-and-marginal.html#cb320-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb320-3"><a href="means---fitted-and-marginal.html#cb320-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggpubr)</span>
+<span id="cb320-4"><a href="means---fitted-and-marginal.html#cb320-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(cowplot)</span>
+<span id="cb320-5"><a href="means---fitted-and-marginal.html#cb320-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(effects)</span>
+<span id="cb320-6"><a href="means---fitted-and-marginal.html#cb320-6" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(emmeans)</span>
+<span id="cb320-7"><a href="means---fitted-and-marginal.html#cb320-7" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(DAAG)</span>
+<span id="cb320-8"><a href="means---fitted-and-marginal.html#cb320-8" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggpubr)</span></code></pre></div>
 <p><br></p>
 </div>
 <div id="data---genotype-from-mass-package" class="section level2" number="9.2">
@@ -292,15 +292,15 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p><em>Mother</em> genotype of the foster mother.</p>
 <p><em>Wt</em> litter average weight gain of the litter, in grams at age 28 days (the source states that the within-litter variability is negligible).</p>
 <p><br></p>
-<div class="sourceCode" id="cb322"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb322-1"><a href="means---fitted-and-marginal.html#cb322-1" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(genotype, <span class="at">package =</span> <span class="st">&quot;MASS&quot;</span>)</span>
-<span id="cb322-2"><a href="means---fitted-and-marginal.html#cb322-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb322-3"><a href="means---fitted-and-marginal.html#cb322-3" aria-hidden="true" tabindex="-1"></a>gtype <span class="ot">&lt;-</span> genotype</span>
-<span id="cb322-4"><a href="means---fitted-and-marginal.html#cb322-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb322-5"><a href="means---fitted-and-marginal.html#cb322-5" aria-hidden="true" tabindex="-1"></a>freq.cell <span class="ot">&lt;-</span> </span>
-<span id="cb322-6"><a href="means---fitted-and-marginal.html#cb322-6" aria-hidden="true" tabindex="-1"></a>  gtype <span class="sc">%&gt;%</span> </span>
-<span id="cb322-7"><a href="means---fitted-and-marginal.html#cb322-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(Mother, Litter)</span>
-<span id="cb322-8"><a href="means---fitted-and-marginal.html#cb322-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb322-9"><a href="means---fitted-and-marginal.html#cb322-9" aria-hidden="true" tabindex="-1"></a>freq.cell</span></code></pre></div>
+<div class="sourceCode" id="cb321"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb321-1"><a href="means---fitted-and-marginal.html#cb321-1" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(genotype, <span class="at">package =</span> <span class="st">&quot;MASS&quot;</span>)</span>
+<span id="cb321-2"><a href="means---fitted-and-marginal.html#cb321-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb321-3"><a href="means---fitted-and-marginal.html#cb321-3" aria-hidden="true" tabindex="-1"></a>gtype <span class="ot">&lt;-</span> genotype</span>
+<span id="cb321-4"><a href="means---fitted-and-marginal.html#cb321-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb321-5"><a href="means---fitted-and-marginal.html#cb321-5" aria-hidden="true" tabindex="-1"></a>freq.cell <span class="ot">&lt;-</span> </span>
+<span id="cb321-6"><a href="means---fitted-and-marginal.html#cb321-6" aria-hidden="true" tabindex="-1"></a>  gtype <span class="sc">%&gt;%</span> </span>
+<span id="cb321-7"><a href="means---fitted-and-marginal.html#cb321-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(Mother, Litter)</span>
+<span id="cb321-8"><a href="means---fitted-and-marginal.html#cb321-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb321-9"><a href="means---fitted-and-marginal.html#cb321-9" aria-hidden="true" tabindex="-1"></a>freq.cell</span></code></pre></div>
 <pre><code>##    Mother Litter n
 ## 1       A      A 5
 ## 2       A      B 4
@@ -319,46 +319,46 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## 15      J      I 3
 ## 16      J      J 5</code></pre>
 <p>Table of cell frequencies</p>
-<div class="sourceCode" id="cb324"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb324-1"><a href="means---fitted-and-marginal.html#cb324-1" aria-hidden="true" tabindex="-1"></a>freq.cell.mat <span class="ot">&lt;-</span> <span class="fu">matrix</span>(freq.cell<span class="sc">$</span>n, <span class="at">nrow =</span> <span class="dv">4</span>)</span>
-<span id="cb324-2"><a href="means---fitted-and-marginal.html#cb324-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb324-3"><a href="means---fitted-and-marginal.html#cb324-3" aria-hidden="true" tabindex="-1"></a><span class="fu">rownames</span>(freq.cell.mat) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;Litter_A&quot;</span>, <span class="st">&quot;Litter_B&quot;</span>, <span class="st">&quot;Litter_I&quot;</span>, <span class="st">&quot;Litter_J&quot;</span>)</span>
-<span id="cb324-4"><a href="means---fitted-and-marginal.html#cb324-4" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(freq.cell.mat) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;Mother_A&quot;</span>, <span class="st">&quot;Mother_B&quot;</span>, <span class="st">&quot;Mother_I&quot;</span>, <span class="st">&quot;Mother_J&quot;</span>)</span>
-<span id="cb324-5"><a href="means---fitted-and-marginal.html#cb324-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb324-6"><a href="means---fitted-and-marginal.html#cb324-6" aria-hidden="true" tabindex="-1"></a>freq.cell <span class="ot">&lt;-</span> freq.cell.mat</span>
-<span id="cb324-7"><a href="means---fitted-and-marginal.html#cb324-7" aria-hidden="true" tabindex="-1"></a><span class="fu">rm</span>(freq.cell.mat)</span>
-<span id="cb324-8"><a href="means---fitted-and-marginal.html#cb324-8" aria-hidden="true" tabindex="-1"></a>freq.cell</span></code></pre></div>
+<div class="sourceCode" id="cb323"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb323-1"><a href="means---fitted-and-marginal.html#cb323-1" aria-hidden="true" tabindex="-1"></a>freq.cell.mat <span class="ot">&lt;-</span> <span class="fu">matrix</span>(freq.cell<span class="sc">$</span>n, <span class="at">nrow =</span> <span class="dv">4</span>)</span>
+<span id="cb323-2"><a href="means---fitted-and-marginal.html#cb323-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb323-3"><a href="means---fitted-and-marginal.html#cb323-3" aria-hidden="true" tabindex="-1"></a><span class="fu">rownames</span>(freq.cell.mat) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;Litter_A&quot;</span>, <span class="st">&quot;Litter_B&quot;</span>, <span class="st">&quot;Litter_I&quot;</span>, <span class="st">&quot;Litter_J&quot;</span>)</span>
+<span id="cb323-4"><a href="means---fitted-and-marginal.html#cb323-4" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(freq.cell.mat) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;Mother_A&quot;</span>, <span class="st">&quot;Mother_B&quot;</span>, <span class="st">&quot;Mother_I&quot;</span>, <span class="st">&quot;Mother_J&quot;</span>)</span>
+<span id="cb323-5"><a href="means---fitted-and-marginal.html#cb323-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb323-6"><a href="means---fitted-and-marginal.html#cb323-6" aria-hidden="true" tabindex="-1"></a>freq.cell <span class="ot">&lt;-</span> freq.cell.mat</span>
+<span id="cb323-7"><a href="means---fitted-and-marginal.html#cb323-7" aria-hidden="true" tabindex="-1"></a><span class="fu">rm</span>(freq.cell.mat)</span>
+<span id="cb323-8"><a href="means---fitted-and-marginal.html#cb323-8" aria-hidden="true" tabindex="-1"></a>freq.cell</span></code></pre></div>
 <pre><code>##          Mother_A Mother_B Mother_I Mother_J
 ## Litter_A        5        3        4        5
 ## Litter_B        4        5        4        2
 ## Litter_I        3        3        5        3
 ## Litter_J        4        3        3        5</code></pre>
-<div class="sourceCode" id="cb326"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb326-1"><a href="means---fitted-and-marginal.html#cb326-1" aria-hidden="true" tabindex="-1"></a>gtype <span class="sc">%&gt;%</span></span>
-<span id="cb326-2"><a href="means---fitted-and-marginal.html#cb326-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(Litter)</span></code></pre></div>
+<div class="sourceCode" id="cb325"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb325-1"><a href="means---fitted-and-marginal.html#cb325-1" aria-hidden="true" tabindex="-1"></a>gtype <span class="sc">%&gt;%</span></span>
+<span id="cb325-2"><a href="means---fitted-and-marginal.html#cb325-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(Litter)</span></code></pre></div>
 <pre><code>##   Litter  n
 ## 1      A 17
 ## 2      B 15
 ## 3      I 14
 ## 4      J 15</code></pre>
-<div class="sourceCode" id="cb328"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb328-1"><a href="means---fitted-and-marginal.html#cb328-1" aria-hidden="true" tabindex="-1"></a>gtype <span class="sc">%&gt;%</span></span>
-<span id="cb328-2"><a href="means---fitted-and-marginal.html#cb328-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(Mother)</span></code></pre></div>
+<div class="sourceCode" id="cb327"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb327-1"><a href="means---fitted-and-marginal.html#cb327-1" aria-hidden="true" tabindex="-1"></a>gtype <span class="sc">%&gt;%</span></span>
+<span id="cb327-2"><a href="means---fitted-and-marginal.html#cb327-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(Mother)</span></code></pre></div>
 <pre><code>##   Mother  n
 ## 1      A 16
 ## 2      B 14
 ## 3      I 16
 ## 4      J 15</code></pre>
-<div class="sourceCode" id="cb330"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb330-1"><a href="means---fitted-and-marginal.html#cb330-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(gtype, <span class="fu">aes</span>(<span class="at">x =</span> Mother, <span class="at">y =</span> Wt, <span class="at">colour =</span> Litter)) <span class="sc">+</span></span>
-<span id="cb330-2"><a href="means---fitted-and-marginal.html#cb330-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb329"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb329-1"><a href="means---fitted-and-marginal.html#cb329-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(gtype, <span class="fu">aes</span>(<span class="at">x =</span> Mother, <span class="at">y =</span> Wt, <span class="at">colour =</span> Litter)) <span class="sc">+</span></span>
+<span id="cb329-2"><a href="means---fitted-and-marginal.html#cb329-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>()</span></code></pre></div>
 <p><img src="_main_files/figure-html/unnamed-chunk-173-1.png" width="672" /></p>
-<div class="sourceCode" id="cb331"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb331-1"><a href="means---fitted-and-marginal.html#cb331-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(gtype, <span class="fu">aes</span>(<span class="at">x =</span> Litter, <span class="at">y =</span> Wt, <span class="at">colour =</span> Mother)) <span class="sc">+</span></span>
-<span id="cb331-2"><a href="means---fitted-and-marginal.html#cb331-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb330"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb330-1"><a href="means---fitted-and-marginal.html#cb330-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(gtype, <span class="fu">aes</span>(<span class="at">x =</span> Litter, <span class="at">y =</span> Wt, <span class="at">colour =</span> Mother)) <span class="sc">+</span></span>
+<span id="cb330-2"><a href="means---fitted-and-marginal.html#cb330-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>()</span></code></pre></div>
 <p><img src="_main_files/figure-html/unnamed-chunk-174-1.png" width="672" /></p>
-<div class="sourceCode" id="cb332"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb332-1"><a href="means---fitted-and-marginal.html#cb332-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(gtype, <span class="fu">aes</span>(<span class="at">x =</span> Litter, <span class="at">y =</span> Wt, </span>
-<span id="cb332-2"><a href="means---fitted-and-marginal.html#cb332-2" aria-hidden="true" tabindex="-1"></a>                     <span class="at">colour =</span> Litter)) <span class="sc">+</span> </span>
-<span id="cb332-3"><a href="means---fitted-and-marginal.html#cb332-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
-<span id="cb332-4"><a href="means---fitted-and-marginal.html#cb332-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>( <span class="sc">~</span> Mother, <span class="at">nrow =</span> <span class="dv">2</span>) <span class="sc">+</span></span>
-<span id="cb332-5"><a href="means---fitted-and-marginal.html#cb332-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">&quot;none&quot;</span>) </span></code></pre></div>
+<div class="sourceCode" id="cb331"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb331-1"><a href="means---fitted-and-marginal.html#cb331-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(gtype, <span class="fu">aes</span>(<span class="at">x =</span> Litter, <span class="at">y =</span> Wt, </span>
+<span id="cb331-2"><a href="means---fitted-and-marginal.html#cb331-2" aria-hidden="true" tabindex="-1"></a>                     <span class="at">colour =</span> Litter)) <span class="sc">+</span> </span>
+<span id="cb331-3"><a href="means---fitted-and-marginal.html#cb331-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb331-4"><a href="means---fitted-and-marginal.html#cb331-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>( <span class="sc">~</span> Mother, <span class="at">nrow =</span> <span class="dv">2</span>) <span class="sc">+</span></span>
+<span id="cb331-5"><a href="means---fitted-and-marginal.html#cb331-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">&quot;none&quot;</span>) </span></code></pre></div>
 <p><img src="_main_files/figure-html/unnamed-chunk-175-1.png" width="672" /></p>
-<div class="sourceCode" id="cb333"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb333-1"><a href="means---fitted-and-marginal.html#cb333-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(gtype)</span></code></pre></div>
+<div class="sourceCode" id="cb332"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb332-1"><a href="means---fitted-and-marginal.html#cb332-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(gtype)</span></code></pre></div>
 <pre><code>##  Litter Mother       Wt       
 ##  A:17   A:16   Min.   :36.30  
 ##  B:15   B:14   1st Qu.:48.20  
@@ -366,10 +366,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ##  J:15   J:15   Mean   :53.97  
 ##                3rd Qu.:60.30  
 ##                Max.   :69.80</code></pre>
-<div class="sourceCode" id="cb335"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb335-1"><a href="means---fitted-and-marginal.html#cb335-1" aria-hidden="true" tabindex="-1"></a>gtype <span class="sc">%&gt;%</span></span>
-<span id="cb335-2"><a href="means---fitted-and-marginal.html#cb335-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(Litter) <span class="sc">%&gt;%</span></span>
-<span id="cb335-3"><a href="means---fitted-and-marginal.html#cb335-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">mean_litter =</span> <span class="fu">mean</span>(Wt), </span>
-<span id="cb335-4"><a href="means---fitted-and-marginal.html#cb335-4" aria-hidden="true" tabindex="-1"></a>            <span class="at">std.dev_litter =</span> <span class="fu">sd</span>(Wt))</span></code></pre></div>
+<div class="sourceCode" id="cb334"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb334-1"><a href="means---fitted-and-marginal.html#cb334-1" aria-hidden="true" tabindex="-1"></a>gtype <span class="sc">%&gt;%</span></span>
+<span id="cb334-2"><a href="means---fitted-and-marginal.html#cb334-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(Litter) <span class="sc">%&gt;%</span></span>
+<span id="cb334-3"><a href="means---fitted-and-marginal.html#cb334-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">mean_litter =</span> <span class="fu">mean</span>(Wt), </span>
+<span id="cb334-4"><a href="means---fitted-and-marginal.html#cb334-4" aria-hidden="true" tabindex="-1"></a>            <span class="at">std.dev_litter =</span> <span class="fu">sd</span>(Wt))</span></code></pre></div>
 <pre><code>## # A tibble: 4 × 3
 ##   Litter mean_litter std.dev_litter
 ##   &lt;fct&gt;        &lt;dbl&gt;          &lt;dbl&gt;
@@ -377,10 +377,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## 2 B             54.7           7.13
 ## 3 I             52.9          11.3 
 ## 4 J             53.0           5.87</code></pre>
-<div class="sourceCode" id="cb337"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb337-1"><a href="means---fitted-and-marginal.html#cb337-1" aria-hidden="true" tabindex="-1"></a>gtype <span class="sc">%&gt;%</span></span>
-<span id="cb337-2"><a href="means---fitted-and-marginal.html#cb337-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(Mother) <span class="sc">%&gt;%</span></span>
-<span id="cb337-3"><a href="means---fitted-and-marginal.html#cb337-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">mean_mother =</span> <span class="fu">mean</span>(Wt), </span>
-<span id="cb337-4"><a href="means---fitted-and-marginal.html#cb337-4" aria-hidden="true" tabindex="-1"></a>            <span class="at">std.dev_mother =</span> <span class="fu">sd</span>(Wt))</span></code></pre></div>
+<div class="sourceCode" id="cb336"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb336-1"><a href="means---fitted-and-marginal.html#cb336-1" aria-hidden="true" tabindex="-1"></a>gtype <span class="sc">%&gt;%</span></span>
+<span id="cb336-2"><a href="means---fitted-and-marginal.html#cb336-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(Mother) <span class="sc">%&gt;%</span></span>
+<span id="cb336-3"><a href="means---fitted-and-marginal.html#cb336-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">mean_mother =</span> <span class="fu">mean</span>(Wt), </span>
+<span id="cb336-4"><a href="means---fitted-and-marginal.html#cb336-4" aria-hidden="true" tabindex="-1"></a>            <span class="at">std.dev_mother =</span> <span class="fu">sd</span>(Wt))</span></code></pre></div>
 <pre><code>## # A tibble: 4 × 3
 ##   Mother mean_mother std.dev_mother
 ##   &lt;fct&gt;        &lt;dbl&gt;          &lt;dbl&gt;
@@ -394,9 +394,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h2><span class="header-section-number">9.3</span> Model</h2>
 <p>Explain animal weight by Litter and Mother.</p>
 <p>Order: <em>Litter + Mother</em></p>
-<div class="sourceCode" id="cb339"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb339-1"><a href="means---fitted-and-marginal.html#cb339-1" aria-hidden="true" tabindex="-1"></a>gtype.lm1 <span class="ot">&lt;-</span> <span class="fu">lm</span>(Wt <span class="sc">~</span> Litter <span class="sc">+</span> Mother, <span class="at">data =</span> gtype)</span>
-<span id="cb339-2"><a href="means---fitted-and-marginal.html#cb339-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb339-3"><a href="means---fitted-and-marginal.html#cb339-3" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(gtype.lm1)</span></code></pre></div>
+<div class="sourceCode" id="cb338"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb338-1"><a href="means---fitted-and-marginal.html#cb338-1" aria-hidden="true" tabindex="-1"></a>gtype.lm1 <span class="ot">&lt;-</span> <span class="fu">lm</span>(Wt <span class="sc">~</span> Litter <span class="sc">+</span> Mother, <span class="at">data =</span> gtype)</span>
+<span id="cb338-2"><a href="means---fitted-and-marginal.html#cb338-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb338-3"><a href="means---fitted-and-marginal.html#cb338-3" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(gtype.lm1)</span></code></pre></div>
 <pre><code>## 
 ## Call:
 ## lm(formula = Wt ~ Litter + Mother, data = gtype)
@@ -420,7 +420,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## Residual standard error: 7.776 on 54 degrees of freedom
 ## Multiple R-squared:  0.2037, Adjusted R-squared:  0.1152 
 ## F-statistic: 2.302 on 6 and 54 DF,  p-value: 0.04732</code></pre>
-<div class="sourceCode" id="cb341"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb341-1"><a href="means---fitted-and-marginal.html#cb341-1" aria-hidden="true" tabindex="-1"></a><span class="fu">anova</span>(gtype.lm1)</span></code></pre></div>
+<div class="sourceCode" id="cb340"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb340-1"><a href="means---fitted-and-marginal.html#cb340-1" aria-hidden="true" tabindex="-1"></a><span class="fu">anova</span>(gtype.lm1)</span></code></pre></div>
 <pre><code>## Analysis of Variance Table
 ## 
 ## Response: Wt
@@ -432,9 +432,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</code></pre>
 <p><br></p>
 <p>Order: <em>Mother + Litter</em></p>
-<div class="sourceCode" id="cb343"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb343-1"><a href="means---fitted-and-marginal.html#cb343-1" aria-hidden="true" tabindex="-1"></a>gtype.lm2 <span class="ot">&lt;-</span> <span class="fu">lm</span>(Wt <span class="sc">~</span> Mother <span class="sc">+</span> Litter, <span class="at">data =</span> gtype)</span>
-<span id="cb343-2"><a href="means---fitted-and-marginal.html#cb343-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb343-3"><a href="means---fitted-and-marginal.html#cb343-3" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(gtype.lm2)</span></code></pre></div>
+<div class="sourceCode" id="cb342"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb342-1"><a href="means---fitted-and-marginal.html#cb342-1" aria-hidden="true" tabindex="-1"></a>gtype.lm2 <span class="ot">&lt;-</span> <span class="fu">lm</span>(Wt <span class="sc">~</span> Mother <span class="sc">+</span> Litter, <span class="at">data =</span> gtype)</span>
+<span id="cb342-2"><a href="means---fitted-and-marginal.html#cb342-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb342-3"><a href="means---fitted-and-marginal.html#cb342-3" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(gtype.lm2)</span></code></pre></div>
 <pre><code>## 
 ## Call:
 ## lm(formula = Wt ~ Mother + Litter, data = gtype)
@@ -459,7 +459,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## Multiple R-squared:  0.2037, Adjusted R-squared:  0.1152 
 ## F-statistic: 2.302 on 6 and 54 DF,  p-value: 0.04732</code></pre>
 <p>Note model coefficients are the same regardless of order of explanatory terms.</p>
-<div class="sourceCode" id="cb345"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb345-1"><a href="means---fitted-and-marginal.html#cb345-1" aria-hidden="true" tabindex="-1"></a><span class="fu">anova</span>(gtype.lm2)</span></code></pre></div>
+<div class="sourceCode" id="cb344"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb344-1"><a href="means---fitted-and-marginal.html#cb344-1" aria-hidden="true" tabindex="-1"></a><span class="fu">anova</span>(gtype.lm2)</span></code></pre></div>
 <pre><code>## Analysis of Variance Table
 ## 
 ## Response: Wt
@@ -474,10 +474,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="fitted-values-using-predict" class="section level2" number="9.4">
 <h2><span class="header-section-number">9.4</span> Fitted values using “predict”</h2>
 <p>Make a prediction grid.</p>
-<div class="sourceCode" id="cb347"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb347-1"><a href="means---fitted-and-marginal.html#cb347-1" aria-hidden="true" tabindex="-1"></a>pred.comb <span class="ot">&lt;-</span> <span class="fu">expand.grid</span>(<span class="at">Litter =</span> <span class="fu">levels</span>(gtype<span class="sc">$</span>Litter), </span>
-<span id="cb347-2"><a href="means---fitted-and-marginal.html#cb347-2" aria-hidden="true" tabindex="-1"></a>                         <span class="at">Mother =</span> <span class="fu">levels</span>(gtype<span class="sc">$</span>Mother))</span>
-<span id="cb347-3"><a href="means---fitted-and-marginal.html#cb347-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb347-4"><a href="means---fitted-and-marginal.html#cb347-4" aria-hidden="true" tabindex="-1"></a>pred.comb</span></code></pre></div>
+<div class="sourceCode" id="cb346"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb346-1"><a href="means---fitted-and-marginal.html#cb346-1" aria-hidden="true" tabindex="-1"></a>pred.comb <span class="ot">&lt;-</span> <span class="fu">expand.grid</span>(<span class="at">Litter =</span> <span class="fu">levels</span>(gtype<span class="sc">$</span>Litter), </span>
+<span id="cb346-2"><a href="means---fitted-and-marginal.html#cb346-2" aria-hidden="true" tabindex="-1"></a>                         <span class="at">Mother =</span> <span class="fu">levels</span>(gtype<span class="sc">$</span>Mother))</span>
+<span id="cb346-3"><a href="means---fitted-and-marginal.html#cb346-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb346-4"><a href="means---fitted-and-marginal.html#cb346-4" aria-hidden="true" tabindex="-1"></a>pred.comb</span></code></pre></div>
 <pre><code>##    Litter Mother
 ## 1       A      A
 ## 2       B      A
@@ -502,13 +502,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>For example, for Litter A with Mother A:</p>
 <p>Note <span class="math inline">\(t_{0.975, 54} = 2.004879\)</span>.</p>
 <p><span class="math inline">\(56.90907 \pm 2.004879 \times 2.478191 = (51.9406, 61.8775)\)</span></p>
-<div class="sourceCode" id="cb349"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb349-1"><a href="means---fitted-and-marginal.html#cb349-1" aria-hidden="true" tabindex="-1"></a>ypred.lm1 <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(pred.comb, <span class="fu">predict</span>(gtype.lm1, <span class="at">newdata =</span> pred.comb, </span>
-<span id="cb349-2"><a href="means---fitted-and-marginal.html#cb349-2" aria-hidden="true" tabindex="-1"></a>                                           <span class="at">se.fit =</span> T,</span>
-<span id="cb349-3"><a href="means---fitted-and-marginal.html#cb349-3" aria-hidden="true" tabindex="-1"></a>                                           <span class="at">interval =</span> <span class="st">&quot;confidence&quot;</span>))</span>
-<span id="cb349-4"><a href="means---fitted-and-marginal.html#cb349-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb349-5"><a href="means---fitted-and-marginal.html#cb349-5" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(ypred.lm1)[<span class="dv">3</span><span class="sc">:</span><span class="dv">5</span>] <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;fit&quot;</span>, <span class="st">&quot;lwr&quot;</span>, <span class="st">&quot;upr&quot;</span>)</span>
-<span id="cb349-6"><a href="means---fitted-and-marginal.html#cb349-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb349-7"><a href="means---fitted-and-marginal.html#cb349-7" aria-hidden="true" tabindex="-1"></a>ypred.lm1</span></code></pre></div>
+<div class="sourceCode" id="cb348"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb348-1"><a href="means---fitted-and-marginal.html#cb348-1" aria-hidden="true" tabindex="-1"></a>ypred.lm1 <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(pred.comb, <span class="fu">predict</span>(gtype.lm1, <span class="at">newdata =</span> pred.comb, </span>
+<span id="cb348-2"><a href="means---fitted-and-marginal.html#cb348-2" aria-hidden="true" tabindex="-1"></a>                                           <span class="at">se.fit =</span> T,</span>
+<span id="cb348-3"><a href="means---fitted-and-marginal.html#cb348-3" aria-hidden="true" tabindex="-1"></a>                                           <span class="at">interval =</span> <span class="st">&quot;confidence&quot;</span>))</span>
+<span id="cb348-4"><a href="means---fitted-and-marginal.html#cb348-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb348-5"><a href="means---fitted-and-marginal.html#cb348-5" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(ypred.lm1)[<span class="dv">3</span><span class="sc">:</span><span class="dv">5</span>] <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;fit&quot;</span>, <span class="st">&quot;lwr&quot;</span>, <span class="st">&quot;upr&quot;</span>)</span>
+<span id="cb348-6"><a href="means---fitted-and-marginal.html#cb348-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb348-7"><a href="means---fitted-and-marginal.html#cb348-7" aria-hidden="true" tabindex="-1"></a>ypred.lm1</span></code></pre></div>
 <pre><code>##    Litter Mother      fit      lwr      upr   se.fit df
 ## 1       A      A 56.90907 51.94060 61.87755 2.478191 54
 ## 2       B      A 54.88389 49.61652 60.15126 2.627276 54
@@ -543,12 +543,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## 14       7.775661
 ## 15       7.775661
 ## 16       7.775661</code></pre>
-<div class="sourceCode" id="cb351"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb351-1"><a href="means---fitted-and-marginal.html#cb351-1" aria-hidden="true" tabindex="-1"></a>ypred.lm1.mat <span class="ot">&lt;-</span> <span class="fu">matrix</span>(ypred.lm1<span class="sc">$</span>fit, <span class="at">nrow =</span> <span class="dv">4</span>)</span>
-<span id="cb351-2"><a href="means---fitted-and-marginal.html#cb351-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb351-3"><a href="means---fitted-and-marginal.html#cb351-3" aria-hidden="true" tabindex="-1"></a><span class="fu">rownames</span>(ypred.lm1.mat) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;Litter_A&quot;</span>, <span class="st">&quot;Litter_B&quot;</span>, <span class="st">&quot;Litter_I&quot;</span>, <span class="st">&quot;Litter_J&quot;</span>)</span>
-<span id="cb351-4"><a href="means---fitted-and-marginal.html#cb351-4" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(ypred.lm1.mat) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;Mother_A&quot;</span>, <span class="st">&quot;Mother_B&quot;</span>, <span class="st">&quot;Mother_I&quot;</span>, <span class="st">&quot;Mother_J&quot;</span>)</span>
-<span id="cb351-5"><a href="means---fitted-and-marginal.html#cb351-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb351-6"><a href="means---fitted-and-marginal.html#cb351-6" aria-hidden="true" tabindex="-1"></a>ypred.lm1.mat</span></code></pre></div>
+<div class="sourceCode" id="cb350"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb350-1"><a href="means---fitted-and-marginal.html#cb350-1" aria-hidden="true" tabindex="-1"></a>ypred.lm1.mat <span class="ot">&lt;-</span> <span class="fu">matrix</span>(ypred.lm1<span class="sc">$</span>fit, <span class="at">nrow =</span> <span class="dv">4</span>)</span>
+<span id="cb350-2"><a href="means---fitted-and-marginal.html#cb350-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb350-3"><a href="means---fitted-and-marginal.html#cb350-3" aria-hidden="true" tabindex="-1"></a><span class="fu">rownames</span>(ypred.lm1.mat) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;Litter_A&quot;</span>, <span class="st">&quot;Litter_B&quot;</span>, <span class="st">&quot;Litter_I&quot;</span>, <span class="st">&quot;Litter_J&quot;</span>)</span>
+<span id="cb350-4"><a href="means---fitted-and-marginal.html#cb350-4" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(ypred.lm1.mat) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;Mother_A&quot;</span>, <span class="st">&quot;Mother_B&quot;</span>, <span class="st">&quot;Mother_I&quot;</span>, <span class="st">&quot;Mother_J&quot;</span>)</span>
+<span id="cb350-5"><a href="means---fitted-and-marginal.html#cb350-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb350-6"><a href="means---fitted-and-marginal.html#cb350-6" aria-hidden="true" tabindex="-1"></a>ypred.lm1.mat</span></code></pre></div>
 <pre><code>##          Mother_A Mother_B Mother_I Mother_J
 ## Litter_A 56.90907 60.42496 55.07696 50.15438
 ## Litter_B 54.88389 58.39978 53.05178 48.12920
@@ -566,8 +566,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>Note <span class="math inline">\(t_{0.975, 54} = 2.004879\)</span>.</p>
 <p><span class="math inline">\(\mathrm{se} = \sqrt{2.478191^2 + 7.775661^2} = 8.161025\)</span></p>
 <p><span class="math inline">\(56.90907 \pm 2.004879 \times 8.161025 = (40.5472, 73.2709)\)</span></p>
-<div class="sourceCode" id="cb353"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb353-1"><a href="means---fitted-and-marginal.html#cb353-1" aria-hidden="true" tabindex="-1"></a><span class="fu">predict</span>(gtype.lm1, <span class="at">newdata =</span> pred.comb, <span class="at">se.fit =</span> T,</span>
-<span id="cb353-2"><a href="means---fitted-and-marginal.html#cb353-2" aria-hidden="true" tabindex="-1"></a>                     <span class="at">interval =</span> <span class="st">&quot;prediction&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb352"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb352-1"><a href="means---fitted-and-marginal.html#cb352-1" aria-hidden="true" tabindex="-1"></a><span class="fu">predict</span>(gtype.lm1, <span class="at">newdata =</span> pred.comb, <span class="at">se.fit =</span> T,</span>
+<span id="cb352-2"><a href="means---fitted-and-marginal.html#cb352-2" aria-hidden="true" tabindex="-1"></a>                     <span class="at">interval =</span> <span class="st">&quot;prediction&quot;</span>)</span></code></pre></div>
 <pre><code>## $fit
 ##         fit      lwr      upr
 ## 1  56.90907 40.54720 73.27094
@@ -606,13 +606,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="manually-fitting-model-using-matrix-algebra" class="section level2" number="9.5">
 <h2><span class="header-section-number">9.5</span> Manually fitting model using matrix algebra</h2>
 <p>Model coefficients are the same as above - as they should be!</p>
-<div class="sourceCode" id="cb355"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb355-1"><a href="means---fitted-and-marginal.html#cb355-1" aria-hidden="true" tabindex="-1"></a>gtype.mat <span class="ot">&lt;-</span> <span class="fu">model.matrix</span>(gtype.lm1)</span>
-<span id="cb355-2"><a href="means---fitted-and-marginal.html#cb355-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb355-3"><a href="means---fitted-and-marginal.html#cb355-3" aria-hidden="true" tabindex="-1"></a>XtX.inv <span class="ot">&lt;-</span> <span class="fu">ginv</span>( <span class="fu">t</span>(gtype.mat) <span class="sc">%*%</span> gtype.mat )</span>
-<span id="cb355-4"><a href="means---fitted-and-marginal.html#cb355-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb355-5"><a href="means---fitted-and-marginal.html#cb355-5" aria-hidden="true" tabindex="-1"></a>bhat <span class="ot">&lt;-</span> XtX.inv <span class="sc">%*%</span> <span class="fu">t</span>(gtype.mat) <span class="sc">%*%</span> gtype<span class="sc">$</span>Wt</span>
-<span id="cb355-6"><a href="means---fitted-and-marginal.html#cb355-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb355-7"><a href="means---fitted-and-marginal.html#cb355-7" aria-hidden="true" tabindex="-1"></a>bhat</span></code></pre></div>
+<div class="sourceCode" id="cb354"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb354-1"><a href="means---fitted-and-marginal.html#cb354-1" aria-hidden="true" tabindex="-1"></a>gtype.mat <span class="ot">&lt;-</span> <span class="fu">model.matrix</span>(gtype.lm1)</span>
+<span id="cb354-2"><a href="means---fitted-and-marginal.html#cb354-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb354-3"><a href="means---fitted-and-marginal.html#cb354-3" aria-hidden="true" tabindex="-1"></a>XtX.inv <span class="ot">&lt;-</span> <span class="fu">ginv</span>( <span class="fu">t</span>(gtype.mat) <span class="sc">%*%</span> gtype.mat )</span>
+<span id="cb354-4"><a href="means---fitted-and-marginal.html#cb354-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb354-5"><a href="means---fitted-and-marginal.html#cb354-5" aria-hidden="true" tabindex="-1"></a>bhat <span class="ot">&lt;-</span> XtX.inv <span class="sc">%*%</span> <span class="fu">t</span>(gtype.mat) <span class="sc">%*%</span> gtype<span class="sc">$</span>Wt</span>
+<span id="cb354-6"><a href="means---fitted-and-marginal.html#cb354-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb354-7"><a href="means---fitted-and-marginal.html#cb354-7" aria-hidden="true" tabindex="-1"></a>bhat</span></code></pre></div>
 <pre><code>##           [,1]
 ## [1,] 56.909073
 ## [2,] -2.025180
@@ -621,9 +621,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## [5,]  3.515885
 ## [6,] -1.832111
 ## [7,] -6.754690</code></pre>
-<div class="sourceCode" id="cb357"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb357-1"><a href="means---fitted-and-marginal.html#cb357-1" aria-hidden="true" tabindex="-1"></a>bhat.df <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">param =</span> <span class="fu">colnames</span>(gtype.mat), <span class="at">est =</span> bhat)</span>
-<span id="cb357-2"><a href="means---fitted-and-marginal.html#cb357-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb357-3"><a href="means---fitted-and-marginal.html#cb357-3" aria-hidden="true" tabindex="-1"></a>bhat.df</span></code></pre></div>
+<div class="sourceCode" id="cb356"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb356-1"><a href="means---fitted-and-marginal.html#cb356-1" aria-hidden="true" tabindex="-1"></a>bhat.df <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">param =</span> <span class="fu">colnames</span>(gtype.mat), <span class="at">est =</span> bhat)</span>
+<span id="cb356-2"><a href="means---fitted-and-marginal.html#cb356-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb356-3"><a href="means---fitted-and-marginal.html#cb356-3" aria-hidden="true" tabindex="-1"></a>bhat.df</span></code></pre></div>
 <pre><code>##         param       est
 ## 1 (Intercept) 56.909073
 ## 2     LitterB -2.025180
@@ -637,19 +637,19 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="estimated-means-using-model-coefficients-and-various-weights" class="section level2" number="9.6">
 <h2><span class="header-section-number">9.6</span> Estimated means using model coefficients and various weights</h2>
 <p>First, get the two-way table of means.</p>
-<div class="sourceCode" id="cb359"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb359-1"><a href="means---fitted-and-marginal.html#cb359-1" aria-hidden="true" tabindex="-1"></a>means.cell <span class="ot">&lt;-</span> </span>
-<span id="cb359-2"><a href="means---fitted-and-marginal.html#cb359-2" aria-hidden="true" tabindex="-1"></a>  genotype <span class="sc">%&gt;%</span></span>
-<span id="cb359-3"><a href="means---fitted-and-marginal.html#cb359-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(Mother, Litter) <span class="sc">%&gt;%</span></span>
-<span id="cb359-4"><a href="means---fitted-and-marginal.html#cb359-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">wt_mean =</span> <span class="fu">mean</span>(Wt))</span></code></pre></div>
+<div class="sourceCode" id="cb358"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb358-1"><a href="means---fitted-and-marginal.html#cb358-1" aria-hidden="true" tabindex="-1"></a>means.cell <span class="ot">&lt;-</span> </span>
+<span id="cb358-2"><a href="means---fitted-and-marginal.html#cb358-2" aria-hidden="true" tabindex="-1"></a>  genotype <span class="sc">%&gt;%</span></span>
+<span id="cb358-3"><a href="means---fitted-and-marginal.html#cb358-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(Mother, Litter) <span class="sc">%&gt;%</span></span>
+<span id="cb358-4"><a href="means---fitted-and-marginal.html#cb358-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">wt_mean =</span> <span class="fu">mean</span>(Wt))</span></code></pre></div>
 <pre><code>## `summarise()` has grouped output by &#39;Mother&#39;. You can override using the `.groups` argument.</code></pre>
-<div class="sourceCode" id="cb361"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb361-1"><a href="means---fitted-and-marginal.html#cb361-1" aria-hidden="true" tabindex="-1"></a><span class="do">##  Form a 4 x 4 table</span></span>
-<span id="cb361-2"><a href="means---fitted-and-marginal.html#cb361-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb361-3"><a href="means---fitted-and-marginal.html#cb361-3" aria-hidden="true" tabindex="-1"></a>means.cell <span class="ot">&lt;-</span> <span class="fu">matrix</span>(means.cell<span class="sc">$</span>wt_mean, <span class="at">nrow =</span> <span class="dv">4</span>)</span>
-<span id="cb361-4"><a href="means---fitted-and-marginal.html#cb361-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb361-5"><a href="means---fitted-and-marginal.html#cb361-5" aria-hidden="true" tabindex="-1"></a><span class="fu">rownames</span>(means.cell) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;Litter_A&quot;</span>, <span class="st">&quot;Litter_B&quot;</span>, <span class="st">&quot;Litter_I&quot;</span>, <span class="st">&quot;Litter_J&quot;</span>)</span>
-<span id="cb361-6"><a href="means---fitted-and-marginal.html#cb361-6" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(means.cell) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;Mother_A&quot;</span>, <span class="st">&quot;Mother_B&quot;</span>, <span class="st">&quot;Mother_I&quot;</span>, <span class="st">&quot;Mother_J&quot;</span>)</span>
-<span id="cb361-7"><a href="means---fitted-and-marginal.html#cb361-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb361-8"><a href="means---fitted-and-marginal.html#cb361-8" aria-hidden="true" tabindex="-1"></a>means.cell</span></code></pre></div>
+<div class="sourceCode" id="cb360"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb360-1"><a href="means---fitted-and-marginal.html#cb360-1" aria-hidden="true" tabindex="-1"></a><span class="do">##  Form a 4 x 4 table</span></span>
+<span id="cb360-2"><a href="means---fitted-and-marginal.html#cb360-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb360-3"><a href="means---fitted-and-marginal.html#cb360-3" aria-hidden="true" tabindex="-1"></a>means.cell <span class="ot">&lt;-</span> <span class="fu">matrix</span>(means.cell<span class="sc">$</span>wt_mean, <span class="at">nrow =</span> <span class="dv">4</span>)</span>
+<span id="cb360-4"><a href="means---fitted-and-marginal.html#cb360-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb360-5"><a href="means---fitted-and-marginal.html#cb360-5" aria-hidden="true" tabindex="-1"></a><span class="fu">rownames</span>(means.cell) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;Litter_A&quot;</span>, <span class="st">&quot;Litter_B&quot;</span>, <span class="st">&quot;Litter_I&quot;</span>, <span class="st">&quot;Litter_J&quot;</span>)</span>
+<span id="cb360-6"><a href="means---fitted-and-marginal.html#cb360-6" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(means.cell) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;Mother_A&quot;</span>, <span class="st">&quot;Mother_B&quot;</span>, <span class="st">&quot;Mother_I&quot;</span>, <span class="st">&quot;Mother_J&quot;</span>)</span>
+<span id="cb360-7"><a href="means---fitted-and-marginal.html#cb360-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb360-8"><a href="means---fitted-and-marginal.html#cb360-8" aria-hidden="true" tabindex="-1"></a>means.cell</span></code></pre></div>
 <pre><code>##          Mother_A Mother_B Mother_I Mother_J
 ## Litter_A   63.680 52.40000 54.12500 48.96000
 ## Litter_B   52.325 60.64000 53.92500 45.90000
@@ -657,7 +657,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## Litter_J   54.350 56.10000 54.53333 49.06000</code></pre>
 <div id="marginal-means-for-litter" class="section level3" number="9.6.1">
 <h3><span class="header-section-number">9.6.1</span> Marginal means for Litter</h3>
-<div class="sourceCode" id="cb363"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb363-1"><a href="means---fitted-and-marginal.html#cb363-1" aria-hidden="true" tabindex="-1"></a><span class="fu">apply</span>(means.cell, <span class="dv">1</span>, mean)</span></code></pre></div>
+<div class="sourceCode" id="cb362"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb362-1"><a href="means---fitted-and-marginal.html#cb362-1" aria-hidden="true" tabindex="-1"></a><span class="fu">apply</span>(means.cell, <span class="dv">1</span>, mean)</span></code></pre></div>
 <pre><code>## Litter_A Litter_B Litter_I Litter_J 
 ## 54.79125 53.19750 53.12500 53.51083</code></pre>
 <p>These are based on the data and are <em>not</em> the estimates returned by <em>any</em> package here with <em>any</em> weighting. Weightings used to calculate marginal means are not the ones used in the above calculation. This is because estimated marginal means are not based directly on the data but rather are derived from a model.</p>
@@ -670,7 +670,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h4><span class="header-section-number">9.6.1.2</span> “Reference grid” for emmeans</h4>
 <p>Estimated marginal means are based on a model, not directly on the raw data. They are calculated using a reference grid, which is a grid of all combinations of factors and covariates in the model.</p>
 <p>The reference grid for the genotype model is shown; the grid includes cell counts (viz. the .wgt. column).</p>
-<div class="sourceCode" id="cb365"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb365-1"><a href="means---fitted-and-marginal.html#cb365-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ref_grid</span>(gtype.lm1) <span class="sc">@</span> grid</span></code></pre></div>
+<div class="sourceCode" id="cb364"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb364-1"><a href="means---fitted-and-marginal.html#cb364-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ref_grid</span>(gtype.lm1) <span class="sc">@</span> grid</span></code></pre></div>
 <pre><code>##    Litter Mother .wgt.
 ## 1       A      A     5
 ## 2       B      A     4
@@ -689,13 +689,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## 15      I      J     3
 ## 16      J      J     5</code></pre>
 <p>The model can be used to estimate the mean at each point in the reference grid.</p>
-<div class="sourceCode" id="cb367"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb367-1"><a href="means---fitted-and-marginal.html#cb367-1" aria-hidden="true" tabindex="-1"></a>ypred.ref.grid.mat <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="fu">predict</span>(<span class="fu">ref_grid</span>(gtype.lm1)), <span class="at">nrow =</span> <span class="dv">4</span>)</span>
-<span id="cb367-2"><a href="means---fitted-and-marginal.html#cb367-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb367-3"><a href="means---fitted-and-marginal.html#cb367-3" aria-hidden="true" tabindex="-1"></a><span class="fu">rownames</span>(ypred.ref.grid.mat) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;Litter_A&quot;</span>, <span class="st">&quot;Litter_B&quot;</span>, </span>
-<span id="cb367-4"><a href="means---fitted-and-marginal.html#cb367-4" aria-hidden="true" tabindex="-1"></a>                                  <span class="st">&quot;Litter_I&quot;</span>, <span class="st">&quot;Litter_J&quot;</span>)</span>
-<span id="cb367-5"><a href="means---fitted-and-marginal.html#cb367-5" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(ypred.ref.grid.mat) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;Mother_A&quot;</span>, <span class="st">&quot;Mother_B&quot;</span>, </span>
-<span id="cb367-6"><a href="means---fitted-and-marginal.html#cb367-6" aria-hidden="true" tabindex="-1"></a>                                  <span class="st">&quot;Mother_I&quot;</span>, <span class="st">&quot;Mother_J&quot;</span>)</span>
-<span id="cb367-7"><a href="means---fitted-and-marginal.html#cb367-7" aria-hidden="true" tabindex="-1"></a>ypred.ref.grid.mat</span></code></pre></div>
+<div class="sourceCode" id="cb366"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb366-1"><a href="means---fitted-and-marginal.html#cb366-1" aria-hidden="true" tabindex="-1"></a>ypred.ref.grid.mat <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="fu">predict</span>(<span class="fu">ref_grid</span>(gtype.lm1)), <span class="at">nrow =</span> <span class="dv">4</span>)</span>
+<span id="cb366-2"><a href="means---fitted-and-marginal.html#cb366-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb366-3"><a href="means---fitted-and-marginal.html#cb366-3" aria-hidden="true" tabindex="-1"></a><span class="fu">rownames</span>(ypred.ref.grid.mat) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;Litter_A&quot;</span>, <span class="st">&quot;Litter_B&quot;</span>, </span>
+<span id="cb366-4"><a href="means---fitted-and-marginal.html#cb366-4" aria-hidden="true" tabindex="-1"></a>                                  <span class="st">&quot;Litter_I&quot;</span>, <span class="st">&quot;Litter_J&quot;</span>)</span>
+<span id="cb366-5"><a href="means---fitted-and-marginal.html#cb366-5" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(ypred.ref.grid.mat) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;Mother_A&quot;</span>, <span class="st">&quot;Mother_B&quot;</span>, </span>
+<span id="cb366-6"><a href="means---fitted-and-marginal.html#cb366-6" aria-hidden="true" tabindex="-1"></a>                                  <span class="st">&quot;Mother_I&quot;</span>, <span class="st">&quot;Mother_J&quot;</span>)</span>
+<span id="cb366-7"><a href="means---fitted-and-marginal.html#cb366-7" aria-hidden="true" tabindex="-1"></a>ypred.ref.grid.mat</span></code></pre></div>
 <pre><code>##          Mother_A Mother_B Mother_I Mother_J
 ## Litter_A 56.90907 60.42496 55.07696 50.15438
 ## Litter_B 54.88389 58.39978 53.05178 48.12920
@@ -714,9 +714,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>This shows the means calculated from the reference grid are the model-based means.</p>
 <p><br></p>
 <p>Default weighting is “equal” (i.e. equally weighted average).</p>
-<div class="sourceCode" id="cb369"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb369-1"><a href="means---fitted-and-marginal.html#cb369-1" aria-hidden="true" tabindex="-1"></a>gtype.emm.L <span class="ot">&lt;-</span> <span class="fu">emmeans</span>(gtype.lm1, <span class="at">specs =</span> <span class="st">&quot;Litter&quot;</span>)</span>
-<span id="cb369-2"><a href="means---fitted-and-marginal.html#cb369-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb369-3"><a href="means---fitted-and-marginal.html#cb369-3" aria-hidden="true" tabindex="-1"></a>gtype.emm.L</span></code></pre></div>
+<div class="sourceCode" id="cb368"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb368-1"><a href="means---fitted-and-marginal.html#cb368-1" aria-hidden="true" tabindex="-1"></a>gtype.emm.L <span class="ot">&lt;-</span> <span class="fu">emmeans</span>(gtype.lm1, <span class="at">specs =</span> <span class="st">&quot;Litter&quot;</span>)</span>
+<span id="cb368-2"><a href="means---fitted-and-marginal.html#cb368-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb368-3"><a href="means---fitted-and-marginal.html#cb368-3" aria-hidden="true" tabindex="-1"></a>gtype.emm.L</span></code></pre></div>
 <pre><code>##  Litter emmean   SE df lower.CL upper.CL
 ##  A        55.6 1.90 54     51.8     59.4
 ##  B        53.6 2.03 54     49.5     57.7
@@ -725,9 +725,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## 
 ## Results are averaged over the levels of: Mother 
 ## Confidence level used: 0.95</code></pre>
-<div class="sourceCode" id="cb371"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb371-1"><a href="means---fitted-and-marginal.html#cb371-1" aria-hidden="true" tabindex="-1"></a>gtype.emm.L.eq <span class="ot">&lt;-</span> <span class="fu">emmeans</span>(gtype.lm1, <span class="at">specs =</span> <span class="st">&quot;Litter&quot;</span>, <span class="at">weights =</span> <span class="st">&quot;equal&quot;</span>)</span>
-<span id="cb371-2"><a href="means---fitted-and-marginal.html#cb371-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb371-3"><a href="means---fitted-and-marginal.html#cb371-3" aria-hidden="true" tabindex="-1"></a>gtype.emm.L.eq</span></code></pre></div>
+<div class="sourceCode" id="cb370"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb370-1"><a href="means---fitted-and-marginal.html#cb370-1" aria-hidden="true" tabindex="-1"></a>gtype.emm.L.eq <span class="ot">&lt;-</span> <span class="fu">emmeans</span>(gtype.lm1, <span class="at">specs =</span> <span class="st">&quot;Litter&quot;</span>, <span class="at">weights =</span> <span class="st">&quot;equal&quot;</span>)</span>
+<span id="cb370-2"><a href="means---fitted-and-marginal.html#cb370-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb370-3"><a href="means---fitted-and-marginal.html#cb370-3" aria-hidden="true" tabindex="-1"></a>gtype.emm.L.eq</span></code></pre></div>
 <pre><code>##  Litter emmean   SE df lower.CL upper.CL
 ##  A        55.6 1.90 54     51.8     59.4
 ##  B        53.6 2.03 54     49.5     57.7
@@ -736,16 +736,16 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## 
 ## Results are averaged over the levels of: Mother 
 ## Confidence level used: 0.95</code></pre>
-<div class="sourceCode" id="cb373"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb373-1"><a href="means---fitted-and-marginal.html#cb373-1" aria-hidden="true" tabindex="-1"></a><span class="fu">apply</span>(ypred.ref.grid.mat, <span class="dv">1</span>, mean)</span></code></pre></div>
+<div class="sourceCode" id="cb372"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb372-1"><a href="means---fitted-and-marginal.html#cb372-1" aria-hidden="true" tabindex="-1"></a><span class="fu">apply</span>(ypred.ref.grid.mat, <span class="dv">1</span>, mean)</span></code></pre></div>
 <pre><code>## Litter_A Litter_B Litter_I Litter_J 
 ## 55.64134 53.61616 52.98777 53.62041</code></pre>
 <p><br></p>
 <p>Using weights = “proportional”</p>
 <p>This option weights according to the number of observations in each level of the factor that’s being averaged over. See below.</p>
-<div class="sourceCode" id="cb375"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb375-1"><a href="means---fitted-and-marginal.html#cb375-1" aria-hidden="true" tabindex="-1"></a>gtype.emm.L.prop <span class="ot">&lt;-</span> <span class="fu">emmeans</span>(gtype.lm1, <span class="at">specs =</span> <span class="st">&quot;Litter&quot;</span>, </span>
-<span id="cb375-2"><a href="means---fitted-and-marginal.html#cb375-2" aria-hidden="true" tabindex="-1"></a>                            <span class="at">weights =</span> <span class="st">&quot;proportional&quot;</span>)</span>
-<span id="cb375-3"><a href="means---fitted-and-marginal.html#cb375-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb375-4"><a href="means---fitted-and-marginal.html#cb375-4" aria-hidden="true" tabindex="-1"></a>gtype.emm.L.prop</span></code></pre></div>
+<div class="sourceCode" id="cb374"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb374-1"><a href="means---fitted-and-marginal.html#cb374-1" aria-hidden="true" tabindex="-1"></a>gtype.emm.L.prop <span class="ot">&lt;-</span> <span class="fu">emmeans</span>(gtype.lm1, <span class="at">specs =</span> <span class="st">&quot;Litter&quot;</span>, </span>
+<span id="cb374-2"><a href="means---fitted-and-marginal.html#cb374-2" aria-hidden="true" tabindex="-1"></a>                            <span class="at">weights =</span> <span class="st">&quot;proportional&quot;</span>)</span>
+<span id="cb374-3"><a href="means---fitted-and-marginal.html#cb374-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb374-4"><a href="means---fitted-and-marginal.html#cb374-4" aria-hidden="true" tabindex="-1"></a>gtype.emm.L.prop</span></code></pre></div>
 <pre><code>##  Litter emmean   SE df lower.CL upper.CL
 ##  A        55.6 1.89 54     51.8     59.4
 ##  B        53.5 2.03 54     49.5     57.6
@@ -755,14 +755,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## Results are averaged over the levels of: Mother 
 ## Confidence level used: 0.95</code></pre>
 <p>Get frequencies (number of observations) for each Mother. Using these gives the same result as weights = “proportional”.</p>
-<div class="sourceCode" id="cb377"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb377-1"><a href="means---fitted-and-marginal.html#cb377-1" aria-hidden="true" tabindex="-1"></a>num.moth <span class="ot">&lt;-</span> <span class="fu">apply</span>(freq.cell, <span class="dv">2</span>, sum)</span>
-<span id="cb377-2"><a href="means---fitted-and-marginal.html#cb377-2" aria-hidden="true" tabindex="-1"></a>num.moth</span></code></pre></div>
+<div class="sourceCode" id="cb376"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb376-1"><a href="means---fitted-and-marginal.html#cb376-1" aria-hidden="true" tabindex="-1"></a>num.moth <span class="ot">&lt;-</span> <span class="fu">apply</span>(freq.cell, <span class="dv">2</span>, sum)</span>
+<span id="cb376-2"><a href="means---fitted-and-marginal.html#cb376-2" aria-hidden="true" tabindex="-1"></a>num.moth</span></code></pre></div>
 <pre><code>## Mother_A Mother_B Mother_I Mother_J 
 ##       16       14       16       15</code></pre>
-<div class="sourceCode" id="cb379"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb379-1"><a href="means---fitted-and-marginal.html#cb379-1" aria-hidden="true" tabindex="-1"></a>gtype.emm.L.prop2 <span class="ot">&lt;-</span> <span class="fu">emmeans</span>(gtype.lm1, <span class="at">specs =</span> <span class="st">&quot;Litter&quot;</span>, </span>
-<span id="cb379-2"><a href="means---fitted-and-marginal.html#cb379-2" aria-hidden="true" tabindex="-1"></a>                          <span class="at">weights =</span> num.moth)</span>
-<span id="cb379-3"><a href="means---fitted-and-marginal.html#cb379-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb379-4"><a href="means---fitted-and-marginal.html#cb379-4" aria-hidden="true" tabindex="-1"></a>gtype.emm.L.prop2 </span></code></pre></div>
+<div class="sourceCode" id="cb378"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb378-1"><a href="means---fitted-and-marginal.html#cb378-1" aria-hidden="true" tabindex="-1"></a>gtype.emm.L.prop2 <span class="ot">&lt;-</span> <span class="fu">emmeans</span>(gtype.lm1, <span class="at">specs =</span> <span class="st">&quot;Litter&quot;</span>, </span>
+<span id="cb378-2"><a href="means---fitted-and-marginal.html#cb378-2" aria-hidden="true" tabindex="-1"></a>                          <span class="at">weights =</span> num.moth)</span>
+<span id="cb378-3"><a href="means---fitted-and-marginal.html#cb378-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb378-4"><a href="means---fitted-and-marginal.html#cb378-4" aria-hidden="true" tabindex="-1"></a>gtype.emm.L.prop2 </span></code></pre></div>
 <pre><code>##  Litter emmean   SE df lower.CL upper.CL
 ##  A        55.6 1.89 54     51.8     59.4
 ##  B        53.5 2.03 54     49.5     57.6
@@ -775,7 +775,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>Direct calculation behind weights = “proportional”.</p>
 <p>Get the <em>reference grid</em> for the model. This is the 4 x 4 table of model-based means.</p>
 <p>For Litter A, multiply each cell mean by the corresponding <em>total</em> number of observations for each Mother (i.e. num.moth are the weights). Add the result and divide by the total number of observations.</p>
-<div class="sourceCode" id="cb381"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb381-1"><a href="means---fitted-and-marginal.html#cb381-1" aria-hidden="true" tabindex="-1"></a><span class="fu">t</span>( ypred.ref.grid.mat <span class="sc">%*%</span> num.moth <span class="sc">/</span> <span class="fu">sum</span>(num.moth) )</span></code></pre></div>
+<div class="sourceCode" id="cb380"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb380-1"><a href="means---fitted-and-marginal.html#cb380-1" aria-hidden="true" tabindex="-1"></a><span class="fu">t</span>( ypred.ref.grid.mat <span class="sc">%*%</span> num.moth <span class="sc">/</span> <span class="fu">sum</span>(num.moth) )</span></code></pre></div>
 <pre><code>##      Litter_A Litter_B Litter_I Litter_J
 ## [1,] 55.57445 53.54927 52.92088 53.55352</code></pre>
 <p><br></p>
@@ -783,7 +783,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="using-confint" class="section level4" number="9.6.1.3">
 <h4><span class="header-section-number">9.6.1.3</span> Using “confint”</h4>
 <p>This gives the same output as asking for the estimated marginal means from a given model for a given predictor (i.e. same output as “gtype.emm.L” itself).</p>
-<div class="sourceCode" id="cb383"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb383-1"><a href="means---fitted-and-marginal.html#cb383-1" aria-hidden="true" tabindex="-1"></a><span class="fu">confint</span>(gtype.emm.L, <span class="at">side =</span> <span class="st">&quot;two-sided&quot;</span>, <span class="at">level =</span> <span class="fl">0.95</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb382"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb382-1"><a href="means---fitted-and-marginal.html#cb382-1" aria-hidden="true" tabindex="-1"></a><span class="fu">confint</span>(gtype.emm.L, <span class="at">side =</span> <span class="st">&quot;two-sided&quot;</span>, <span class="at">level =</span> <span class="fl">0.95</span>)</span></code></pre></div>
 <pre><code>##  Litter emmean   SE df lower.CL upper.CL
 ##  A        55.6 1.90 54     51.8     59.4
 ##  B        53.6 2.03 54     49.5     57.7
@@ -798,9 +798,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="marginal-means-for-mother" class="section level3" number="9.6.2">
 <h3><span class="header-section-number">9.6.2</span> Marginal means for Mother</h3>
 <p>Default weighting is “equal” (i.e. equally weighted average).</p>
-<div class="sourceCode" id="cb385"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb385-1"><a href="means---fitted-and-marginal.html#cb385-1" aria-hidden="true" tabindex="-1"></a>gtype.emm.M <span class="ot">&lt;-</span> <span class="fu">emmeans</span>(gtype.lm1, <span class="at">specs =</span> <span class="st">&quot;Mother&quot;</span>)</span>
-<span id="cb385-2"><a href="means---fitted-and-marginal.html#cb385-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb385-3"><a href="means---fitted-and-marginal.html#cb385-3" aria-hidden="true" tabindex="-1"></a>gtype.emm.M </span></code></pre></div>
+<div class="sourceCode" id="cb384"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb384-1"><a href="means---fitted-and-marginal.html#cb384-1" aria-hidden="true" tabindex="-1"></a>gtype.emm.M <span class="ot">&lt;-</span> <span class="fu">emmeans</span>(gtype.lm1, <span class="at">specs =</span> <span class="st">&quot;Mother&quot;</span>)</span>
+<span id="cb384-2"><a href="means---fitted-and-marginal.html#cb384-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb384-3"><a href="means---fitted-and-marginal.html#cb384-3" aria-hidden="true" tabindex="-1"></a>gtype.emm.M </span></code></pre></div>
 <pre><code>##  Mother emmean   SE df lower.CL upper.CL
 ##  A        55.2 1.95 54     51.3     59.1
 ##  B        58.8 2.09 54     54.6     62.9
@@ -809,9 +809,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## 
 ## Results are averaged over the levels of: Litter 
 ## Confidence level used: 0.95</code></pre>
-<div class="sourceCode" id="cb387"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb387-1"><a href="means---fitted-and-marginal.html#cb387-1" aria-hidden="true" tabindex="-1"></a>gtype.emm.M.eq <span class="ot">&lt;-</span> <span class="fu">emmeans</span>(gtype.lm1, <span class="at">specs =</span> <span class="st">&quot;Mother&quot;</span>, <span class="at">weights =</span> <span class="st">&quot;equal&quot;</span>)</span>
-<span id="cb387-2"><a href="means---fitted-and-marginal.html#cb387-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb387-3"><a href="means---fitted-and-marginal.html#cb387-3" aria-hidden="true" tabindex="-1"></a>gtype.emm.M.eq </span></code></pre></div>
+<div class="sourceCode" id="cb386"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb386-1"><a href="means---fitted-and-marginal.html#cb386-1" aria-hidden="true" tabindex="-1"></a>gtype.emm.M.eq <span class="ot">&lt;-</span> <span class="fu">emmeans</span>(gtype.lm1, <span class="at">specs =</span> <span class="st">&quot;Mother&quot;</span>, <span class="at">weights =</span> <span class="st">&quot;equal&quot;</span>)</span>
+<span id="cb386-2"><a href="means---fitted-and-marginal.html#cb386-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb386-3"><a href="means---fitted-and-marginal.html#cb386-3" aria-hidden="true" tabindex="-1"></a>gtype.emm.M.eq </span></code></pre></div>
 <pre><code>##  Mother emmean   SE df lower.CL upper.CL
 ##  A        55.2 1.95 54     51.3     59.1
 ##  B        58.8 2.09 54     54.6     62.9
@@ -820,15 +820,15 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## 
 ## Results are averaged over the levels of: Litter 
 ## Confidence level used: 0.95</code></pre>
-<div class="sourceCode" id="cb389"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb389-1"><a href="means---fitted-and-marginal.html#cb389-1" aria-hidden="true" tabindex="-1"></a><span class="fu">apply</span>(ypred.ref.grid.mat, <span class="dv">2</span>, mean)</span></code></pre></div>
+<div class="sourceCode" id="cb388"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb388-1"><a href="means---fitted-and-marginal.html#cb388-1" aria-hidden="true" tabindex="-1"></a><span class="fu">apply</span>(ypred.ref.grid.mat, <span class="dv">2</span>, mean)</span></code></pre></div>
 <pre><code>## Mother_A Mother_B Mother_I Mother_J 
 ## 55.23415 58.75004 53.40204 48.47946</code></pre>
 <p><br></p>
 <p>Using weights = “cells”</p>
 <p>This uses cell frequencies and gives arithmetic means.</p>
-<div class="sourceCode" id="cb391"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb391-1"><a href="means---fitted-and-marginal.html#cb391-1" aria-hidden="true" tabindex="-1"></a>gtype.emm.L.cells <span class="ot">&lt;-</span> <span class="fu">emmeans</span>(gtype.lm1, <span class="at">specs =</span> <span class="st">&quot;Litter&quot;</span>, <span class="at">weights =</span> <span class="st">&quot;cells&quot;</span>)</span>
-<span id="cb391-2"><a href="means---fitted-and-marginal.html#cb391-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb391-3"><a href="means---fitted-and-marginal.html#cb391-3" aria-hidden="true" tabindex="-1"></a>gtype.emm.L.cells </span></code></pre></div>
+<div class="sourceCode" id="cb390"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb390-1"><a href="means---fitted-and-marginal.html#cb390-1" aria-hidden="true" tabindex="-1"></a>gtype.emm.L.cells <span class="ot">&lt;-</span> <span class="fu">emmeans</span>(gtype.lm1, <span class="at">specs =</span> <span class="st">&quot;Litter&quot;</span>, <span class="at">weights =</span> <span class="st">&quot;cells&quot;</span>)</span>
+<span id="cb390-2"><a href="means---fitted-and-marginal.html#cb390-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb390-3"><a href="means---fitted-and-marginal.html#cb390-3" aria-hidden="true" tabindex="-1"></a>gtype.emm.L.cells </span></code></pre></div>
 <pre><code>##  Litter emmean   SE df lower.CL upper.CL
 ##  A        55.1 1.89 54     51.3     58.9
 ##  B        54.7 2.01 54     50.6     58.7
@@ -844,22 +844,22 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>Use weights for each Litter of <span class="math inline">\(\frac{1}{4}\)</span>. See notes on calculating marginal means by Cornell Stats Consult Unit<br />
 (see file “marginal means calc CornellStatsConsult.pdf”).</p>
 <p>This gives the same result as the default equal weighting based on the model reference grid (i.e. these are the same estimates as emmmeans gives using weights = “equal”, the default weighting).</p>
-<div class="sourceCode" id="cb393"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb393-1"><a href="means---fitted-and-marginal.html#cb393-1" aria-hidden="true" tabindex="-1"></a><span class="do">##  Set up matrix with appropriate values for calculation</span></span>
-<span id="cb393-2"><a href="means---fitted-and-marginal.html#cb393-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb393-3"><a href="means---fitted-and-marginal.html#cb393-3" aria-hidden="true" tabindex="-1"></a>mean.L.bal.wt <span class="ot">&lt;-</span> <span class="fu">matrix</span>(</span>
-<span id="cb393-4"><a href="means---fitted-and-marginal.html#cb393-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">1</span><span class="sc">/</span><span class="dv">4</span>, <span class="dv">1</span><span class="sc">/</span><span class="dv">4</span>, <span class="dv">1</span><span class="sc">/</span><span class="dv">4</span>,</span>
-<span id="cb393-5"><a href="means---fitted-and-marginal.html#cb393-5" aria-hidden="true" tabindex="-1"></a>    <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">1</span><span class="sc">/</span><span class="dv">4</span>, <span class="dv">1</span><span class="sc">/</span><span class="dv">4</span>, <span class="dv">1</span><span class="sc">/</span><span class="dv">4</span>,</span>
-<span id="cb393-6"><a href="means---fitted-and-marginal.html#cb393-6" aria-hidden="true" tabindex="-1"></a>    <span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">1</span><span class="sc">/</span><span class="dv">4</span>, <span class="dv">1</span><span class="sc">/</span><span class="dv">4</span>, <span class="dv">1</span><span class="sc">/</span><span class="dv">4</span>,</span>
-<span id="cb393-7"><a href="means---fitted-and-marginal.html#cb393-7" aria-hidden="true" tabindex="-1"></a>    <span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">1</span><span class="sc">/</span><span class="dv">4</span>, <span class="dv">1</span><span class="sc">/</span><span class="dv">4</span>, <span class="dv">1</span><span class="sc">/</span><span class="dv">4</span>),</span>
-<span id="cb393-8"><a href="means---fitted-and-marginal.html#cb393-8" aria-hidden="true" tabindex="-1"></a>  <span class="at">nrow =</span> <span class="dv">4</span>, <span class="at">byrow =</span> T)</span>
-<span id="cb393-9"><a href="means---fitted-and-marginal.html#cb393-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb393-10"><a href="means---fitted-and-marginal.html#cb393-10" aria-hidden="true" tabindex="-1"></a>mean.L.bal.wt</span></code></pre></div>
+<div class="sourceCode" id="cb392"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb392-1"><a href="means---fitted-and-marginal.html#cb392-1" aria-hidden="true" tabindex="-1"></a><span class="do">##  Set up matrix with appropriate values for calculation</span></span>
+<span id="cb392-2"><a href="means---fitted-and-marginal.html#cb392-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb392-3"><a href="means---fitted-and-marginal.html#cb392-3" aria-hidden="true" tabindex="-1"></a>mean.L.bal.wt <span class="ot">&lt;-</span> <span class="fu">matrix</span>(</span>
+<span id="cb392-4"><a href="means---fitted-and-marginal.html#cb392-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">1</span><span class="sc">/</span><span class="dv">4</span>, <span class="dv">1</span><span class="sc">/</span><span class="dv">4</span>, <span class="dv">1</span><span class="sc">/</span><span class="dv">4</span>,</span>
+<span id="cb392-5"><a href="means---fitted-and-marginal.html#cb392-5" aria-hidden="true" tabindex="-1"></a>    <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">1</span><span class="sc">/</span><span class="dv">4</span>, <span class="dv">1</span><span class="sc">/</span><span class="dv">4</span>, <span class="dv">1</span><span class="sc">/</span><span class="dv">4</span>,</span>
+<span id="cb392-6"><a href="means---fitted-and-marginal.html#cb392-6" aria-hidden="true" tabindex="-1"></a>    <span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">1</span><span class="sc">/</span><span class="dv">4</span>, <span class="dv">1</span><span class="sc">/</span><span class="dv">4</span>, <span class="dv">1</span><span class="sc">/</span><span class="dv">4</span>,</span>
+<span id="cb392-7"><a href="means---fitted-and-marginal.html#cb392-7" aria-hidden="true" tabindex="-1"></a>    <span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">1</span><span class="sc">/</span><span class="dv">4</span>, <span class="dv">1</span><span class="sc">/</span><span class="dv">4</span>, <span class="dv">1</span><span class="sc">/</span><span class="dv">4</span>),</span>
+<span id="cb392-8"><a href="means---fitted-and-marginal.html#cb392-8" aria-hidden="true" tabindex="-1"></a>  <span class="at">nrow =</span> <span class="dv">4</span>, <span class="at">byrow =</span> T)</span>
+<span id="cb392-9"><a href="means---fitted-and-marginal.html#cb392-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb392-10"><a href="means---fitted-and-marginal.html#cb392-10" aria-hidden="true" tabindex="-1"></a>mean.L.bal.wt</span></code></pre></div>
 <pre><code>##      [,1] [,2] [,3] [,4] [,5] [,6] [,7]
 ## [1,]    1    0    0    0 0.25 0.25 0.25
 ## [2,]    1    1    0    0 0.25 0.25 0.25
 ## [3,]    1    0    1    0 0.25 0.25 0.25
 ## [4,]    1    0    0    1 0.25 0.25 0.25</code></pre>
-<div class="sourceCode" id="cb395"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb395-1"><a href="means---fitted-and-marginal.html#cb395-1" aria-hidden="true" tabindex="-1"></a>mean.L.bal.wt <span class="sc">%*%</span> bhat.df[ , <span class="dv">2</span>]</span></code></pre></div>
+<div class="sourceCode" id="cb394"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb394-1"><a href="means---fitted-and-marginal.html#cb394-1" aria-hidden="true" tabindex="-1"></a>mean.L.bal.wt <span class="sc">%*%</span> bhat.df[ , <span class="dv">2</span>]</span></code></pre></div>
 <pre><code>##          [,1]
 ## [1,] 55.64134
 ## [2,] 53.61616
@@ -870,8 +870,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="using-a-matrix-with-proportional-weights" class="section level3" number="9.6.4">
 <h3><span class="header-section-number">9.6.4</span> Using a matrix with proportional weights</h3>
 <p>There are 61 data values in all. The number of observations for each mother are shown below.</p>
-<div class="sourceCode" id="cb397"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb397-1"><a href="means---fitted-and-marginal.html#cb397-1" aria-hidden="true" tabindex="-1"></a>gtype <span class="sc">%&gt;%</span></span>
-<span id="cb397-2"><a href="means---fitted-and-marginal.html#cb397-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(Mother)</span></code></pre></div>
+<div class="sourceCode" id="cb396"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb396-1"><a href="means---fitted-and-marginal.html#cb396-1" aria-hidden="true" tabindex="-1"></a>gtype <span class="sc">%&gt;%</span></span>
+<span id="cb396-2"><a href="means---fitted-and-marginal.html#cb396-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(Mother)</span></code></pre></div>
 <pre><code>##   Mother  n
 ## 1      A 16
 ## 2      B 14
@@ -879,22 +879,22 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## 4      J 15</code></pre>
 <p><br></p>
 <p>Calculating marginal means for litters using “proportional” weighting across Mother.</p>
-<div class="sourceCode" id="cb399"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb399-1"><a href="means---fitted-and-marginal.html#cb399-1" aria-hidden="true" tabindex="-1"></a><span class="do">##  Set up matrix with appropriate values for calculation</span></span>
-<span id="cb399-2"><a href="means---fitted-and-marginal.html#cb399-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb399-3"><a href="means---fitted-and-marginal.html#cb399-3" aria-hidden="true" tabindex="-1"></a>mean.L.prop.wt <span class="ot">&lt;-</span> <span class="fu">matrix</span>(</span>
-<span id="cb399-4"><a href="means---fitted-and-marginal.html#cb399-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">14</span><span class="sc">/</span><span class="dv">61</span>, <span class="dv">16</span><span class="sc">/</span><span class="dv">61</span>, <span class="dv">15</span><span class="sc">/</span><span class="dv">61</span>,</span>
-<span id="cb399-5"><a href="means---fitted-and-marginal.html#cb399-5" aria-hidden="true" tabindex="-1"></a>    <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">14</span><span class="sc">/</span><span class="dv">61</span>, <span class="dv">16</span><span class="sc">/</span><span class="dv">61</span>, <span class="dv">15</span><span class="sc">/</span><span class="dv">61</span>,</span>
-<span id="cb399-6"><a href="means---fitted-and-marginal.html#cb399-6" aria-hidden="true" tabindex="-1"></a>    <span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">14</span><span class="sc">/</span><span class="dv">61</span>, <span class="dv">16</span><span class="sc">/</span><span class="dv">61</span>, <span class="dv">15</span><span class="sc">/</span><span class="dv">61</span>,</span>
-<span id="cb399-7"><a href="means---fitted-and-marginal.html#cb399-7" aria-hidden="true" tabindex="-1"></a>    <span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">14</span><span class="sc">/</span><span class="dv">61</span>, <span class="dv">16</span><span class="sc">/</span><span class="dv">61</span>, <span class="dv">15</span><span class="sc">/</span><span class="dv">61</span>),</span>
-<span id="cb399-8"><a href="means---fitted-and-marginal.html#cb399-8" aria-hidden="true" tabindex="-1"></a>  <span class="at">nrow =</span> <span class="dv">4</span>, <span class="at">byrow =</span> T)</span>
-<span id="cb399-9"><a href="means---fitted-and-marginal.html#cb399-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb399-10"><a href="means---fitted-and-marginal.html#cb399-10" aria-hidden="true" tabindex="-1"></a>mean.L.prop.wt</span></code></pre></div>
+<div class="sourceCode" id="cb398"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb398-1"><a href="means---fitted-and-marginal.html#cb398-1" aria-hidden="true" tabindex="-1"></a><span class="do">##  Set up matrix with appropriate values for calculation</span></span>
+<span id="cb398-2"><a href="means---fitted-and-marginal.html#cb398-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb398-3"><a href="means---fitted-and-marginal.html#cb398-3" aria-hidden="true" tabindex="-1"></a>mean.L.prop.wt <span class="ot">&lt;-</span> <span class="fu">matrix</span>(</span>
+<span id="cb398-4"><a href="means---fitted-and-marginal.html#cb398-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">14</span><span class="sc">/</span><span class="dv">61</span>, <span class="dv">16</span><span class="sc">/</span><span class="dv">61</span>, <span class="dv">15</span><span class="sc">/</span><span class="dv">61</span>,</span>
+<span id="cb398-5"><a href="means---fitted-and-marginal.html#cb398-5" aria-hidden="true" tabindex="-1"></a>    <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">14</span><span class="sc">/</span><span class="dv">61</span>, <span class="dv">16</span><span class="sc">/</span><span class="dv">61</span>, <span class="dv">15</span><span class="sc">/</span><span class="dv">61</span>,</span>
+<span id="cb398-6"><a href="means---fitted-and-marginal.html#cb398-6" aria-hidden="true" tabindex="-1"></a>    <span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">14</span><span class="sc">/</span><span class="dv">61</span>, <span class="dv">16</span><span class="sc">/</span><span class="dv">61</span>, <span class="dv">15</span><span class="sc">/</span><span class="dv">61</span>,</span>
+<span id="cb398-7"><a href="means---fitted-and-marginal.html#cb398-7" aria-hidden="true" tabindex="-1"></a>    <span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">14</span><span class="sc">/</span><span class="dv">61</span>, <span class="dv">16</span><span class="sc">/</span><span class="dv">61</span>, <span class="dv">15</span><span class="sc">/</span><span class="dv">61</span>),</span>
+<span id="cb398-8"><a href="means---fitted-and-marginal.html#cb398-8" aria-hidden="true" tabindex="-1"></a>  <span class="at">nrow =</span> <span class="dv">4</span>, <span class="at">byrow =</span> T)</span>
+<span id="cb398-9"><a href="means---fitted-and-marginal.html#cb398-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb398-10"><a href="means---fitted-and-marginal.html#cb398-10" aria-hidden="true" tabindex="-1"></a>mean.L.prop.wt</span></code></pre></div>
 <pre><code>##      [,1] [,2] [,3] [,4]      [,5]      [,6]      [,7]
 ## [1,]    1    0    0    0 0.2295082 0.2622951 0.2459016
 ## [2,]    1    1    0    0 0.2295082 0.2622951 0.2459016
 ## [3,]    1    0    1    0 0.2295082 0.2622951 0.2459016
 ## [4,]    1    0    0    1 0.2295082 0.2622951 0.2459016</code></pre>
-<div class="sourceCode" id="cb401"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb401-1"><a href="means---fitted-and-marginal.html#cb401-1" aria-hidden="true" tabindex="-1"></a>mean.L.prop.wt <span class="sc">%*%</span> bhat.df[ , <span class="dv">2</span>]</span></code></pre></div>
+<div class="sourceCode" id="cb400"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb400-1"><a href="means---fitted-and-marginal.html#cb400-1" aria-hidden="true" tabindex="-1"></a>mean.L.prop.wt <span class="sc">%*%</span> bhat.df[ , <span class="dv">2</span>]</span></code></pre></div>
 <pre><code>##          [,1]
 ## [1,] 55.57445
 ## [2,] 53.54927
@@ -907,19 +907,19 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="estimates-using-effects-package" class="section level2" number="9.7">
 <h2><span class="header-section-number">9.7</span> Estimates using “effects” package</h2>
 <p>The “effects” package, by default, uses what is “proportional” weighting in the emmeans package.</p>
-<div class="sourceCode" id="cb403"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb403-1"><a href="means---fitted-and-marginal.html#cb403-1" aria-hidden="true" tabindex="-1"></a>gtype.eff.L <span class="ot">&lt;-</span> <span class="fu">effect</span>(<span class="st">&quot;Litter&quot;</span>, <span class="at">mod =</span> gtype.lm1)</span>
-<span id="cb403-2"><a href="means---fitted-and-marginal.html#cb403-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb403-3"><a href="means---fitted-and-marginal.html#cb403-3" aria-hidden="true" tabindex="-1"></a>gtype.eff.L.df <span class="ot">&lt;-</span> <span class="fu">as.data.frame</span>(gtype.eff.L)</span>
-<span id="cb403-4"><a href="means---fitted-and-marginal.html#cb403-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb403-5"><a href="means---fitted-and-marginal.html#cb403-5" aria-hidden="true" tabindex="-1"></a>gtype.eff.L.df</span></code></pre></div>
+<div class="sourceCode" id="cb402"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb402-1"><a href="means---fitted-and-marginal.html#cb402-1" aria-hidden="true" tabindex="-1"></a>gtype.eff.L <span class="ot">&lt;-</span> <span class="fu">effect</span>(<span class="st">&quot;Litter&quot;</span>, <span class="at">mod =</span> gtype.lm1)</span>
+<span id="cb402-2"><a href="means---fitted-and-marginal.html#cb402-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb402-3"><a href="means---fitted-and-marginal.html#cb402-3" aria-hidden="true" tabindex="-1"></a>gtype.eff.L.df <span class="ot">&lt;-</span> <span class="fu">as.data.frame</span>(gtype.eff.L)</span>
+<span id="cb402-4"><a href="means---fitted-and-marginal.html#cb402-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb402-5"><a href="means---fitted-and-marginal.html#cb402-5" aria-hidden="true" tabindex="-1"></a>gtype.eff.L.df</span></code></pre></div>
 <pre><code>##   Litter      fit       se    lower    upper
 ## 1      A 55.57445 1.893599 51.77802 59.37089
 ## 2      B 53.54927 2.032817 49.47372 57.62483
 ## 3      I 52.92088 2.089806 48.73107 57.11069
 ## 4      J 53.55352 2.020382 49.50290 57.60414</code></pre>
-<div class="sourceCode" id="cb405"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb405-1"><a href="means---fitted-and-marginal.html#cb405-1" aria-hidden="true" tabindex="-1"></a>gtype.eff.all <span class="ot">&lt;-</span> <span class="fu">allEffects</span>(gtype.lm1)</span>
-<span id="cb405-2"><a href="means---fitted-and-marginal.html#cb405-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb405-3"><a href="means---fitted-and-marginal.html#cb405-3" aria-hidden="true" tabindex="-1"></a>gtype.eff.all</span></code></pre></div>
+<div class="sourceCode" id="cb404"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb404-1"><a href="means---fitted-and-marginal.html#cb404-1" aria-hidden="true" tabindex="-1"></a>gtype.eff.all <span class="ot">&lt;-</span> <span class="fu">allEffects</span>(gtype.lm1)</span>
+<span id="cb404-2"><a href="means---fitted-and-marginal.html#cb404-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb404-3"><a href="means---fitted-and-marginal.html#cb404-3" aria-hidden="true" tabindex="-1"></a>gtype.eff.all</span></code></pre></div>
 <pre><code>##  model: Wt ~ Litter + Mother
 ## 
 ##  Litter effect
@@ -937,9 +937,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h2><span class="header-section-number">9.8</span> Transformations and <code>emmeans</code></h2>
 <p>Data is “rice” from DAAG package.</p>
 <p>The rice data frame has 72 rows and 7 columns. The data are from an experiment that compared wild type (wt) and genetically modified rice plants (ANU843), each with three different chemical treatments (F10, NH4Cl, and NH4NO3).</p>
-<div class="sourceCode" id="cb407"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb407-1"><a href="means---fitted-and-marginal.html#cb407-1" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(rice, <span class="at">package =</span> <span class="st">&quot;DAAG&quot;</span>)</span>
-<span id="cb407-2"><a href="means---fitted-and-marginal.html#cb407-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb407-3"><a href="means---fitted-and-marginal.html#cb407-3" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(rice)</span></code></pre></div>
+<div class="sourceCode" id="cb406"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb406-1"><a href="means---fitted-and-marginal.html#cb406-1" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(rice, <span class="at">package =</span> <span class="st">&quot;DAAG&quot;</span>)</span>
+<span id="cb406-2"><a href="means---fitted-and-marginal.html#cb406-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb406-3"><a href="means---fitted-and-marginal.html#cb406-3" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(rice)</span></code></pre></div>
 <pre><code>## &#39;data.frame&#39;:    72 obs. of  7 variables:
 ##  $ PlantNo     : num  1 2 3 4 5 6 7 8 9 10 ...
 ##  $ Block       : num  1 1 1 1 1 1 2 2 2 2 ...
@@ -948,11 +948,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ##  $ trt         : Factor w/ 6 levels &quot;F10&quot;,&quot;NH4Cl&quot;,..: 1 1 1 1 1 1 1 1 1 1 ...
 ##  $ fert        : Factor w/ 3 levels &quot;F10&quot;,&quot;NH4Cl&quot;,..: 1 1 1 1 1 1 1 1 1 1 ...
 ##  $ variety     : Factor w/ 2 levels &quot;wt&quot;,&quot;ANU843&quot;: 1 1 1 1 1 1 1 1 1 1 ...</code></pre>
-<div class="sourceCode" id="cb409"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb409-1"><a href="means---fitted-and-marginal.html#cb409-1" aria-hidden="true" tabindex="-1"></a>rice<span class="sc">$</span>PlantNo <span class="ot">&lt;-</span> <span class="fu">factor</span>(rice<span class="sc">$</span>PlantNo)</span>
-<span id="cb409-2"><a href="means---fitted-and-marginal.html#cb409-2" aria-hidden="true" tabindex="-1"></a>rice<span class="sc">$</span>Block <span class="ot">&lt;-</span> <span class="fu">factor</span>(rice<span class="sc">$</span>Block)</span></code></pre></div>
-<div class="sourceCode" id="cb410"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb410-1"><a href="means---fitted-and-marginal.html#cb410-1" aria-hidden="true" tabindex="-1"></a>rice <span class="sc">%&gt;%</span></span>
-<span id="cb410-2"><a href="means---fitted-and-marginal.html#cb410-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(Block, PlantNo) <span class="sc">%&gt;%</span></span>
-<span id="cb410-3"><a href="means---fitted-and-marginal.html#cb410-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb408"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb408-1"><a href="means---fitted-and-marginal.html#cb408-1" aria-hidden="true" tabindex="-1"></a>rice<span class="sc">$</span>PlantNo <span class="ot">&lt;-</span> <span class="fu">factor</span>(rice<span class="sc">$</span>PlantNo)</span>
+<span id="cb408-2"><a href="means---fitted-and-marginal.html#cb408-2" aria-hidden="true" tabindex="-1"></a>rice<span class="sc">$</span>Block <span class="ot">&lt;-</span> <span class="fu">factor</span>(rice<span class="sc">$</span>Block)</span></code></pre></div>
+<div class="sourceCode" id="cb409"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb409-1"><a href="means---fitted-and-marginal.html#cb409-1" aria-hidden="true" tabindex="-1"></a>rice <span class="sc">%&gt;%</span></span>
+<span id="cb409-2"><a href="means---fitted-and-marginal.html#cb409-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(Block, PlantNo) <span class="sc">%&gt;%</span></span>
+<span id="cb409-3"><a href="means---fitted-and-marginal.html#cb409-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>()</span></code></pre></div>
 <pre><code>## # A tibble: 12 × 3
 ## # Groups:   Block, PlantNo [12]
 ##    Block PlantNo     n
@@ -969,9 +969,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## 10 2     10          6
 ## 11 2     11          6
 ## 12 2     12          6</code></pre>
-<div class="sourceCode" id="cb412"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb412-1"><a href="means---fitted-and-marginal.html#cb412-1" aria-hidden="true" tabindex="-1"></a>rice <span class="sc">%&gt;%</span></span>
-<span id="cb412-2"><a href="means---fitted-and-marginal.html#cb412-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(fert, variety) <span class="sc">%&gt;%</span></span>
-<span id="cb412-3"><a href="means---fitted-and-marginal.html#cb412-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb411"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb411-1"><a href="means---fitted-and-marginal.html#cb411-1" aria-hidden="true" tabindex="-1"></a>rice <span class="sc">%&gt;%</span></span>
+<span id="cb411-2"><a href="means---fitted-and-marginal.html#cb411-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(fert, variety) <span class="sc">%&gt;%</span></span>
+<span id="cb411-3"><a href="means---fitted-and-marginal.html#cb411-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>()</span></code></pre></div>
 <pre><code>## # A tibble: 6 × 3
 ## # Groups:   fert, variety [6]
 ##   fert   variety     n
@@ -982,27 +982,27 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## 4 NH4Cl  ANU843     12
 ## 5 NH4NO3 wt         12
 ## 6 NH4NO3 ANU843     12</code></pre>
-<div class="sourceCode" id="cb414"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb414-1"><a href="means---fitted-and-marginal.html#cb414-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(rice, <span class="fu">aes</span>(<span class="at">x =</span> Block, <span class="at">y =</span> ShootDryMass)) <span class="sc">+</span></span>
-<span id="cb414-2"><a href="means---fitted-and-marginal.html#cb414-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb413"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb413-1"><a href="means---fitted-and-marginal.html#cb413-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(rice, <span class="fu">aes</span>(<span class="at">x =</span> Block, <span class="at">y =</span> ShootDryMass)) <span class="sc">+</span></span>
+<span id="cb413-2"><a href="means---fitted-and-marginal.html#cb413-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>()</span></code></pre></div>
 <p><img src="_main_files/figure-html/unnamed-chunk-216-1.png" width="672" /></p>
-<div class="sourceCode" id="cb415"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb415-1"><a href="means---fitted-and-marginal.html#cb415-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(rice, <span class="fu">aes</span>(<span class="at">x =</span> PlantNo, <span class="at">y =</span> ShootDryMass)) <span class="sc">+</span></span>
-<span id="cb415-2"><a href="means---fitted-and-marginal.html#cb415-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_jitter</span>(<span class="at">width =</span> <span class="fl">0.1</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb414"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb414-1"><a href="means---fitted-and-marginal.html#cb414-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(rice, <span class="fu">aes</span>(<span class="at">x =</span> PlantNo, <span class="at">y =</span> ShootDryMass)) <span class="sc">+</span></span>
+<span id="cb414-2"><a href="means---fitted-and-marginal.html#cb414-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_jitter</span>(<span class="at">width =</span> <span class="fl">0.1</span>)</span></code></pre></div>
 <p><img src="_main_files/figure-html/unnamed-chunk-217-1.png" width="672" /></p>
-<div class="sourceCode" id="cb416"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb416-1"><a href="means---fitted-and-marginal.html#cb416-1" aria-hidden="true" tabindex="-1"></a>bw1 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(rice, <span class="fu">aes</span>(<span class="at">x =</span> fert, <span class="at">y =</span> ShootDryMass)) <span class="sc">+</span> </span>
-<span id="cb416-2"><a href="means---fitted-and-marginal.html#cb416-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>()</span>
-<span id="cb416-3"><a href="means---fitted-and-marginal.html#cb416-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb416-4"><a href="means---fitted-and-marginal.html#cb416-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb416-5"><a href="means---fitted-and-marginal.html#cb416-5" aria-hidden="true" tabindex="-1"></a>bw2 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(rice, <span class="fu">aes</span>(<span class="at">x =</span> variety, <span class="at">y =</span> ShootDryMass)) <span class="sc">+</span> </span>
-<span id="cb416-6"><a href="means---fitted-and-marginal.html#cb416-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>()</span>
-<span id="cb416-7"><a href="means---fitted-and-marginal.html#cb416-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb416-8"><a href="means---fitted-and-marginal.html#cb416-8" aria-hidden="true" tabindex="-1"></a><span class="fu">ggarrange</span>(bw1, bw2, <span class="at">nrow =</span> <span class="dv">1</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb415"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb415-1"><a href="means---fitted-and-marginal.html#cb415-1" aria-hidden="true" tabindex="-1"></a>bw1 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(rice, <span class="fu">aes</span>(<span class="at">x =</span> fert, <span class="at">y =</span> ShootDryMass)) <span class="sc">+</span> </span>
+<span id="cb415-2"><a href="means---fitted-and-marginal.html#cb415-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>()</span>
+<span id="cb415-3"><a href="means---fitted-and-marginal.html#cb415-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb415-4"><a href="means---fitted-and-marginal.html#cb415-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb415-5"><a href="means---fitted-and-marginal.html#cb415-5" aria-hidden="true" tabindex="-1"></a>bw2 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(rice, <span class="fu">aes</span>(<span class="at">x =</span> variety, <span class="at">y =</span> ShootDryMass)) <span class="sc">+</span> </span>
+<span id="cb415-6"><a href="means---fitted-and-marginal.html#cb415-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>()</span>
+<span id="cb415-7"><a href="means---fitted-and-marginal.html#cb415-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb415-8"><a href="means---fitted-and-marginal.html#cb415-8" aria-hidden="true" tabindex="-1"></a><span class="fu">ggarrange</span>(bw1, bw2, <span class="at">nrow =</span> <span class="dv">1</span>)</span></code></pre></div>
 <p><img src="_main_files/figure-html/unnamed-chunk-218-1.png" width="672" /></p>
-<div class="sourceCode" id="cb417"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb417-1"><a href="means---fitted-and-marginal.html#cb417-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(rice, <span class="fu">aes</span>(<span class="at">x =</span> fert, <span class="at">y =</span> ShootDryMass, <span class="at">fill =</span> variety)) <span class="sc">+</span></span>
-<span id="cb417-2"><a href="means---fitted-and-marginal.html#cb417-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb416"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb416-1"><a href="means---fitted-and-marginal.html#cb416-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(rice, <span class="fu">aes</span>(<span class="at">x =</span> fert, <span class="at">y =</span> ShootDryMass, <span class="at">fill =</span> variety)) <span class="sc">+</span></span>
+<span id="cb416-2"><a href="means---fitted-and-marginal.html#cb416-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>()</span></code></pre></div>
 <p><img src="_main_files/figure-html/unnamed-chunk-219-1.png" width="672" /></p>
-<div class="sourceCode" id="cb418"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb418-1"><a href="means---fitted-and-marginal.html#cb418-1" aria-hidden="true" tabindex="-1"></a>rice.lm1 <span class="ot">&lt;-</span> <span class="fu">lm</span>(ShootDryMass <span class="sc">~</span> Block <span class="sc">+</span> fert <span class="sc">*</span> variety, <span class="at">data =</span> rice)</span>
-<span id="cb418-2"><a href="means---fitted-and-marginal.html#cb418-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb418-3"><a href="means---fitted-and-marginal.html#cb418-3" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(rice.lm1)</span></code></pre></div>
+<div class="sourceCode" id="cb417"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb417-1"><a href="means---fitted-and-marginal.html#cb417-1" aria-hidden="true" tabindex="-1"></a>rice.lm1 <span class="ot">&lt;-</span> <span class="fu">lm</span>(ShootDryMass <span class="sc">~</span> Block <span class="sc">+</span> fert <span class="sc">*</span> variety, <span class="at">data =</span> rice)</span>
+<span id="cb417-2"><a href="means---fitted-and-marginal.html#cb417-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb417-3"><a href="means---fitted-and-marginal.html#cb417-3" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(rice.lm1)</span></code></pre></div>
 <pre><code>## 
 ## Call:
 ## lm(formula = ShootDryMass ~ Block + fert * variety, data = rice)
@@ -1026,7 +1026,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## Residual standard error: 17.99 on 65 degrees of freedom
 ## Multiple R-squared:  0.7736, Adjusted R-squared:  0.7527 
 ## F-statistic: 37.01 on 6 and 65 DF,  p-value: &lt; 2.2e-16</code></pre>
-<div class="sourceCode" id="cb420"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb420-1"><a href="means---fitted-and-marginal.html#cb420-1" aria-hidden="true" tabindex="-1"></a><span class="fu">anova</span>(rice.lm1)</span></code></pre></div>
+<div class="sourceCode" id="cb419"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb419-1"><a href="means---fitted-and-marginal.html#cb419-1" aria-hidden="true" tabindex="-1"></a><span class="fu">anova</span>(rice.lm1)</span></code></pre></div>
 <pre><code>## Analysis of Variance Table
 ## 
 ## Response: ShootDryMass
@@ -1038,27 +1038,27 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## Residuals    65  21034   323.6                      
 ## ---
 ## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</code></pre>
-<div class="sourceCode" id="cb422"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb422-1"><a href="means---fitted-and-marginal.html#cb422-1" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">2</span>))</span>
-<span id="cb422-2"><a href="means---fitted-and-marginal.html#cb422-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(rice.lm1)</span></code></pre></div>
+<div class="sourceCode" id="cb421"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb421-1"><a href="means---fitted-and-marginal.html#cb421-1" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">2</span>))</span>
+<span id="cb421-2"><a href="means---fitted-and-marginal.html#cb421-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(rice.lm1)</span></code></pre></div>
 <p><img src="_main_files/figure-html/unnamed-chunk-222-1.png" width="672" /></p>
-<div class="sourceCode" id="cb423"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb423-1"><a href="means---fitted-and-marginal.html#cb423-1" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">1</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb422"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb422-1"><a href="means---fitted-and-marginal.html#cb422-1" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">1</span>))</span></code></pre></div>
 <p><br></p>
 <p>Log-transform the response to illustrate the point of this exercise!</p>
 <p><strong>The analysis above clearly isn’t satisfactory but the use of <code>emmeans</code> here is the point.</strong></p>
-<div class="sourceCode" id="cb424"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb424-1"><a href="means---fitted-and-marginal.html#cb424-1" aria-hidden="true" tabindex="-1"></a>rice<span class="sc">$</span>logShootDM <span class="ot">&lt;-</span> <span class="fu">log</span>(rice<span class="sc">$</span>ShootDryMass)</span>
-<span id="cb424-2"><a href="means---fitted-and-marginal.html#cb424-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb424-3"><a href="means---fitted-and-marginal.html#cb424-3" aria-hidden="true" tabindex="-1"></a>bw3 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(rice, <span class="fu">aes</span>(<span class="at">x =</span> fert, <span class="at">y =</span> logShootDM)) <span class="sc">+</span> </span>
-<span id="cb424-4"><a href="means---fitted-and-marginal.html#cb424-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>()</span>
-<span id="cb424-5"><a href="means---fitted-and-marginal.html#cb424-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb424-6"><a href="means---fitted-and-marginal.html#cb424-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb424-7"><a href="means---fitted-and-marginal.html#cb424-7" aria-hidden="true" tabindex="-1"></a>bw4 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(rice, <span class="fu">aes</span>(<span class="at">x =</span> variety, <span class="at">y =</span> logShootDM)) <span class="sc">+</span> </span>
-<span id="cb424-8"><a href="means---fitted-and-marginal.html#cb424-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>()</span>
-<span id="cb424-9"><a href="means---fitted-and-marginal.html#cb424-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb424-10"><a href="means---fitted-and-marginal.html#cb424-10" aria-hidden="true" tabindex="-1"></a><span class="fu">ggarrange</span>(bw3, bw4, <span class="at">nrow =</span> <span class="dv">1</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb423"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb423-1"><a href="means---fitted-and-marginal.html#cb423-1" aria-hidden="true" tabindex="-1"></a>rice<span class="sc">$</span>logShootDM <span class="ot">&lt;-</span> <span class="fu">log</span>(rice<span class="sc">$</span>ShootDryMass)</span>
+<span id="cb423-2"><a href="means---fitted-and-marginal.html#cb423-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb423-3"><a href="means---fitted-and-marginal.html#cb423-3" aria-hidden="true" tabindex="-1"></a>bw3 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(rice, <span class="fu">aes</span>(<span class="at">x =</span> fert, <span class="at">y =</span> logShootDM)) <span class="sc">+</span> </span>
+<span id="cb423-4"><a href="means---fitted-and-marginal.html#cb423-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>()</span>
+<span id="cb423-5"><a href="means---fitted-and-marginal.html#cb423-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb423-6"><a href="means---fitted-and-marginal.html#cb423-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb423-7"><a href="means---fitted-and-marginal.html#cb423-7" aria-hidden="true" tabindex="-1"></a>bw4 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(rice, <span class="fu">aes</span>(<span class="at">x =</span> variety, <span class="at">y =</span> logShootDM)) <span class="sc">+</span> </span>
+<span id="cb423-8"><a href="means---fitted-and-marginal.html#cb423-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>()</span>
+<span id="cb423-9"><a href="means---fitted-and-marginal.html#cb423-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb423-10"><a href="means---fitted-and-marginal.html#cb423-10" aria-hidden="true" tabindex="-1"></a><span class="fu">ggarrange</span>(bw3, bw4, <span class="at">nrow =</span> <span class="dv">1</span>)</span></code></pre></div>
 <p><img src="_main_files/figure-html/unnamed-chunk-223-1.png" width="672" /></p>
-<div class="sourceCode" id="cb425"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb425-1"><a href="means---fitted-and-marginal.html#cb425-1" aria-hidden="true" tabindex="-1"></a>rice.lm2 <span class="ot">&lt;-</span> <span class="fu">lm</span>(logShootDM <span class="sc">~</span> Block <span class="sc">+</span> fert <span class="sc">*</span> variety, <span class="at">data =</span> rice)</span>
-<span id="cb425-2"><a href="means---fitted-and-marginal.html#cb425-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb425-3"><a href="means---fitted-and-marginal.html#cb425-3" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(rice.lm2)</span></code></pre></div>
+<div class="sourceCode" id="cb424"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb424-1"><a href="means---fitted-and-marginal.html#cb424-1" aria-hidden="true" tabindex="-1"></a>rice.lm2 <span class="ot">&lt;-</span> <span class="fu">lm</span>(logShootDM <span class="sc">~</span> Block <span class="sc">+</span> fert <span class="sc">*</span> variety, <span class="at">data =</span> rice)</span>
+<span id="cb424-2"><a href="means---fitted-and-marginal.html#cb424-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb424-3"><a href="means---fitted-and-marginal.html#cb424-3" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(rice.lm2)</span></code></pre></div>
 <pre><code>## 
 ## Call:
 ## lm(formula = logShootDM ~ Block + fert * variety, data = rice)
@@ -1084,9 +1084,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## F-statistic: 53.87 on 6 and 65 DF,  p-value: &lt; 2.2e-16</code></pre>
 <p>Get the estimated marginal means of fertiliser for each variety.</p>
 <p><em>Note these estimates are on the log scale.</em></p>
-<div class="sourceCode" id="cb427"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb427-1"><a href="means---fitted-and-marginal.html#cb427-1" aria-hidden="true" tabindex="-1"></a>rice_emm_f_v <span class="ot">&lt;-</span> <span class="fu">emmeans</span>(rice.lm2, pairwise <span class="sc">~</span> fert <span class="sc">|</span> variety)</span>
-<span id="cb427-2"><a href="means---fitted-and-marginal.html#cb427-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb427-3"><a href="means---fitted-and-marginal.html#cb427-3" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(rice_emm_f_v)</span></code></pre></div>
+<div class="sourceCode" id="cb426"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb426-1"><a href="means---fitted-and-marginal.html#cb426-1" aria-hidden="true" tabindex="-1"></a>rice_emm_f_v <span class="ot">&lt;-</span> <span class="fu">emmeans</span>(rice.lm2, pairwise <span class="sc">~</span> fert <span class="sc">|</span> variety)</span>
+<span id="cb426-2"><a href="means---fitted-and-marginal.html#cb426-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb426-3"><a href="means---fitted-and-marginal.html#cb426-3" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(rice_emm_f_v)</span></code></pre></div>
 <pre><code>## $emmeans
 ## variety = wt:
 ##  fert   emmean    SE df lower.CL upper.CL
@@ -1119,11 +1119,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## Results are averaged over the levels of: Block 
 ## P value adjustment: tukey method for comparing a family of 3 estimates</code></pre>
 <p>Backtransform the estimates to the natural scale. Note this code comes from the built-in help for <code>emmeans</code>.</p>
-<div class="sourceCode" id="cb429"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb429-1"><a href="means---fitted-and-marginal.html#cb429-1" aria-hidden="true" tabindex="-1"></a>rice_emm_f_v_bt <span class="ot">&lt;-</span> <span class="fu">emmeans</span>(rice.lm2, pairwise <span class="sc">~</span> fert <span class="sc">|</span> variety,</span>
-<span id="cb429-2"><a href="means---fitted-and-marginal.html#cb429-2" aria-hidden="true" tabindex="-1"></a>                           <span class="at">options =</span> <span class="fu">list</span>(<span class="at">tran =</span> <span class="st">&quot;log&quot;</span>), </span>
-<span id="cb429-3"><a href="means---fitted-and-marginal.html#cb429-3" aria-hidden="true" tabindex="-1"></a>                           <span class="at">type =</span> <span class="st">&quot;response&quot;</span>)</span>
-<span id="cb429-4"><a href="means---fitted-and-marginal.html#cb429-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb429-5"><a href="means---fitted-and-marginal.html#cb429-5" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(rice_emm_f_v_bt)</span></code></pre></div>
+<div class="sourceCode" id="cb428"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb428-1"><a href="means---fitted-and-marginal.html#cb428-1" aria-hidden="true" tabindex="-1"></a>rice_emm_f_v_bt <span class="ot">&lt;-</span> <span class="fu">emmeans</span>(rice.lm2, pairwise <span class="sc">~</span> fert <span class="sc">|</span> variety,</span>
+<span id="cb428-2"><a href="means---fitted-and-marginal.html#cb428-2" aria-hidden="true" tabindex="-1"></a>                           <span class="at">options =</span> <span class="fu">list</span>(<span class="at">tran =</span> <span class="st">&quot;log&quot;</span>), </span>
+<span id="cb428-3"><a href="means---fitted-and-marginal.html#cb428-3" aria-hidden="true" tabindex="-1"></a>                           <span class="at">type =</span> <span class="st">&quot;response&quot;</span>)</span>
+<span id="cb428-4"><a href="means---fitted-and-marginal.html#cb428-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb428-5"><a href="means---fitted-and-marginal.html#cb428-5" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(rice_emm_f_v_bt)</span></code></pre></div>
 <pre><code>## $emmeans
 ## variety = wt:
 ##  fert   response     SE df lower.CL upper.CL
@@ -1158,7 +1158,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## P value adjustment: tukey method for comparing a family of 3 estimates 
 ## Tests are performed on the log scale</code></pre>
 <p>Further, to get confidence intervals for the contrasts, do the following. <em>Note that you use the <code>emmeans</code> object, not the summary of that object!</em></p>
-<div class="sourceCode" id="cb431"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb431-1"><a href="means---fitted-and-marginal.html#cb431-1" aria-hidden="true" tabindex="-1"></a><span class="fu">confint</span>(rice_emm_f_v_bt<span class="sc">$</span>contrasts)</span></code></pre></div>
+<div class="sourceCode" id="cb430"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb430-1"><a href="means---fitted-and-marginal.html#cb430-1" aria-hidden="true" tabindex="-1"></a><span class="fu">confint</span>(rice_emm_f_v_bt<span class="sc">$</span>contrasts)</span></code></pre></div>
 <pre><code>## variety = wt:
 ##  contrast        ratio     SE df lower.CL upper.CL
 ##  F10 / NH4Cl    2.1866 0.3939 65   1.4195    3.368

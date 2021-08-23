@@ -1,0 +1,17 @@
+# Github
+
+## Recovering files deleted in error
+
+If you've deleted some files and done a commit for the deletion, you can recover them this way:
+
+1. Look at the commit and get its SHA
+2. In a terminal, do `git checkout sha^ file_name`
+
+- `sha` is the SHA of the commit - remember to put a "^" after it!
+
+- if you're running the git command from the project's home directory, the file name needs an extension and a path (e.g. if you're in the home directory and run the `git` command and the file was deleted from a sub-directory, then do something like `git sha^ docs/filename`).
+
+That should restore the file to the directory it was deleted from.
+
+
+

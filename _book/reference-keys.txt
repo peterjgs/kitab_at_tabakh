@@ -82,3 +82,5 @@ using-a-matrix-with-equal-weights
 using-a-matrix-with-proportional-weights
 estimates-using-effects-package
 transformations-and-emmeans
+github
+recovering-files-deleted-in-error
