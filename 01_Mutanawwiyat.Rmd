@@ -332,7 +332,7 @@ library(pROC)
 
 ```{r}
 
-roc_ami <- read.csv("data/roc bland.csv", header = T)
+roc_ami <- read.csv("_data/roc bland.csv", header = T)
 
 str(roc_ami)
 

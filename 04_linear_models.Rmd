@@ -97,7 +97,7 @@ solve(t(X) %*% X)
 
 library(tidyverse)
 
-data_height <- read_csv("data/plantHeightSingleSpp.csv")
+data_height <- read_csv("_data/plantHeightSingleSpp.csv")
 
 ```
 
@@ -721,7 +721,7 @@ save(athletes, file = "athletes_OzDASL.RData")
 
 ```{r load-athletes-data}
 
-load("data/athletes_OzDASL.Rdata")
+load("_data/athletes_OzDASL.Rdata")
 
 str(athletes)
 
@@ -973,7 +973,7 @@ Academic performance of the school (api00), the average class size in kindergart
 
 ```{r}
 
-reg1 <- read.csv("data/elemapi2.csv")
+reg1 <- read.csv("_data/elemapi2.csv")
 
 names(reg1)
 
@@ -1140,7 +1140,7 @@ Need to do this using contrast matrix.
 
 ```{r}
 
-totalC <- read.csv("data/total carbon.csv")
+totalC <- read.csv("_data/total carbon.csv")
 
 str(totalC)
 
@@ -1179,7 +1179,7 @@ Two examples: Jake's cycling data and David's water quality data
 
 ##  Jake's cycling data
 
-cycle <- read.table("data/cycling.txt", header = T)
+cycle <- read.table("_data/cycling.txt", header = T)
 
 summary(cycle)
 
@@ -1257,7 +1257,7 @@ lines(kerbnew$kerb, ci$upper, lty = 2, col = "blue")
 
 ```{r}
 
-waterQual <- read.table("data/waterQual.txt", header = T)
+waterQual <- read.table("_data/waterQual.txt", header = T)
 
 #save(cycle, waterQual, file = "lm pred confidence band.RData")
 

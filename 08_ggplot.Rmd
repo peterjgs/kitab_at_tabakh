@@ -280,6 +280,24 @@ densityplot(s2, plot.points = F, main = "Lattice")
 ```
 
 
+### Histogram: vertical axis with percentage scale
+
+
+```{r message = F, warning = F}
+
+data(Orthodont)
+
+#summary(Orthodont)
+
+ggplot(Orthodont, aes(distance)) + 
+  geom_histogram(aes(y = stat(count / sum(count)) * 100),
+                   breaks = seq(from = 16, to = 32, by = 2),
+                   colour = "black", fill = "grey") +
+  scale_x_continuous(breaks = seq(from = 16, to = 32, by = 2)) +
+  labs(x = "Distance", y = "Percentage")
+
+```
+
 
 ##  Plot structure
 

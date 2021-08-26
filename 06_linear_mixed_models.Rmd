@@ -5,7 +5,7 @@
 
 ```{r}
 
-estu <- read.csv("data/Estuaries.csv")
+estu <- read.csv("_data/Estuaries.csv")
 
 str(estu)
     
